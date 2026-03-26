@@ -204,6 +204,52 @@
           在 2026-03-21 到 2026-03-26 之间的 49 楼持续更新。
           它们不是这个概念的官方定义，但很有价值，因为里面出现了真实成本、真实失败模式和真实工具取舍。
         </p>
+        <div class="article-list">
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1791588">想开一个 harness engineering 实践的长期帖子，大家一起分享实践经验</a></h3>
+            <p class="article-source">主讨论串</p>
+            <p>这是当前首页所吸收的核心社区材料。下面这组帖子，都是它正文里直接点名或挂链引用过的相关材料。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1624433">新年来分享我的 oh-my-opencode 配置和学习心得</a></h3>
+            <p class="article-source">相关帖子</p>
+            <p>OMO 社区实践入口之一，很多关于 OMO 的配置和使用路径都可以从这里往回追。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1677645/9">OpenAI 提出 “Harness Engineering”：完全使用 Agent 进行编程的实践</a></h3>
+            <p class="article-source">相关帖子</p>
+            <p>站内对 OpenAI 文章的转述与讨论，适合观察社区如何在早期阶段消化这个概念。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1789013/5">最近 harness，自主进化很火，大家有什么经验和用法吗？</a></h3>
+            <p class="article-source">相关帖子</p>
+            <p>偏经验交流，能补足社区用户对 harness、自主进化和使用姿势的第一手体感。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1539636">经过 8 个月 Claude Code 高强度实战，我们决定开源内部的最佳实践</a></h3>
+            <p class="article-source">相关帖子</p>
+            <p>适合和 harness engineering 视角交叉阅读，区分哪些是提示技巧，哪些已经变成系统化工程壳层。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1778922">都在聊 AI-Native Engineering，分享几个 AI coding workflow</a></h3>
+            <p class="article-source">相关帖子</p>
+            <p>这是横向资料库，能帮助把单个 harness 套件放回更大的 workflow 和 AI-native engineering 生态中观察。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1664790">Codex 增强版：对标 Claude Code 新增 Agent Teams、Hooks、anthropic api Agent 、WebUI</a></h3>
+            <p class="article-source">相关帖子</p>
+            <p>体现了社区很早就在用“增强层”和“编排层”的思路扩展 coding shell，这条路径与 harness overlay 很相近。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1776917">Vibecoding 进阶教程总集篇——从能用到可控</a></h3>
+            <p class="article-source">相关帖子</p>
+            <p>虽然不一定直接使用 harness 一词，但它讨论的“可控性”与 harness engineering 关注的目标高度重叠。</p>
+          </article>
+        </div>
+        <p class="section-copy">
+          <strong>核心观点：</strong>
+          把这些相关帖子放回同一上下文后，这条讨论串最有价值的部分，不是“又列了几个项目名”，而是下面这些来自真实长时实践的工程观察。
+        </p>
         <div class="sample-grid">
           <article class="sample-card">
             <h3>控制面往往比代码面更重</h3>
@@ -232,28 +278,6 @@
               讨论串后期的模型配置已经从早期参考 OMO 社区配置，逐步转向以 `gpt-5.4` 和 `gpt-5.3-codex`
               为主。这提醒我们：很多 harness 实践不是静态 doctrine，而是在供应稳定性、可用性和成本约束下不断漂移。
             </p>
-          </article>
-        </div>
-        <div class="article-list">
-          <article class="article-card">
-            <h3><a href="https://linux.do/t/topic/1624433">新年来分享我的 oh-my-opencode 配置和学习心得</a></h3>
-            <p class="article-source">LINUX DO · 站内实践帖</p>
-            <p>这是讨论串里直接引用的社区基础材料之一，很多后续关于 OMO 的经验交流都能从这里往回追。</p>
-          </article>
-          <article class="article-card">
-            <h3><a href="https://linux.do/t/topic/1539636">经过 8 个月 Claude Code 高强度实战，我们决定开源内部的最佳实践</a></h3>
-            <p class="article-source">LINUX DO · 站内实践帖</p>
-            <p>适合与 harness engineering 视角交叉阅读：哪些是提示策略，哪些已经变成了系统化的工程壳层与团队经验。</p>
-          </article>
-          <article class="article-card">
-            <h3><a href="https://linux.do/t/topic/1778922">都在聊 AI-Native Engineering，分享几个 AI coding workflow</a></h3>
-            <p class="article-source">LINUX DO · 站内资源汇总</p>
-            <p>这是线程里提到的横向资料库，能帮助把单个 harness 套件放回更大的 workflow 生态里去比较。</p>
-          </article>
-          <article class="article-card">
-            <h3><a href="https://linux.do/t/topic/1776917">Vibecoding 进阶教程总集篇——从能用到可控</a></h3>
-            <p class="article-source">LINUX DO · 站内方法论</p>
-            <p>虽然不一定直接使用 harness 一词，但它所讨论的“可控性”问题，与 harness engineering 关注的核心目标高度重叠。</p>
           </article>
         </div>
       </section>
