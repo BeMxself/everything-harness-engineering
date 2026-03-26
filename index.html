@@ -29,7 +29,8 @@
       <nav class="section-nav" aria-label="Section navigation">
         <a href="#definition">定义</a>
         <a href="#distinction">分类</a>
-        <a href="#articles">关键文章</a>
+        <a href="#timeline">时间线</a>
+        <a href="#discussion">社区讨论</a>
         <a href="#landscape">当前生态</a>
         <a href="#samples">样本案例</a>
         <a href="#topics">研究专题</a>
@@ -72,75 +73,147 @@
       </section>
 
       <section id="distinction" class="section">
-        <h2>Harness vs Harness-Like Suites</h2>
+        <h2>Primary Orientations</h2>
         <p class="section-copy">
-          边界不是绝对的，但从工程角度看，可以先按下面三类来理解生态。
+          <strong>工程解释：</strong>
+          下面不是任何单一社区或单一项目官方给出的统一 taxonomy，而是为了便于研究而做的一级分组。
+          许多项目横跨多个象限，这里只标它们当前最主要的工作重心。
         </p>
         <div class="distinction-grid">
           <article class="distinction-card">
-            <h3>1. Native Harness</h3>
+            <h3>1. Native Coding Shells</h3>
             <p>
-              直接围绕 agent 的执行闭环搭建：任务输入、工具调用、状态管理、验证、重试、委派、权限与环境控制都在同一工程外壳内。
+              直接给 coding agent 一个真实工作面：终端、repo、工具调用、权限、验证与执行闭环都围绕宿主 shell 展开。
             </p>
-            <p class="card-note">典型问题：如何把一个 coding agent 变成真实工程产线的一部分？</p>
+            <p class="card-note">典型问题：如何让单个 coding agent 在真实仓库里持续完成工程任务？</p>
           </article>
           <article class="distinction-card">
-            <h3>2. Harness-Like Agent Suites</h3>
+            <h3>2. Harness Overlays</h3>
             <p>
-              不一定把自己叫 harness，但实际已经在做类似事情：规则层、协作层、上下文管理、子代理、工作流约束、恢复机制。
+              构建在某个宿主 shell 之上的“第二层系统”：额外加入 hooks、agent teams、memory、HUD、规则层、恢复与约束机制。
             </p>
-            <p class="card-note">典型问题：如何让 agent 在复杂 repo 与复杂组织规则里持续工作？</p>
+            <p class="card-note">典型问题：如何把原生 shell 提升成更可控、更长时、更协作的工程环境？</p>
           </article>
           <article class="distinction-card">
-            <h3>3. Workflow / Orchestration Suites</h3>
+            <h3>3. Skill / Methodology Systems</h3>
             <p>
-              更强调流程编排、图结构、工作流节点、deterministic + agent 混合编排，有时不专注 coding，但解决的是相邻问题。
+              更强调 skills、meta-prompting、spec-driven development、review discipline 和执行方法论，本身未必自称 harness。
             </p>
-            <p class="card-note">典型问题：如何让多个 agent、工具、人类审批与系统事件一起组成稳定流程？</p>
+            <p class="card-note">典型问题：如何让 agent 不只是“会写”，而是按一套工程方法持续推进？</p>
+          </article>
+          <article class="distinction-card">
+            <h3>4. Orchestration / Delivery Systems</h3>
+            <p>
+              更强调多 agent 编排、交付流程、图结构或全链路开发平台，不一定围绕某个宿主 shell，但解决的是相邻的大闭环问题。
+            </p>
+            <p class="card-note">典型问题：如何把多个模型、工具、人类审批与交付节点编成一个稳定系统？</p>
           </article>
         </div>
       </section>
 
-      <section id="articles" class="section">
-        <h2>Key Articles</h2>
+      <section id="timeline" class="section">
+        <h2>Concept Timeline</h2>
         <p class="section-copy">
-          下面这些文章基本可以作为理解这个领域的起点。它们不是完全同一立场，但拼在一起能构成一个比较完整的观察框架。
+          <strong>工程解释：</strong>
+          下面按发布时间排序，把 agent engineering 的基础方法、tool surface 设计、long-running harness、
+          以及 Codex/Claude 语境中的 harness engineering 逐步串起来。读者可以先看前半段建立方法论，再看后半段理解
+          harness 作为 coding-agent 工程抽象是如何成形的。
         </p>
         <div class="article-list">
           <article class="article-card">
-            <h3><a href="https://openai.com/index/harness-engineering/">Harness engineering: leveraging Codex in an agent-first world</a></h3>
-            <p class="article-source">OpenAI</p>
+            <h3><a href="https://www.anthropic.com/research/building-effective-agents">Building Effective Agents</a></h3>
+            <p class="article-source">2024-12-19 · Anthropic</p>
             <p>
-              这篇文章最重要的价值在于把焦点从“模型够不够聪明”转向“如何 harness 它进入真实工程世界”，对 coding agent
-              的工程壳层给出非常明确的 framing。
+              这是理解该领域的起点之一。它先把 workflows 与 agents 区分开来，并强调很多成功系统依赖的是简单、可组合的模式，
+              而不是先上复杂框架。
             </p>
           </article>
           <article class="article-card">
-            <h3><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">A practical guide to building agents</a></h3>
-            <p class="article-source">OpenAI</p>
+            <h3><a href="https://www.anthropic.com/engineering/writing-tools-for-agents">Writing Effective Tools for Agents</a></h3>
+            <p class="article-source">2025-09-11 · Anthropic</p>
             <p>
-              更偏通用 agent engineering 的实践指南，适合作为“系统搭建”的方法论基线，然后再把它映射到 coding / harness 语境。
+              如果说前一篇回答“agent 应该怎么组织”，这一篇更接近回答“tool surface 应该怎么设计”。这对 harness
+              工程尤其关键，因为工具形态、反馈结构和评估方法本身就是 harness 的一部分。
             </p>
           </article>
           <article class="article-card">
-            <h3><a href="https://www.anthropic.com/research/building-effective-agents">Building Effective AI Agents</a></h3>
-            <p class="article-source">Anthropic</p>
+            <h3><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Effective Harnesses for Long-Running Agents</a></h3>
+            <p class="article-source">2025-11-26 · Anthropic</p>
             <p>
-              对 agent 任务分解、工具使用、流程结构和失败处理有很强的实践导向，是理解“为什么 workflow shell 会重要”的核心材料。
+              这是“harness”从一般 agent 方法论进一步落到长期运行 coding agent 场景的关键文章。它把 initializer agent、
+              incremental coding、progress file、clean handoff 这些机制说得很具体。
             </p>
           </article>
           <article class="article-card">
-            <h3><a href="https://www.anthropic.com/engineering/writing-tools-for-agents">Writing effective tools for agents—using AI agents</a></h3>
-            <p class="article-source">Anthropic</p>
+            <h3><a href="https://openai.com/index/unrolling-the-codex-agent-loop/">Unrolling the Codex Agent Loop</a></h3>
+            <p class="article-source">2026-01-23 · OpenAI</p>
             <p>
-              如果前一篇主要回答“agent 怎么组织”，这一篇更接近回答“tool surface 要怎么设计”，这正是 harness 工程里的关键一层。
+              这篇开始把注意力从抽象方法论切到 Codex 实际运行机制本身，帮助理解一个 coding agent 的 loop 到底由哪些部件组成。
+            </p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://openai.com/index/unlocking-the-codex-harness/">Unlocking the Codex Harness</a></h3>
+            <p class="article-source">2026-02-04 · OpenAI</p>
+            <p>
+              这篇把 App Server、conversation primitives 和 protocol 选型拉出来单独讲，说明 harness 不只是 prompt 层，
+              也是宿主运行时与 client/runtime 契约设计问题。
+            </p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://openai.com/index/harness-engineering/">Harness Engineering: Leveraging Codex in an Agent-First World</a></h3>
+            <p class="article-source">2026-02-11 · OpenAI</p>
+            <p>
+              这篇文章把“humans steer, agents execute”推到极致，并把 repository knowledge、agent legibility、
+              architecture guardrails、merge philosophy 这些概念系统化，基本定义了今天很多 coding harness 讨论的共同语境。
             </p>
           </article>
           <article class="article-card">
             <h3><a href="https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html">Harness Engineering</a></h3>
-            <p class="article-source">Martin Fowler</p>
+            <p class="article-source">2026-02-17 · Martin Fowler</p>
             <p>
-              这篇文章的重要价值在于把 harness engineering 纳入更广的工程实践语境，帮助把它从“产品术语”提升成“工程抽象”。
+              这篇的重要价值在于把 harness engineering 从单一厂商的工程实践，提升成更一般化的工程抽象：用于约束、校正和驾驭 AI
+              agents 的一整套工具与实践。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="discussion" class="section">
+        <h2>Community Discussion</h2>
+        <p class="section-copy">
+          <strong>社区材料：</strong>
+          这里单列社区讨论，不与上面的官方文章时间线混合。下面的结论主要来自
+          <a href="https://linux.do/t/topic/1791588">LINUX DO 讨论串</a>
+          在 2026-03-21 到 2026-03-26 之间的 49 楼持续更新。
+          它们不是这个概念的官方定义，但很有价值，因为里面出现了真实成本、真实失败模式和真实工具取舍。
+        </p>
+        <div class="sample-grid">
+          <article class="sample-card">
+            <h3>控制面往往比代码面更重</h3>
+            <p>
+              讨论串里最有价值的实测信号之一，是 24 小时运行里“实际代码改动”远小于“设计、协调、进度记录、交接”等控制面产出。
+              这说明 harness engineering 的瓶颈常常不在补几行代码，而在如何组织长期执行。
+            </p>
+          </article>
+          <article class="sample-card">
+            <h3>长任务的关键是 clean handoff</h3>
+            <p>
+              多位参与者都在强调上下文清洁、交接文档、计划文件与新会话续跑。会话跑久后如果只退化成普通问答，
+              整体效率会迅速下降，说明“可恢复性”是长时 harness 的核心能力之一。
+            </p>
+          </article>
+          <article class="sample-card">
+            <h3>single controller + document API</h3>
+            <p>
+              讨论中反复出现一个共识：决策层不应淹没在代码细节里。更有效的做法是保留一个干净的调度层，
+              通过结构化文档、摘要、报告和图表把信息压缩后再交给高阶决策模型。
+            </p>
+          </article>
+          <article class="sample-card">
+            <h3>模型供应现实会反过来塑造 harness</h3>
+            <p>
+              讨论串后期的模型配置已经从早期参考 OMO 社区配置，逐步转向以 `gpt-5.4` 和 `gpt-5.3-codex`
+              为主。这提醒我们：很多 harness 实践不是静态 doctrine，而是在供应稳定性、可用性和成本约束下不断漂移。
             </p>
           </article>
         </div>
@@ -149,47 +222,167 @@
       <section id="landscape" class="section">
         <h2>Current Landscape</h2>
         <p class="section-copy">
-          当前生态不是一条直线，而是多个方向同时演化。下面这个列表不是“绝对权威排名”，而是一个面向工程观察的分类视图。
+          当前生态不是一条直线，而是多个方向同时演化。下面的分组不是照搬论坛说法，而是结合各项目官方 repo / 官方文档里的自我描述，
+          再按它们当前的 primary orientation 做的研究性归类。
         </p>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>系统</th>
+                <th>官方自述 / 定位信号</th>
+                <th>首页归类</th>
+                <th>宿主 / 主要范围</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/openai/codex">Codex</a></td>
+                <td>Lightweight coding agent that runs in your terminal</td>
+                <td>Native Coding Shell</td>
+                <td>终端中的 coding agent</td>
+              </tr>
+              <tr>
+                <td><a href="https://opencode.ai/">OpenCode</a></td>
+                <td>The open source coding agent</td>
+                <td>Native Coding Shell</td>
+                <td>开放式 coding shell / runtime</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/block/goose">Goose</a></td>
+                <td>Open source, extensible AI agent</td>
+                <td>Native Coding Shell</td>
+                <td>通用 agent，包含 coding 场景</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/code-yeongyu/oh-my-openagent">oh-my-openagent</a></td>
+                <td>the best agent harness</td>
+                <td>Harness Overlay</td>
+                <td>构建在 OpenCode 之上的 harness 层</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/Yeachan-Heo/oh-my-codex">oh-my-codex</a></td>
+                <td>Your codex is not alone. Add hooks, agent teams, HUDs...</td>
+                <td>Harness Overlay</td>
+                <td>构建在 Codex 之上的控制层</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/Yeachan-Heo/oh-my-claudecode">oh-my-claudecode</a></td>
+                <td>Teams-first multi-agent orchestration for Claude Code</td>
+                <td>Harness Overlay</td>
+                <td>构建在 Claude Code 之上的编排层</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/affaan-m/everything-claude-code">everything-claude-code</a></td>
+                <td>The agent harness performance optimization system</td>
+                <td>Harness Overlay</td>
+                <td>跨 Claude Code / Codex / OpenCode 的增强层</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/obra/superpowers">superpowers</a></td>
+                <td>An agentic skills framework &amp; software development methodology</td>
+                <td>Skill / Methodology System</td>
+                <td>skills + workflow discipline</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/gsd-build/get-shit-done">get-shit-done</a></td>
+                <td>Meta-prompting, context engineering and spec-driven development system</td>
+                <td>Skill / Methodology System</td>
+                <td>spec-driven workflow layer</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/garrytan/gstack">gstack</a></td>
+                <td>15 opinionated tools that serve as CEO, Designer, Eng Manager...</td>
+                <td>Skill / Methodology System</td>
+                <td>面向交付的角色化工作流</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/fengshao1227/ccg-workflow">ccg-workflow</a></td>
+                <td>Claude + Codex + Gemini multi-model collaboration</td>
+                <td>Skill / Methodology System</td>
+                <td>多模型协作工作流</td>
+              </tr>
+              <tr>
+                <td><a href="https://openhands.dev/">OpenHands</a></td>
+                <td>AI-Driven Development</td>
+                <td>Adjacent Platform</td>
+                <td>更大的 agent 开发平台</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td>
+                <td>Build resilient language agents as graphs</td>
+                <td>Adjacent Platform</td>
+                <td>graph orchestration</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></td>
+                <td>Building, orchestrating and deploying AI agents and multi-agent workflows</td>
+                <td>Adjacent Platform</td>
+                <td>agent framework / orchestration</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="landscape-grid">
           <article class="landscape-column">
-            <h3>Native Coding Harnesses / Shells</h3>
+            <h3>Native Coding Shells</h3>
             <ul>
               <li><a href="https://docs.anthropic.com/en/docs/claude-code/common-workflows">Claude Code</a></li>
-              <li><a href="https://openai.com/codex/">Codex</a></li>
+              <li><a href="https://github.com/openai/codex">Codex</a></li>
               <li><a href="https://opencode.ai/">OpenCode</a></li>
               <li><a href="https://github.com/block/goose">Goose</a></li>
               <li><a href="https://aider.chat/">Aider</a></li>
             </ul>
             <p class="column-note">
-              这些工具更接近“直接给 agent 一个真实 coding 工作面”，强调终端、repo、工具和执行闭环。
+              官方自述大多把自己定位为 coding agent 或 coding shell。它们是很多后续 harness overlay 的宿主层。
             </p>
           </article>
           <article class="landscape-column">
-            <h3>Harness-Like Engineering Suites</h3>
+            <h3>Harness Overlays</h3>
             <ul>
-              <li><a href="https://github.com/code-yeongyu/oh-my-opencode">oh-my-opencode</a></li>
-              <li><a href="https://openhands.dev/">OpenHands</a></li>
-              <li><a href="https://github.com/langroid/langroid">Langroid</a></li>
-              <li><a href="https://github.com/deepklarity/harness-kit">Harness Kit</a></li>
+              <li><a href="https://github.com/code-yeongyu/oh-my-openagent">oh-my-openagent</a></li>
+              <li><a href="https://github.com/Yeachan-Heo/oh-my-codex">oh-my-codex</a></li>
+              <li><a href="https://github.com/Yeachan-Heo/oh-my-claudecode">oh-my-claudecode</a></li>
+              <li><a href="https://github.com/affaan-m/everything-claude-code">everything-claude-code</a></li>
             </ul>
             <p class="column-note">
-              这些项目不一定都把自己定义为 harness，但在规则层、协作层、上下文管理与恢复策略上，已经呈现出明显的 harness engineering 特征。
+              这些系统直接构建在宿主 shell 之上，显式加入 hooks、agent teams、HUD、memory、guardrails、rules
+              和恢复机制，是当前“harness”味道最浓的一层。
             </p>
           </article>
           <article class="landscape-column">
-            <h3>Workflow / Orchestration Suites</h3>
+            <h3>Skill / Methodology Systems</h3>
             <ul>
-              <li><a href="https://www.langchain.com/langgraph">LangGraph</a></li>
+              <li><a href="https://github.com/obra/superpowers">superpowers</a></li>
+              <li><a href="https://github.com/gsd-build/get-shit-done">get-shit-done</a></li>
+              <li><a href="https://github.com/garrytan/gstack">gstack</a></li>
+              <li><a href="https://github.com/fengshao1227/ccg-workflow">ccg-workflow</a></li>
+            </ul>
+            <p class="column-note">
+              这些项目常把自己描述成 skills framework、meta-prompting system、spec-driven development system
+              或 multi-model collaboration workflow。它们未必都自称 harness，但经常构成 harness 的方法层或部件层。
+            </p>
+          </article>
+          <article class="landscape-column">
+            <h3>Adjacent Platforms / Orchestration</h3>
+            <ul>
+              <li><a href="https://openhands.dev/">OpenHands</a></li>
+              <li><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></li>
               <li><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></li>
               <li><a href="https://www.crewai.com/">CrewAI</a></li>
               <li><a href="https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/">GitHub Agentic Workflows</a></li>
             </ul>
             <p class="column-note">
-              这类系统更偏流程图、工作流与多 agent 编排，不一定专注 coding harness，但解决的是相邻问题：如何让 agent 系统稳定进入工程流程。
+              这些项目更偏 agent platform、graph orchestration、multi-agent workflow 或交付平台。
+              它们与 harness engineering 高度相邻，但关注面通常比单个 coding shell 更大。
             </p>
           </article>
         </div>
+        <p class="section-copy">
+          <strong>注：</strong>
+          这个表不是“胜负榜”，也不是稳定不变的最终定性。很多项目正在快速演化，名字、宿主支持和自我定位都可能继续漂移；
+          首页当前做的是一个可追溯、可比较的观察切面。
+        </p>
       </section>
 
       <section id="samples" class="section">
