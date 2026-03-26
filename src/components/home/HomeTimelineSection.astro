@@ -1,0 +1,47 @@
+---
+import { LinkButton } from "@astrojs/starlight/components";
+
+interface TimelineItem {
+  date: string;
+  title: string;
+  source: string;
+  summary: string;
+  href: string;
+}
+
+interface Props {
+  items: TimelineItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="timeline" class="overview-section">
+  <div class="overview-section-head">
+    <div class="overview-prose">
+      <p class="section-label">关键文章</p>
+      <h2>只有看到它是怎么形成的，这个词才会真正变清楚。</h2>
+      <p>
+        这不是一组随便拼起来的文章。时间线展示的是讨论如何从一般 agent design，转向工具表面，再到
+        long-running harness，最后收敛成更清晰的工程抽象。
+      </p>
+    </div>
+    <LinkButton href="./timeline/" variant="minimal" icon="right-arrow">
+      查看完整时间线
+    </LinkButton>
+  </div>
+
+  <div class="timeline-list not-content">
+    {items.map((item) => (
+      <article class="timeline-item">
+        <div class="timeline-date">{item.date}</div>
+        <div class="timeline-copy">
+          <h3>{item.title}</h3>
+          <p class="timeline-source">{item.source}</p>
+          <p>{item.summary}</p>
+          <a href={item.href}>看详细时间线</a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

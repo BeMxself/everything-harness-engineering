@@ -1,0 +1,28 @@
+---
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+
+interface NextLink {
+  title: string;
+  description: string;
+  href: string;
+}
+
+interface Props {
+  items: NextLink[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="next" class="overview-section overview-section--next">
+  <div class="overview-prose">
+    <p class="section-label">下一步</p>
+    <h2>如果这个词现在已经清楚一些了，下一步就应该按问题去读，而不是按 hype 去追。</h2>
+  </div>
+
+  <CardGrid>
+    {items.map((item) => (
+      <LinkCard title={item.title} description={item.description} href={item.href} />
+    ))}
+  </CardGrid>
+</section>

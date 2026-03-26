@@ -5,7 +5,7 @@ description: What harness engineering means in this repository and why it matter
 
 # What Is Harness Engineering
 
-这里的 **harness engineering** 不是单指某个 agent 会不会写代码，而是指一整套工程化外壳如何把模型能力变成持续可运行的系统能力。
+**Harness engineering** 不是单指某个 agent 会不会写代码，而是指一整套工程化外壳如何把模型能力变成持续可运行的系统能力。
 
 更准确地说，它关注的是：
 
@@ -25,11 +25,11 @@ description: What harness engineering means in this repository and why it matter
 - 团队需要的是可重复、可验证、可恢复、可协作的 agent 工程链路
 - “agent 能做什么”正在快速让位于“你如何 harness 它”
 
-## 这个仓库中的定义方式
+## 一种研究性定义方式
 
-这个仓库把 Harness Engineering 当成一个研究问题来处理，而不是某家厂商的专有术语：
+更有解释力的做法，是把 Harness Engineering 当成一个研究问题来处理，而不是某家厂商的专有术语：
 
 - 哪些控制面机制在长时任务中真正有效
-- 哪些宿主 shell 和 overlay 形成了稳定分层
+- 哪些宿主工作面与 overlay 形成了稳定分层
 - 哪些方法论只是提示技巧，哪些已经变成 durable engineering surface
-- 哪些 topic 值得进一步做成可运行研究专题
+- 哪些议题值得进一步做成可运行研究专题

@@ -1,0 +1,34 @@
+---
+import { LinkButton } from "@astrojs/starlight/components";
+---
+
+<section id="definition" class="overview-section overview-section--definition">
+  <div class="overview-grid">
+    <div class="overview-prose">
+      <p class="section-label">定义优先</p>
+      <h2>Harness engineering 研究的，是 agent 外层系统本身。</h2>
+      <p class="lead">
+        <strong>Harness engineering</strong> 指的是那层被工程化出来的外壳系统：
+        它负责约束、编排、验证、恢复，并让 agent 足够可读、可控，能够真正跑进软件工程工作流中。
+        模型当然重要，但真正把模型能力变成 durable engineering surface 的，是 harness。
+      </p>
+      <p>
+        这意味着真正值得研究的中心对象，既不是模型本身，也不是 prompt 本身，而是模型外面的整套系统：
+        任务进入方式、工具表面、执行边界、记忆层、审批、评审纪律与交接结构。
+      </p>
+    </div>
+
+    <aside id="boundary" class="boundary-panel not-content">
+      <p class="section-label">它不是什么</p>
+      <ul>
+        <li>不只是单次会话里的 prompt engineering。</li>
+        <li>不只是某个 coding agent 产品或 IDE 插件。</li>
+        <li>不只是一个提供抽象 orchestration primitives 的 agent framework。</li>
+        <li>不只是画出了流程，但没有 durable execution surface 的 workflow 图。</li>
+      </ul>
+      <LinkButton href="./definition/" variant="secondary" icon="right-arrow">
+        查看完整定义
+      </LinkButton>
+    </aside>
+  </div>
+</section>

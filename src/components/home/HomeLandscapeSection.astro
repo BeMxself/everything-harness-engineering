@@ -1,0 +1,73 @@
+---
+import { LinkButton } from "@astrojs/starlight/components";
+
+interface LandscapeRow {
+  name: string;
+  href: string;
+  intro: string;
+  category: string;
+  runtimeForm: string;
+  starsBadge?: string;
+}
+
+interface Props {
+  rows: LandscapeRow[];
+}
+
+const { rows } = Astro.props;
+---
+
+<section id="landscape" class="overview-section">
+  <div class="overview-section-head">
+    <div class="overview-prose">
+      <p class="section-label">当前生态</p>
+      <h2>这里列的是当前较为流行的 harness 及类 harness 套件。</h2>
+      <p>
+        下面这张表只是一道切面。它的目的不是替你排名，而是帮助读者学会怎么读生态：按 host layer、
+        harness layer、methodology layer 与 orchestration layer 去看。
+      </p>
+      <p>
+        这次额外加了一列“运行形态”，用来区分一个系统究竟是直接作为 agent 宿主存在，还是主要寄生在某个
+        coding agent 里运行，抑或自己带独立调度外壳。
+      </p>
+    </div>
+    <LinkButton href="./landscape/" variant="minimal" icon="right-arrow">
+      查看完整生态
+    </LinkButton>
+  </div>
+
+  <div class="table-wrap not-content">
+    <table class="landscape-table">
+      <thead>
+        <tr>
+          <th>套件</th>
+          <th>简介</th>
+          <th>分类</th>
+          <th>运行形态</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr>
+            <td>
+              <div class="suite-cell">
+                <a href={row.href}>{row.name}</a>
+                {row.starsBadge && (
+                  <img
+                    src={row.starsBadge}
+                    alt={`${row.name} GitHub stars`}
+                    class="stars-badge"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            </td>
+            <td>{row.intro}</td>
+            <td>{row.category}</td>
+            <td>{row.runtimeForm}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
