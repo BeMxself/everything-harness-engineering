@@ -260,18 +260,6 @@ a {
   border-bottom: 0;
 }
 
-.inline-note {
-  color: #64748b;
-  font-size: 0.88rem;
-}
-
-.article-card p:last-child,
-.distinction-card p:last-child,
-.sample-card p:last-child,
-.topic-card p:last-child {
-  margin-bottom: 0;
-}
-
 .topic-links {
   display: flex;
   gap: 0.75rem;
@@ -295,20 +283,20 @@ a {
   margin: 0;
 }
 
-.site-footer-links {
-  margin-top: 0.85rem;
-}
-
 .copyright-line {
   font-size: 0.94rem;
   color: #475569;
+}
+
+.site-footer-links,
+.footer-sitemap {
+  margin-top: 0.85rem;
 }
 
 .footer-sitemap {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem 1rem;
-  margin-top: 0.85rem;
 }
 
 .footer-sitemap a {

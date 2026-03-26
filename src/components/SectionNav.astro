@@ -1,0 +1,9 @@
+---
+import { sectionNav } from "../data/homepage";
+---
+
+<nav class="section-nav" aria-label="Section navigation">
+  {sectionNav.map((item) => (
+    <a href={item.href}>{item.label}</a>
+  ))}
+</nav>

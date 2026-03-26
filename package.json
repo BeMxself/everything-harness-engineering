@@ -1,0 +1,16 @@
+{
+  "name": "everything-harness-engineering-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/copy-topic-sites.mjs",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "astro": "^6.0.8",
+    "typescript": "^5.9.3"
+  }
+}
