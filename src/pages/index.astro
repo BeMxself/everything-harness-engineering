@@ -5,14 +5,14 @@ import { CardGrid, LinkButton, LinkCard } from "@astrojs/starlight/components";
 const frontmatter = {
   title: "Everything Harness Engineering",
   description:
-    "A research overview for readers who know the term harness engineering but want a sharper definition, clearer boundaries, and a practical way to navigate the field.",
+    "一篇面向已听过 harness engineering 一词、但仍希望获得更精确定义、更清晰边界与研究导航的中文综述首页。",
   template: "splash" as const,
   editUrl:
     "https://github.com/BeMxself/everything-harness-engineering/edit/main/src/pages/index.astro",
   hero: {
-    title: "Harness Engineering, Precisely Defined",
+    title: "Harness Engineering：一个更精确的定义",
     tagline:
-      "This homepage is not a product landing page and not a generic docs index. It is a research overview for readers who already know the term, but still need a sharper definition, clearer boundaries, and a better way to navigate the field.",
+      "这不是产品落地页，也不是普通文档目录。它是一篇面向“听过这个词、知道大概意思、但仍缺精确定义与研究导航”的首页综述，目的是先把概念说准，再帮助读者理解这个领域该如何阅读、比较与继续下钻。",
     actions: [
       { text: "先看定义", link: "#definition", icon: "right-arrow" },
       { text: "看详细分类", link: "./distinction/", variant: "secondary" as const },
@@ -30,25 +30,25 @@ const taxonomy = [
   {
     title: "Native Coding Shells",
     description:
-      "The host shell is the primary work surface. Execution, tools, permissions, and repo interaction are centered around a single coding agent runtime.",
+      "宿主 shell 就是主要工作面。执行、工具、权限与 repo 交互都围绕单个 coding agent runtime 展开。",
     href: "./distinction/",
   },
   {
     title: "Harness Overlays",
     description:
-      "A second layer built on top of a host shell, adding hooks, teams, memory, HUDs, guardrails, and recovery mechanisms.",
+      "构建在宿主 shell 之上的第二层系统，显式加入 hooks、teams、memory、HUD、guardrails 与恢复机制。",
     href: "./distinction/",
   },
   {
     title: "Skill / Methodology Systems",
     description:
-      "Systems that emphasize skills, meta-prompting, spec-driven development, and disciplined execution rather than a host shell alone.",
+      "更强调 skills、meta-prompting、spec-driven development 与执行纪律，而不只是某个宿主 shell。",
     href: "./distinction/",
   },
   {
     title: "Workflow / Orchestration Suites",
     description:
-      "Systems focused on long-running delivery loops, multi-agent coordination, and structured task execution across roles or models.",
+      "更强调长时交付闭环、多 agent 协同，以及跨角色或跨模型的结构化任务执行。",
     href: "./distinction/",
   },
 ];
@@ -59,7 +59,7 @@ const timeline = [
     title: "Building Effective Agents",
     source: "Anthropic",
     summary:
-      "A starting point for distinguishing workflows from agents and for treating simple, composable patterns as first-class engineering tools.",
+      "把 workflows 与 agents 区分开来，并把简单、可组合模式当成一等工程对象来看待。",
     href: "./timeline/",
   },
   {
@@ -67,7 +67,7 @@ const timeline = [
     title: "Writing Effective Tools for Agents",
     source: "Anthropic",
     summary:
-      "A reminder that tool surface design is part of the harness, not a separate concern outside it.",
+      "提醒我们：tool surface 的设计本身就是 harness 的一部分，而不是它外面的次级问题。",
     href: "./timeline/",
   },
   {
@@ -75,7 +75,7 @@ const timeline = [
     title: "Effective Harnesses for Long-Running Agents",
     source: "Anthropic",
     summary:
-      "Where harness design becomes concrete for long-running coding agents through handoff, progress tracking, and task continuation.",
+      "通过 handoff、progress tracking 与 task continuation，把 harness 设计具体落到长时 coding agent 场景里。",
     href: "./timeline/",
   },
   {
@@ -83,7 +83,7 @@ const timeline = [
     title: "Harness Engineering",
     source: "OpenAI + Martin Fowler",
     summary:
-      "The term becomes legible as an engineering abstraction about steering, constraining, and operationalizing agent systems.",
+      "这个词开始作为工程抽象真正变得可读：它讨论的是如何 steer、constrain 并 operationalize agent systems。",
     href: "./timeline/",
   },
   {
@@ -91,7 +91,7 @@ const timeline = [
     title: "The Anatomy of an Agent Harness",
     source: "LangChain Blog",
     summary:
-      "A component-level breakdown that makes the expression “model + harness” explicit and inspectable.",
+      "从部件层面把 “model + harness” 这个表达拆开，让它可检查、可讨论、可比较。",
     href: "./timeline/",
   },
 ];
@@ -106,16 +106,16 @@ const landscapeRows = [
 ];
 
 const communityThreads = [
-  "A long-running LINUX DO thread that captures real practice costs, handoff patterns, and failure modes.",
-  "Cross-links into OMO, Claude Code, Codex enhancement layers, and AI-native workflow discussions.",
-  "Useful mainly because it surfaces reality: control work, context cleaning, and recoverability dominate long runs.",
+  "一条持续更新的 LINUX DO 长帖，记录了真实实践成本、handoff 模式与失败形态。",
+  "它把 OMO、Claude Code、Codex 增强层与 AI-native workflow 讨论串联进了同一上下文。",
+  "它的价值主要在于暴露现实：长任务里真正主导成本的，往往是控制面、上下文清洁与可恢复性。",
 ];
 
 const topics = [
   {
     title: "framework-flow-diagrams",
     description:
-      "A runnable research app for comparing automation loops, harness layers, control points, host dependencies, and role handoffs across systems.",
+      "一个可运行的研究应用，用来比较不同系统里的 automation loop、harness 层、控制点、宿主依赖与角色交接方式。",
     href: "./topics/framework-flow-diagrams/site/",
   },
 ];
@@ -136,30 +136,29 @@ const topics = [
       <div class="overview-grid">
         <div class="overview-prose">
           <p class="section-label">Definition First</p>
-          <h2>Harness engineering is the engineering of the agent’s outer system.</h2>
+          <h2>Harness engineering 研究的，是 agent 外层系统本身。</h2>
           <p class="lead">
-            In this repository, <strong>harness engineering</strong> means the engineered shell that
-            constrains, orchestrates, verifies, recovers, and makes an agent legible enough to run
-            inside real software work. The model matters, but the harness is what turns raw model
-            capability into a durable engineering surface.
+            在这个仓库里，<strong>harness engineering</strong> 指的是那层被工程化出来的外壳系统：
+            它负责约束、编排、验证、恢复，并让 agent 足够可读、可控，能够真正跑进软件工程工作流中。
+            模型当然重要，但真正把模型能力变成 durable engineering surface 的，是 harness。
           </p>
           <p>
-            That makes the central object of study neither the model alone nor the prompt alone, but
-            the system around the model: task intake, tool surface, execution boundaries, memory,
-            approvals, review discipline, and handoff structure.
+            这意味着首页要研究的中心对象，既不是模型本身，也不是 prompt 本身，而是模型外面的整套系统：
+            task intake、tool surface、execution boundaries、memory、approval、review discipline
+            与 handoff structure。
           </p>
         </div>
 
         <aside id="boundary" class="boundary-panel not-content">
           <p class="section-label">What It Is Not</p>
           <ul>
-            <li>Not just prompt engineering for a single session.</li>
-            <li>Not just a coding agent product or IDE plugin.</li>
-            <li>Not just an agent framework with abstract orchestration primitives.</li>
-            <li>Not just a workflow diagram with no durable execution shell.</li>
+            <li>不只是单次会话里的 prompt engineering。</li>
+            <li>不只是某个 coding agent 产品或 IDE 插件。</li>
+            <li>不只是一个提供抽象 orchestration primitives 的 agent framework。</li>
+            <li>不只是画出了流程，但没有 durable execution shell 的 workflow 图。</li>
           </ul>
           <LinkButton href="./definition/" variant="secondary" icon="right-arrow">
-            Read the full definition
+            查看完整定义
           </LinkButton>
         </aside>
       </div>
@@ -168,12 +167,11 @@ const topics = [
     <section class="overview-section">
       <div class="overview-prose">
         <p class="section-label">Why Study It Separately</p>
-        <h2>Once models become capable enough, the bottleneck moves outward.</h2>
+        <h2>当模型能力足够强，瓶颈就开始向外移动。</h2>
         <p>
-          The reason harness engineering deserves its own category is that many practical failures no
-          longer come from raw model incompetence alone. They come from weak boundaries, poor
-          verification, unreliable continuation, unreadable task state, and blurred responsibility
-          between human steering and agent execution.
+          Harness engineering 值得被单独当成一个研究类别，是因为很多实际失败已经不再只是模型不够强。
+          它们更多来自边界太弱、验证不足、续跑不可靠、任务状态不可读，以及 human steering 与
+          agent execution 之间责任分界不清。
         </p>
       </div>
 
@@ -181,22 +179,19 @@ const topics = [
         <div class="reason-card">
           <h3>Constraint</h3>
           <p>
-            Real work needs permissions, guardrails, checks, and architecture boundaries that survive
-            across sessions.
+            真实工作需要的是能跨会话延续的 permissions、guardrails、checks 与 architecture boundaries。
           </p>
         </div>
         <div class="reason-card">
           <h3>Recovery</h3>
           <p>
-            Long-running tasks succeed or fail on clean handoff, resumability, and progress
-            legibility, not just on local code generation quality.
+            长任务成败更多取决于 clean handoff、resumability 与 progress legibility，而不只是局部代码生成质量。
           </p>
         </div>
         <div class="reason-card">
           <h3>Coordination</h3>
           <p>
-            The control plane often outweighs the code plane. Planning, delegation, review, and
-            synthesis become part of the system itself.
+            控制面经常比代码面更重。规划、委派、评审与综合，本身都会变成系统的一部分。
           </p>
         </div>
       </div>
@@ -206,14 +201,14 @@ const topics = [
       <div class="overview-section-head">
         <div class="overview-prose">
           <p class="section-label">Research Taxonomy</p>
-          <h2>Different systems solve different outer-shell problems.</h2>
+          <h2>不同系统，解决的是不同层面的外壳问题。</h2>
           <p>
-            The field is easier to navigate once you stop treating all agent tooling as one category.
-            The classification below is a research taxonomy, not a canonical vendor taxonomy.
+            一旦你不再把所有 agent tooling 都混成一类，这个领域就会清楚很多。下面这套分类是研究性 taxonomy，
+            不是某家厂商的 canonical taxonomy。
           </p>
         </div>
         <LinkButton href="./distinction/" variant="minimal" icon="right-arrow">
-          Full distinction page
+          查看完整分类
         </LinkButton>
       </div>
 
@@ -228,15 +223,14 @@ const topics = [
       <div class="overview-section-head">
         <div class="overview-prose">
           <p class="section-label">Primary Sources</p>
-          <h2>The term makes more sense when you see how it formed.</h2>
+          <h2>只有看到它是怎么形成的，这个词才会真正变清楚。</h2>
           <p>
-            This is not a random bundle of articles. The timeline shows how the conversation moved
-            from general agent design, to tool surface, to long-running harnesses, and then to a
-            sharper engineering abstraction.
+            这不是一组随便拼起来的文章。时间线展示的是讨论如何从一般 agent design，转向 tool
+            surface，再到 long-running harness，最后收敛成更清晰的工程抽象。
           </p>
         </div>
         <LinkButton href="./timeline/" variant="minimal" icon="right-arrow">
-          Full timeline
+          查看完整时间线
         </LinkButton>
       </div>
 
@@ -248,7 +242,7 @@ const topics = [
               <h3>{item.title}</h3>
               <p class="timeline-source">{item.source}</p>
               <p>{item.summary}</p>
-              <a href={item.href}>Read the detailed timeline</a>
+              <a href={item.href}>看详细时间线</a>
             </div>
           </article>
         ))}
@@ -259,11 +253,10 @@ const topics = [
       <div class="overview-grid overview-grid--community">
         <div class="overview-prose">
           <p class="section-label">Community Practice</p>
-          <h2>Community material matters because it exposes costs that official essays compress.</h2>
+          <h2>社区材料的重要性，在于它暴露了官方文章会压缩掉的真实成本。</h2>
           <p>
-            The community thread in this repository is useful not because it gives the canonical
-            definition, but because it shows what long-running practice actually feels like: where
-            time goes, what breaks, and what has to be made explicit for the work to continue.
+            这个仓库里收录的社区讨论之所以重要，不是因为它给出了 canonical definition，而是因为它展示了
+            long-running practice 的真实体感：时间花在哪里、什么地方会坏掉、哪些东西必须被显式写出来，任务才能继续跑下去。
           </p>
           <ul>
             {communityThreads.map((item) => (
@@ -271,16 +264,16 @@ const topics = [
             ))}
           </ul>
           <LinkButton href="./community/" variant="secondary" icon="right-arrow">
-            Community discussion and insights
+            查看社区讨论与实践观察
           </LinkButton>
         </div>
 
         <div class="community-insights not-content">
           <h3>Practice Signals</h3>
           <ul>
-            <li>Control work often outweighs code work in long sessions.</li>
-            <li>Clean handoff and context hygiene are core capabilities, not polish.</li>
-            <li>Model availability and cost realities actively reshape harness design.</li>
+            <li>长任务里控制面工作往往比代码面更重。</li>
+            <li>Clean handoff 和 context hygiene 是核心能力，不是后期打磨。</li>
+            <li>模型可用性与成本现实会持续反塑 harness design。</li>
           </ul>
         </div>
       </div>
@@ -290,14 +283,14 @@ const topics = [
       <div class="overview-section-head">
         <div class="overview-prose">
           <p class="section-label">Current Landscape</p>
-          <h2>The ecosystem is not a leaderboard. It is a set of different engineering surfaces.</h2>
+          <h2>生态不是胜负榜，而是一组不同的 engineering surfaces。</h2>
           <p>
-            The summary below is only a slice. The goal is to help readers learn how to read the
-            ecosystem: by host layer, harness layer, methodology layer, and orchestration layer.
+            下面这张表只是一道切面。它的目的不是替你排名，而是帮助读者学会怎么读生态：按 host layer、
+            harness layer、methodology layer 与 orchestration layer 去看。
           </p>
         </div>
         <LinkButton href="./landscape/" variant="minimal" icon="right-arrow">
-          Full landscape
+          查看完整生态
         </LinkButton>
       </div>
 
@@ -324,13 +317,13 @@ const topics = [
     </section>
 
     <section id="topics" class="overview-section">
-      <div class="overview-section-head">
+        <div class="overview-section-head">
         <div class="overview-prose">
           <p class="section-label">Research Topics</p>
-          <h2>This repository does not stop at overview. It descends into runnable topics.</h2>
+          <h2>这个仓库不会停在综述层，它会继续下沉到可运行专题。</h2>
           <p>
-            The root site stays lightweight and comparative. Deeper work belongs under
-            <code> topics/</code>, where each topic can become a more independent research artifact.
+            根站保持轻量、比较型与导航型。更深的工作继续放到
+            <code> topics/</code> 下，让每个 topic 都能逐渐长成更独立的研究 artifact。
           </p>
         </div>
       </div>
@@ -345,28 +338,28 @@ const topics = [
     <section class="overview-section overview-section--next">
       <div class="overview-prose">
         <p class="section-label">Next Steps</p>
-        <h2>If the term now feels sharper, the next move is to read by question, not by hype.</h2>
+        <h2>如果这个词现在已经清楚一些了，下一步就应该按问题去读，而不是按 hype 去追。</h2>
       </div>
 
       <CardGrid>
         <LinkCard
-          title="I want the precise definition"
-          description="Start with the repository’s engineering definition and its explicit boundaries."
+          title="我想先看精确定义"
+          description="从仓库里的工程定义与明确边界开始。"
           href="./definition/"
         />
         <LinkCard
-          title="I want to choose between routes"
-          description="Read the research taxonomy before comparing products or workflows."
+          title="我想先理解怎么选路线"
+          description="在比较产品或 workflow 之前，先看研究性分类。"
           href="./distinction/"
         />
         <LinkCard
-          title="I want to see the field in motion"
-          description="Use the timeline and ecosystem pages to understand how the space formed and where it is drifting."
+          title="我想看这个领域是怎么形成的"
+          description="用时间线和生态页理解它如何形成，又正在向哪里漂移。"
           href="./timeline/"
         />
         <LinkCard
-          title="I want something runnable"
-          description="Go straight to the topic app and work from a concrete research artifact."
+          title="我想直接看可运行材料"
+          description="直接进入 topic app，从一个具体研究 artifact 开始。"
           href="./topics/framework-flow-diagrams/site/"
         />
       </CardGrid>
