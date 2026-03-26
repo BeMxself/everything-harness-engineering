@@ -38,6 +38,19 @@ When working in this repository, follow these principles:
 - When naming agent roles, workflows, or mechanisms, use current official terminology if available.
 - If the official source does not define a concept explicitly, label the repository's description as an engineering interpretation rather than as a canonical fact.
 
+## Astro Root Site Guidance
+
+The repository root is now an Astro site. When working on the root site:
+
+- Treat Astro official docs as the primary framework source of truth.
+- Prefer the Astro Docs MCP server when available for up-to-date framework guidance; use `https://docs.astro.build/llms.txt` or `https://docs.astro.build/llms-full.txt` only as fallback context.
+- Prefer existing Astro patterns already present in `src/` instead of generating new ad-hoc structures.
+- When adding official Astro integrations, prefer `astro add` over manually editing `package.json` and config files.
+- Verify that framework APIs and patterns are current before changing Astro code, especially routing, content, integrations, and deployment behavior.
+- Run `npm run check` and `npm run build` after Astro root-site changes before considering the work complete.
+- Keep root-site work inside the Astro app boundary (`src/`, `astro.config.mjs`, root build files). Do not pull topic-level implementation code into the root site.
+- The Astro root site is a guide and index layer. Topic applications under `topics/` remain independently built artifacts; the root site should link to them, not absorb them.
+
 ## Topic Rules
 
 - New deep-dive work should go into `topics/`.
