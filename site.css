@@ -71,6 +71,18 @@ a {
   text-decoration: none;
 }
 
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.github-link svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
 .page-shell {
   width: min(1200px, calc(100vw - 2rem));
   margin: 0 auto;
@@ -109,8 +121,9 @@ a {
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 4vw, 4.3rem);
-  max-width: 15ch;
+  font-size: clamp(1.85rem, 3vw, 3rem);
+  max-width: none;
+  white-space: nowrap;
 }
 
 .hero-copy,
@@ -286,6 +299,22 @@ a {
   margin-top: 0.85rem;
 }
 
+.copyright-line {
+  font-size: 0.94rem;
+  color: #475569;
+}
+
+.footer-sitemap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin-top: 0.85rem;
+}
+
+.footer-sitemap a {
+  text-decoration: none;
+}
+
 @media (max-width: 900px) {
   .site-header-inner {
     align-items: flex-start;
@@ -296,5 +325,10 @@ a {
 
   .definition-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    white-space: normal;
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
   }
 }
