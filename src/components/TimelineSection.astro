@@ -1,0 +1,20 @@
+---
+import { timelineArticles, timelineIntro } from "../data";
+---
+
+<section id="timeline" class="section">
+  <h2>Key Articles Timeline</h2>
+  <p class="section-copy">
+    <strong>工程解释：</strong>
+    {timelineIntro}
+  </p>
+  <div class="article-list">
+    {timelineArticles.map((article) => (
+      <article class="article-card">
+        <h3><a href={article.url}>{article.title}</a></h3>
+        <p class="article-source">{article.source}</p>
+        <p>{article.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>

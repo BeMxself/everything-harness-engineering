@@ -1,0 +1,39 @@
+---
+import {
+  communityInsights,
+  communityInsightsIntro,
+  communityThreads,
+} from "../data";
+---
+
+<section id="discussion" class="section">
+  <h2>Community Discussion</h2>
+  <p class="section-copy">
+    <strong>社区材料：</strong>
+    这里单列社区讨论，不与上面的官方文章时间线混合。下面的结论主要来自
+    <a href="https://linux.do/t/topic/1791588">LINUX DO 讨论串</a>
+    在 2026-03-21 到 2026-03-26 之间的 49 楼持续更新。
+    它们不是这个概念的官方定义，但很有价值，因为里面出现了真实成本、真实失败模式和真实工具取舍。
+  </p>
+  <div class="article-list">
+    {communityThreads.map((thread) => (
+      <article class="article-card">
+        <h3><a href={thread.url}>{thread.title}</a></h3>
+        <p class="article-source">{thread.source}</p>
+        <p>{thread.summary}</p>
+      </article>
+    ))}
+  </div>
+  <p class="section-copy">
+    <strong>核心观点：</strong>
+    {communityInsightsIntro}
+  </p>
+  <div class="sample-grid">
+    {communityInsights.map((insight) => (
+      <article class="sample-card">
+        <h3>{insight.title}</h3>
+        <p>{insight.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>

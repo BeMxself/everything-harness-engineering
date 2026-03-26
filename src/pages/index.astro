@@ -1,193 +1,29 @@
 ---
+import CommunitySection from "../components/CommunitySection.astro";
+import DefinitionSection from "../components/DefinitionSection.astro";
+import DistinctionSection from "../components/DistinctionSection.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import LandscapeSection from "../components/LandscapeSection.astro";
 import SectionNav from "../components/SectionNav.astro";
+import TimelineSection from "../components/TimelineSection.astro";
+import TopicsSection from "../components/TopicsSection.astro";
+import { pageMeta } from "../data";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-  communityInsights,
-  communityThreads,
-  definitionCards,
-  distinctionCards,
-  landscapeColumns,
-  landscapeRows,
-  pageMeta,
-  topics,
-  timelineArticles,
-} from "../data/homepage";
 ---
 
 <BaseLayout title={pageMeta.title} description={pageMeta.description}>
   <Header />
   <main class="page-shell">
-    <section class="hero">
-      <p class="eyebrow">Everything Harness Engineering</p>
-      <h1>Harness Engineering：一份面向 2026 的工程综述</h1>
-      <p class="hero-copy">
-        这不是某一个 coding agent 产品页，也不是某一个框架的使用说明。它是一个面向工程实践的总览页：
-        解释什么是 harness engineering，哪些文章值得先读，当前有哪些 harness 与类 harness 套件，
-        以及这个仓库准备如何把它们拆成可运行的研究专题。
-      </p>
-      <div class="hero-meta">
-        <span>更新于 {pageMeta.updatedAt}</span>
-        <a href={pageMeta.githubUrl}>GitHub Repo</a>
-      </div>
-    </section>
-
+    <Hero />
     <SectionNav />
-
-    <section id="definition" class="section">
-      <h2>What Is Harness Engineering</h2>
-      <p>
-        这里的 <strong>harness engineering</strong> 不是单指“某个 agent 会不会写代码”，而是指：
-        <strong>如何为 agent 搭建一整套工程化外壳，让它能在真实工作流中稳定运行</strong>。
-      </p>
-      <div class="definition-grid">
-        {definitionCards.map((card) => (
-          <article class="definition-card">
-            <h3>{card.title}</h3>
-            <ul>
-              {card.items.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section id="distinction" class="section">
-      <h2>Primary Orientations</h2>
-      <p class="section-copy">
-        <strong>工程解释：</strong>
-        下面不是任何单一社区或单一项目官方给出的统一 taxonomy，而是为了便于研究而做的一级分组。
-        许多项目横跨多个象限，这里只标它们当前最主要的工作重心。
-      </p>
-      <div class="distinction-grid">
-        {distinctionCards.map((card) => (
-          <article class="distinction-card">
-            <h3>{card.title}</h3>
-            <p>{card.description}</p>
-            <p class="card-note">{card.note}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section id="timeline" class="section">
-      <h2>Key Articles Timeline</h2>
-      <p class="section-copy">
-        <strong>工程解释：</strong>
-        下面按发布时间排序，把 agent engineering 的基础方法、tool surface 设计、long-running harness、
-        以及 Codex/Claude 语境中的 harness engineering 逐步串起来。读者可以先看前半段建立方法论，再看后半段理解
-        harness 作为 coding-agent 工程抽象是如何成形的。
-      </p>
-      <div class="article-list">
-        {timelineArticles.map((article) => (
-          <article class="article-card">
-            <h3><a href={article.url}>{article.title}</a></h3>
-            <p class="article-source">{article.source}</p>
-            <p>{article.summary}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section id="discussion" class="section">
-      <h2>Community Discussion</h2>
-      <p class="section-copy">
-        <strong>社区材料：</strong>
-        这里单列社区讨论，不与上面的官方文章时间线混合。下面的结论主要来自
-        <a href="https://linux.do/t/topic/1791588">LINUX DO 讨论串</a>
-        在 2026-03-21 到 2026-03-26 之间的 49 楼持续更新。
-        它们不是这个概念的官方定义，但很有价值，因为里面出现了真实成本、真实失败模式和真实工具取舍。
-      </p>
-      <div class="article-list">
-        {communityThreads.map((thread) => (
-          <article class="article-card">
-            <h3><a href={thread.url}>{thread.title}</a></h3>
-            <p class="article-source">{thread.source}</p>
-            <p>{thread.summary}</p>
-          </article>
-        ))}
-      </div>
-      <p class="section-copy">
-        <strong>核心观点：</strong>
-        把这些相关帖子放回同一上下文后，这条讨论串最有价值的部分，不是“又列了几个项目名”，而是下面这些来自真实长时实践的工程观察。
-      </p>
-      <div class="sample-grid">
-        {communityInsights.map((insight) => (
-          <article class="sample-card">
-            <h3>{insight.title}</h3>
-            <p>{insight.summary}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section id="landscape" class="section">
-      <h2>Current Landscape</h2>
-      <p class="section-copy">
-        当前生态不是一条直线，而是多个方向同时演化。下面的分组不是照搬论坛说法，而是结合各项目官方 repo / 官方文档里的自我描述，
-        再按它们当前的 primary orientation 做的研究性归类。
-      </p>
-      <div class="comparison-table-wrap">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>系统</th>
-              <th>官方自述 / 定位信号</th>
-              <th>首页归类</th>
-              <th>宿主 / 主要范围</th>
-            </tr>
-          </thead>
-          <tbody>
-            {landscapeRows.map(([label, url, signal, category, scope]) => (
-              <tr>
-                <td><a href={url}>{label}</a></td>
-                <td>{signal}</td>
-                <td>{category}</td>
-                <td>{scope}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div class="landscape-grid">
-        {landscapeColumns.map((column) => (
-          <article class="landscape-column">
-            <h3>{column.title}</h3>
-            <ul>
-              {column.items.map(([label, url]) => (
-                <li><a href={url}>{label}</a></li>
-              ))}
-            </ul>
-            <p class="column-note">{column.note}</p>
-          </article>
-        ))}
-      </div>
-      <p class="section-copy">
-        <strong>注：</strong>
-        这个表不是“胜负榜”，也不是稳定不变的最终定性。很多项目正在快速演化，名字、宿主支持和自我定位都可能继续漂移；
-        首页当前做的是一个可追溯、可比较的观察切面。
-      </p>
-    </section>
-
-    <section id="topics" class="section">
-      <h2>Research Topics</h2>
-      <p class="section-copy">
-        首页只挂真正值得继续深挖的专题。这里的重点不是仓库目录结构，而是每个专题试图回答什么研究问题、提供什么可运行材料。
-      </p>
-      {topics.map((topic) => (
-        <div class="topic-card">
-          <h3>{topic.title}</h3>
-          <p>{topic.summary}</p>
-          <div class="topic-links">
-            <a href={topic.openUrl}>Open</a>
-            <a href={topic.sourceUrl}>Source</a>
-          </div>
-        </div>
-      ))}
-    </section>
+    <DefinitionSection />
+    <DistinctionSection />
+    <TimelineSection />
+    <CommunitySection />
+    <LandscapeSection />
+    <TopicsSection />
   </main>
   <Footer />
 </BaseLayout>

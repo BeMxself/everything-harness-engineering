@@ -1,0 +1,20 @@
+---
+import { distinctionCards, distinctionIntro } from "../data";
+---
+
+<section id="distinction" class="section">
+  <h2>Primary Orientations</h2>
+  <p class="section-copy">
+    <strong>工程解释：</strong>
+    {distinctionIntro}
+  </p>
+  <div class="distinction-grid">
+    {distinctionCards.map((card) => (
+      <article class="distinction-card">
+        <h3>{card.title}</h3>
+        <p>{card.description}</p>
+        <p class="card-note">{card.note}</p>
+      </article>
+    ))}
+  </div>
+</section>

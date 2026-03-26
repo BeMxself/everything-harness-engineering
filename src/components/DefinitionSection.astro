@@ -1,0 +1,23 @@
+---
+import { definitionCards, definitionIntro } from "../data";
+---
+
+<section id="definition" class="section">
+  <h2>{definitionIntro.heading}</h2>
+  <p>
+    {definitionIntro.bodyBefore} <strong>{definitionIntro.emphasis}</strong> {definitionIntro.bodyAfter}
+    <strong>{definitionIntro.takeaway}</strong>。
+  </p>
+  <div class="definition-grid">
+    {definitionCards.map((card) => (
+      <article class="definition-card">
+        <h3>{card.title}</h3>
+        <ul>
+          {card.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>
