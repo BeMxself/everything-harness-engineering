@@ -40,3 +40,7 @@ The homepage is the repository's guide and outline:
 - Root stays lightweight and navigational.
 - Deeper work goes into independent topics.
 - The repository should keep expanding by topic, not by piling implementation detail into the root.
+
+## License
+
+This repository is licensed under the MIT License. See [`LICENSE`](./LICENSE) for details.
