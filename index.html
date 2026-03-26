@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harness Engineering Overview</title>
+    <meta
+      name="description"
+      content="A public overview of harness engineering: what it is, why it matters, key articles, and the current landscape of harness and harness-like agent workflow suites."
+    />
+    <link rel="stylesheet" href="./site.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <p class="eyebrow">Everything Harness Engineering</p>
+        <h1>Harness Engineering：一份面向 2026 的工程综述</h1>
+        <p class="hero-copy">
+          这不是某一个 coding agent 产品页，也不是某一个框架的使用说明。它是一个面向工程实践的总览页：
+          解释什么是 harness engineering，哪些文章值得先读，当前有哪些 harness 与类 harness
+          套件，以及这个仓库准备如何把它们拆成可运行的研究专题。
+        </p>
+        <div class="hero-meta">
+          <span>更新于 2026-03-26</span>
+          <a href="https://github.com/BeMxself/everything-harness-engineering">GitHub Repo</a>
+        </div>
+      </section>
+
+      <nav class="section-nav" aria-label="Section navigation">
+        <a href="#definition">定义</a>
+        <a href="#distinction">分类</a>
+        <a href="#articles">关键文章</a>
+        <a href="#landscape">当前生态</a>
+        <a href="#samples">样本案例</a>
+        <a href="#topics">研究专题</a>
+      </nav>
+
+      <section id="definition" class="section">
+        <h2>What Is Harness Engineering</h2>
+        <p>
+          这里的
+          <strong>harness engineering</strong>
+          不是单指“某个 agent 会不会写代码”，而是指：
+          <strong>如何为 agent 搭建一整套工程化外壳，让它能在真实工作流中稳定运行</strong>。
+        </p>
+        <div class="definition-grid">
+          <article class="definition-card">
+            <h3>它关注什么</h3>
+            <ul>
+              <li>任务如何进入系统，如何被拆解、委派、恢复和完成</li>
+              <li>agent 如何受规则、工具、状态、审批、验证与记忆层约束</li>
+              <li>如何把“聪明模型”变成“能连续产出结果的工程系统”</li>
+            </ul>
+          </article>
+          <article class="definition-card">
+            <h3>它不等于什么</h3>
+            <ul>
+              <li>不等于单次 prompt engineering</li>
+              <li>不等于某个 IDE 插件本身</li>
+              <li>不等于只会写 demo 的 autonomous agent</li>
+            </ul>
+          </article>
+          <article class="definition-card">
+            <h3>为什么现在重要</h3>
+            <ul>
+              <li>模型能力已经足够强，真正的瓶颈开始转向系统化约束与执行环境</li>
+              <li>团队需要的是可重复、可验证、可恢复、可协作的 agent 工程链路</li>
+              <li>“agent 能做什么”正在快速让位于“你如何 harness 它”</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="distinction" class="section">
+        <h2>Harness vs Harness-Like Suites</h2>
+        <p class="section-copy">
+          边界不是绝对的，但从工程角度看，可以先按下面三类来理解生态。
+        </p>
+        <div class="distinction-grid">
+          <article class="distinction-card">
+            <h3>1. Native Harness</h3>
+            <p>
+              直接围绕 agent 的执行闭环搭建：任务输入、工具调用、状态管理、验证、重试、委派、权限与环境控制都在同一工程外壳内。
+            </p>
+            <p class="card-note">典型问题：如何把一个 coding agent 变成真实工程产线的一部分？</p>
+          </article>
+          <article class="distinction-card">
+            <h3>2. Harness-Like Agent Suites</h3>
+            <p>
+              不一定把自己叫 harness，但实际已经在做类似事情：规则层、协作层、上下文管理、子代理、工作流约束、恢复机制。
+            </p>
+            <p class="card-note">典型问题：如何让 agent 在复杂 repo 与复杂组织规则里持续工作？</p>
+          </article>
+          <article class="distinction-card">
+            <h3>3. Workflow / Orchestration Suites</h3>
+            <p>
+              更强调流程编排、图结构、工作流节点、deterministic + agent 混合编排，有时不专注 coding，但解决的是相邻问题。
+            </p>
+            <p class="card-note">典型问题：如何让多个 agent、工具、人类审批与系统事件一起组成稳定流程？</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="articles" class="section">
+        <h2>Key Articles</h2>
+        <p class="section-copy">
+          下面这些文章基本可以作为理解这个领域的起点。它们不是完全同一立场，但拼在一起能构成一个比较完整的观察框架。
+        </p>
+        <div class="article-list">
+          <article class="article-card">
+            <h3><a href="https://openai.com/index/harness-engineering/">Harness engineering: leveraging Codex in an agent-first world</a></h3>
+            <p class="article-source">OpenAI</p>
+            <p>
+              这篇文章最重要的价值在于把焦点从“模型够不够聪明”转向“如何 harness 它进入真实工程世界”，对 coding agent
+              的工程壳层给出非常明确的 framing。
+            </p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/">A practical guide to building agents</a></h3>
+            <p class="article-source">OpenAI</p>
+            <p>
+              更偏通用 agent engineering 的实践指南，适合作为“系统搭建”的方法论基线，然后再把它映射到 coding / harness 语境。
+            </p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://www.anthropic.com/research/building-effective-agents">Building Effective AI Agents</a></h3>
+            <p class="article-source">Anthropic</p>
+            <p>
+              对 agent 任务分解、工具使用、流程结构和失败处理有很强的实践导向，是理解“为什么 workflow shell 会重要”的核心材料。
+            </p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://www.anthropic.com/engineering/writing-tools-for-agents">Writing effective tools for agents—using AI agents</a></h3>
+            <p class="article-source">Anthropic</p>
+            <p>
+              如果前一篇主要回答“agent 怎么组织”，这一篇更接近回答“tool surface 要怎么设计”，这正是 harness 工程里的关键一层。
+            </p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html">Harness Engineering</a></h3>
+            <p class="article-source">Martin Fowler</p>
+            <p>
+              这篇文章的重要价值在于把 harness engineering 纳入更广的工程实践语境，帮助把它从“产品术语”提升成“工程抽象”。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="landscape" class="section">
+        <h2>Current Landscape</h2>
+        <p class="section-copy">
+          当前生态不是一条直线，而是多个方向同时演化。下面这个列表不是“绝对权威排名”，而是一个面向工程观察的分类视图。
+        </p>
+        <div class="landscape-grid">
+          <article class="landscape-column">
+            <h3>Native Coding Harnesses / Shells</h3>
+            <ul>
+              <li><a href="https://docs.anthropic.com/en/docs/claude-code/common-workflows">Claude Code</a></li>
+              <li><a href="https://openai.com/codex/">Codex</a></li>
+              <li><a href="https://opencode.ai/">OpenCode</a></li>
+              <li><a href="https://github.com/block/goose">Goose</a></li>
+              <li><a href="https://aider.chat/">Aider</a></li>
+            </ul>
+            <p class="column-note">
+              这些工具更接近“直接给 agent 一个真实 coding 工作面”，强调终端、repo、工具和执行闭环。
+            </p>
+          </article>
+          <article class="landscape-column">
+            <h3>Harness-Like Engineering Suites</h3>
+            <ul>
+              <li><a href="https://github.com/code-yeongyu/oh-my-opencode">oh-my-opencode</a></li>
+              <li><a href="https://openhands.dev/">OpenHands</a></li>
+              <li><a href="https://github.com/langroid/langroid">Langroid</a></li>
+              <li><a href="https://github.com/deepklarity/harness-kit">Harness Kit</a></li>
+            </ul>
+            <p class="column-note">
+              这些项目不一定都把自己定义为 harness，但在规则层、协作层、上下文管理与恢复策略上，已经呈现出明显的 harness engineering 特征。
+            </p>
+          </article>
+          <article class="landscape-column">
+            <h3>Workflow / Orchestration Suites</h3>
+            <ul>
+              <li><a href="https://www.langchain.com/langgraph">LangGraph</a></li>
+              <li><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></li>
+              <li><a href="https://www.crewai.com/">CrewAI</a></li>
+              <li><a href="https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/">GitHub Agentic Workflows</a></li>
+            </ul>
+            <p class="column-note">
+              这类系统更偏流程图、工作流与多 agent 编排，不一定专注 coding harness，但解决的是相邻问题：如何让 agent 系统稳定进入工程流程。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="samples" class="section">
+        <h2>Case Samples From This Repo</h2>
+        <p class="section-copy">
+          当前仓库里已经落地的第一个 topic 并不是首页本体，而是一个样本研究应用，用来展示不同体系如何表达自动化闭环、壳层与控制点。
+        </p>
+        <div class="sample-grid">
+          <article class="sample-card">
+            <h3>oh-my-opencode</h3>
+            <p>更像 runtime-centered control loop，强调主控、shell influence、failure return 和 specialist surface。</p>
+          </article>
+          <article class="sample-card">
+            <h3>gstack</h3>
+            <p>更像 gated delivery pipeline，强调 role handoff、quality gates、rework lane 与 replan cost。</p>
+          </article>
+          <article class="sample-card">
+            <h3>Everything Claude Code</h3>
+            <p>更像 policy-shell control system，强调 main agent、tool branches、verification consolidation 与 recovery path。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="topics" class="section">
+        <h2>Research Topics</h2>
+        <p class="section-copy">
+          这个仓库按 topic 组织。根目录首页负责做研究综述与主题入口，具体实现则继续留在 `topics/` 下独立演进。
+        </p>
+        <div class="topic-card">
+          <h3>framework-flow-diagrams</h3>
+          <p>
+            一个可运行的 React + TypeScript + React Flow 研究应用，用于比较不同 framework 的自动化闭环、harness
+            壳层、控制点和宿主依赖。
+          </p>
+          <div class="topic-links">
+            <a href="https://github.com/BeMxself/everything-harness-engineering/tree/main/topics/framework-flow-diagrams">Source</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
