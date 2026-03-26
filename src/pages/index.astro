@@ -1,0 +1,566 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { CardGrid, LinkButton, LinkCard } from "@astrojs/starlight/components";
+
+const frontmatter = {
+  title: "Everything Harness Engineering",
+  description:
+    "A research overview for readers who know the term harness engineering but want a sharper definition, clearer boundaries, and a practical way to navigate the field.",
+  template: "splash" as const,
+  editUrl:
+    "https://github.com/BeMxself/everything-harness-engineering/edit/main/src/pages/index.astro",
+  hero: {
+    title: "Harness Engineering, Precisely Defined",
+    tagline:
+      "This homepage is not a product landing page and not a generic docs index. It is a research overview for readers who already know the term, but still need a sharper definition, clearer boundaries, and a better way to navigate the field.",
+    actions: [
+      { text: "先看定义", link: "#definition", icon: "right-arrow" },
+      { text: "看详细分类", link: "./distinction/", variant: "secondary" as const },
+      {
+        text: "进入研究专题",
+        link: "./topics/framework-flow-diagrams/site/",
+        variant: "minimal" as const,
+        icon: "external",
+      },
+    ],
+  },
+};
+
+const taxonomy = [
+  {
+    title: "Native Coding Shells",
+    description:
+      "The host shell is the primary work surface. Execution, tools, permissions, and repo interaction are centered around a single coding agent runtime.",
+    href: "./distinction/",
+  },
+  {
+    title: "Harness Overlays",
+    description:
+      "A second layer built on top of a host shell, adding hooks, teams, memory, HUDs, guardrails, and recovery mechanisms.",
+    href: "./distinction/",
+  },
+  {
+    title: "Skill / Methodology Systems",
+    description:
+      "Systems that emphasize skills, meta-prompting, spec-driven development, and disciplined execution rather than a host shell alone.",
+    href: "./distinction/",
+  },
+  {
+    title: "Workflow / Orchestration Suites",
+    description:
+      "Systems focused on long-running delivery loops, multi-agent coordination, and structured task execution across roles or models.",
+    href: "./distinction/",
+  },
+];
+
+const timeline = [
+  {
+    date: "2024-12",
+    title: "Building Effective Agents",
+    source: "Anthropic",
+    summary:
+      "A starting point for distinguishing workflows from agents and for treating simple, composable patterns as first-class engineering tools.",
+    href: "./timeline/",
+  },
+  {
+    date: "2025-09",
+    title: "Writing Effective Tools for Agents",
+    source: "Anthropic",
+    summary:
+      "A reminder that tool surface design is part of the harness, not a separate concern outside it.",
+    href: "./timeline/",
+  },
+  {
+    date: "2025-11",
+    title: "Effective Harnesses for Long-Running Agents",
+    source: "Anthropic",
+    summary:
+      "Where harness design becomes concrete for long-running coding agents through handoff, progress tracking, and task continuation.",
+    href: "./timeline/",
+  },
+  {
+    date: "2026-02",
+    title: "Harness Engineering",
+    source: "OpenAI + Martin Fowler",
+    summary:
+      "The term becomes legible as an engineering abstraction about steering, constraining, and operationalizing agent systems.",
+    href: "./timeline/",
+  },
+  {
+    date: "2026-03",
+    title: "The Anatomy of an Agent Harness",
+    source: "LangChain Blog",
+    summary:
+      "A component-level breakdown that makes the expression “model + harness” explicit and inspectable.",
+    href: "./timeline/",
+  },
+];
+
+const landscapeRows = [
+  ["Codex", "Native Coding Shell", "Terminal-native coding agent runtime"],
+  ["OpenCode", "Native Coding Shell", "Open source coding shell / runtime"],
+  ["oh-my-codex", "Harness Overlay", "Codex control layer with hooks, HUDs, and teams"],
+  ["Trellis", "Harness Overlay", "Cross-host harness layer"],
+  ["superpowers", "Skill / Methodology", "Agentic skills framework and development method"],
+  ["gstack", "Workflow / Orchestration", "Role-oriented delivery workflow suite"],
+];
+
+const communityThreads = [
+  "A long-running LINUX DO thread that captures real practice costs, handoff patterns, and failure modes.",
+  "Cross-links into OMO, Claude Code, Codex enhancement layers, and AI-native workflow discussions.",
+  "Useful mainly because it surfaces reality: control work, context cleaning, and recoverability dominate long runs.",
+];
+
+const topics = [
+  {
+    title: "framework-flow-diagrams",
+    description:
+      "A runnable research app for comparing automation loops, harness layers, control points, host dependencies, and role handoffs across systems.",
+    href: "./topics/framework-flow-diagrams/site/",
+  },
+];
+---
+
+<StarlightPage frontmatter={frontmatter} hasSidebar={false}>
+  <div class="overview-home">
+    <div class="overview-nav not-content">
+      <a href="#definition">定义</a>
+      <a href="#boundary">边界</a>
+      <a href="#taxonomy">分类</a>
+      <a href="#timeline">时间线</a>
+      <a href="#landscape">生态</a>
+      <a href="#topics">专题</a>
+    </div>
+
+    <section id="definition" class="overview-section overview-section--definition">
+      <div class="overview-grid">
+        <div class="overview-prose">
+          <p class="section-label">Definition First</p>
+          <h2>Harness engineering is the engineering of the agent’s outer system.</h2>
+          <p class="lead">
+            In this repository, <strong>harness engineering</strong> means the engineered shell that
+            constrains, orchestrates, verifies, recovers, and makes an agent legible enough to run
+            inside real software work. The model matters, but the harness is what turns raw model
+            capability into a durable engineering surface.
+          </p>
+          <p>
+            That makes the central object of study neither the model alone nor the prompt alone, but
+            the system around the model: task intake, tool surface, execution boundaries, memory,
+            approvals, review discipline, and handoff structure.
+          </p>
+        </div>
+
+        <aside id="boundary" class="boundary-panel not-content">
+          <p class="section-label">What It Is Not</p>
+          <ul>
+            <li>Not just prompt engineering for a single session.</li>
+            <li>Not just a coding agent product or IDE plugin.</li>
+            <li>Not just an agent framework with abstract orchestration primitives.</li>
+            <li>Not just a workflow diagram with no durable execution shell.</li>
+          </ul>
+          <LinkButton href="./definition/" variant="secondary" icon="right-arrow">
+            Read the full definition
+          </LinkButton>
+        </aside>
+      </div>
+    </section>
+
+    <section class="overview-section">
+      <div class="overview-prose">
+        <p class="section-label">Why Study It Separately</p>
+        <h2>Once models become capable enough, the bottleneck moves outward.</h2>
+        <p>
+          The reason harness engineering deserves its own category is that many practical failures no
+          longer come from raw model incompetence alone. They come from weak boundaries, poor
+          verification, unreliable continuation, unreadable task state, and blurred responsibility
+          between human steering and agent execution.
+        </p>
+      </div>
+
+      <div class="reason-grid not-content">
+        <div class="reason-card">
+          <h3>Constraint</h3>
+          <p>
+            Real work needs permissions, guardrails, checks, and architecture boundaries that survive
+            across sessions.
+          </p>
+        </div>
+        <div class="reason-card">
+          <h3>Recovery</h3>
+          <p>
+            Long-running tasks succeed or fail on clean handoff, resumability, and progress
+            legibility, not just on local code generation quality.
+          </p>
+        </div>
+        <div class="reason-card">
+          <h3>Coordination</h3>
+          <p>
+            The control plane often outweighs the code plane. Planning, delegation, review, and
+            synthesis become part of the system itself.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="taxonomy" class="overview-section">
+      <div class="overview-section-head">
+        <div class="overview-prose">
+          <p class="section-label">Research Taxonomy</p>
+          <h2>Different systems solve different outer-shell problems.</h2>
+          <p>
+            The field is easier to navigate once you stop treating all agent tooling as one category.
+            The classification below is a research taxonomy, not a canonical vendor taxonomy.
+          </p>
+        </div>
+        <LinkButton href="./distinction/" variant="minimal" icon="right-arrow">
+          Full distinction page
+        </LinkButton>
+      </div>
+
+      <CardGrid stagger={true}>
+        {taxonomy.map((item) => (
+          <LinkCard title={item.title} description={item.description} href={item.href} />
+        ))}
+      </CardGrid>
+    </section>
+
+    <section id="timeline" class="overview-section">
+      <div class="overview-section-head">
+        <div class="overview-prose">
+          <p class="section-label">Primary Sources</p>
+          <h2>The term makes more sense when you see how it formed.</h2>
+          <p>
+            This is not a random bundle of articles. The timeline shows how the conversation moved
+            from general agent design, to tool surface, to long-running harnesses, and then to a
+            sharper engineering abstraction.
+          </p>
+        </div>
+        <LinkButton href="./timeline/" variant="minimal" icon="right-arrow">
+          Full timeline
+        </LinkButton>
+      </div>
+
+      <div class="timeline-list not-content">
+        {timeline.map((item) => (
+          <article class="timeline-item">
+            <div class="timeline-date">{item.date}</div>
+            <div class="timeline-copy">
+              <h3>{item.title}</h3>
+              <p class="timeline-source">{item.source}</p>
+              <p>{item.summary}</p>
+              <a href={item.href}>Read the detailed timeline</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="overview-section">
+      <div class="overview-grid overview-grid--community">
+        <div class="overview-prose">
+          <p class="section-label">Community Practice</p>
+          <h2>Community material matters because it exposes costs that official essays compress.</h2>
+          <p>
+            The community thread in this repository is useful not because it gives the canonical
+            definition, but because it shows what long-running practice actually feels like: where
+            time goes, what breaks, and what has to be made explicit for the work to continue.
+          </p>
+          <ul>
+            {communityThreads.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <LinkButton href="./community/" variant="secondary" icon="right-arrow">
+            Community discussion and insights
+          </LinkButton>
+        </div>
+
+        <div class="community-insights not-content">
+          <h3>Practice Signals</h3>
+          <ul>
+            <li>Control work often outweighs code work in long sessions.</li>
+            <li>Clean handoff and context hygiene are core capabilities, not polish.</li>
+            <li>Model availability and cost realities actively reshape harness design.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="landscape" class="overview-section">
+      <div class="overview-section-head">
+        <div class="overview-prose">
+          <p class="section-label">Current Landscape</p>
+          <h2>The ecosystem is not a leaderboard. It is a set of different engineering surfaces.</h2>
+          <p>
+            The summary below is only a slice. The goal is to help readers learn how to read the
+            ecosystem: by host layer, harness layer, methodology layer, and orchestration layer.
+          </p>
+        </div>
+        <LinkButton href="./landscape/" variant="minimal" icon="right-arrow">
+          Full landscape
+        </LinkButton>
+      </div>
+
+      <div class="table-wrap not-content">
+        <table class="landscape-table">
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>Research Category</th>
+              <th>Primary Orientation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {landscapeRows.map(([system, category, summary]) => (
+              <tr>
+                <td>{system}</td>
+                <td>{category}</td>
+                <td>{summary}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="topics" class="overview-section">
+      <div class="overview-section-head">
+        <div class="overview-prose">
+          <p class="section-label">Research Topics</p>
+          <h2>This repository does not stop at overview. It descends into runnable topics.</h2>
+          <p>
+            The root site stays lightweight and comparative. Deeper work belongs under
+            <code> topics/</code>, where each topic can become a more independent research artifact.
+          </p>
+        </div>
+      </div>
+
+      <CardGrid>
+        {topics.map((topic) => (
+          <LinkCard title={topic.title} description={topic.description} href={topic.href} />
+        ))}
+      </CardGrid>
+    </section>
+
+    <section class="overview-section overview-section--next">
+      <div class="overview-prose">
+        <p class="section-label">Next Steps</p>
+        <h2>If the term now feels sharper, the next move is to read by question, not by hype.</h2>
+      </div>
+
+      <CardGrid>
+        <LinkCard
+          title="I want the precise definition"
+          description="Start with the repository’s engineering definition and its explicit boundaries."
+          href="./definition/"
+        />
+        <LinkCard
+          title="I want to choose between routes"
+          description="Read the research taxonomy before comparing products or workflows."
+          href="./distinction/"
+        />
+        <LinkCard
+          title="I want to see the field in motion"
+          description="Use the timeline and ecosystem pages to understand how the space formed and where it is drifting."
+          href="./timeline/"
+        />
+        <LinkCard
+          title="I want something runnable"
+          description="Go straight to the topic app and work from a concrete research artifact."
+          href="./topics/framework-flow-diagrams/site/"
+        />
+      </CardGrid>
+    </section>
+  </div>
+</StarlightPage>
+
+<style is:global>
+  body:has(.overview-home) .main-pane {
+    --sl-content-width: min(78rem, calc(100vw - 2.5rem));
+  }
+
+  body:has(.overview-home) .content-panel {
+    padding-block: 2rem;
+  }
+
+  .overview-home {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .overview-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .overview-nav a {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    text-decoration: none;
+    color: var(--sl-color-text);
+    background: color-mix(in srgb, var(--sl-color-black) 88%, transparent);
+  }
+
+  .overview-nav a:hover {
+    border-color: var(--sl-color-text-accent);
+    color: var(--sl-color-white);
+  }
+
+  .overview-section {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .overview-section--definition {
+    border-top: 1px solid var(--sl-color-hairline);
+    padding-top: 1.5rem;
+  }
+
+  .overview-section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .overview-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .overview-grid--community {
+    align-items: start;
+  }
+
+  .overview-prose {
+    max-width: 46rem;
+  }
+
+  .section-label {
+    margin: 0;
+    color: var(--sl-color-text-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .lead {
+    font-size: clamp(1.08rem, 0.98rem + 0.4vw, 1.28rem);
+    line-height: 1.7;
+    color: var(--sl-color-white);
+  }
+
+  .boundary-panel,
+  .community-insights,
+  .reason-card,
+  .timeline-item {
+    border: 1px solid var(--sl-color-gray-5);
+    background: color-mix(in srgb, var(--sl-color-black) 86%, transparent);
+    border-radius: 1rem;
+    padding: 1.15rem 1.2rem;
+  }
+
+  .boundary-panel ul,
+  .community-insights ul {
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+
+  .reason-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .reason-card h3,
+  .community-insights h3,
+  .timeline-copy h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1rem;
+  }
+
+  .reason-card p,
+  .timeline-copy p,
+  .community-insights li,
+  .boundary-panel li {
+    color: var(--sl-color-gray-2);
+  }
+
+  .timeline-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .timeline-item {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .timeline-date {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sl-color-text-accent);
+  }
+
+  .timeline-source {
+    margin: 0;
+    color: var(--sl-color-gray-3);
+    font-size: 0.92rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--sl-color-black) 90%, transparent);
+  }
+
+  .landscape-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 52rem;
+  }
+
+  .landscape-table th,
+  .landscape-table td {
+    padding: 0.95rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+
+  .landscape-table th {
+    color: var(--sl-color-white);
+    background: color-mix(in srgb, var(--sl-color-gray-6) 70%, transparent);
+  }
+
+  .landscape-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .overview-section--next {
+    border-top: 1px solid var(--sl-color-hairline);
+    padding-top: 1.5rem;
+  }
+
+  @media (min-width: 50rem) {
+    .overview-grid {
+      grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.85fr);
+    }
+
+    .reason-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .timeline-item {
+      grid-template-columns: 6rem minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+</style>
