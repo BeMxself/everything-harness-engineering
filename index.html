@@ -11,6 +11,15 @@
     <link rel="stylesheet" href="./site.css" />
   </head>
   <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="./">Everything Harness Engineering</a>
+        <nav class="site-header-links" aria-label="Site links">
+          <a href="https://github.com/BeMxself/everything-harness-engineering">GitHub Project</a>
+          <a href="./topics/framework-flow-diagrams/site/">Open Topic</a>
+        </nav>
+      </div>
+    </header>
     <main class="page-shell">
       <section class="hero">
         <p class="eyebrow">Everything Harness Engineering</p>
@@ -29,7 +38,7 @@
       <nav class="section-nav" aria-label="Section navigation">
         <a href="#definition">定义</a>
         <a href="#distinction">分类</a>
-        <a href="#timeline">时间线</a>
+        <a href="#timeline">文章时间线</a>
         <a href="#discussion">社区讨论</a>
         <a href="#landscape">当前生态</a>
         <a href="#samples">样本案例</a>
@@ -112,7 +121,7 @@
       </section>
 
       <section id="timeline" class="section">
-        <h2>Concept Timeline</h2>
+        <h2>Key Articles Timeline</h2>
         <p class="section-copy">
           <strong>工程解释：</strong>
           下面按发布时间排序，把 agent engineering 的基础方法、tool surface 设计、long-running harness、
@@ -175,6 +184,14 @@
               agents 的一整套工具与实践。
             </p>
           </article>
+          <article class="article-card">
+            <h3><a href="https://blog.langchain.com/the-anatomy-of-an-agent-harness/">The Anatomy of an Agent Harness</a></h3>
+            <p class="article-source">2026-03-10 · LangChain Blog</p>
+            <p>
+              这是帖子里明确提到但之前首页漏掉的一篇。它把 “Agent = Model + Harness” 这个表达讲得很直白，
+              同时把 durable storage、bash/code execution、memory、compaction、verification 和 Ralph loop 拆成了一套更细的工程部件。
+            </p>
+          </article>
         </div>
       </section>
 
@@ -217,6 +234,28 @@
             </p>
           </article>
         </div>
+        <div class="article-list">
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1624433">新年来分享我的 oh-my-opencode 配置和学习心得</a></h3>
+            <p class="article-source">LINUX DO · 站内实践帖</p>
+            <p>这是讨论串里直接引用的社区基础材料之一，很多后续关于 OMO 的经验交流都能从这里往回追。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1539636">经过 8 个月 Claude Code 高强度实战，我们决定开源内部的最佳实践</a></h3>
+            <p class="article-source">LINUX DO · 站内实践帖</p>
+            <p>适合与 harness engineering 视角交叉阅读：哪些是提示策略，哪些已经变成了系统化的工程壳层与团队经验。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1778922">都在聊 AI-Native Engineering，分享几个 AI coding workflow</a></h3>
+            <p class="article-source">LINUX DO · 站内资源汇总</p>
+            <p>这是线程里提到的横向资料库，能帮助把单个 harness 套件放回更大的 workflow 生态里去比较。</p>
+          </article>
+          <article class="article-card">
+            <h3><a href="https://linux.do/t/topic/1776917">Vibecoding 进阶教程总集篇——从能用到可控</a></h3>
+            <p class="article-source">LINUX DO · 站内方法论</p>
+            <p>虽然不一定直接使用 harness 一词，但它所讨论的“可控性”问题，与 harness engineering 关注的核心目标高度重叠。</p>
+          </article>
+        </div>
       </section>
 
       <section id="landscape" class="section">
@@ -256,7 +295,7 @@
               </tr>
               <tr>
                 <td><a href="https://github.com/code-yeongyu/oh-my-openagent">oh-my-openagent</a></td>
-                <td>the best agent harness</td>
+                <td>the best agent harness; previously oh-my-opencode</td>
                 <td>Harness Overlay</td>
                 <td>构建在 OpenCode 之上的 harness 层</td>
               </tr>
@@ -293,32 +332,26 @@
               <tr>
                 <td><a href="https://github.com/garrytan/gstack">gstack</a></td>
                 <td>15 opinionated tools that serve as CEO, Designer, Eng Manager...</td>
-                <td>Skill / Methodology System</td>
+                <td>Workflow / Orchestration Suite</td>
                 <td>面向交付的角色化工作流</td>
               </tr>
               <tr>
                 <td><a href="https://github.com/fengshao1227/ccg-workflow">ccg-workflow</a></td>
                 <td>Claude + Codex + Gemini multi-model collaboration</td>
-                <td>Skill / Methodology System</td>
+                <td>Workflow / Orchestration Suite</td>
                 <td>多模型协作工作流</td>
               </tr>
               <tr>
-                <td><a href="https://openhands.dev/">OpenHands</a></td>
-                <td>AI-Driven Development</td>
-                <td>Adjacent Platform</td>
-                <td>更大的 agent 开发平台</td>
+                <td><a href="https://github.com/BeMxself/gdim-workflow-skill">gdim-workflow-skill</a></td>
+                <td>No concise GitHub tagline; repository centers on a named workflow skill</td>
+                <td>Workflow / Orchestration Suite</td>
+                <td>基于 GDIM 的 workflow skill 包</td>
               </tr>
               <tr>
-                <td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td>
-                <td>Build resilient language agents as graphs</td>
-                <td>Adjacent Platform</td>
-                <td>graph orchestration</td>
-              </tr>
-              <tr>
-                <td><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></td>
-                <td>Building, orchestrating and deploying AI agents and multi-agent workflows</td>
-                <td>Adjacent Platform</td>
-                <td>agent framework / orchestration</td>
+                <td><a href="https://github.com/Yeachan-Heo/oh-my-codex">Ralph</a></td>
+                <td>OMX docs describe <code>$ralph</code> as persistent sequential execution</td>
+                <td>Workflow / Orchestration Suite</td>
+                <td>OMX 内的持久执行工作流</td>
               </tr>
             </tbody>
           </table>
@@ -355,8 +388,6 @@
             <ul>
               <li><a href="https://github.com/obra/superpowers">superpowers</a></li>
               <li><a href="https://github.com/gsd-build/get-shit-done">get-shit-done</a></li>
-              <li><a href="https://github.com/garrytan/gstack">gstack</a></li>
-              <li><a href="https://github.com/fengshao1227/ccg-workflow">ccg-workflow</a></li>
             </ul>
             <p class="column-note">
               这些项目常把自己描述成 skills framework、meta-prompting system、spec-driven development system
@@ -364,7 +395,19 @@
             </p>
           </article>
           <article class="landscape-column">
-            <h3>Adjacent Platforms / Orchestration</h3>
+            <h3>Workflow / Orchestration Suites</h3>
+            <ul>
+              <li><a href="https://github.com/garrytan/gstack">gstack</a></li>
+              <li><a href="https://github.com/fengshao1227/ccg-workflow">ccg-workflow</a></li>
+              <li><a href="https://github.com/BeMxself/gdim-workflow-skill">gdim-workflow-skill</a></li>
+              <li><a href="https://github.com/Yeachan-Heo/oh-my-codex">Ralph</a> <span class="inline-note">(OMX workflow)</span></li>
+            </ul>
+            <p class="column-note">
+              这里列的是可以直接落到真实任务编排上的 workflow layer，而不是底层图框架。它们更接近“怎么把任务持续跑下去”的工程表面。
+            </p>
+          </article>
+          <article class="landscape-column">
+            <h3>Related Frameworks / Infra</h3>
             <ul>
               <li><a href="https://openhands.dev/">OpenHands</a></li>
               <li><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></li>
@@ -373,8 +416,7 @@
               <li><a href="https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/">GitHub Agentic Workflows</a></li>
             </ul>
             <p class="column-note">
-              这些项目更偏 agent platform、graph orchestration、multi-agent workflow 或交付平台。
-              它们与 harness engineering 高度相邻，但关注面通常比单个 coding shell 更大。
+              这些项目仍然值得跟踪，但它们更偏 agent platform、graph orchestration、framework 或基础设施层，不应和可直接实践的 workflow 套件混为一谈。
             </p>
           </article>
         </div>
@@ -424,5 +466,17 @@
         </div>
       </section>
     </main>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <p>
+          Everything Harness Engineering 是一个持续更新的研究仓库。首页负责 public overview，具体实验和可运行研究继续沉淀在
+          <code>topics/</code> 下。
+        </p>
+        <div class="site-footer-links">
+          <a href="https://github.com/BeMxself/everything-harness-engineering">GitHub Project</a>
+          <a href="./topics/framework-flow-diagrams/site/">framework-flow-diagrams</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
