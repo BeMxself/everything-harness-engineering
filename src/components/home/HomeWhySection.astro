@@ -1,35 +1,68 @@
 ---
+const stages = [
+  {
+    stage: "阶段 1",
+    title: "代码补全",
+    shift: "目标是把局部生成质量做得更高。",
+    bottleneck: "瓶颈：模型能不能写对这一段代码？",
+  },
+  {
+    stage: "阶段 2",
+    title: "对话式编程",
+    shift: "开始跨文件理解需求、解释代码、提出修改。",
+    bottleneck: "瓶颈：上下文理解够不够完整？",
+  },
+  {
+    stage: "阶段 3",
+    title: "Coding Agents",
+    shift: "agent 直接读仓库、改文件、跑命令、做验证。",
+    bottleneck: "瓶颈：能不能把单次任务真正执行完？",
+  },
+  {
+    stage: "阶段 4",
+    title: "Agent Harnesses",
+    shift: "控制、恢复、记忆、规则与交接开始变成核心。",
+    bottleneck: "瓶颈：长任务能否持续、可控、可恢复地跑？",
+  },
+  {
+    stage: "阶段 5",
+    title: "Workflow / Orchestration",
+    shift: "多 agent、多人审批、多模型协作进入主舞台。",
+    bottleneck: "瓶颈：系统级协调、分工与交付怎么稳定运转？",
+  },
+];
 ---
 
 <section id="why" class="overview-section">
   <div class="overview-prose">
-    <p class="section-label">为什么值得单独研究</p>
-    <h2>当模型能力足够强，瓶颈就开始向外移动。</h2>
+    <p class="section-label">演进与瓶颈</p>
+    <h2>AI 编程范式在演进，瓶颈也在迁移。</h2>
     <p>
-      Harness engineering 值得被单独当成一个研究类别，是因为很多实际失败已经不再只是模型不够强。
-      它们更多来自边界太弱、验证不足、续跑不可靠、任务状态不可读，以及人类 steering 与
-      agent execution 之间责任分界不清。
+      问题已经不再只是“模型会不会写”。随着 AI 编程从补全走到 agent，再走到 harness 与编排，
+      瓶颈逐步从生成质量转向执行环境、恢复能力和系统控制面。
     </p>
   </div>
 
-  <div class="reason-grid not-content">
-    <div class="reason-card">
-      <h3>约束</h3>
-      <p>
-        真实工作需要的是能跨会话延续的 permissions、guardrails、checks 与 architecture boundaries。
-      </p>
-    </div>
-    <div class="reason-card">
-      <h3>恢复</h3>
-      <p>
-        长任务成败更多取决于干净交接、可恢复续跑与进度可读性，而不只是局部代码生成质量。
-      </p>
-    </div>
-    <div class="reason-card">
-      <h3>协调</h3>
-      <p>
-        控制面经常比代码面更重。规划、委派、评审与综合，本身都会变成系统的一部分。
-      </p>
-    </div>
+  <div class="evolution-flow not-content" aria-label="AI 编程范式演进流程图">
+    {stages.map((item, index) => (
+      <>
+        <article class="evolution-card">
+          <p class="evolution-stage">{item.stage}</p>
+          <h3>{item.title}</h3>
+          <p>{item.shift}</p>
+          <p class="evolution-bottleneck">{item.bottleneck}</p>
+        </article>
+        {index < stages.length - 1 && (
+          <div class="evolution-arrow" aria-hidden="true">
+            <span>→</span>
+          </div>
+        )}
+      </>
+    ))}
   </div>
+
+  <p class="evolution-summary">
+    也正因为如此，harness engineering 之所以重要，不是因为它替代模型，而是因为它开始决定
+    agent 能否持续、可控、可恢复地完成真实工程任务。
+  </p>
 </section>

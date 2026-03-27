@@ -1,0 +1,34 @@
+---
+interface FundamentalItem {
+  title: string;
+  summary: string;
+}
+
+interface Props {
+  items: FundamentalItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="fundamentals" class="overview-section">
+  <div class="overview-section-head">
+    <div class="overview-prose">
+      <p class="section-label">基本构成</p>
+      <h2>要理解 harness engineering，先要看清它到底负责哪些系统能力。</h2>
+      <p>
+        它不是一个单独的功能点，而是一组相互配合的外层能力。
+        下面这些方面，基本构成了 agent 从“会写”走向“能稳定工作”所需要的工程系统。
+      </p>
+    </div>
+  </div>
+
+  <div class="fundamentals-grid not-content">
+    {items.map((item) => (
+      <article class="fundamental-card">
+        <h3>{item.title}</h3>
+        <p>{item.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>

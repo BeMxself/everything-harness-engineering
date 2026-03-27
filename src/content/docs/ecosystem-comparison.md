@@ -1,13 +1,34 @@
 ---
-title: 当前生态
-description: A research-oriented cross-section of current harness and harness-adjacent systems.
+title: 生态与比较
+description: A research-oriented comparison page for harness and harness-adjacent systems.
 ---
 
-当前生态不是一条直线，而是多个方向同时演化。下面的分组不是照搬论坛说法，而是结合各项目官方 repo / 官方文档里的自我描述，再按它们当前的 primary orientation 做的研究性归类。
+这一页首先服务于读者的选择判断：现在都有哪些值得看的 harness、类 harness 和相邻工作流系统，它们分别更像哪一类，又该怎么避免把不同层次的问题混成一种产品比较。
 
-这里的第一类指的是能直接承担工程任务、进入真实工作面的 `Coding Agents`。后面的几类则分别对应控制层、方法层和编排层，目的是让读者先看清自己在比较哪一种系统。除此之外，这里还额外加了一列“运行形态”，区分它是独立 agent 宿主、宿主内扩展，还是独立调度外壳。
+独立 agent 宿主并不意味着不做 harness；很多宿主本身也在持续吸收 harness 能力。所以下面的比较看的是当前主要重心，而不是假定这些项目彼此绝对分离。
 
-## 生态切面
+## 怎么区分这些项目
+
+这组分组最重要的作用，是把“正在比较的对象”先分开：有些项目提供的是可直接承担工程任务的 agent 宿主，有些提供的是覆盖其上的控制层，有些则主要提供方法论、交付流程或编排能力。
+
+其中 `Agent Harnesses` 和 `Workflow / Orchestration` 最容易被混在一起，但两者并不等价。
+
+更严格地说，`Agent Harnesses` 更接近一层运行基础设施。它主要解决的是 agent 如何被约束、如何续跑、如何恢复、如何保存状态、如何交接、如何调用工具，以及如何与其他 agent 或人类控制面协作。
+
+`Workflow / Orchestration` 则更接近上层任务组织。它更关注阶段流转、委派协作、多 agent 分工、审批节点和交付闭环。
+
+两者经常一起出现，是因为很多 harness 套件都会把 workflow/orchestration 一并做进来；如果没有任务流转和协作结构，底层 harness 的价值很难在真实工程里充分体现。
+
+但 `Workflow / Orchestration` 不能简单视为 `harness engineering` 的子集。你完全可以先搭出一个工作流或编排层，让多个 agent、步骤或审批节点跑起来，即使它背后的恢复、状态、记忆、通信、规则等底层机制还很薄，甚至相当脆弱。这样的系统可以是 workflow/orchestration，但未必已经是成熟的 harness engineering。
+
+因此，更稳妥的理解方式是：
+
+- `Coding Agents` 更偏直接执行工程任务的宿主
+- `Agent Harnesses` 更偏运行机制
+- `Skill / Methodology Systems` 更偏方法层与纪律层
+- `Workflow / Orchestration` 更偏任务组织
+- 很多实际项目会同时跨越两层，所以这里按“主要重心”来比较
+## 代表性项目比较
 
 | 系统 | 官方自述 / 定位信号 | 研究归类 | 运行形态 | 宿主 / 主要范围 |
 | --- | --- | --- | --- | --- |
@@ -26,41 +47,47 @@ description: A research-oriented cross-section of current harness and harness-ad
 | [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill) | Repository centers on a named workflow skill | Workflow / Orchestration Suite | 宿主内技能层 | 基于 GDIM 的 workflow skill 包 |
 | [Ralph](https://github.com/snarktank/ralph) | Ralph is an autonomous AI agent loop that runs repeatedly until all PRD items are complete. | Workflow / Orchestration Suite | 独立调度外壳 | 持续运行直到任务项完成的自主 agent loop |
 
-## Coding Agents
+## 按主要重心继续看
 
+### Coding Agents
+
+这些系统通常把自己定位为 coding agent、agentic coding tool，或者 terminal AI pair programming tool。它们是很多后续 harness 增强层的宿主层。
+
+代表项目：
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows)
 - [Codex](https://github.com/openai/codex)
 - [OpenCode](https://opencode.ai/)
 - [Goose](https://github.com/block/goose)
 - [Aider](https://aider.chat/)
 
-这些系统通常把自己定位为 coding agent、agentic coding tool，或者 terminal AI pair programming tool。它们是很多后续 harness 增强层的宿主层。
+### Agent Harnesses
 
-## Agent Harnesses
+这些系统直接构建在宿主工作面之上，显式加入 hooks、agent teams、HUD、memory、guardrails、rules 和恢复机制，是当前 harness 味道最浓的一层。
 
+代表项目：
 - [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)
 - [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)
 - [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)
 - [Trellis](https://github.com/mindfold-ai/Trellis)
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
-这些系统直接构建在宿主工作面之上，显式加入 hooks、agent teams、HUD、memory、guardrails、rules 和恢复机制，是当前 harness 味道最浓的一层。
-
-## Skill / Methodology Systems
-
-- [superpowers](https://github.com/obra/superpowers)
-- [get-shit-done](https://github.com/gsd-build/get-shit-done)
+### Skill / Methodology Systems
 
 这些项目更常把自己描述成技能框架、meta-prompting system、spec-driven development system 或 workflow discipline。它们未必都自称 harness，但经常构成 harness 的方法层或部件层。
 
-## Workflow / Orchestration Suites
+代表项目：
+- [superpowers](https://github.com/obra/superpowers)
+- [get-shit-done](https://github.com/gsd-build/get-shit-done)
 
+### Workflow / Orchestration Suites
+
+这里列的是可以直接落到真实任务编排上的 workflow layer，而不是底层图框架。它们更接近“怎么把任务持续跑下去”的工程表面。
+
+代表项目：
 - [gstack](https://github.com/garrytan/gstack)
 - [ccg-workflow](https://github.com/fengshao1227/ccg-workflow)
 - [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill)
 - [Ralph](https://github.com/snarktank/ralph)
-
-这里列的是可以直接落到真实任务编排上的 workflow layer，而不是底层图框架。它们更接近“怎么把任务持续跑下去”的工程表面。
 
 ## Related Frameworks / Infra
 

@@ -1,18 +1,67 @@
+const BASE = "/everything-harness-engineering";
+const CONCEPT_ENTRY = `${BASE}/concept-entry/`;
+const KEY_ARTICLES = `${BASE}/key-articles/`;
+const ECOSYSTEM_COMPARISON = `${BASE}/ecosystem-comparison/`;
+
 export const hero = {
   title: "Everything Harness Engineering",
   tagline:
-    "这是一个关于 harness engineering、coding agents 与相邻工作流系统的研究首页。它不介绍单一产品怎么用，而是先帮你看清概念、边界和分类。读完之后，你应该更容易比较不同路线。",
+    "这里整理的是当前与 harness engineering 相关的主要选择：Coding Agents、Agent Harnesses，以及容易混淆的 workflow 系统。它不教你某个产品怎么用，而是帮你快速看清现在有哪些路线、它们差在哪、该从哪里继续读。",
 };
 
 export const navItems = [
-  { href: "#definition", label: "定义" },
-  { href: "#why", label: "为什么重要" },
+  { href: "#definition", label: "概念入口" },
+  { href: "#why", label: "演进与瓶颈" },
   { href: "#timeline", label: "关键文章" },
-  { href: "#community", label: "社区讨论" },
-  { href: "#taxonomy", label: "分类" },
-  { href: "#landscape", label: "当前生态" },
+  { href: "#fundamentals", label: "基本构成" },
+  { href: "#ecosystem", label: "生态与比较" },
   { href: "#topics", label: "研究专题" },
+  { href: "#community", label: "社区讨论" },
+  { href: "#observations", label: "工程观察" },
   { href: "#next", label: "下一步" },
+];
+
+export const fundamentals = [
+  {
+    title: "状态与持久化",
+    summary:
+      "让 agent 不只活在单个上下文窗口里，而能跨会话保存和恢复工作状态。",
+  },
+  {
+    title: "工具与接口表面",
+    summary:
+      "为 agent 提供可用、可理解、边界清晰的工具表面，而不是只给人类友好的 API。",
+  },
+  {
+    title: "执行环境",
+    summary:
+      "给 agent 一个真正能读写文件、执行命令、安装依赖并与外部系统交互的工作面。",
+  },
+  {
+    title: "反馈与验证回路",
+    summary:
+      "通过测试、浏览器、日志、指标、review 等信号，让 agent 能观察结果并继续修正。",
+  },
+  {
+    title: "上下文管理与知识注入",
+    summary:
+      "决定 agent 在每次运行时看到什么知识、看到多少，以及如何避免上下文腐坏。",
+  },
+  {
+    title: "约束、规则与边界",
+    summary:
+      "用 guardrails、architecture rules、tool boundaries 和 stopping conditions 保证行为可控。",
+  },
+  {
+    title: "续跑、交接与恢复",
+    summary:
+      "让长任务在多轮会话之间仍能持续推进，而不是每次都从猜测当前状态开始。",
+  },
+  {
+    title: "人类控制面",
+    summary:
+      "保留 intent、优先级、审批、检查点和停止条件，使 humans steer, agents execute 成立。",
+  },
 ];
 
 export const taxonomy = [
@@ -21,28 +70,28 @@ export const taxonomy = [
     description:
       "这类项目官方更常直接自称 coding agent、agentic coding tool，或者像 Aider 那样强调 AI pair programming。对研究来说，它们共同提供的是 agent 直接进入真实工程环境的主执行面。",
     note: "典型问题：如何让一个 coding agent 在真实仓库里持续完成工程任务？",
-    href: "./distinction/",
+    href: ECOSYSTEM_COMPARISON,
   },
   {
     title: "2. 技能 / 方法论系统",
     description:
       "更强调 skills、meta-prompting、spec-driven development、review discipline 和执行方法论，本身未必自称 harness。",
     note: "典型问题：如何让 agent 不只是“会写”，而是按一套工程方法持续推进？",
-    href: "./distinction/",
+    href: ECOSYSTEM_COMPARISON,
   },
   {
-    title: "3. 工作流 / 编排套件",
-    description:
-      "更强调多 agent 编排、交付流程、图结构或全链路开发平台，不一定围绕某个宿主工作面，但解决的是相邻的大闭环问题。",
-    note: "典型问题：如何把多个模型、工具、人类审批与交付节点编成一个稳定系统？",
-    href: "./distinction/",
-  },
-  {
-    title: "4. Agent Harnesses",
+    title: "3. Agent Harnesses",
     description:
       "构建在某个宿主工作面之上的第二层系统：额外加入 hooks、agent teams、memory、HUD、规则层、恢复与约束机制。",
     note: "典型问题：如何把 coding agent 提升成更可控、更长时、更协作的工程环境？",
-    href: "./distinction/",
+    href: ECOSYSTEM_COMPARISON,
+  },
+  {
+    title: "4. 工作流 / 编排套件",
+    description:
+      "更强调多 agent 编排、交付流程、图结构或全链路开发平台，不一定围绕某个宿主工作面，但解决的是相邻的大闭环问题。",
+    note: "典型问题：如何把多个模型、工具、人类审批与交付节点编成一个稳定系统？",
+    href: ECOSYSTEM_COMPARISON,
   },
 ];
 
@@ -53,7 +102,7 @@ export const timeline = [
     source: "Anthropic",
     summary:
       "把 workflows 与 agents 区分开来，并把简单、可组合模式当成一等工程对象来看待。",
-    href: "./timeline/",
+    href: "https://www.anthropic.com/research/building-effective-agents",
   },
   {
     date: "2025-09",
@@ -61,7 +110,7 @@ export const timeline = [
     source: "Anthropic",
     summary:
       "提醒我们：tool surface 的设计本身就是 harness 的一部分，而不是它外面的次级问题。",
-    href: "./timeline/",
+    href: "https://www.anthropic.com/engineering/writing-tools-for-agents",
   },
   {
     date: "2025-11",
@@ -69,7 +118,7 @@ export const timeline = [
     source: "Anthropic",
     summary:
       "通过 handoff、progress tracking 与 task continuation，把 harness 设计具体落到长时 coding agent 场景里。",
-    href: "./timeline/",
+    href: "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
   },
   {
     date: "2026-02",
@@ -77,7 +126,7 @@ export const timeline = [
     source: "OpenAI + Martin Fowler",
     summary:
       "这个词开始作为工程抽象真正变得可读：它讨论的是如何 steer、constrain 并 operationalize agent systems。",
-    href: "./timeline/",
+    href: "https://openai.com/index/harness-engineering/",
   },
   {
     date: "2026-03",
@@ -85,7 +134,7 @@ export const timeline = [
     source: "LangChain Blog",
     summary:
       "从部件层面把 “model + harness” 这个表达拆开，让它可检查、可讨论、可比较。",
-    href: "./timeline/",
+    href: "https://blog.langchain.com/the-anatomy-of-an-agent-harness/",
   },
 ];
 
@@ -204,57 +253,57 @@ export const landscapeRows = [
 ];
 
 export const communityIntro =
-  "这里单列社区讨论，不与上面的官方文章时间线混合。下面的结论主要来自 LINUX DO 讨论串在 2026-03-21 到 2026-03-26 之间的持续更新。它们不是这个概念的官方定义，但很有价值，因为里面出现了真实成本、真实失败模式和真实工具取舍。";
+  "这里单列社区讨论，不与上面的官方文章时间线混合。它们不是这个概念的官方定义，但能补足真实实践里的成本、失败模式、工具取舍与使用路径。";
 
 export const communityThreads = [
   {
     title: "想开一个 harness engineering 实践的长期帖子，大家一起分享实践经验",
     href: "https://linux.do/t/topic/1791588",
-    meta: "主讨论串",
+    date: "2026-03-21",
     summary:
-      "这是首页吸收的核心社区材料。后面这组帖子，都是它正文里直接点名或挂链引用过的相关材料。",
-  },
-  {
-    title: "新年来分享我的 oh-my-opencode 配置和学习心得",
-    href: "https://linux.do/t/topic/1624433",
-    meta: "相关帖子",
-    summary: "OMO 社区实践入口之一，很多关于 OMO 的配置和使用路径都可以从这里往回追。",
-  },
-  {
-    title: "OpenAI 提出 “Harness Engineering”：完全使用 Agent 进行编程的实践",
-    href: "https://linux.do/t/topic/1677645/9",
-    meta: "相关帖子",
-    summary: "站内对 OpenAI 文章的转述与讨论，适合观察社区如何在早期阶段消化这个概念。",
+      "这是一条持续更新的实践帖，适合先看一遍社区是怎样理解 harness engineering 的，再顺着里面提到的工具和经验继续下钻。",
   },
   {
     title: "最近 harness，自主进化很火，大家有什么经验和用法吗？",
     href: "https://linux.do/t/topic/1789013/5",
-    meta: "相关帖子",
-    summary: "偏经验交流，能补足社区用户对 harness、自主进化和使用姿势的第一手体感。",
-  },
-  {
-    title: "经过 8 个月 Claude Code 高强度实战，我们决定开源内部的最佳实践",
-    href: "https://linux.do/t/topic/1539636",
-    meta: "相关帖子",
-    summary: "适合和 harness engineering 视角交叉阅读，区分哪些是提示技巧，哪些已经变成系统化工程壳层。",
+    date: "2026-03-20",
+    summary: "这是一组更偏经验交换的讨论，能帮助读者快速看到社区用户在实际使用里最关心的能力、成本和姿势。",
   },
   {
     title: "都在聊 AI-Native Engineering，分享几个 AI coding workflow",
     href: "https://linux.do/t/topic/1778922",
-    meta: "相关帖子",
-    summary: "这是横向资料库，能帮助把单个 harness 套件放回更大的 workflow 和 AI-native engineering 生态中观察。",
-  },
-  {
-    title: "Codex 增强版：对标 Claude Code 新增 Agent Teams、Hooks、anthropic api Agent 、WebUI",
-    href: "https://linux.do/t/topic/1664790",
-    meta: "相关帖子",
-    summary: "体现了社区很早就在用“增强层”和“编排层”的思路扩展 coding agent 宿主，这条路径与 harness overlay 很相近。",
+    date: "2026-03-18",
+    summary: "如果你想把单个 harness 套件放回更大的 AI coding workflow 背景里看，这帖能提供一张更宽的参照面。",
   },
   {
     title: "Vibecoding 进阶教程总集篇——从能用到可控",
     href: "https://linux.do/t/topic/1776917",
-    meta: "相关帖子",
-    summary: "虽然不一定直接使用 harness 一词，但它讨论的“可控性”与 harness engineering 关注的目标高度重叠。",
+    date: "2026-03-18",
+    summary: "即使不直接使用 harness 这个词，这帖讨论的“从能用到可控”也和 harness engineering 关心的问题高度重合。",
+  },
+  {
+    title: "OpenAI 提出 “Harness Engineering”：完全使用 Agent 进行编程的实践",
+    href: "https://linux.do/t/topic/1677645/9",
+    date: "2026-03-02",
+    summary: "这帖适合配合 OpenAI 原文一起看，重点不在转述本身，而在看社区最先抓住了这个概念的哪些部分。",
+  },
+  {
+    title: "Codex 增强版：对标 Claude Code 新增 Agent Teams、Hooks、anthropic api Agent 、WebUI",
+    href: "https://linux.do/t/topic/1664790",
+    date: "2026-02-26",
+    summary: "这帖能帮助读者理解：社区很早就在把 agent 宿主往 hooks、teams 和控制层方向扩展，这正是今天很多 harness 套件的演化路径。",
+  },
+  {
+    title: "新年来分享我的 oh-my-opencode 配置和学习心得",
+    href: "https://linux.do/t/topic/1624433",
+    date: "2026-02-17",
+    summary: "如果你想看 OpenCode 生态里的真实配置、使用路径和踩坑经验，这帖提供了很具体的第一手材料。",
+  },
+  {
+    title: "经过 8 个月 Claude Code 高强度实战，我们决定开源内部的最佳实践",
+    href: "https://linux.do/t/topic/1539636",
+    date: "2026-01-29",
+    summary: "这帖的价值在于把长期实践沉淀成更系统的做法，适合拿来辨认哪些已经从提示技巧演化成工程外壳。",
   },
 ];
 
@@ -286,7 +335,7 @@ export const topics = [
     title: "framework-flow-diagrams",
     description:
       "一个可运行的研究应用，用来比较不同系统里的 automation loop、harness 层、控制点、宿主依赖与角色交接方式。",
-    href: "./topics/framework-flow-diagrams/site/",
+    href: `${BASE}/topics/framework-flow-diagrams/site/`,
   },
 ];
 
@@ -294,21 +343,21 @@ export const nextLinks = [
   {
     title: "我想先看精确定义",
     description: "从工程定义与明确边界开始。",
-    href: "./definition/",
+    href: CONCEPT_ENTRY,
   },
   {
     title: "我想先理解怎么选路线",
-    description: "在比较产品或 workflow 之前，先看研究性分类。",
-    href: "./distinction/",
+    description: "先看生态与比较，理解有哪些选择以及它们该怎么区分。",
+    href: ECOSYSTEM_COMPARISON,
   },
   {
     title: "我想看这个领域是怎么形成的",
     description: "用时间线和生态页理解它如何形成，又正在向哪里漂移。",
-    href: "./timeline/",
+    href: KEY_ARTICLES,
   },
   {
     title: "我想直接看可运行材料",
     description: "直接进入专题应用，从一个具体研究材料开始。",
-    href: "./topics/framework-flow-diagrams/site/",
+    href: `${BASE}/topics/framework-flow-diagrams/site/`,
   },
 ];

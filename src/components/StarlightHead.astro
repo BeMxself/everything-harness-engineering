@@ -1,0 +1,35 @@
+---
+import Default from "@astrojs/starlight/components/Head.astro";
+---
+
+<Default />
+<script is:inline>
+  (() => {
+    const applyExternalLinkTargets = () => {
+      for (const link of document.querySelectorAll("a[href]")) {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("#")) continue;
+
+        let url;
+        try {
+          url = new URL(href, location.href);
+        } catch {
+          continue;
+        }
+
+        if (url.origin !== location.origin) {
+          link.setAttribute("target", "_blank");
+          link.setAttribute("rel", "noopener noreferrer");
+        }
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", applyExternalLinkTargets, { once: true });
+    } else {
+      applyExternalLinkTargets();
+    }
+
+    document.addEventListener("astro:page-load", applyExternalLinkTargets);
+  })();
+</script>

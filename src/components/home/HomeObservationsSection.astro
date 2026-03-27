@@ -1,0 +1,35 @@
+---
+interface CommunityInsight {
+  title: string;
+  summary: string;
+}
+
+interface Props {
+  insights: CommunityInsight[];
+}
+
+const { insights } = Astro.props;
+---
+
+<section id="observations" class="overview-section">
+  <div class="overview-prose">
+    <p class="section-label">工程观察</p>
+    <h2>把这些社区材料放在一起看，会慢慢浮现出一些稳定的实践判断。</h2>
+    <p>
+      下面这些不是官方定义，而是从真实讨论与长期实践材料里反复出现的工程观察。
+      它们更接近“真实使用中哪些问题总会冒出来”。
+    </p>
+    <p class="not-content">
+      <a href="/everything-harness-engineering/engineering-observations/">查看工程观察</a>
+    </p>
+  </div>
+
+  <div class="observations-grid not-content">
+    {insights.map((item) => (
+      <div class="insight-item">
+        <h4>{item.title}</h4>
+        <p>{item.summary}</p>
+      </div>
+    ))}
+  </div>
+</section>

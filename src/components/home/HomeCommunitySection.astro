@@ -4,52 +4,34 @@ import { LinkButton } from "@astrojs/starlight/components";
 interface CommunityThread {
   title: string;
   href: string;
-  meta: string;
-  summary: string;
-}
-
-interface CommunityInsight {
-  title: string;
+  date: string;
   summary: string;
 }
 
 interface Props {
   intro: string;
   threads: CommunityThread[];
-  insights: CommunityInsight[];
 }
 
-const { intro, threads, insights } = Astro.props;
+const { intro, threads } = Astro.props;
 ---
 
 <section id="community" class="overview-section">
-  <div class="overview-grid overview-grid--community">
-    <div class="overview-prose">
-      <p class="section-label">社区讨论</p>
-      <h2>社区材料的重要性，在于它暴露了官方文章会压缩掉的真实成本。</h2>
-      <p>{intro}</p>
-      <div class="thread-list not-content">
-        {threads.map((item) => (
-          <article class="thread-card">
-            <p class="thread-meta">{item.meta}</p>
-            <h3><a href={item.href}>{item.title}</a></h3>
-            <p>{item.summary}</p>
-          </article>
-        ))}
-      </div>
-      <LinkButton href="./community/" variant="secondary" icon="right-arrow">
-        查看社区讨论与实践观察
-      </LinkButton>
-    </div>
-
-    <div class="community-insights not-content">
-      <h3>工程观察</h3>
-      {insights.map((item) => (
-        <div class="insight-item">
-          <h4>{item.title}</h4>
+  <div class="overview-prose overview-prose--wide">
+    <p class="section-label">社区讨论</p>
+    <h2>如果想看这个概念在真实使用中怎么被消化，社区材料很重要。</h2>
+    <p>{intro}</p>
+    <div class="thread-list not-content">
+      {threads.map((item) => (
+        <article class="thread-card">
+          <p class="thread-meta">{item.date}</p>
+          <h3><a href={item.href}>{item.title}</a></h3>
           <p>{item.summary}</p>
-        </div>
+        </article>
       ))}
     </div>
+    <LinkButton href="/everything-harness-engineering/community-discussions/" variant="secondary" icon="right-arrow">
+      查看社区讨论
+    </LinkButton>
   </div>
 </section>

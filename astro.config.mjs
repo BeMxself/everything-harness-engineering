@@ -12,6 +12,9 @@ export default defineConfig({
       title: "Everything Harness Engineering",
       description:
         "A public overview of harness engineering, harness-like agent shells, and adjacent workflow suites.",
+      components: {
+        Head: "./src/components/StarlightHead.astro",
+      },
       titleDelimiter: "·",
       social: [
         {
@@ -32,12 +35,12 @@ export default defineConfig({
         {
           label: "研究总览",
           items: [
-            "definition",
-            "distinction",
-            "timeline",
-            "community",
-            "landscape",
-            "topics",
+            { label: "概念入口", link: "/concept-entry/" },
+            { label: "关键文章", link: "/key-articles/" },
+            { label: "生态与比较", link: "/ecosystem-comparison/" },
+            { label: "研究专题", link: "/topics/" },
+            { label: "社区讨论", link: "/community-discussions/" },
+            { label: "工程观察", link: "/engineering-observations/" },
           ],
         },
         {

@@ -1,9 +1,9 @@
 ---
-title: 文章时间线
-description: Primary-source timeline for the emergence of harness engineering as an engineering abstraction.
+title: 关键文章
+description: Primary-source reading list for how harness engineering takes shape.
 ---
 
-下面按发布时间排序，把 agent engineering 的基础方法、tool surface 设计、long-running harness、以及 Codex / Claude 语境中的 harness engineering 串起来。建议先读前半段建立方法论，再读后半段理解 harness 作为 coding-agent 工程抽象是如何成形的。
+下面按发布时间排序，把 harness engineering 形成过程中最关键的一组文章串起来。建议先读前半段建立 agent 方法与工具表面的背景，再读后半段理解 harness 作为 coding-agent 工程抽象是如何成形的。
 
 ## 2024-12-19 · Anthropic
 

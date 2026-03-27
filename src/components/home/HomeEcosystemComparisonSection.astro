@@ -1,0 +1,95 @@
+---
+import { LinkButton } from "@astrojs/starlight/components";
+
+interface TaxonomyItem {
+  title: string;
+  description: string;
+  note: string;
+  href: string;
+}
+
+interface LandscapeRow {
+  name: string;
+  href: string;
+  intro: string;
+  category: string;
+  runtimeForm: string;
+  starsBadge?: string;
+}
+
+interface Props {
+  taxonomy: TaxonomyItem[];
+  rows: LandscapeRow[];
+}
+
+const { taxonomy, rows } = Astro.props;
+---
+
+<section id="ecosystem" class="overview-section">
+  <div class="overview-section-head">
+    <div class="overview-prose">
+      <p class="section-label">生态与比较</p>
+      <h2>现在有哪些代表性选择，以及这些项目应该怎么放在一起比较？</h2>
+      <p>
+        这一部分首先服务于读者的选择判断：现在都有哪些值得看的 harness、类 harness 和相邻工作流系统，
+        它们分别更像哪一类，又该怎么避免把不同层次的问题混成一种产品比较。
+      </p>
+      <p>
+        独立 agent 宿主并不意味着不做 harness；很多宿主本身也在持续吸收 harness 能力。
+        所以下面的比较看的是当前主要重心，而不是假定这些项目彼此绝对分离。
+      </p>
+    </div>
+    <div class="ecosystem-actions not-content">
+      <LinkButton href="/everything-harness-engineering/ecosystem-comparison/" variant="minimal" icon="right-arrow">
+        进入生态与比较
+      </LinkButton>
+    </div>
+  </div>
+
+  <div class="ecosystem-kinds not-content">
+    <p>比较时先分四类看：</p>
+    <ul class="ecosystem-kind-list">
+      {taxonomy.map((item) => (
+        <li>
+          <strong>{item.title.replace(/^\d+\.\s*/, "")}</strong>
+          <span>{item.note.replace(/^典型问题：/, "")}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="table-wrap not-content">
+    <table class="landscape-table">
+      <thead>
+        <tr>
+          <th>套件</th>
+          <th>简介</th>
+          <th>分类</th>
+          <th>运行形态</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr>
+            <td>
+              <div class="suite-cell">
+                <a href={row.href}>{row.name}</a>
+                {row.starsBadge && (
+                  <img
+                    src={row.starsBadge}
+                    alt={`${row.name} GitHub stars`}
+                    class="stars-badge"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            </td>
+            <td>{row.intro}</td>
+            <td>{row.category}</td>
+            <td>{row.runtimeForm}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>

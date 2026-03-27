@@ -2,10 +2,11 @@
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
 import HomeCommunitySection from "../components/home/HomeCommunitySection.astro";
 import HomeDefinitionSection from "../components/home/HomeDefinitionSection.astro";
-import HomeLandscapeSection from "../components/home/HomeLandscapeSection.astro";
+import HomeEcosystemComparisonSection from "../components/home/HomeEcosystemComparisonSection.astro";
+import HomeFundamentalsSection from "../components/home/HomeFundamentalsSection.astro";
 import HomeNav from "../components/home/HomeNav.astro";
 import HomeNextSection from "../components/home/HomeNextSection.astro";
-import HomeTaxonomySection from "../components/home/HomeTaxonomySection.astro";
+import HomeObservationsSection from "../components/home/HomeObservationsSection.astro";
 import HomeTimelineSection from "../components/home/HomeTimelineSection.astro";
 import HomeTopicsSection from "../components/home/HomeTopicsSection.astro";
 import HomeWhySection from "../components/home/HomeWhySection.astro";
@@ -13,6 +14,7 @@ import {
   communityInsights,
   communityIntro,
   communityThreads,
+  fundamentals,
   hero,
   landscapeRows,
   navItems,
@@ -39,14 +41,14 @@ const frontmatter = {
     <HomeDefinitionSection />
     <HomeWhySection />
     <HomeTimelineSection items={timeline} />
+    <HomeFundamentalsSection items={fundamentals} />
+    <HomeEcosystemComparisonSection taxonomy={taxonomy} rows={landscapeRows} />
+    <HomeTopicsSection items={topics} />
     <HomeCommunitySection
       intro={communityIntro}
       threads={communityThreads}
-      insights={communityInsights}
     />
-    <HomeTaxonomySection items={taxonomy} />
-    <HomeLandscapeSection rows={landscapeRows} />
-    <HomeTopicsSection items={topics} />
+    <HomeObservationsSection insights={communityInsights} />
     <HomeNextSection items={nextLinks} />
   </div>
 </StarlightPage>
@@ -224,6 +226,10 @@ const frontmatter = {
     max-width: 46rem;
   }
 
+  .overview-prose--wide {
+    max-width: none;
+  }
+
   .section-label {
     margin: 0;
     color: var(--sl-color-text-accent);
@@ -263,11 +269,126 @@ const frontmatter = {
     gap: 1rem;
   }
 
+  .evolution-flow {
+    display: grid;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .evolution-card {
+    border: 1px solid var(--sl-color-gray-5);
+    background: color-mix(in srgb, var(--sl-color-black) 86%, transparent);
+    border-radius: 1rem;
+    padding: 1.1rem 1.15rem;
+  }
+
+  .evolution-card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+  }
+
+  .evolution-card p {
+    margin: 0;
+    color: var(--sl-color-gray-2);
+  }
+
+  .evolution-card p + p {
+    margin-top: 0.55rem;
+  }
+
+  .evolution-stage {
+    color: var(--sl-color-text-accent);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .evolution-bottleneck {
+    color: var(--sl-color-white);
+  }
+
+  .evolution-arrow {
+    display: grid;
+    place-items: center;
+    color: var(--sl-color-text-accent);
+    font-size: 1.5rem;
+    line-height: 1;
+    min-height: 2rem;
+  }
+
+  .evolution-summary {
+    max-width: 46rem;
+    color: var(--sl-color-gray-2);
+  }
+
   .thread-list,
+  .fundamentals-grid,
+  .observations-grid,
   .taxonomy-grid {
     display: grid;
     gap: 1rem;
     margin-top: 1.25rem;
+  }
+
+  .ecosystem-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .ecosystem-kinds {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .ecosystem-kinds > p {
+    margin: 0;
+    color: var(--sl-color-white);
+    font-weight: 600;
+  }
+
+  .ecosystem-kind-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .ecosystem-kind-list li {
+    border: 1px solid var(--sl-color-gray-5);
+    background: color-mix(in srgb, var(--sl-color-black) 86%, transparent);
+    border-radius: 1rem;
+    padding: 1rem 1.1rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .ecosystem-kind-list li strong {
+    color: var(--sl-color-white);
+  }
+
+  .ecosystem-kind-list li span {
+    color: var(--sl-color-gray-2);
+  }
+
+  .fundamental-card {
+    border: 1px solid var(--sl-color-gray-5);
+    background: color-mix(in srgb, var(--sl-color-black) 86%, transparent);
+    border-radius: 1rem;
+    padding: 1.15rem 1.2rem;
+  }
+
+  .fundamental-card h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1rem;
+  }
+
+  .fundamental-card p {
+    margin: 0;
+    color: var(--sl-color-gray-2);
   }
 
   .thread-card h3,
@@ -391,8 +512,19 @@ const frontmatter = {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .evolution-flow {
+      grid-template-columns:
+        minmax(0, 1fr) auto
+        minmax(0, 1fr) auto
+        minmax(0, 1fr) auto
+        minmax(0, 1fr) auto
+        minmax(0, 1fr);
+    }
+
     .thread-list,
-    .taxonomy-grid {
+    .fundamentals-grid,
+    .observations-grid,
+    .ecosystem-kind-list {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 

@@ -16,4 +16,4 @@ description: Topic entrypoints for deeper, runnable research work.
 
 - 每个专题都尽量独立、自解释、可运行
 - 这里更适合看机制如何落地，而不是只看概念定义
-- 如果想先建立整体框架，可以回到首页或分类页再继续阅读
+- 如果想先建立整体框架，可以回到首页或 [生态与比较](../ecosystem-comparison/) 再继续阅读

@@ -20,14 +20,14 @@ const { items } = Astro.props;
   <div class="overview-section-head">
     <div class="overview-prose">
       <p class="section-label">关键文章</p>
-      <h2>只有看到它是怎么形成的，这个词才会真正变清楚。</h2>
+      <h2>想真正理解 harness engineering，最好回到把它说清楚的那些文章。</h2>
       <p>
-        这不是一组随便拼起来的文章。时间线展示的是讨论如何从一般 agent design，转向工具表面，再到
-        long-running harness，最后收敛成更清晰的工程抽象。
+        这不是一组资料堆砌。它展示了讨论如何从一般 agent 方法、工具设计与长时执行，逐步收敛到今天的
+        harness engineering 语境。按顺序读下来，你会更容易看清哪些是背景，哪些是关键转折，哪些仍然是今天的核心问题。
       </p>
     </div>
-    <LinkButton href="./timeline/" variant="minimal" icon="right-arrow">
-      查看完整时间线
+    <LinkButton href="/everything-harness-engineering/key-articles/" variant="minimal" icon="right-arrow">
+      查看关键文章导读
     </LinkButton>
   </div>
 
@@ -36,10 +36,9 @@ const { items } = Astro.props;
       <article class="timeline-item">
         <div class="timeline-date">{item.date}</div>
         <div class="timeline-copy">
-          <h3>{item.title}</h3>
+          <h3><a href={item.href}>{item.title}</a></h3>
           <p class="timeline-source">{item.source}</p>
           <p>{item.summary}</p>
-          <a href={item.href}>看详细时间线</a>
         </div>
       </article>
     ))}
