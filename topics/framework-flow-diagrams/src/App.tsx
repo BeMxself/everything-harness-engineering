@@ -50,6 +50,21 @@ function AppShell({
         </div>
       </header>
 
+      <section className="topic-guide" aria-label={messages.topicGuideTitle}>
+        <article className="topic-guide__card">
+          <h2>{messages.topicGuideQuestion}</h2>
+          <p>{messages.topicGuideQuestionBody}</p>
+        </article>
+        <article className="topic-guide__card">
+          <h2>{messages.topicGuideMethod}</h2>
+          <p>{messages.topicGuideMethodBody}</p>
+        </article>
+        <article className="topic-guide__card">
+          <h2>{messages.topicGuideBoundary}</h2>
+          <p>{messages.topicGuideBoundaryBody}</p>
+        </article>
+      </section>
+
       <FrameworkSwitcher
         diagrams={diagrams}
         activeId={activeDiagram.id}

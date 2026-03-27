@@ -31,12 +31,11 @@ const { taxonomy, rows } = Astro.props;
       <p class="section-label">生态与比较</p>
       <h2>现在有哪些代表性选择，以及这些项目应该怎么放在一起比较？</h2>
       <p>
-        这一部分首先服务于读者的选择判断：现在都有哪些值得看的 harness、类 harness 和相邻工作流系统，
-        它们分别更像哪一类，又该怎么避免把不同层次的问题混成一种产品比较。
+        首页这里只保留一个预览表，目的是先告诉你“正在比较的对象不在同一层”。
+        完整正文页已经补上了比较维度、官方定位信号和仓库自己的归类理由。
       </p>
       <p>
-        独立 agent 宿主并不意味着不做 harness；很多宿主本身也在持续吸收 harness 能力。
-        所以下面的比较看的是当前主要重心，而不是假定这些项目彼此绝对分离。
+        读这张预览表时，先问三件事：它首先提供的是宿主、增强层、方法系统，还是任务编排层。
       </p>
     </div>
     <div class="ecosystem-actions not-content">
@@ -57,6 +56,10 @@ const { taxonomy, rows } = Astro.props;
       ))}
     </ul>
   </div>
+
+  <p class="ecosystem-preview-note">
+    下面只展示首页预览版本；完整比较表、按问题进入方式和参考说明都在正文页。
+  </p>
 
   <div class="table-wrap not-content">
     <table class="landscape-table">

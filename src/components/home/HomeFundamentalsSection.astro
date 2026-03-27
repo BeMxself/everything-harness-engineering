@@ -1,4 +1,6 @@
 ---
+import { LinkButton } from "@astrojs/starlight/components";
+
 interface FundamentalItem {
   title: string;
   summary: string;
@@ -17,9 +19,14 @@ const { items } = Astro.props;
       <p class="section-label">基本构成</p>
       <h2>要理解 harness engineering，先要看清它到底负责哪些系统能力。</h2>
       <p>
-        它不是一个单独的功能点，而是一组相互配合的外层能力。
-        下面这些方面，基本构成了 agent 从“会写”走向“能稳定工作”所需要的工程系统。
+        首页把这部分当作一张构成地图，而不是完整解释。
+        下面这些项可以帮助你快速定位：你关心的问题更像是 state、tools、execution、memory，还是 human control。
       </p>
+    </div>
+    <div class="section-actions not-content">
+      <LinkButton href="/everything-harness-engineering/concept-entry/" variant="minimal" icon="right-arrow">
+        去看完整构成说明
+      </LinkButton>
     </div>
   </div>
 

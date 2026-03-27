@@ -6,11 +6,12 @@ const ECOSYSTEM_COMPARISON = `${BASE}/ecosystem-comparison/`;
 export const hero = {
   title: "Everything Harness Engineering",
   tagline:
-    "这里整理的是当前与 harness engineering 相关的主要选择：Coding Agents、Agent Harnesses，以及容易混淆的 workflow 系统。它不教你某个产品怎么用，而是帮你快速看清现在有哪些路线、它们差在哪、该从哪里继续读。",
+    "这不是某个产品的教程站，而是一张研究导航图。它先帮你看清 harness engineering 在讨论什么，再把你分流到定义、关键文章、生态比较和可运行专题。",
 };
 
 export const navItems = [
   { href: "#definition", label: "概念入口" },
+  { href: "#next", label: "开始阅读" },
   { href: "#why", label: "演进与瓶颈" },
   { href: "#timeline", label: "关键文章" },
   { href: "#fundamentals", label: "基本构成" },
@@ -18,7 +19,6 @@ export const navItems = [
   { href: "#topics", label: "研究专题" },
   { href: "#community", label: "社区讨论" },
   { href: "#observations", label: "工程观察" },
-  { href: "#next", label: "下一步" },
 ];
 
 export const fundamentals = [
@@ -252,6 +252,17 @@ export const landscapeRows = [
   },
 ];
 
+export const landscapePreviewRows = landscapeRows.filter((row) =>
+  [
+    "Claude Code",
+    "Codex",
+    "oh-my-codex",
+    "everything-claude-code",
+    "superpowers",
+    "gstack",
+  ].includes(row.name),
+);
+
 export const communityIntro =
   "这里单列社区讨论，不与上面的官方文章时间线混合。它们不是这个概念的官方定义，但能补足真实实践里的成本、失败模式、工具取舍与使用路径。";
 
@@ -342,22 +353,22 @@ export const topics = [
 export const nextLinks = [
   {
     title: "我想先看精确定义",
-    description: "从工程定义与明确边界开始。",
+    description: "先建立工作定义、证据边界和关键判断问题。",
     href: CONCEPT_ENTRY,
   },
   {
     title: "我想先理解怎么选路线",
-    description: "先看生态与比较，理解有哪些选择以及它们该怎么区分。",
+    description: "先看比较维度，再区分 host、harness、skills 和 workflow。",
     href: ECOSYSTEM_COMPARISON,
   },
   {
     title: "我想看这个领域是怎么形成的",
-    description: "用时间线和生态页理解它如何形成，又正在向哪里漂移。",
+    description: "看注释型关键文章导读，理解概念如何逐步形成。",
     href: KEY_ARTICLES,
   },
   {
     title: "我想直接看可运行材料",
-    description: "直接进入专题应用，从一个具体研究材料开始。",
+    description: "进入可交互专题，看这些判断如何落成研究材料。",
     href: `${BASE}/topics/framework-flow-diagrams/site/`,
   },
 ];

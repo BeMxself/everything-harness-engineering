@@ -1,4 +1,6 @@
 ---
+import { LinkButton } from "@astrojs/starlight/components";
+
 const stages = [
   {
     stage: "阶段 1",
@@ -38,8 +40,8 @@ const stages = [
     <p class="section-label">演进与瓶颈</p>
     <h2>AI 编程范式在演进，瓶颈也在迁移。</h2>
     <p>
-      问题已经不再只是“模型会不会写”。随着 AI 编程从补全走到 agent，再走到 harness 与编排，
-      瓶颈逐步从生成质量转向执行环境、恢复能力和系统控制面。
+      这部分只给你一张速览图，帮助理解为什么讨论会从补全、对话式编程一路转向 harness 和 orchestration。
+      完整解释和边界论证都已经放进概念正文页。
     </p>
   </div>
 
@@ -62,7 +64,12 @@ const stages = [
   </div>
 
   <p class="evolution-summary">
-    也正因为如此，harness engineering 之所以重要，不是因为它替代模型，而是因为它开始决定
-    agent 能否持续、可控、可恢复地完成真实工程任务。
+    首页在这里的作用不是替代正文，而是先给你“瓶颈逐层外移”的总体轮廓，帮助后面读文章页和比较页时不把不同层次的问题混在一起。
   </p>
+
+  <div class="section-actions not-content">
+    <LinkButton href="/everything-harness-engineering/concept-entry/" variant="minimal" icon="right-arrow">
+      去看完整概念解释
+    </LinkButton>
+  </div>
 </section>

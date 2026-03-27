@@ -48,6 +48,14 @@ export type FrameworkDiagram = {
     whyThisLoopMatters: LocalizedText;
     whereTheHarnessLives: LocalizedText;
   };
+  readingGuide: {
+    keyQuestion: LocalizedText;
+    howToRead: LocalizedText;
+    evidenceBoundary: LocalizedText;
+    currentLimit: LocalizedText;
+  };
+  takeaways: LocalizedText[];
+  sources: DiagramSource[];
   nodes: DiagramNode[];
   edges: DiagramEdge[];
   steps: DiagramStep[];
@@ -110,6 +118,12 @@ export type AgentCollaborationGraph = {
     target: string;
     label: LocalizedText;
   }[];
+};
+
+export type DiagramSource = {
+  label: LocalizedText;
+  href: string;
+  note: LocalizedText;
 };
 
 export type VisibilityState = "active" | "past" | "future" | "ambient";

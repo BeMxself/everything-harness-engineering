@@ -3,91 +3,118 @@ title: 生态与比较
 description: A research-oriented comparison page for harness and harness-adjacent systems.
 ---
 
-这一页首先服务于读者的选择判断：现在都有哪些值得看的 harness、类 harness 和相邻工作流系统，它们分别更像哪一类，又该怎么避免把不同层次的问题混成一种产品比较。
+这页既是 `explanation`，也是轻量 `reference`。它的目标不是做胜负榜，而是帮助读者在一堆都带有 agent、workflow、skills、harness 字样的项目里，先看清“正在比较的对象”到底是不是同一层问题。
 
-独立 agent 宿主并不意味着不做 harness；很多宿主本身也在持续吸收 harness 能力。所以下面的比较看的是当前主要重心，而不是假定这些项目彼此绝对分离。
+## 如何使用这页
 
-## 怎么区分这些项目
+- 如果你还没建立整体概念边界，先读 [概念入口](../concept-entry/)
+- 如果你已经知道想比较什么，这页的作用是给你一套更稳的比较维度
+- 表格里 `官方自述 / 定位信号` 尽量保留项目当前公开 README / Docs 的表达；后面的分类和工作面判断属于本仓库的 `repository interpretation`
 
-这组分组最重要的作用，是把“正在比较的对象”先分开：有些项目提供的是可直接承担工程任务的 agent 宿主，有些提供的是覆盖其上的控制层，有些则主要提供方法论、交付流程或编排能力。
+为避免时间漂移，这页里的官方定位信号按 **2026-03-27** 可见的公开项目页面整理。
 
-其中 `Agent Harnesses` 和 `Workflow / Orchestration` 最容易被混在一起，但两者并不等价。
+## 比较之前，先看哪几个维度
 
-更严格地说，`Agent Harnesses` 更接近一层运行基础设施。它主要解决的是 agent 如何被约束、如何续跑、如何恢复、如何保存状态、如何交接、如何调用工具，以及如何与其他 agent 或人类控制面协作。
+| 维度 | 要问的问题 | 为什么重要 |
+| --- | --- | --- |
+| `主工作面` | agent 主要在终端、IDE、桌面宿主里工作，还是在更高层 workflow 中被组织 | 决定系统到底是 host-first 还是 workflow-first |
+| `控制中心` | 下一步主要由 runtime、policy shell、pipeline gate 还是 orchestration layer 决定 | 决定失败和恢复的成本怎样回流 |
+| `持久化 / 恢复表面` | 系统有没有 memory、progress artifact、rules、handoff 之类的持续面 | 决定它能不能支撑长任务 |
+| `人类控制面` | 审批、review、rules、spec、merge discipline 是不是系统对象 | 决定它是否真正支持 humans steer |
+| `宿主依赖` | 它是独立宿主、宿主内扩展，还是跨宿主协调层 | 决定它是基础工作面，还是覆盖其上的第二层系统 |
 
-`Workflow / Orchestration` 则更接近上层任务组织。它更关注阶段流转、委派协作、多 agent 分工、审批节点和交付闭环。
+## 四类对象的最小区别
 
-两者经常一起出现，是因为很多 harness 套件都会把 workflow/orchestration 一并做进来；如果没有任务流转和协作结构，底层 harness 的价值很难在真实工程里充分体现。
+- `Coding Agents`
+  更偏直接执行工程任务的宿主，首先回答“agent 在哪里工作”
+- `Agent Harnesses`
+  更偏运行机制，重点在控制、恢复、记忆、rules、hooks、teams 和 host extension
+- `Skill / Methodology Systems`
+  更偏执行纪律、spec、review、context engineering 和方法层
+- `Workflow / Orchestration`
+  更偏任务组织，把多 agent、人类审批和交付节点编进更大闭环
 
-但 `Workflow / Orchestration` 不能简单视为 `harness engineering` 的子集。你完全可以先搭出一个工作流或编排层，让多个 agent、步骤或审批节点跑起来，即使它背后的恢复、状态、记忆、通信、规则等底层机制还很薄，甚至相当脆弱。这样的系统可以是 workflow/orchestration，但未必已经是成熟的 harness engineering。
+这些对象会互相吸收，但如果一开始不区分，后面的比较很容易失真。
 
-因此，更稳妥的理解方式是：
-
-- `Coding Agents` 更偏直接执行工程任务的宿主
-- `Agent Harnesses` 更偏运行机制
-- `Skill / Methodology Systems` 更偏方法层与纪律层
-- `Workflow / Orchestration` 更偏任务组织
-- 很多实际项目会同时跨越两层，所以这里按“主要重心”来比较
 ## 代表性项目比较
 
-| 系统 | 官方自述 / 定位信号 | 研究归类 | 运行形态 | 宿主 / 主要范围 |
-| --- | --- | --- | --- | --- |
-| [Codex](https://github.com/openai/codex) | Lightweight coding agent that runs in your terminal | Coding Agents | 独立 agent 宿主 | 终端中的 coding agent |
-| [OpenCode](https://opencode.ai/) | The open source AI coding agent | Coding Agents | 独立 agent 宿主 | 开放宿主，可运行于终端、IDE 与桌面 |
-| [Goose](https://github.com/block/goose) | Open source, extensible AI agent | Coding Agents | 独立 agent 宿主 | 更广义的本地工程 agent，覆盖 coding 场景 |
-| [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | the best agent harness; previously oh-my-opencode | Agent Harnesses | 宿主内扩展 | 构建在 OpenCode 之上的 harness 层 |
-| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | Your codex is not alone. Add hooks, agent teams, HUDs... | Agent Harnesses | 宿主内扩展 | 构建在 Codex 之上的控制层 |
-| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Teams-first multi-agent orchestration for Claude Code | Agent Harnesses | 宿主内扩展，可拉起外部 worker | 构建在 Claude Code 之上的编排层 |
-| [Trellis](https://github.com/mindfold-ai/Trellis) | The best agent harness; multi-platform AI coding framework | Agent Harnesses | 宿主内扩展（跨宿主） | 跨宿主 harness 层 |
-| [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | The agent harness performance optimization system | Agent Harnesses | 宿主内扩展（跨宿主） | 跨宿主增强层 |
-| [superpowers](https://github.com/obra/superpowers) | An agentic skills framework & software development methodology | Skill / Methodology System | 宿主内技能层 | skills + workflow discipline |
-| [get-shit-done](https://github.com/gsd-build/get-shit-done) | Meta-prompting, context engineering and spec-driven development system | Skill / Methodology System | 宿主内工作流层 | spec-driven workflow layer |
-| [gstack](https://github.com/garrytan/gstack) | 15 opinionated tools that serve as CEO, Designer, Eng Manager... | Workflow / Orchestration Suite | 宿主内技能层 | 面向交付的角色化工作流 |
-| [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) | Claude + Codex + Gemini multi-model collaboration | Workflow / Orchestration Suite | 宿主内编排 | 多模型协作工作流 |
-| [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill) | Repository centers on a named workflow skill | Workflow / Orchestration Suite | 宿主内技能层 | 基于 GDIM 的 workflow skill 包 |
-| [Ralph](https://github.com/snarktank/ralph) | Ralph is an autonomous AI agent loop that runs repeatedly until all PRD items are complete. | Workflow / Orchestration Suite | 独立调度外壳 | 持续运行直到任务项完成的自主 agent loop |
+| 系统 | 官方自述 / 定位信号 | 研究归类 | 主工作面 | 控制 / 持久化重心 | 本仓库为什么这样归类 |
+| --- | --- | --- | --- | --- | --- |
+| [Codex](https://github.com/openai/codex) | Lightweight coding agent that runs in your terminal | Coding Agents | 终端中的 coding agent 宿主 | 主 loop 与 repo 工作面 | 它首先回答的是 agent 如何直接进入真实工程环境 |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows) | Anthropic 官方将其描述为 agentic coding tool | Coding Agents | Claude Code 宿主工作面 | 宿主内任务执行与常用 workflow | 研究上更适合把它看作后续 harness 增强层的 host |
+| [OpenCode](https://opencode.ai/) | The open source AI coding agent | Coding Agents | 开放宿主，可运行于终端、IDE 与桌面 | 开放宿主 + coding agent 表面 | 重点仍然是宿主和 agent 执行面本身 |
+| [Goose](https://github.com/block/goose) | Open source, extensible AI agent | Coding Agents | 更广义的本地工程 agent 宿主 | extensible host + local execution | 虽不只做 coding，但它和这一层共享主工作面问题 |
+| [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | the best agent harness; previously oh-my-opencode | Agent Harnesses | OpenCode 之上的宿主内扩展 | runtime 周围的 rules、state、commands、specialists | 它最典型地体现了“在 host 之上再加第二层控制壳” |
+| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | Your codex is not alone. Add hooks, agent teams, HUDs... | Agent Harnesses | Codex 之上的宿主内扩展 | hooks、teams、HUD、控制层 | 重点不是取代 Codex，而是给 Codex 加可控、可协作的外层机制 |
+| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Teams-first multi-agent orchestration for Claude Code | Agent Harnesses | Claude Code 之上的宿主内扩展 | teams-first orchestration + host extension | 它跨到了 orchestration，但核心仍然压在 Claude Code 宿主之上 |
+| [Trellis](https://github.com/mindfold-ai/Trellis) | multi-platform AI coding framework / agent harness framing | Agent Harnesses | 跨宿主 harness 层 | 跨宿主控制面与统一工作流 | 重点是把不同 host 收束进同一套增强层 |
+| [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | agent harness performance optimization system | Agent Harnesses | Claude Code / related host surface 之上的增强层 | policy、commands、memory、specialists | 更像 governed agent OS，而不是单次工作流模板 |
+| [superpowers](https://github.com/obra/superpowers) | An agentic skills framework & software development methodology | Skill / Methodology System | 宿主内 skills / workflow discipline | skills、checklists、process discipline | 它最强的不是宿主，而是方法和执行纪律 |
+| [get-shit-done](https://github.com/gsd-build/get-shit-done) | Meta-prompting, context engineering and spec-driven development system | Skill / Methodology System | 宿主内工作流层 | spec、context engineering、meta-prompting | 更像方法系统和执行框架，而不是独立 host |
+| [gstack](https://github.com/garrytan/gstack) | 15 opinionated tools that serve as CEO, Designer, Eng Manager... | Workflow / Orchestration Suite | 角色化交付 workflow | role handoff、pipeline gates、rework loops | 它的强项更像任务组织和交付闭环 |
+| [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) | Claude + Codex + Gemini multi-model collaboration | Workflow / Orchestration Suite | 多模型协作 workflow | model routing + collaboration flow | 主要问题是多模型如何协同，不是单宿主如何被增强 |
+| [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill) | 围绕 GDIM workflow skill 组织的仓库 | Workflow / Orchestration Suite | 宿主内 workflow skill 包 | workflow discipline + staged execution | 重点在 named workflow 的执行秩序 |
+| [Ralph](https://github.com/snarktank/ralph) | autonomous AI agent loop that runs repeatedly until PRD items are complete | Workflow / Orchestration Suite | 独立调度外壳 | 持续 loop、PRD 驱动、完成态闭环 | 它更像围绕任务完成的自主调度器 |
 
-## 按主要重心继续看
+## 什么时候该把它们放在一起看，什么时候不该
 
-### Coding Agents
+### 应该放在一起看的情况
 
-这些系统通常把自己定位为 coding agent、agentic coding tool，或者 terminal AI pair programming tool。它们是很多后续 harness 增强层的宿主层。
+- 你想比较“谁在控制下一步”
+- 你想比较“失败后是回到 runtime、回到 planning，还是进入新一轮 orchestration”
+- 你想比较“系统把长期执行的重量压在 host、policy、skills 还是 pipeline 上”
 
-代表项目：
+### 不应该直接放在一起看的情况
+
+- 你只是想做“哪个最好用”的产品榜单
+- 你把独立宿主和宿主内增强层当成同一层产品来比较
+- 你把方法论系统和运行时系统混成一种“agent framework”
+
+## 按问题进入，而不是按 hype 进入
+
+### 如果你想先找一个主工作面
+
+先看 `Coding Agents`：
+
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows)
 - [Codex](https://github.com/openai/codex)
 - [OpenCode](https://opencode.ai/)
 - [Goose](https://github.com/block/goose)
 - [Aider](https://aider.chat/)
 
-### Agent Harnesses
+这类系统最先回答的是：agent 能不能进入真实工程环境。
 
-这些系统直接构建在宿主工作面之上，显式加入 hooks、agent teams、HUD、memory、guardrails、rules 和恢复机制，是当前 harness 味道最浓的一层。
+### 如果你已经有宿主，想增强长期执行与控制层
 
-代表项目：
+先看 `Agent Harnesses`：
+
 - [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)
 - [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)
 - [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)
 - [Trellis](https://github.com/mindfold-ai/Trellis)
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
-### Skill / Methodology Systems
+这类系统更适合回答：如何把一个会执行的 agent 变成更可控、更可恢复、更可协作的工程环境。
 
-这些项目更常把自己描述成技能框架、meta-prompting system、spec-driven development system 或 workflow discipline。它们未必都自称 harness，但经常构成 harness 的方法层或部件层。
+### 如果你更关心执行纪律和开发方法
 
-代表项目：
+先看 `Skill / Methodology Systems`：
+
 - [superpowers](https://github.com/obra/superpowers)
 - [get-shit-done](https://github.com/gsd-build/get-shit-done)
 
-### Workflow / Orchestration Suites
+这类系统的价值通常不在“宿主是谁”，而在“执行过程是否可复制”。
 
-这里列的是可以直接落到真实任务编排上的 workflow layer，而不是底层图框架。它们更接近“怎么把任务持续跑下去”的工程表面。
+### 如果你更关心任务流转和交付闭环
 
-代表项目：
+先看 `Workflow / Orchestration Suites`：
+
 - [gstack](https://github.com/garrytan/gstack)
 - [ccg-workflow](https://github.com/fengshao1227/ccg-workflow)
 - [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill)
 - [Ralph](https://github.com/snarktank/ralph)
+
+这类系统更适合回答：如何把多个 agent、多个模型和人类审批稳定地编成一条交付链。
 
 ## Related Frameworks / Infra
 
@@ -101,4 +128,8 @@ description: A research-oriented comparison page for harness and harness-adjacen
 
 ## 注
 
-这个表不是胜负榜，也不是稳定不变的最终定性。很多项目正在快速演化，名字、宿主支持和自我定位都可能继续漂移；这里给出的只是一个可追溯、可比较的观察切面。
+- 这个表不是胜负榜，也不是稳定不变的最终定性
+- 很多项目正在快速演化，名字、宿主支持和自我定位都可能继续漂移
+- 这里给出的不是 canonical taxonomy，而是一个可追溯、可比较的观察切面
+
+如果想把这个比较进一步落成可视结构，下一步建议直接进 [研究专题](../topics/) 里的 `framework-flow-diagrams`。

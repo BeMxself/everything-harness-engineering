@@ -1,4 +1,6 @@
 ---
+import { LinkButton } from "@astrojs/starlight/components";
+
 interface CommunityInsight {
   title: string;
   summary: string;
@@ -16,12 +18,14 @@ const { insights } = Astro.props;
     <p class="section-label">工程观察</p>
     <h2>把这些社区材料放在一起看，会慢慢浮现出一些稳定的实践判断。</h2>
     <p>
-      下面这些不是官方定义，而是从真实讨论与长期实践材料里反复出现的工程观察。
-      它们更接近“真实使用中哪些问题总会冒出来”。
+      正文页现在会明确区分 observation、engineering interpretation 和 canonical fact。
+      首页这里只先露出几条最稳定、最能帮助你继续比较项目的判断。
     </p>
-    <p class="not-content">
-      <a href="/everything-harness-engineering/engineering-observations/">查看工程观察</a>
-    </p>
+    <div class="section-actions not-content">
+      <LinkButton href="/everything-harness-engineering/engineering-observations/" variant="minimal" icon="right-arrow">
+        去看完整观察页
+      </LinkButton>
+    </div>
   </div>
 
   <div class="observations-grid not-content">

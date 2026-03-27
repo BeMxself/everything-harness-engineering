@@ -8,23 +8,21 @@ import { LinkButton } from "@astrojs/starlight/components";
       <p class="section-label">概念入口</p>
       <h2>先把 harness engineering 这个概念说清楚。</h2>
       <p class="lead">
-        <strong>Harness engineering</strong> 指的是那层被工程化出来的外壳系统：
-        它负责约束、编排、验证、恢复，并让 agent 足够可读、可控，能够真正跑进软件工程工作流中。
-        模型当然重要，但真正把模型能力变成 durable engineering surface 的，是 harness。
+        <strong>Harness engineering</strong> 讨论的不是“模型会不会”，而是“系统怎样让 agent 持续、可控地工作”。
+        首页只给你最短入口；完整定义、证据边界和关键判断问题都在正文页里。
       </p>
       <p>
-        这意味着真正值得研究的中心对象，既不是模型本身，也不是 prompt 本身，而是模型外面的整套系统：
-        任务进入方式、工具表面、执行边界、记忆层、审批、评审纪律与交接结构。
+        真正值得研究的中心对象，既不是模型本身，也不是 prompt 本身，而是模型外面的整套系统：
+        主工作面、控制中心、恢复路径、人类控制面，以及它们如何共同构成 durable engineering surface。
       </p>
     </div>
 
     <aside id="boundary" class="boundary-panel not-content">
-      <p class="section-label">它不是什么</p>
+      <p class="section-label">这页适合你如果</p>
       <ul>
-        <li>不只是单次会话里的 prompt engineering。</li>
-        <li>不只是某个 coding agent 产品或 IDE 插件。</li>
-        <li>不只是一个提供抽象 orchestration primitives 的 agent framework。</li>
-        <li>不只是画出了流程，但没有 durable execution surface 的 workflow 图。</li>
+        <li>想先区分定义、官方 framing 和仓库自己的工程解释。</li>
+        <li>想知道为什么它不等于 prompt engineering、host 或 workflow。</li>
+        <li>想先建立比较问题，再去看生态页和专题页。</li>
       </ul>
       <LinkButton href="/everything-harness-engineering/concept-entry/" variant="secondary" icon="right-arrow">
         进入概念入口

@@ -16,7 +16,7 @@ import {
   communityThreads,
   fundamentals,
   hero,
-  landscapeRows,
+  landscapePreviewRows,
   navItems,
   nextLinks,
   taxonomy,
@@ -39,17 +39,17 @@ const frontmatter = {
   <div class="overview-home">
     <HomeNav items={navItems} />
     <HomeDefinitionSection />
+    <HomeNextSection items={nextLinks} />
     <HomeWhySection />
     <HomeTimelineSection items={timeline} />
     <HomeFundamentalsSection items={fundamentals} />
-    <HomeEcosystemComparisonSection taxonomy={taxonomy} rows={landscapeRows} />
+    <HomeEcosystemComparisonSection taxonomy={taxonomy} rows={landscapePreviewRows} />
     <HomeTopicsSection items={topics} />
     <HomeCommunitySection
       intro={communityIntro}
       threads={communityThreads}
     />
     <HomeObservationsSection insights={communityInsights} />
-    <HomeNextSection items={nextLinks} />
   </div>
 </StarlightPage>
 
@@ -333,6 +333,13 @@ const frontmatter = {
     gap: 0.75rem;
   }
 
+  .section-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
   .ecosystem-kinds {
     display: grid;
     gap: 0.9rem;
@@ -368,6 +375,11 @@ const frontmatter = {
 
   .ecosystem-kind-list li span {
     color: var(--sl-color-gray-2);
+  }
+
+  .ecosystem-preview-note {
+    margin: 0;
+    color: var(--sl-color-gray-3);
   }
 
   .fundamental-card {

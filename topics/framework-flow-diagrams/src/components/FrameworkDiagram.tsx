@@ -353,7 +353,7 @@ function FrameworkDiagramInner({ diagram }: FrameworkDiagramProps) {
       <section className="layout-editor" aria-label="Layout editor">
         <div className="layout-editor__header">
           <div>
-            <h3>Layout Edit</h3>
+            <h3>{messages.layoutEditTitle}</h3>
             <p>
               {isLayoutEditMode
                 ? messages.layoutEditBody

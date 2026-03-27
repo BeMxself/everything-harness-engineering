@@ -1,5 +1,5 @@
 ---
-import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+import { CardGrid, LinkButton, LinkCard } from "@astrojs/starlight/components";
 
 interface TopicItem {
   title: string;
@@ -20,8 +20,14 @@ const { items } = Astro.props;
       <p class="section-label">研究专题</p>
       <h2>要真正理解这个课题，还需要进入可运行专题。</h2>
       <p>
-        综述页提供的是定义、边界、分类与比较框架；再往下，就应该进入可运行材料，观察这些机制在具体系统里如何落地。
+        现在的专题页不只是入口，还会说明 topic 应该回答什么、当前已经能回答什么、以及还不能回答什么。
+        首页在这里只负责把你送进那个更具体的层次。
       </p>
+    </div>
+    <div class="section-actions not-content">
+      <LinkButton href="/everything-harness-engineering/topics/" variant="minimal" icon="right-arrow">
+        去看专题说明页
+      </LinkButton>
     </div>
   </div>
 

@@ -7,6 +7,13 @@ type Messages = {
   heroEyebrow: string;
   heroTitle: string;
   heroSummary: string;
+  topicGuideTitle: string;
+  topicGuideQuestion: string;
+  topicGuideQuestionBody: string;
+  topicGuideMethod: string;
+  topicGuideMethodBody: string;
+  topicGuideBoundary: string;
+  topicGuideBoundaryBody: string;
   supplementalView: string;
   agentCollaborationTitle: string;
   legendTitle: string;
@@ -21,6 +28,16 @@ type Messages = {
   harness: string;
   control: string;
   hostDependency: string;
+  readingGuideTitle: string;
+  readingGuideHint: string;
+  keyQuestion: string;
+  howToReadDiagram: string;
+  evidenceBoundary: string;
+  currentLimit: string;
+  takeawaysTitle: string;
+  takeawaysHint: string;
+  sourcesTitle: string;
+  sourcesHint: string;
   researchNotesTitle: string;
   researchNotesHint: string;
   whyThisLoopMatters: string;
@@ -43,6 +60,16 @@ const messagesByLanguage: Record<Language, Messages> = {
     heroTitle: "Framework Flow Diagrams",
     heroSummary:
       "A small visual notebook for comparing automation loops, harness layers, control centers, and host dependencies across agent frameworks.",
+    topicGuideTitle: "How to use this topic",
+    topicGuideQuestion: "Comparison question",
+    topicGuideQuestionBody:
+      "These diagrams ask where the main loop closes, where harness behavior actually lives, and what kind of controller pays the recovery cost.",
+    topicGuideMethod: "Method",
+    topicGuideMethodBody:
+      "Each view keeps public project terminology where possible, then adds repository interpretation to make loop shape and control placement easier to compare.",
+    topicGuideBoundary: "Boundary",
+    topicGuideBoundaryBody:
+      "The diagrams are comparison artifacts, not official architecture charts. Use them to inspect emphasis, then follow the source links for the original project framing.",
     supplementalView: "Supplemental View",
     agentCollaborationTitle: "Agent Collaboration",
     legendTitle: "Legend",
@@ -57,6 +84,16 @@ const messagesByLanguage: Record<Language, Messages> = {
     harness: "Harness",
     control: "Control",
     hostDependency: "Host dependency",
+    readingGuideTitle: "Reading Guide",
+    readingGuideHint: "question + limits",
+    keyQuestion: "Key comparison question",
+    howToReadDiagram: "How to read this diagram",
+    evidenceBoundary: "Evidence boundary",
+    currentLimit: "Current limit",
+    takeawaysTitle: "Current Takeaways",
+    takeawaysHint: "3 working findings",
+    sourcesTitle: "Sources",
+    sourcesHint: "primary materials",
     researchNotesTitle: "Research Notes",
     researchNotesHint: "2 interpretation notes",
     whyThisLoopMatters: "Why this loop matters",
@@ -78,6 +115,16 @@ const messagesByLanguage: Record<Language, Messages> = {
     heroEyebrow: "研究专题",
     heroTitle: "框架流程图",
     heroSummary: "一个用于比较不同 agent framework 的自动化闭环、harness 壳层、控制中心与宿主依赖的小型可视化研究笔记。",
+    topicGuideTitle: "这个专题怎么用",
+    topicGuideQuestion: "核心问题",
+    topicGuideQuestionBody:
+      "这些图要回答的是：主闭环究竟在哪里闭合、harness 到底压在系统的哪一层、以及恢复成本由哪类控制中心承担。",
+    topicGuideMethod: "方法",
+    topicGuideMethodBody:
+      "每张图尽量保留项目公开使用的术语，再加入仓库自己的工程解释，让 loop 形状、控制点和宿主依赖更容易横向比较。",
+    topicGuideBoundary: "边界",
+    topicGuideBoundaryBody:
+      "这些图是比较研究材料，不是项目官方架构图。先用它观察侧重点，再顺着来源链接回到原项目的自我表述。",
     supplementalView: "补充视图",
     agentCollaborationTitle: "Agent 协作关系",
     legendTitle: "图例",
@@ -92,6 +139,16 @@ const messagesByLanguage: Record<Language, Messages> = {
     harness: "Harness 壳层",
     control: "控制中心",
     hostDependency: "宿主依赖",
+    readingGuideTitle: "阅读说明",
+    readingGuideHint: "问题 + 边界",
+    keyQuestion: "核心比较问题",
+    howToReadDiagram: "如何阅读这张图",
+    evidenceBoundary: "证据边界",
+    currentLimit: "当前局限",
+    takeawaysTitle: "当前结论",
+    takeawaysHint: "3 条工作结论",
+    sourcesTitle: "来源",
+    sourcesHint: "一手材料",
     researchNotesTitle: "研究注记",
     researchNotesHint: "2 条解读说明",
     whyThisLoopMatters: "这个闭环为何重要",

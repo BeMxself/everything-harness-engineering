@@ -24,6 +24,62 @@ const rawDiagrams: FrameworkDiagram[] = [
         zh: "Harness 位于执行之上并包裹执行过程：host 集成、插件、MCP、命令和状态都会共同影响 runtime 的决策。",
       },
     },
+    readingGuide: {
+      keyQuestion: {
+        en: "If runtime remains the main controller, how much of the harness lives inside the host and how much wraps around it?",
+        zh: "当 runtime 仍是主控制中心时，harness 究竟有多少是在宿主内部，多少是在它周围包裹出来的？",
+      },
+      howToRead: {
+        en: "Read left-to-right for the request path, then watch the lower shell layer and right-side failure returns to see why this behaves more like a control loop than a delivery pipeline.",
+        zh: "先按从左到右看请求进入路径，再盯住下方 shell 层和右侧失败回流，就能看出它为什么更像控制闭环，而不是交付流水线。",
+      },
+      evidenceBoundary: {
+        en: "The main loop and role names follow current public project terminology. Relative placement and collaboration topology are repository interpretation used to make control shape comparable.",
+        zh: "主闭环和角色名称尽量沿用当前公开项目术语；相对位置与协作拓扑则是为了比较控制形态而做的仓库解释。",
+      },
+      currentLimit: {
+        en: "This view compresses plugin lifecycle, command details, and MCP specifics into one shell layer, so it emphasizes control geometry over implementation internals.",
+        zh: "这张图把 plugin 生命周期、命令细节和 MCP 具体机制压缩进同一层 shell，因此强调的是控制几何，而不是实现细部。",
+      },
+    },
+    takeaways: [
+      {
+        en: "Runtime control, shell influence, verification, and memory are tightly coupled into one continuous loop.",
+        zh: "Runtime control、shell influence、verification 与 memory 被紧密耦合进同一个连续闭环里。",
+      },
+      {
+        en: "Failure recovery routes back to the same controller instead of splitting into a separate delivery stage.",
+        zh: "失败恢复会回到同一个主控制器，而不是分叉进一个独立的交付阶段。",
+      },
+      {
+        en: "The diagram is most useful for seeing why host dependency and harness density are both high.",
+        zh: "这张图最适合帮助读者看清，为什么它的宿主依赖和 harness 密度都会很高。",
+      },
+    ],
+    sources: [
+      {
+        label: {
+          en: "oh-my-openagent repository",
+          zh: "oh-my-openagent 仓库",
+        },
+        href: "https://github.com/code-yeongyu/oh-my-openagent",
+        note: {
+          en: "Primary source for current project positioning, terminology, and documented specialist roles.",
+          zh: "用于确认项目当前定位、术语和公开描述的 specialist roles。",
+        },
+      },
+      {
+        label: {
+          en: "OpenCode repository",
+          zh: "OpenCode 仓库",
+        },
+        href: "https://github.com/anomalyco/opencode",
+        note: {
+          en: "Host environment reference for the coding-agent surface that this harness extends.",
+          zh: "用来标定这层 harness 所依附的 coding-agent 宿主工作面。",
+        },
+      },
+    ],
     agentCollaboration: {
       summary: {
         en: "Official agent surface from the current README; the dispatch topology here is inferred from those documented roles.",
@@ -470,6 +526,51 @@ const rawDiagrams: FrameworkDiagram[] = [
         zh: "这个 harness 主要存在于角色编排、命令自动化与浏览器验证里，而不是单一 runtime 核心中。",
       },
     },
+    readingGuide: {
+      keyQuestion: {
+        en: "When a system reads like a pipeline, where does harness behavior actually live and where does recovery cost accumulate?",
+        zh: "当一个系统看起来更像 pipeline 时，harness 行为究竟压在哪一层，恢复成本又会堆积在哪里？",
+      },
+      howToRead: {
+        en: "Follow the main line from planning to review first, then compare the lower failure lanes to see how rework and replan costs diverge.",
+        zh: "先沿着主线从 planning 读到 review，再对照下方的失败通道，就能看出返工成本和重排成本是如何分化的。",
+      },
+      evidenceBoundary: {
+        en: "Public role names, gates, and workflow positioning follow the project's outward framing. The relative emphasis on late-stage cost is a repository interpretation for comparison.",
+        zh: "公开角色名、gates 和 workflow 定位尽量沿用项目对外表述；对后段成本的强调则是为了比较而做的仓库解释。",
+      },
+      currentLimit: {
+        en: "This view compresses the broader role catalog and command surface into one pipeline, so it favors loop shape over role-by-role operational detail.",
+        zh: "这张图把更大的角色目录和命令表面压成一条 pipeline，因此它更强调闭环形状，而不是逐角色操作细节。",
+      },
+    },
+    takeaways: [
+      {
+        en: "Quality control is distributed across multiple gates rather than concentrated in a single runtime controller.",
+        zh: "质量控制分散在多道 gate 上，而不是集中在某个单一 runtime controller 中。",
+      },
+      {
+        en: "Late failure is more expensive because it can push work back into planning, not only into build rework.",
+        zh: "后段失败更昂贵，因为它不只是回到 build 返工，还可能把工作重新推回 planning。",
+      },
+      {
+        en: "Harness behavior appears here as orchestration plus validation infrastructure more than as a distinct shell runtime.",
+        zh: "在这里，harness 更像编排加验证基础设施，而不是一个独立的壳层 runtime。",
+      },
+    ],
+    sources: [
+      {
+        label: {
+          en: "gstack repository",
+          zh: "gstack 仓库",
+        },
+        href: "https://github.com/garrytan/gstack",
+        note: {
+          en: "Primary source for the public role system, workflow framing, and delivery-oriented terminology used in this comparison.",
+          zh: "用于确认公开角色系统、workflow framing 和面向交付的术语表述。",
+        },
+      },
+    ],
     nodes: [
       { id: "goal", label: "Spec / Goal", kind: "entry", position: { x: 16, y: 298 } },
       {
@@ -761,6 +862,62 @@ const rawDiagrams: FrameworkDiagram[] = [
         zh: "这个 harness 主要存在于持久规则、hooks、commands 和 memory 层，而不是一个独立的 runtime shell 中。",
       },
     },
+    readingGuide: {
+      keyQuestion: {
+        en: "What changes when the main agent stays central, but policy, tools, and memory keep shaping every turn?",
+        zh: "当主 agent 保持中心位置，但 policy、tools 和 memory 又持续塑造每一轮执行时，系统形态会发生什么变化？",
+      },
+      howToRead: {
+        en: "Read the top-left policy shell together with the lower memory loop; the key comparison point is that governance stays inside the main control loop instead of sitting beside it.",
+        zh: "把左上角的 policy shell 和下方的 memory loop 放在一起读；关键比较点在于治理语义没有待在闭环外，而是一直压在主控环里。",
+      },
+      evidenceBoundary: {
+        en: "The main agent, subagents, hooks, commands, and memory terms follow public project language. Their partition into a comparison diagram is repository interpretation rather than official architecture.",
+        zh: "main agent、subagents、hooks、commands 和 memory 这些术语尽量沿用项目公开语言；它们在比较图里的分层方式则属于仓库解释，而不是官方架构图。",
+      },
+      currentLimit: {
+        en: "This view compresses many skills, commands, and specialist behaviors into broad execution branches, so it shows control topology better than operational coverage.",
+        zh: "这张图把大量 skills、commands 和 specialist 行为压缩进几条大执行分支里，因此更擅长表达控制拓扑，而不是能力覆盖面。",
+      },
+    },
+    takeaways: [
+      {
+        en: "Control remains centralized in the main agent even while execution fans out across subagents and tools.",
+        zh: "即使执行会向 subagents 和 tools 扩散，控制权仍然集中在 main agent 身上。",
+      },
+      {
+        en: "Policy and memory are load-bearing parts of the loop rather than optional context around it.",
+        zh: "Policy 和 memory 是这个闭环的 load-bearing part，而不是外围附带的上下文。",
+      },
+      {
+        en: "Compared with gstack, this design behaves less like a pipeline and more like a governed agent operating system.",
+        zh: "和 gstack 相比，这个设计更不像 pipeline，而更像一个带治理层的 agent operating system。",
+      },
+    ],
+    sources: [
+      {
+        label: {
+          en: "everything-claude-code repository",
+          zh: "everything-claude-code 仓库",
+        },
+        href: "https://github.com/affaan-m/everything-claude-code",
+        note: {
+          en: "Primary source for project terminology around policy, commands, memory, and specialist execution.",
+          zh: "用于确认项目在 policy、commands、memory 和 specialist execution 上的公开术语。",
+        },
+      },
+      {
+        label: {
+          en: "Claude Code docs",
+          zh: "Claude Code 文档",
+        },
+        href: "https://docs.anthropic.com/en/docs/claude-code/common-workflows",
+        note: {
+          en: "Host-side reference for the coding-agent surface that this project extends and governs.",
+          zh: "用来标定这个项目所扩展和治理的 coding-agent 宿主表面。",
+        },
+      },
+    ],
     nodes: [
       {
         id: "request",
