@@ -40,23 +40,23 @@ description: A research-oriented comparison page for harness and harness-adjacen
 
 ## 代表性项目比较
 
-| 系统 | 官方自述 / 定位信号 | 研究归类 | 主工作面 | 控制 / 持久化重心 | 本仓库为什么这样归类 |
-| --- | --- | --- | --- | --- | --- |
-| [Codex](https://github.com/openai/codex) | Lightweight coding agent that runs in your terminal | Coding Agents | 终端中的 coding agent 宿主 | 主 loop 与 repo 工作面 | 它首先回答的是 agent 如何直接进入真实工程环境 |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows) | Anthropic 官方将其描述为 agentic coding tool | Coding Agents | Claude Code 宿主工作面 | 宿主内任务执行与常用 workflow | 研究上更适合把它看作后续 harness 增强层的 host |
-| [OpenCode](https://opencode.ai/) | The open source AI coding agent | Coding Agents | 开放宿主，可运行于终端、IDE 与桌面 | 开放宿主 + coding agent 表面 | 重点仍然是宿主和 agent 执行面本身 |
-| [Goose](https://github.com/block/goose) | Open source, extensible AI agent | Coding Agents | 更广义的本地工程 agent 宿主 | extensible host + local execution | 虽不只做 coding，但它和这一层共享主工作面问题 |
-| [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | the best agent harness; previously oh-my-opencode | Agent Harnesses | OpenCode 之上的宿主内扩展 | runtime 周围的 rules、state、commands、specialists | 它最典型地体现了“在 host 之上再加第二层控制壳” |
-| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | Your codex is not alone. Add hooks, agent teams, HUDs... | Agent Harnesses | Codex 之上的宿主内扩展 | hooks、teams、HUD、控制层 | 重点不是取代 Codex，而是给 Codex 加可控、可协作的外层机制 |
-| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Teams-first multi-agent orchestration for Claude Code | Agent Harnesses | Claude Code 之上的宿主内扩展 | teams-first orchestration + host extension | 它明显跨到了 orchestration，但主要仍以内嵌在 Claude Code 宿主上的增强层出现 |
-| [Trellis](https://github.com/mindfold-ai/Trellis) | multi-platform AI coding framework / agent harness framing | Agent Harnesses | 跨宿主 harness 层 | 跨宿主控制面与统一工作流 | 重点是把不同 host 收束进同一套增强层 |
-| [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | agent harness performance optimization system | Agent Harnesses | Claude Code / related host surface 之上的增强层 | policy、commands、memory、specialists | 更像 governed agent OS，而不是单次工作流模板 |
-| [superpowers](https://github.com/obra/superpowers) | An agentic skills framework & software development methodology | Skill / Methodology System | 宿主内 skills / workflow discipline | skills、checklists、process discipline | 它最强的不是宿主，而是方法和执行纪律 |
-| [get-shit-done](https://github.com/gsd-build/get-shit-done) | Meta-prompting, context engineering and spec-driven development system | Skill / Methodology System | 宿主内工作流层 | spec、context engineering、meta-prompting | 更像方法系统和执行框架，而不是独立 host |
-| [gstack](https://github.com/garrytan/gstack) | 15 opinionated tools that serve as CEO, Designer, Eng Manager... | Workflow / Orchestration Suite | 角色化交付 workflow | role handoff、pipeline gates、rework loops | 它的强项更像任务组织和交付闭环 |
-| [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) | Claude + Codex + Gemini multi-model collaboration | Workflow / Orchestration Suite | 多模型协作 workflow | model routing + collaboration flow | 主要问题是多模型如何协同，不是单宿主如何被增强 |
-| [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill) | 围绕 GDIM workflow skill 组织的仓库 | Workflow / Orchestration Suite | 宿主内 workflow skill 包 | workflow discipline + staged execution | 重点在 named workflow 的执行秩序 |
-| [Ralph](https://github.com/snarktank/ralph) | autonomous AI agent loop that runs repeatedly until PRD items are complete | Workflow / Orchestration Suite | 独立调度外壳 | 持续 loop、PRD 驱动、完成态闭环 | 它更像围绕任务完成的自主调度器 |
+| 系统 | Stars | 官方自述 / 定位信号 | 研究归类 | 主工作面 | 控制 / 持久化重心 | 本仓库为什么这样归类 |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Codex](https://github.com/openai/codex) | ![Codex stars](https://img.shields.io/github/stars/openai/codex?style=social) | Lightweight coding agent that runs in your terminal | Coding Agents | 终端中的 coding agent 宿主 | 主 loop 与 repo 工作面 | 它首先回答的是 agent 如何直接进入真实工程环境 |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows) | — | Anthropic 官方将其描述为 agentic coding tool | Coding Agents | Claude Code 宿主工作面 | 宿主内任务执行与常用 workflow | 研究上更适合把它看作后续 harness 增强层的 host |
+| [OpenCode](https://opencode.ai/) | ![OpenCode stars](https://img.shields.io/github/stars/anomalyco/opencode?style=social) | The open source AI coding agent | Coding Agents | 开放宿主，可运行于终端、IDE 与桌面 | 开放宿主 + coding agent 表面 | 重点仍然是宿主和 agent 执行面本身 |
+| [Goose](https://github.com/block/goose) | ![Goose stars](https://img.shields.io/github/stars/block/goose?style=social) | Open source, extensible AI agent | Coding Agents | 更广义的本地工程 agent 宿主 | extensible host + local execution | 虽不只做 coding，但它和这一层共享主工作面问题 |
+| [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | ![oh-my-openagent stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=social) | the best agent harness; previously oh-my-opencode | Agent Harnesses | OpenCode 之上的宿主内扩展 | runtime 周围的 rules、state、commands、specialists | 它最典型地体现了“在 host 之上再加第二层控制壳” |
+| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | ![oh-my-codex stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=social) | Your codex is not alone. Add hooks, agent teams, HUDs... | Agent Harnesses | Codex 之上的宿主内扩展 | hooks、teams、HUD、控制层 | 重点不是取代 Codex，而是给 Codex 加可控、可协作的外层机制 |
+| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | ![oh-my-claudecode stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-claudecode?style=social) | Teams-first multi-agent orchestration for Claude Code | Agent Harnesses | Claude Code 之上的宿主内扩展 | teams-first orchestration + host extension | 它明显跨到了 orchestration，但主要仍以内嵌在 Claude Code 宿主上的增强层出现 |
+| [Trellis](https://github.com/mindfold-ai/Trellis) | ![Trellis stars](https://img.shields.io/github/stars/mindfold-ai/Trellis?style=social) | multi-platform AI coding framework / agent harness framing | Agent Harnesses | 跨宿主 harness 层 | 跨宿主控制面与统一工作流 | 重点是把不同 host 收束进同一套增强层 |
+| [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | ![everything-claude-code stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=social) | agent harness performance optimization system | Agent Harnesses | Claude Code / related host surface 之上的增强层 | policy、commands、memory、specialists | 更像 governed agent OS，而不是单次工作流模板 |
+| [superpowers](https://github.com/obra/superpowers) | ![superpowers stars](https://img.shields.io/github/stars/obra/superpowers?style=social) | An agentic skills framework & software development methodology | Skill / Methodology System | 宿主内 skills / workflow discipline | skills、checklists、process discipline | 它最强的不是宿主，而是方法和执行纪律 |
+| [get-shit-done](https://github.com/gsd-build/get-shit-done) | ![get-shit-done stars](https://img.shields.io/github/stars/gsd-build/get-shit-done?style=social) | Meta-prompting, context engineering and spec-driven development system | Skill / Methodology System | 宿主内工作流层 | spec、context engineering、meta-prompting | 更像方法系统和执行框架，而不是独立 host |
+| [gstack](https://github.com/garrytan/gstack) | ![gstack stars](https://img.shields.io/github/stars/garrytan/gstack?style=social) | 15 opinionated tools that serve as CEO, Designer, Eng Manager... | Workflow / Orchestration Suite | 角色化交付 workflow | role handoff、pipeline gates、rework loops | 它的强项更像任务组织和交付闭环 |
+| [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) | ![ccg-workflow stars](https://img.shields.io/github/stars/fengshao1227/ccg-workflow?style=social) | Claude + Codex + Gemini multi-model collaboration | Workflow / Orchestration Suite | 多模型协作 workflow | model routing + collaboration flow | 主要问题是多模型如何协同，不是单宿主如何被增强 |
+| [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill) | ![gdim-workflow-skill stars](https://img.shields.io/github/stars/BeMxself/gdim-workflow-skill?style=social) | 围绕 GDIM workflow skill 组织的仓库 | Workflow / Orchestration Suite | 宿主内 workflow skill 包 | workflow discipline + staged execution | 重点在 named workflow 的执行秩序 |
+| [Ralph](https://github.com/snarktank/ralph) | ![Ralph stars](https://img.shields.io/github/stars/snarktank/ralph?style=social) | autonomous AI agent loop that runs repeatedly until PRD items are complete | Workflow / Orchestration Suite | 独立调度外壳 | 持续 loop、PRD 驱动、完成态闭环 | 它更像围绕任务完成的自主调度器 |
 
 ## 什么时候该把它们放在一起看，什么时候不该
 
@@ -135,4 +135,4 @@ description: A research-oriented comparison page for harness and harness-adjacen
 - 这里给出的不是 canonical taxonomy，而是一个可追溯、可比较的观察切面
 - 表中的 `研究归类` 是仓库解释，不是这些项目必须接受的自我定义
 
-如果想把这个比较进一步落成可视结构，下一步建议直接进 [研究专题](../topics/) 里的 `framework-flow-diagrams`。
+如果想把这个比较进一步落成可视结构，下一步建议直接进 [研究专题](../topics/) 里的“宿主与 Harness 结构图”。

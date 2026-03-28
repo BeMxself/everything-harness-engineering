@@ -243,6 +243,14 @@ export const landscapeRows = [
     runtimeForm: "宿主内编排",
   },
   {
+    name: "gdim-workflow-skill",
+    href: "https://github.com/BeMxself/gdim-workflow-skill",
+    starsBadge: "https://img.shields.io/github/stars/BeMxself/gdim-workflow-skill?style=social",
+    intro: "基于 GDIM 的 workflow skill 包，重点在阶段化执行秩序与偏差收敛。",
+    category: "工作流 / 编排套件",
+    runtimeForm: "宿主内技能层",
+  },
+  {
     name: "Ralph",
     href: "https://github.com/snarktank/ralph",
     starsBadge: "https://img.shields.io/github/stars/snarktank/ralph?style=social",
@@ -251,17 +259,6 @@ export const landscapeRows = [
     runtimeForm: "独立调度外壳",
   },
 ];
-
-export const landscapePreviewRows = landscapeRows.filter((row) =>
-  [
-    "Claude Code",
-    "Codex",
-    "oh-my-codex",
-    "everything-claude-code",
-    "superpowers",
-    "gstack",
-  ].includes(row.name),
-);
 
 export const communityIntro =
   "这里单列社区讨论，不与上面的官方文章时间线混合。它们不是这个概念的官方定义，但能补足真实实践里的成本、失败模式、工具取舍与使用路径。";
@@ -343,9 +340,9 @@ export const communityInsights = [
 
 export const topics = [
   {
-    title: "framework-flow-diagrams",
+    title: "宿主与 Harness 结构图",
     description:
-      "一个可运行的研究应用，用来比较不同系统里的 automation loop、harness 层、控制点、宿主依赖与角色交接方式。",
+      "一个可运行的研究应用，用来比较不同 coding-agent 系统里的宿主工作面、harness 壳层、控制中心与恢复路径。",
     href: `${BASE}/topics/framework-flow-diagrams/site/`,
   },
 ];
