@@ -11,7 +11,6 @@ export const hero = {
 
 export const navItems = [
   { href: "#definition", label: "概念入口" },
-  { href: "#next", label: "开始阅读" },
   { href: "#why", label: "演进与瓶颈" },
   { href: "#timeline", label: "关键文章" },
   { href: "#fundamentals", label: "基本构成" },
@@ -19,6 +18,7 @@ export const navItems = [
   { href: "#topics", label: "研究专题" },
   { href: "#community", label: "社区讨论" },
   { href: "#observations", label: "工程观察" },
+  { href: "#next", label: "下一步" },
 ];
 
 export const fundamentals = [

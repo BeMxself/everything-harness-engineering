@@ -16,7 +16,7 @@ description: Primary-source reading guide for how harness engineering takes shap
 | 长时执行 | Anthropic 长任务文章 + OpenAI Codex loop / harness 文章 | 长任务怎样续跑、验证、恢复，以及宿主如何被协议化 |
 | 抽象上浮 | OpenAI / Martin Fowler / LangChain | 如何把厂商实践提升成可比较、可拆解的工程对象 |
 
-如果你还没有建立整体边界，建议先回到 [概念入口](../concept-entry/)；如果你已经知道大概在看什么，但想判断各类项目差异，再接 [生态与比较](../ecosystem-comparison/)。
+如果你还没有建立整体边界，建议先回到 [概念入口](../concept-entry/)；如果你想先搞清楚本站如何区分 `fact`、`vendor framing` 和 `repository interpretation`，先读 [术语与证据边界](../terminology-and-evidence/)；如果你已经知道大概在看什么，但想判断各类项目差异，再接 [生态与比较](../ecosystem-comparison/)。
 
 ## 2024-12-19 · Anthropic
 

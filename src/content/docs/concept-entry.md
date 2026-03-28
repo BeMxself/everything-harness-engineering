@@ -7,6 +7,8 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 
 `harness engineering` 到底在讨论哪一层工程对象，为什么它既不等于 prompt engineering，也不等于某个 coding agent 产品本身？
 
+更具体地说，本仓库主要讨论的是 **coding-agent / software-engineering 语境里的 harness engineering**。如果离开这个语境，`harness` 可以被用得更宽；而一旦进入 coding work surface、repo、tools、verification 和 long-running tasks，这个词的工程负载才会变得足够具体，值得被单独研究。
+
 ## 先讲证据边界
 
 这页里的内容刻意分成两层：
@@ -16,7 +18,18 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 - `repository interpretation`
   是本仓库为了比较研究而给出的工程划分，用来帮助读者区分 host、harness、workflow、skills 等不同对象
 
-因此，这页不是在宣布某个官方统一定义，而是在给出一个可追溯、可比较、可继续扩展的研究性工作定义。
+因此，这页不是在宣布某个官方统一定义，而是在给出一个可追溯、可比较、可继续扩展的研究性工作定义。更完整的本站写作规则见 [术语与证据边界](../terminology-and-evidence/)。
+
+## 先把对象和实践分开
+
+这两个说法很接近，但不是一回事：
+
+- `agent harness`
+  更偏系统对象，指模型外面那层让 agent 能工作、能恢复、能被约束的外壳
+- `harness engineering`
+  更偏工程实践，指人类如何设计、调试、约束、简化和演化这层外壳
+
+OpenAI、Anthropic 和 LangChain 都在讨论这两层，只是强调点不同。OpenAI更明显地讨论 harness 作为运行时和控制系统；Anthropic更强调如何逐步设计、简化和迭代长任务 harness；LangChain则给出一个更宽的部件视角。
 
 ## 工作定义
 
@@ -33,6 +46,12 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 
 > `harness engineering` 研究的不是“模型会不会”，而是“系统怎样让 agent 持续、可控地工作”。
 
+这里还需要补一句边界说明：
+
+- `prompting`、`context engineering`、`system prompt` 往往是 harness 的组成部分
+- 但它们本身不自动构成完整 harness
+- 反过来，harness 也不只等于 prompts，它还包括运行环境、工具执行、状态恢复、验证回路与人类控制面
+
 ## 它不等于什么
 
 - 不等于单次 `prompt engineering`
@@ -40,11 +59,11 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 - 不等于只会写 demo 的 `autonomous agent`
 - 不等于只提供 orchestration primitives、但没有明确宿主工作面和执行约束的抽象框架
 
-换句话说，只要一个说法还没有回答“agent 在哪里工作、谁来控制下一步、状态如何续跑、人类怎样介入”，它就还没有真正进入 harness engineering 的讨论中心。
+换句话说，在本仓库研究的 coding-agent 语境里，只要一个说法还没有回答“agent 在哪里工作、谁来控制下一步、状态如何续跑、人类怎样介入”，它就还没有真正进入 harness engineering 的讨论中心。
 
 ## 它要求系统回答哪些关键问题
 
-把这个概念说清楚，最好的方法不是重复定义，而是看一个系统是否真的回答了下面这些问题：
+把这个概念说清楚，最好的方法不是重复定义，而是看一个 **coding-oriented harness** 是否真的回答了下面这些问题：
 
 | 问题 | 它在追问什么 | 如果答不上来会怎样 |
 | --- | --- | --- |
@@ -54,7 +73,7 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 | 失败如何回流 | failure 是回到原控制器、回到 planning，还是只做局部 retry | 失败恢复成本不可见 |
 | 人类怎样 steer | 审批、边界、规则、review、merge discipline 是否是系统对象 | 系统会变成不可读黑箱 |
 
-这五个问题，也是后面 [生态与比较](../ecosystem-comparison/) 和 [研究专题](../topics/) 的主比较坐标。
+这五个问题主要适用于本仓库关注的 host-first / coding-agent 系统，也是后面 [生态与比较](../ecosystem-comparison/) 和 [研究专题](../topics/) 的主比较坐标。它们不是所有 agent harness 的唯一标准，但对软件工程场景尤其关键。
 
 ## 演进与瓶颈
 
@@ -76,11 +95,11 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 
 | 对象 | 它主要解决什么 | 为什么不等同于 harness engineering | 与 harness 的关系 |
 | --- | --- | --- | --- |
-| `prompt engineering` | 改写输入、提示和任务表述 | 它通常不直接提供持久状态、工具执行、验证、审批或恢复机制 | 是 harness 的一部分，但不是整体 |
+| `prompt engineering` | 改写输入、提示和任务表述 | 它通常不直接提供持久状态、工具执行、验证、审批或恢复机制 | 常常是 harness 的一层，但不是整体 |
 | `coding agent` 产品 / 宿主 | 给 agent 一个能进入真实工程环境的主执行面 | 它回答的是“agent 在哪里工作”，不自动回答“长期怎么控、怎么续跑、怎么交接” | 往往是 harness 的宿主层 |
 | `agent harness` | 围绕宿主增加规则、记忆、hooks、评审、恢复与团队结构 | 它关注的是模型外部的控制面设计，而不是单个产品 UI | 是本仓库当前研究重点 |
 | `workflow / orchestration` 系统 | 把多个 agent、人类和外部系统编进更大闭环 | 它的范围通常超过单个宿主或单条 agent loop | 与 harness 相邻，部分系统会把 harness 吸纳进去 |
-| `skills` / 方法论系统 | 给 agent 注入执行纪律、spec、review 和工作方法 | 如果没有稳定宿主与执行面，它更像方法层而不是完整 harness | 常作为 harness 的提示层或知识层组件 |
+| `skills` / 方法论系统 | 给 agent 注入执行纪律、spec、review 和工作方法 | 如果没有稳定宿主与执行面，它更像方法层而不是完整 harness | 可以被 harness 吸纳，也可以独立存在于 harness 之外 |
 
 通过这种比较可以更稳地看到本仓库的边界：我们关心的不是“所有 agent 系统”，而是模型外部那层把 agent 变成工程能力的工作面、控制面和恢复面。
 
@@ -90,6 +109,7 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 
 | 构成 | 它回答什么 | 典型来源 |
 | --- | --- | --- |
+| `提示与上下文工程` | system prompt、instructions、context injection 怎样帮助 agent 稳定行动 | Anthropic agents / tools、OpenAI harness、LangChain anatomy |
 | `状态与持久化` | agent 怎样跨会话保存和恢复工作状态 | Anthropic 长任务文章、LangChain anatomy |
 | `工具与接口表面` | agent 面对的 tool surface 是否可理解、边界清晰 | Anthropic agent / tools 两篇 |
 | `执行环境` | agent 是否有真实 repo、命令和外部系统工作面 | OpenAI harness / app server 文章 |
@@ -97,7 +117,7 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 | `上下文管理与知识注入` | 每轮到底带什么知识继续运行 | Anthropic long-running apps、OpenAI harness |
 | `约束、规则与边界` | guardrails、tool boundaries、stopping conditions 怎样工作 | Anthropic tools / agents、OpenAI harness |
 | `续跑、交接与恢复` | 长任务如何 clean handoff，而不是重新猜状态 | Anthropic 长任务、社区实践材料 |
-| `宿主协议与客户端表面` | thread、turn、approval、diff、tool execution 怎样变成稳定接口 | OpenAI app server / harness |
+| `宿主协议与客户端表面` | 在 host-centric harness 中，thread、turn、approval、diff、tool execution 怎样变成稳定接口 | OpenAI app server / harness |
 | `人类控制面` | humans steer, agents execute 如何真正成立 | OpenAI harness、Anthropic agent systems |
 
 如果你想看这些构成在真实比较里如何展开，下一步应该进入 [研究专题](../topics/)。
@@ -110,6 +130,8 @@ description: A definition-, evolution-, and boundary-first entry for understandi
 - 执行环境本身已经成为 `load-bearing part`
 - harness 正在从“内部脚手架”走向“可复用的工程表面”
 - 它的重要性不是静态上升，而是随着模型改进不断换位置，新的模型会让旧脚手架失去必要性，也会暴露新的瓶颈
+
+但这里也要避免另一个极端：不是所有 agent 系统都必须长成 Codex App Server 这种形态。对 OpenAI 来说，协议化客户端表面是核心；对 Anthropic 的长任务研究来说，initializer、progress artifact 和 clean handoff 更居中；对 LangChain 的部件式定义来说，harness 的边界甚至可以宽到“模型之外的一切”。本仓库的任务不是消灭这些差异，而是把它们保留下来。
 
 这也是为什么本仓库既要保留 [关键文章](../key-articles/) 的时间线，又要单独保留 [工程观察](../engineering-observations/) 和 [生态与比较](../ecosystem-comparison/) 这两种页面。
 

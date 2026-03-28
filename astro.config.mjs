@@ -36,6 +36,7 @@ export default defineConfig({
           label: "研究总览",
           items: [
             { label: "概念入口", link: "/concept-entry/" },
+            { label: "术语与证据边界", link: "/terminology-and-evidence/" },
             { label: "关键文章", link: "/key-articles/" },
             { label: "生态与比较", link: "/ecosystem-comparison/" },
             { label: "研究专题", link: "/topics/" },

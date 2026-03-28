@@ -5,6 +5,8 @@ description: A research-oriented comparison page for harness and harness-adjacen
 
 这页既是 `explanation`，也是轻量 `reference`。它的目标不是做胜负榜，而是帮助读者在一堆都带有 agent、workflow、skills、harness 字样的项目里，先看清“正在比较的对象”到底是不是同一层问题。
 
+这里还要特别说明一点：本页覆盖了 **core harness** 和 **harness-adjacent** 两类对象。`Coding Agents` 与 `Agent Harnesses` 更接近本仓库的核心研究面；`Skill / Methodology Systems` 与 `Workflow / Orchestration` 被纳入，是为了做边界辨认，而不是暗示它们自动都属于 harness engineering 的核心定义。
+
 ## 如何使用这页
 
 - 如果你还没建立整体概念边界，先读 [概念入口](../concept-entry/)
@@ -30,11 +32,11 @@ description: A research-oriented comparison page for harness and harness-adjacen
 - `Agent Harnesses`
   更偏运行机制，重点在控制、恢复、记忆、rules、hooks、teams 和 host extension
 - `Skill / Methodology Systems`
-  更偏执行纪律、spec、review、context engineering 和方法层
+  更偏执行纪律、spec、review、context engineering 和方法层；可以进入 harness，也可以独立于 harness 存在
 - `Workflow / Orchestration`
   更偏任务组织，把多 agent、人类审批和交付节点编进更大闭环
 
-这些对象会互相吸收，但如果一开始不区分，后面的比较很容易失真。
+这些对象会互相吸收，但如果一开始不区分，后面的比较很容易失真。尤其是在 coding-agent 语境里，`host`、`host extension` 和 `workflow overlay` 是三个不同的问题。
 
 ## 代表性项目比较
 
@@ -46,7 +48,7 @@ description: A research-oriented comparison page for harness and harness-adjacen
 | [Goose](https://github.com/block/goose) | Open source, extensible AI agent | Coding Agents | 更广义的本地工程 agent 宿主 | extensible host + local execution | 虽不只做 coding，但它和这一层共享主工作面问题 |
 | [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | the best agent harness; previously oh-my-opencode | Agent Harnesses | OpenCode 之上的宿主内扩展 | runtime 周围的 rules、state、commands、specialists | 它最典型地体现了“在 host 之上再加第二层控制壳” |
 | [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | Your codex is not alone. Add hooks, agent teams, HUDs... | Agent Harnesses | Codex 之上的宿主内扩展 | hooks、teams、HUD、控制层 | 重点不是取代 Codex，而是给 Codex 加可控、可协作的外层机制 |
-| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Teams-first multi-agent orchestration for Claude Code | Agent Harnesses | Claude Code 之上的宿主内扩展 | teams-first orchestration + host extension | 它跨到了 orchestration，但核心仍然压在 Claude Code 宿主之上 |
+| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Teams-first multi-agent orchestration for Claude Code | Agent Harnesses | Claude Code 之上的宿主内扩展 | teams-first orchestration + host extension | 它明显跨到了 orchestration，但主要仍以内嵌在 Claude Code 宿主上的增强层出现 |
 | [Trellis](https://github.com/mindfold-ai/Trellis) | multi-platform AI coding framework / agent harness framing | Agent Harnesses | 跨宿主 harness 层 | 跨宿主控制面与统一工作流 | 重点是把不同 host 收束进同一套增强层 |
 | [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | agent harness performance optimization system | Agent Harnesses | Claude Code / related host surface 之上的增强层 | policy、commands、memory、specialists | 更像 governed agent OS，而不是单次工作流模板 |
 | [superpowers](https://github.com/obra/superpowers) | An agentic skills framework & software development methodology | Skill / Methodology System | 宿主内 skills / workflow discipline | skills、checklists、process discipline | 它最强的不是宿主，而是方法和执行纪律 |
@@ -103,7 +105,7 @@ description: A research-oriented comparison page for harness and harness-adjacen
 - [superpowers](https://github.com/obra/superpowers)
 - [get-shit-done](https://github.com/gsd-build/get-shit-done)
 
-这类系统的价值通常不在“宿主是谁”，而在“执行过程是否可复制”。
+这类系统的价值通常不在“宿主是谁”，而在“执行过程是否可复制”。它们有时会成为 harness 的一层，但不应该被自动等同于 harness 本体。
 
 ### 如果你更关心任务流转和交付闭环
 
@@ -124,12 +126,13 @@ description: A research-oriented comparison page for harness and harness-adjacen
 - [CrewAI](https://www.crewai.com/)
 - [GitHub Agentic Workflows](https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/)
 
-这些项目仍然值得跟踪，但它们更偏 agent platform、graph orchestration、framework 或基础设施层，不应和可直接实践的 workflow 套件混为一谈。
+这些项目仍然值得跟踪，但它们更偏 agent platform、graph orchestration、framework 或基础设施层，不应和可直接实践的 workflow 套件混为一谈。是否把它们纳入更广义的 harness 讨论，要看研究问题是在问“系统如何被工程化”，还是在问“agent 在哪个软件层里被组织”。
 
 ## 注
 
 - 这个表不是胜负榜，也不是稳定不变的最终定性
 - 很多项目正在快速演化，名字、宿主支持和自我定位都可能继续漂移
 - 这里给出的不是 canonical taxonomy，而是一个可追溯、可比较的观察切面
+- 表中的 `研究归类` 是仓库解释，不是这些项目必须接受的自我定义
 
 如果想把这个比较进一步落成可视结构，下一步建议直接进 [研究专题](../topics/) 里的 `framework-flow-diagrams`。
