@@ -2,7 +2,7 @@ import type { ComparisonDiagram } from "./types";
 
 export const trellisDraftDiagram: ComparisonDiagram = {
   id: "trellis-draft",
-  title: "Trellis Draft",
+  title: "Trellis Draft Diagram",
   summary: {
     en: "A platform-over-core draft showing how Trellis keeps one `.trellis/` workflow core while generating host-specific wiring into Claude Code, Codex, OpenCode, Cursor, and related tools.",
     zh: "一张 platform-over-core 的 draft 草图，用来表达 Trellis 如何保留统一的 `.trellis/` workflow core，再向 Claude Code、Codex、OpenCode、Cursor 等宿主生成 wiring。",
