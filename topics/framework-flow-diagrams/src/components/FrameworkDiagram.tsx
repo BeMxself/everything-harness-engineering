@@ -28,6 +28,20 @@ type FrameworkDiagramProps = {
   diagram: FrameworkDiagramType;
 };
 
+function isEditableQueryEnabled() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const value = new URLSearchParams(window.location.search).get("editable");
+
+  if (!value) {
+    return false;
+  }
+
+  return ["1", "true", "yes", "on"].includes(value.toLowerCase());
+}
+
 function buildLayoutPositions(diagram: FrameworkDiagramType) {
   return Object.fromEntries(
     diagram.nodes.map((node) => [node.id, node.position]),
@@ -77,6 +91,7 @@ function FrameworkDiagramInner({ diagram }: FrameworkDiagramProps) {
   const { lang, messages } = useI18n();
   const [stepIndex, setStepIndex] = useState(0);
   const [isLayoutEditMode, setIsLayoutEditMode] = useState(false);
+  const [isLayoutEditVisible] = useState(() => isEditableQueryEnabled());
   const [layoutPositions, setLayoutPositions] = useState(() => buildLayoutPositions(diagram));
   const [edgeControlPoints, setEdgeControlPoints] = useState(() => buildEdgeControlPoints(diagram));
   const [edgeAnchorBindings, setEdgeAnchorBindings] = useState(() =>
@@ -350,44 +365,46 @@ function FrameworkDiagramInner({ diagram }: FrameworkDiagramProps) {
         onSelectStep={setStepIndex}
       />
 
-      <section className="layout-editor" aria-label="Layout editor">
-        <div className="layout-editor__header">
-          <div>
-            <h3>{messages.layoutEditTitle}</h3>
-            <p>
-              {isLayoutEditMode
-                ? messages.layoutEditBody
-                : messages.layoutEditOffBody}
-            </p>
+      {isLayoutEditVisible ? (
+        <section className="layout-editor" aria-label="Layout editor">
+          <div className="layout-editor__header">
+            <div>
+              <h3>{messages.layoutEditTitle}</h3>
+              <p>
+                {isLayoutEditMode
+                  ? messages.layoutEditBody
+                  : messages.layoutEditOffBody}
+              </p>
+            </div>
+            <button
+              type="button"
+              className={`layout-editor__toggle${isLayoutEditMode ? " is-active" : ""}`}
+              aria-pressed={isLayoutEditMode}
+              onClick={toggleLayoutEditMode}
+            >
+              {isLayoutEditMode ? messages.layoutEditOn : messages.layoutEditOff}
+            </button>
           </div>
-          <button
-            type="button"
-            className={`layout-editor__toggle${isLayoutEditMode ? " is-active" : ""}`}
-            aria-pressed={isLayoutEditMode}
-            onClick={toggleLayoutEditMode}
-          >
-            {isLayoutEditMode ? messages.layoutEditOn : messages.layoutEditOff}
-          </button>
-        </div>
 
-        {isLayoutEditMode ? (
-          <div className="layout-editor__body">
-            <div className="layout-editor__actions">
-              <button
-                type="button"
-                className="layout-editor__copy"
-                onClick={copyLayoutSnapshot}
-              >
-                {messages.copyLayoutSnapshot}
-              </button>
+          {isLayoutEditMode ? (
+            <div className="layout-editor__body">
+              <div className="layout-editor__actions">
+                <button
+                  type="button"
+                  className="layout-editor__copy"
+                  onClick={copyLayoutSnapshot}
+                >
+                  {messages.copyLayoutSnapshot}
+                </button>
+              </div>
+              <div className="layout-editor__note">
+                {messages.layoutEditNote}
+              </div>
+              <pre className="layout-editor__snapshot">{layoutSnapshot.join("\n")}</pre>
             </div>
-            <div className="layout-editor__note">
-              {messages.layoutEditNote}
-            </div>
-            <pre className="layout-editor__snapshot">{layoutSnapshot.join("\n")}</pre>
-          </div>
-        ) : null}
-      </section>
+          ) : null}
+        </section>
+      ) : null}
     </section>
   );
 }

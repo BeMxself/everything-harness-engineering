@@ -3,10 +3,13 @@ import type { FrameworkDiagram, LocalizedText } from "./types";
 const rawDiagrams: FrameworkDiagram[] = [
   {
     id: "oh-my-opencode",
-    title: "oh-my-opencode",
+    title: {
+      en: "oh-my-openagent (formerly oh-my-opencode)",
+      zh: "oh-my-openagent（原 oh-my-opencode）",
+    },
     summary: {
-      en: "Runtime-centered automation loop inside OpenCode, with plugins, commands, and state wrapped tightly around execution.",
-      zh: "以 Runtime 为中心的自动化闭环发生在 OpenCode 内部，插件、命令与状态都紧密包裹在执行过程周围。",
+      en: "A runtime-centered loop built on top of the OpenCode host, where plugins, commands, and state stay tightly coupled to execution control.",
+      zh: "一个构建在 OpenCode 宿主之上的 runtime-centered 闭环，插件、命令与状态都紧密耦合在执行控制周围。",
     },
     emphasis: {
       automationLoop: "high",
@@ -16,12 +19,12 @@ const rawDiagrams: FrameworkDiagram[] = [
     },
     notes: {
       whyThisLoopMatters: {
-        en: "The runtime owns both retry and continuation, so the loop reads like a control system rather than a delivery chain.",
-        zh: "Runtime 同时负责重试与续跑，因此这个闭环更像一个控制系统，而不是线性的交付流水线。",
+        en: "The same runtime owns dispatch, retry, and continuation, so the system reads more like a control loop than a staged delivery chain.",
+        zh: "同一个 runtime 同时负责分派、重试与续跑，因此这套系统更像控制闭环，而不是分阶段交付链。",
       },
       whereTheHarnessLives: {
-        en: "The harness sits above and around execution: host integration, plugins, MCP, commands, and state all feed runtime decisions.",
-        zh: "Harness 位于执行之上并包裹执行过程：host 集成、插件、MCP、命令和状态都会共同影响 runtime 的决策。",
+        en: "The harness sits around execution: host integration, plugins, MCP, commands, and persisted state all feed runtime decisions.",
+        zh: "Harness 包裹在执行过程周围：host 集成、插件、MCP、命令和持久状态都会共同影响 runtime 决策。",
       },
     },
     readingGuide: {
@@ -38,22 +41,22 @@ const rawDiagrams: FrameworkDiagram[] = [
         zh: "主闭环和角色名称尽量沿用当前公开项目术语；相对位置与协作拓扑则是为了比较控制形态而做的仓库解释。",
       },
       currentLimit: {
-        en: "This view compresses plugin lifecycle, command details, and MCP specifics into one shell layer, so it emphasizes control geometry over implementation internals.",
-        zh: "这张图把 plugin 生命周期、命令细节和 MCP 具体机制压缩进同一层 shell，因此强调的是控制几何，而不是实现细部。",
+        en: "This view compresses plugin lifecycle, command details, and MCP specifics into one shell layer, so it emphasizes control shape over implementation detail.",
+        zh: "这张图把 plugin 生命周期、命令细节和 MCP 具体机制压缩进同一层 shell，因此强调的是控制形状，而不是实现细部。",
       },
     },
     takeaways: [
       {
-        en: "Runtime control, shell influence, verification, and memory are tightly coupled into one continuous loop.",
-        zh: "Runtime control、shell influence、verification 与 memory 被紧密耦合进同一个连续闭环里。",
+        en: "Runtime control, shell influence, verification, and state updates all remain inside one continuous loop.",
+        zh: "Runtime control、shell influence、verification 与状态更新都留在同一个连续闭环里。",
       },
       {
-        en: "Failure recovery routes back to the same controller instead of splitting into a separate delivery stage.",
-        zh: "失败恢复会回到同一个主控制器，而不是分叉进一个独立的交付阶段。",
+        en: "Failure recovery returns to the same controller instead of splitting into a separate delivery stage.",
+        zh: "失败恢复会回到同一个主控制器，而不是分叉进独立的交付阶段。",
       },
       {
-        en: "The diagram is most useful for seeing why host dependency and harness density are both high.",
-        zh: "这张图最适合帮助读者看清，为什么它的宿主依赖和 harness 密度都会很高。",
+        en: "This comparison is most useful for seeing why both host dependency and harness density are high in this design.",
+        zh: "这张图最适合帮助读者看清，为什么这种设计同时具有高宿主依赖和高 harness 密度。",
       },
     ],
     sources: [
@@ -82,8 +85,8 @@ const rawDiagrams: FrameworkDiagram[] = [
     ],
     agentCollaboration: {
       summary: {
-        en: "Official agent surface from the current README; the dispatch topology here is inferred from those documented roles.",
-        zh: "这里采用当前 README 中的官方 agent 命名；协作拓扑则根据这些公开角色关系推断而来。",
+        en: "Role names follow the current public repository; the dispatch topology shown here is repository interpretation for comparison.",
+        zh: "角色命名尽量沿用当前公开仓库；这里的协作拓扑是为了比较而做的仓库解释。",
       },
       nodes: [
         {
@@ -204,7 +207,7 @@ const rawDiagrams: FrameworkDiagram[] = [
         kind: "shell",
         host: "opencode",
         description: "Engineering shell around execution",
-        position: { x: 775, y: 523 },
+        position: { x: 553, y: 461 },
       },
       {
         id: "tools",
@@ -266,6 +269,10 @@ const rawDiagrams: FrameworkDiagram[] = [
         target: "runtime",
         kind: "implicit",
         label: "shell influence",
+        controlPoints: [
+          { x: 864, y: 492 },
+          { x: 929, y: 398 },
+        ],
         sourceAnchorId: "right",
         targetAnchorId: "left",
       },
@@ -276,8 +283,8 @@ const rawDiagrams: FrameworkDiagram[] = [
         kind: "implicit",
         label: "shared shell",
         controlPoints: [
-          { x: 1185, y: 520 },
-          { x: 1440, y: 430 },
+          { x: 1238, y: 493 },
+          { x: 1469, y: 388 },
         ],
         sourceAnchorId: "right",
         targetAnchorId: "left",
@@ -507,8 +514,8 @@ const rawDiagrams: FrameworkDiagram[] = [
     id: "gstack",
     title: "gstack",
     summary: {
-      en: "Delivery pipeline with orchestrated role handoffs, explicit quality gates, and rework loops that surface late-stage cost.",
-      zh: "一条带有角色编排交接、显式质量门与返工回路的交付流水线，能够清楚暴露后段返工的成本。",
+      en: "A delivery pipeline with role handoffs, explicit quality gates, and rework loops that make late-stage cost visible.",
+      zh: "一条带有角色交接、显式质量门与返工回路的交付流水线，能够更直接暴露后段返工成本。",
     },
     emphasis: {
       automationLoop: "high",
@@ -518,8 +525,8 @@ const rawDiagrams: FrameworkDiagram[] = [
     },
     notes: {
       whyThisLoopMatters: {
-        en: "The loop is distributed across gates, so the diagram reveals where quality and delivery pressure accumulate.",
-        zh: "这个闭环分布在多道 gate 上，所以图里能直接看出质量压力和交付压力分别堆积在哪里。",
+        en: "The loop is distributed across gates, so the diagram reveals where quality pressure and delivery pressure accumulate.",
+        zh: "这个闭环分布在多道 gate 上，所以图里能更直接看出质量压力和交付压力分别堆积在哪里。",
       },
       whereTheHarnessLives: {
         en: "The harness lives in role orchestration, command automation, and browser validation rather than a single runtime core.",
@@ -554,7 +561,7 @@ const rawDiagrams: FrameworkDiagram[] = [
         zh: "后段失败更昂贵，因为它不只是回到 build 返工，还可能把工作重新推回 planning。",
       },
       {
-        en: "Harness behavior appears here as orchestration plus validation infrastructure more than as a distinct shell runtime.",
+        en: "Harness behavior appears here more as orchestration plus validation infrastructure than as a distinct shell runtime.",
         zh: "在这里，harness 更像编排加验证基础设施，而不是一个独立的壳层 runtime。",
       },
     ],
@@ -843,8 +850,8 @@ const rawDiagrams: FrameworkDiagram[] = [
     id: "everything-claude-code",
     title: "Everything Claude Code",
     summary: {
-      en: "Policy-shell agent OS with a main agent coordinating subagents, tools, review, and memory-backed iteration.",
-      zh: "一个带 policy shell 的 agent OS，由主 agent 统一协调 subagents、tools、review 与 memory 驱动的迭代闭环。",
+      en: "A policy-shell agent system where a main agent coordinates subagents, tools, review, and memory-backed iteration.",
+      zh: "一个带 policy shell 的 agent system，由主 agent 统一协调 subagents、tools、review 与 memory 驱动的迭代闭环。",
     },
     emphasis: {
       automationLoop: "high",
@@ -868,7 +875,7 @@ const rawDiagrams: FrameworkDiagram[] = [
         zh: "当主 agent 保持中心位置，但 policy、tools 和 memory 又持续塑造每一轮执行时，系统形态会发生什么变化？",
       },
       howToRead: {
-        en: "Read the top-left policy shell together with the lower memory loop; the key comparison point is that governance stays inside the main control loop instead of sitting beside it.",
+        en: "Read the top-left policy shell together with the lower memory loop; the key comparison point is that governance stays inside the main control loop instead of sitting outside it.",
         zh: "把左上角的 policy shell 和下方的 memory loop 放在一起读；关键比较点在于治理语义没有待在闭环外，而是一直压在主控环里。",
       },
       evidenceBoundary: {
@@ -890,8 +897,8 @@ const rawDiagrams: FrameworkDiagram[] = [
         zh: "Policy 和 memory 是这个闭环的 load-bearing part，而不是外围附带的上下文。",
       },
       {
-        en: "Compared with gstack, this design behaves less like a pipeline and more like a governed agent operating system.",
-        zh: "和 gstack 相比，这个设计更不像 pipeline，而更像一个带治理层的 agent operating system。",
+        en: "Compared with gstack, this design behaves less like a pipeline and more like a governed agent system.",
+        zh: "和 gstack 相比，这个设计更不像 pipeline，而更像一个带治理层的 agent system。",
       },
     ],
     sources: [

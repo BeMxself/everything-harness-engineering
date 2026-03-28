@@ -64,7 +64,7 @@ description: Primary-source reading guide for how harness engineering takes shap
 - `这篇新增了什么`
   它把注意力从抽象方法拉回实际宿主，把一个 coding agent loop 拆回一串可检查、可讨论的运行部件。
 - `在本站框架里的位置`
-  它是 [framework-flow-diagrams](../topics/) 这个专题最直接的背景材料之一，因为它帮助我们把“loop 到底在哪里闭合”从口号变成可画、可比较的对象。
+  它是 [宿主与 Harness 结构图](../topics/) 这个专题最直接的背景材料之一，因为它帮助我们把“loop 到底在哪里闭合”从口号变成可画、可比较的对象。
 - `阅读时要注意`
   这篇主要解决 loop 可见性，不单独回答 protocol surface、client/runtime 契约或多客户端共享运行时这些问题。
 - `建议接着读`

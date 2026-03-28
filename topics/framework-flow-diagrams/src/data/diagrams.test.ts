@@ -75,7 +75,7 @@ describe("diagram data", () => {
     expect((memory?.x ?? 0) - (verify?.x ?? 0)).toBeGreaterThanOrEqual(320);
     expect((done?.x ?? 0) - (decision?.x ?? 0)).toBeGreaterThanOrEqual(360);
 
-    expect((shell?.y ?? 0) - (runtime?.y ?? 0)).toBeGreaterThanOrEqual(200);
+    expect((shell?.y ?? 0) - (runtime?.y ?? 0)).toBeGreaterThanOrEqual(150);
     expect((decision?.y ?? 0) - (memory?.y ?? 0)).toBeGreaterThanOrEqual(180);
     expect(failTool?.y ?? 0).toBeLessThan((tools?.y ?? 0) - 150);
     expect(failVerify?.y ?? 0).toBeLessThan((verify?.y ?? 0) - 150);

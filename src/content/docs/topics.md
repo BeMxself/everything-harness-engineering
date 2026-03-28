@@ -20,7 +20,7 @@ description: Topic entrypoints for deeper, runnable research work.
 
 也正因为如此，topic 页面应该比首页更具体，比单篇文章更可检查，但又不把 topic 内部实现细节塞回根站首页。
 
-## framework-flow-diagrams
+## 宿主与 Harness 结构图
 
 这是当前第一个可运行专题。它不是某个框架的宣传页，而是一份可交互的比较研究材料，用来观察不同系统如何表达：
 
@@ -31,7 +31,7 @@ description: Topic entrypoints for deeper, runnable research work.
 
 ### 研究问题
 
-如果把不同项目都叫作 `agent harness`，这个标签其实会遮蔽很多真正重要的差异。`framework-flow-diagrams` 想解决的是更细的问题：
+如果把不同项目都叫作 `agent harness`，这个标签其实会遮蔽很多真正重要的差异。这个专题想解决的是更细的问题：
 
 - 有的系统更像 runtime-centered control loop
 - 有的系统更像 gated delivery pipeline

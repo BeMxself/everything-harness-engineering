@@ -104,7 +104,7 @@ button {
 }
 
 .diagram-panel,
-.info-panel,
+.info-row,
 .collaboration-section {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(14px);
@@ -199,21 +199,20 @@ button {
   color: white;
 }
 
-.info-grid {
+.info-rows {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .diagram-panel__header h2 {
   margin: 0 0 0.75rem;
 }
 
-.info-panel {
+.info-row {
   overflow: clip;
 }
 
-.info-panel__toggle {
+.info-row__toggle {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -227,26 +226,26 @@ button {
   text-align: left;
 }
 
-.info-panel__toggle:hover {
+.info-row__toggle:hover {
   background: rgba(255, 255, 255, 0.32);
 }
 
-.info-panel__heading {
+.info-row__heading {
   display: grid;
   gap: 0.2rem;
 }
 
-.info-panel__title {
+.info-row__title {
   font-size: 1rem;
   font-weight: 700;
 }
 
-.info-panel__hint {
+.info-row__hint {
   color: #64748b;
   font-size: 0.88rem;
 }
 
-.info-panel__chevron {
+.info-row__chevron {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -261,9 +260,39 @@ button {
   line-height: 1;
 }
 
-.info-panel__body {
-  padding: 0 1.25rem 1.25rem;
-  border-top: 1px solid rgba(226, 232, 240, 0.9);
+.info-row__body {
+  border-top: 0;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.info-row__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.info-column {
+  padding: 0.25rem 0.1rem;
+}
+
+.info-column + .info-column {
+  border-left: 1px solid rgba(148, 163, 184, 0.32);
+  padding-left: 1rem;
+}
+
+.info-card__header {
+  margin-bottom: 0.8rem;
+}
+
+.info-card__header h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.info-card__header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.88rem;
 }
 
 .emphasis-list {
@@ -294,7 +323,8 @@ button {
   margin-top: 1rem;
 }
 
-.note-block h3 {
+.note-block h3,
+.note-block h4 {
   margin: 0 0 0.35rem;
   font-size: 1rem;
 }
@@ -752,9 +782,18 @@ button {
 @media (max-width: 980px) {
   .hero,
   .topic-guide,
-  .info-grid,
   .diagram-panel__header {
     grid-template-columns: 1fr;
+  }
+
+  .info-row__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-column + .info-column {
+    border-left: 0;
+    padding-left: 0.1rem;
+    padding-top: 1rem;
   }
 
   .layout-editor__header {

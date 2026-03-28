@@ -8,86 +8,70 @@ describe("App", () => {
     render(<App />);
 
     expect(
-      screen.getByRole("heading", { name: /framework flow diagrams/i }),
+      screen.getByRole("heading", { name: /宿主与 Harness 结构图/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: /how to use this topic/i }),
+      screen.getByRole("region", { name: /这个专题怎么用/i }),
     ).toBeInTheDocument();
   });
 
-  it("switches shared UI copy to Chinese", async () => {
+  it("switches shared UI copy to English", async () => {
     const user = userEvent.setup();
 
     render(<App />);
 
-    await user.click(screen.getByRole("button", { name: /中文/i }));
+    await user.click(screen.getByRole("button", { name: /English/i }));
 
     expect(
-      screen.getByRole("heading", { name: /框架流程图/i }),
+      screen.getByRole("heading", { name: /Host and Harness Maps/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/研究专题/i)).toBeInTheDocument();
-    expect(screen.getByRole("region", { name: /这个专题怎么用/i })).toBeInTheDocument();
+    expect(screen.getByText(/Research Topic/i)).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: /how to use this topic/i })).toBeInTheDocument();
     expect(
-      screen.getByText(/以 Runtime 为中心的自动化闭环发生在 OpenCode 内部/i),
+      screen.getByText(/A runtime-centered loop built on top of the OpenCode host/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /Agent 协作关系/i }),
+      screen.getByRole("heading", { name: /Agent Collaboration/i }),
     ).toBeInTheDocument();
   });
 
-  it("keeps supporting context collapsed until the user expands it", async () => {
+  it("keeps supporting context rows collapsed until the user expands each row", async () => {
     const user = userEvent.setup();
 
     render(<App />);
 
-    const legendToggle = screen.getByRole("button", { name: /legend/i });
-    const emphasisToggle = screen.getByRole("button", { name: /emphasis/i });
-    const readingGuideToggle = screen.getByRole("button", { name: /reading guide/i });
-    const takeawaysToggle = screen.getByRole("button", { name: /current takeaways/i });
-    const notesToggle = screen.getByRole("button", { name: /research notes/i });
-    const sourcesToggle = screen.getByRole("button", { name: /sources/i });
+    const framingToggle = screen.getByRole("button", { name: /怎么读这张图/i });
+    const evidenceToggle = screen.getByRole("button", { name: /结论与证据/i });
 
-    expect(legendToggle).toHaveAttribute("aria-expanded", "false");
-    expect(emphasisToggle).toHaveAttribute("aria-expanded", "false");
-    expect(readingGuideToggle).toHaveAttribute("aria-expanded", "false");
-    expect(takeawaysToggle).toHaveAttribute("aria-expanded", "false");
-    expect(notesToggle).toHaveAttribute("aria-expanded", "false");
-    expect(sourcesToggle).toHaveAttribute("aria-expanded", "false");
+    expect(framingToggle).toHaveAttribute("aria-expanded", "false");
+    expect(evidenceToggle).toHaveAttribute("aria-expanded", "false");
 
-    expect(screen.queryByText(/^Main path$/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/^Automation loop$/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/^Key comparison question$/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/host dependency and harness density/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/^Why this loop matters$/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/oh-my-openagent repository/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^主路径$/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^比较画像$/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^核心比较问题$/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/高宿主依赖和高 harness 密度/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^解读说明$/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/oh-my-openagent 仓库/i)).not.toBeInTheDocument();
 
-    await user.click(legendToggle);
-    await user.click(emphasisToggle);
-    await user.click(readingGuideToggle);
-    await user.click(takeawaysToggle);
-    await user.click(notesToggle);
-    await user.click(sourcesToggle);
+    await user.click(framingToggle);
+    await user.click(evidenceToggle);
 
-    expect(legendToggle).toHaveAttribute("aria-expanded", "true");
-    expect(emphasisToggle).toHaveAttribute("aria-expanded", "true");
-    expect(readingGuideToggle).toHaveAttribute("aria-expanded", "true");
-    expect(takeawaysToggle).toHaveAttribute("aria-expanded", "true");
-    expect(notesToggle).toHaveAttribute("aria-expanded", "true");
-    expect(sourcesToggle).toHaveAttribute("aria-expanded", "true");
+    expect(framingToggle).toHaveAttribute("aria-expanded", "true");
+    expect(evidenceToggle).toHaveAttribute("aria-expanded", "true");
 
-    expect(screen.getByText(/^Main path$/i)).toBeInTheDocument();
-    expect(screen.getByText(/^Automation loop$/i)).toBeInTheDocument();
-    expect(screen.getByText(/^Key comparison question$/i)).toBeInTheDocument();
-    expect(screen.getByText(/host dependency and harness density/i)).toBeInTheDocument();
-    expect(screen.getByText(/^Why this loop matters$/i)).toBeInTheDocument();
-    expect(screen.getByText(/oh-my-openagent repository/i)).toBeInTheDocument();
+    expect(screen.getByText(/^主路径$/i)).toBeInTheDocument();
+    expect(screen.getByText(/^比较画像$/i)).toBeInTheDocument();
+    expect(screen.getByText(/^核心比较问题$/i)).toBeInTheDocument();
+    expect(screen.getByText(/高宿主依赖和高 harness 密度/i)).toBeInTheDocument();
+    expect(screen.getByText(/^解读说明$/i)).toBeInTheDocument();
+    expect(screen.getByText(/oh-my-openagent 仓库/i)).toBeInTheDocument();
   });
 
   it("shows a dedicated agent collaboration section for oh-my-opencode", () => {
     render(<App />);
 
     expect(
-      screen.getByRole("heading", { name: /agent collaboration/i }),
+      screen.getByRole("heading", { name: /Agent 协作关系/i }),
     ).toBeInTheDocument();
     expect(screen.getAllByText(/sisyphus/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/frontend ui\/ux engineer/i).length).toBeGreaterThan(0);

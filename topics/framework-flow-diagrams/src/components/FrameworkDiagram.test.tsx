@@ -1,8 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { diagrams } from "../data/diagrams";
 import { FrameworkDiagram } from "./FrameworkDiagram";
+
+afterEach(() => {
+  window.history.replaceState({}, "", "/");
+});
 
 describe("FrameworkDiagram", () => {
   it("renders labeled step navigation and supports panorama", async () => {
@@ -46,8 +50,18 @@ describe("FrameworkDiagram", () => {
     expect(screen.queryByText(/primary agent/i)).not.toBeInTheDocument();
   });
 
+  it("hides layout edit controls by default", () => {
+    render(<FrameworkDiagram diagram={diagrams[0]} />);
+
+    expect(
+      screen.queryByRole("button", { name: /layout edit/i }),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/layout editor/i)).not.toBeInTheDocument();
+  });
+
   it("exposes a layout edit mode with a live position snapshot", async () => {
     const user = userEvent.setup();
+    window.history.replaceState({}, "", "?editable=true");
 
     render(<FrameworkDiagram diagram={diagrams[0]} />);
 
@@ -66,13 +80,19 @@ describe("FrameworkDiagram", () => {
     ).toHaveLength(2);
     expect(screen.getAllByText(/drag empty canvas to pan/i)).toHaveLength(2);
     expect(screen.getByText(/intent: x=-27, y=297/i)).toBeInTheDocument();
-    expect(screen.getByText(/shell: x=775, y=523/i)).toBeInTheDocument();
+    expect(screen.getByText(/shell: x=553, y=461/i)).toBeInTheDocument();
+    expect(screen.getByText(/e4\[1\]: x=864, y=492/i)).toBeInTheDocument();
+    expect(screen.getByText(/e5\[1\]: x=1238, y=493/i)).toBeInTheDocument();
     expect(screen.getByText(/e9\[1\]: x=1742, y=562/i)).toBeInTheDocument();
+    expect(screen.getByText(/e12\[1\]: x=1600, y=48/i)).toBeInTheDocument();
+    expect(screen.getByText(/e14\[1\]: x=2002, y=4/i)).toBeInTheDocument();
     expect(screen.getByText(/e9: source anchor=left, target anchor=bottom/i)).toBeInTheDocument();
+    expect(screen.getByText(/e12: source anchor=top, target anchor=top/i)).toBeInTheDocument();
   });
 
   it("copies the current layout snapshot to the clipboard", async () => {
     const user = userEvent.setup();
+    window.history.replaceState({}, "", "?editable=1");
     const writeTextSpy = vi
       .spyOn(navigator.clipboard, "writeText")
       .mockResolvedValue(undefined);

@@ -88,7 +88,7 @@ function AppShell({
 
 export default function App() {
   const [activeId, setActiveId] = useState(diagrams[0].id);
-  const [lang, setLang] = useState<Language>("en");
+  const [lang, setLang] = useState<Language>("zh");
 
   return (
     <I18nProvider lang={lang}>
