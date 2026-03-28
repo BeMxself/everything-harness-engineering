@@ -2,17 +2,17 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { diagrams } from "../data/diagrams";
-import { FrameworkDiagram } from "./FrameworkDiagram";
+import { DiagramCanvas } from "./DiagramCanvas";
 
 afterEach(() => {
   window.history.replaceState({}, "", "/");
 });
 
-describe("FrameworkDiagram", () => {
+describe("DiagramCanvas", () => {
   it("renders labeled step navigation and supports panorama", async () => {
     const user = userEvent.setup();
 
-    render(<FrameworkDiagram diagram={diagrams[0]} />);
+    render(<DiagramCanvas diagram={diagrams[0]} />);
 
     expect(screen.getByText(/step 1 of/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /1 enter runtime/i })).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe("FrameworkDiagram", () => {
   it("switches directly between labeled steps", async () => {
     const user = userEvent.setup();
 
-    render(<FrameworkDiagram diagram={diagrams[0]} />);
+    render(<DiagramCanvas diagram={diagrams[0]} />);
 
     await user.click(screen.getByRole("button", { name: /3 verify result/i }));
 
@@ -40,7 +40,7 @@ describe("FrameworkDiagram", () => {
   it("renders step participant annotations for oh-my-opencode", async () => {
     const user = userEvent.setup();
 
-    render(<FrameworkDiagram diagram={diagrams[0]} />);
+    render(<DiagramCanvas diagram={diagrams[0]} />);
 
     await user.click(screen.getByRole("button", { name: /2 dispatch execution/i }));
 
@@ -51,7 +51,7 @@ describe("FrameworkDiagram", () => {
   });
 
   it("hides layout edit controls by default", () => {
-    render(<FrameworkDiagram diagram={diagrams[0]} />);
+    render(<DiagramCanvas diagram={diagrams[0]} />);
 
     expect(
       screen.queryByRole("button", { name: /layout edit/i }),
@@ -63,7 +63,7 @@ describe("FrameworkDiagram", () => {
     const user = userEvent.setup();
     window.history.replaceState({}, "", "?editable=true");
 
-    render(<FrameworkDiagram diagram={diagrams[0]} />);
+    render(<DiagramCanvas diagram={diagrams[0]} />);
 
     const toggle = screen.getByRole("button", { name: /layout edit/i });
 
@@ -97,7 +97,7 @@ describe("FrameworkDiagram", () => {
       .spyOn(navigator.clipboard, "writeText")
       .mockResolvedValue(undefined);
 
-    render(<FrameworkDiagram diagram={diagrams[0]} />);
+    render(<DiagramCanvas diagram={diagrams[0]} />);
 
     await user.click(screen.getByRole("button", { name: /layout edit/i }));
     await user.click(screen.getByRole("button", { name: /copy layout snapshot/i }));

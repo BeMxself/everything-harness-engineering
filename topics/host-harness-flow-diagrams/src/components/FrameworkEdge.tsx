@@ -10,10 +10,10 @@ import {
   type EdgeProps,
 } from "@xyflow/react";
 import { buildEdgePath, getEdgeLabelPosition } from "../diagram/edgePath";
-import type { FrameworkEdgeData } from "../diagram/mapEdges";
+import type { DiagramEdgeData } from "../diagram/mapEdges";
 import { resolveText, useI18n } from "../i18n";
 
-export function FrameworkEdge(props: EdgeProps<Edge<FrameworkEdgeData>>) {
+export function FrameworkEdge(props: EdgeProps<Edge<DiagramEdgeData>>) {
   const { lang } = useI18n();
   const { screenToFlowPosition } = useReactFlow();
   const controlPoints = props.data?.edge.controlPoints;

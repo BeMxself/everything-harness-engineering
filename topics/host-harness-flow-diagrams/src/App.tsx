@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { AgentCollaborationPanel } from "./components/AgentCollaborationPanel";
-import { FrameworkDiagram } from "./components/FrameworkDiagram";
-import { FrameworkSwitcher } from "./components/FrameworkSwitcher";
+import { DiagramCanvas } from "./components/DiagramCanvas";
+import { ComparisonSwitcher } from "./components/ComparisonSwitcher";
 import { InfoPanels } from "./components/InfoPanels";
 import { diagrams } from "./data/diagrams";
 import { I18nProvider, type Language, useI18n } from "./i18n";
@@ -65,13 +65,13 @@ function AppShell({
         </article>
       </section>
 
-      <FrameworkSwitcher
+      <ComparisonSwitcher
         diagrams={diagrams}
         activeId={activeDiagram.id}
         onSelect={setActiveId}
       />
 
-      <FrameworkDiagram diagram={activeDiagram} />
+      <DiagramCanvas diagram={activeDiagram} />
       {activeDiagram.agentCollaboration ? (
         <section className="collaboration-section">
           <div className="collaboration-section__header">

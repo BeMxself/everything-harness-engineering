@@ -1,4 +1,4 @@
-import type { FrameworkDiagram, VisibilityState } from "../data/types";
+import type { ComparisonDiagram, VisibilityState } from "../data/types";
 
 const shellNodeKinds = new Set(["shell"]);
 
@@ -11,7 +11,7 @@ function getFirstActiveStepIndex(
 }
 
 export function getNodeVisibility(
-  diagram: FrameworkDiagram,
+  diagram: ComparisonDiagram,
   nodeId: string,
   stepIndex: number,
 ): VisibilityState {
@@ -48,7 +48,7 @@ export function getNodeVisibility(
 }
 
 export function getEdgeVisibility(
-  diagram: FrameworkDiagram,
+  diagram: ComparisonDiagram,
   edgeId: string,
   stepIndex: number,
 ): VisibilityState {

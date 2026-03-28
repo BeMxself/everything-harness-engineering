@@ -1,10 +1,10 @@
-import type { FrameworkDiagram } from "../data/types";
+import type { ComparisonDiagram } from "../data/types";
 import { InfoPanelRow } from "./InfoPanelRow";
 import { Legend } from "./Legend";
 import { resolveText, useI18n } from "../i18n";
 
 type InfoPanelsProps = {
-  diagram: FrameworkDiagram;
+  diagram: ComparisonDiagram;
 };
 
 function formatLevel(level: "low" | "medium" | "high") {

@@ -101,8 +101,8 @@ Expected: PASS
 - Create: `src/components/FrameworkEdge.tsx`
 - Create: `src/components/PlaybackControls.tsx`
 - Create: `src/components/Legend.tsx`
-- Create: `src/components/FrameworkDiagram.tsx`
-- Test: `src/components/FrameworkDiagram.test.tsx`
+- Create: `src/components/DiagramCanvas.tsx`
+- Test: `src/components/DiagramCanvas.test.tsx`
 
 - [ ] **Step 1: Write failing interaction tests**
 
@@ -110,7 +110,7 @@ Cover initial step rendering, next/previous/reset, and diagram title presence.
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `npm test -- --run src/components/FrameworkDiagram.test.tsx`
+Run: `npm test -- --run src/components/DiagramCanvas.test.tsx`
 Expected: FAIL because components do not exist yet.
 
 - [ ] **Step 3: Implement the shared node, edge, legend, and playback components**
@@ -119,7 +119,7 @@ Map one comparison case into React Flow and expose playback controls.
 
 - [ ] **Step 4: Run test to verify it passes**
 
-Run: `npm test -- --run src/components/FrameworkDiagram.test.tsx`
+Run: `npm test -- --run src/components/DiagramCanvas.test.tsx`
 Expected: PASS
 
 ### Task 5: Compose The Research Topic Page

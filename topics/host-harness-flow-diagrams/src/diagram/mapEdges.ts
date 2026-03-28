@@ -1,14 +1,14 @@
 import type { Edge } from "@xyflow/react";
 import type {
+  ComparisonDiagram,
   DiagramAnchorId,
   DiagramEdge,
   DiagramPoint,
-  FrameworkDiagram,
   VisibilityState,
 } from "../data/types";
 import { edgeKindStyles, visibilityOpacity } from "./theme";
 
-export type FrameworkEdgeData = {
+export type DiagramEdgeData = {
   edge: DiagramEdge;
   visibility: VisibilityState;
   anchorBinding?: {
@@ -50,10 +50,10 @@ type MapEdgeOptions = {
 };
 
 export function mapEdges(
-  diagram: FrameworkDiagram,
+  diagram: ComparisonDiagram,
   getVisibility: (edgeId: string) => VisibilityState,
   options: MapEdgeOptions = {},
-): Edge<FrameworkEdgeData>[] {
+): Edge<DiagramEdgeData>[] {
   return diagram.edges.map((edge) => {
     const visibility = getVisibility(edge.id);
     const kindStyle = edgeKindStyles[edge.kind];

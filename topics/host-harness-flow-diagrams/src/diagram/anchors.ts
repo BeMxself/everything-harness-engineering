@@ -1,9 +1,9 @@
 import type {
   DiagramAnchor,
   DiagramAnchorId,
+  ComparisonDiagram,
   DiagramNode,
   DiagramPoint,
-  FrameworkDiagram,
 } from "../data/types";
 
 const defaultAnchors: DiagramAnchor[] = [
@@ -17,7 +17,7 @@ export function getNodeAnchors(node: DiagramNode) {
   return node.anchors ?? defaultAnchors;
 }
 
-export function buildNodeAnchors(diagram: FrameworkDiagram) {
+export function buildNodeAnchors(diagram: ComparisonDiagram) {
   return Object.fromEntries(
     diagram.nodes.map((node) => [node.id, getNodeAnchors(node)]),
   ) as Record<string, DiagramAnchor[]>;
@@ -39,7 +39,7 @@ function getDefaultAnchorPair(source: DiagramPoint, target: DiagramPoint) {
 }
 
 export function buildEdgeAnchorBindings(
-  diagram: FrameworkDiagram,
+  diagram: ComparisonDiagram,
   positions: Record<string, DiagramPoint>,
 ) {
   return Object.fromEntries(

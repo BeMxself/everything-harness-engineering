@@ -34,7 +34,7 @@ export type DiagramAnchor = {
   side: DiagramAnchorId;
 };
 
-export type FrameworkDiagram = {
+export type ComparisonDiagram = {
   id: string;
   title: LocalizedText;
   summary: LocalizedText;

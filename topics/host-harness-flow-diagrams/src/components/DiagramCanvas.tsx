@@ -9,10 +9,10 @@ import {
   type Node,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import type { FrameworkDiagram as FrameworkDiagramType } from "../data/types";
+import type { ComparisonDiagram } from "../data/types";
 import { buildEdgeAnchorBindings } from "../diagram/anchors";
 import { mapEdges } from "../diagram/mapEdges";
-import { mapNodes, type FrameworkNodeData } from "../diagram/mapNodes";
+import { mapNodes, type DiagramNodeData } from "../diagram/mapNodes";
 import { getEdgeVisibility, getNodeVisibility } from "../diagram/visibility";
 import { insertControlPoint, removeControlPoint } from "../diagram/edgeControls";
 import { resolveText, useI18n } from "../i18n";
@@ -24,8 +24,8 @@ import { StepAnnotations } from "./StepAnnotations";
 const nodeTypes = { frameworkNode: FrameworkNode };
 const edgeTypes = { frameworkEdge: FrameworkEdge };
 
-type FrameworkDiagramProps = {
-  diagram: FrameworkDiagramType;
+type DiagramCanvasProps = {
+  diagram: ComparisonDiagram;
 };
 
 function isEditableQueryEnabled() {
@@ -42,13 +42,13 @@ function isEditableQueryEnabled() {
   return ["1", "true", "yes", "on"].includes(value.toLowerCase());
 }
 
-function buildLayoutPositions(diagram: FrameworkDiagramType) {
+function buildLayoutPositions(diagram: ComparisonDiagram) {
   return Object.fromEntries(
     diagram.nodes.map((node) => [node.id, node.position]),
   ) as Record<string, { x: number; y: number }>;
 }
 
-function buildEdgeControlPoints(diagram: FrameworkDiagramType) {
+function buildEdgeControlPoints(diagram: ComparisonDiagram) {
   return Object.fromEntries(
     diagram.edges
       .filter((edge) => edge.controlPoints?.length)
@@ -61,7 +61,7 @@ function roundPosition(value: number) {
 }
 
 function buildEditableNodes(
-  diagram: FrameworkDiagramType,
+  diagram: ComparisonDiagram,
   positions: Record<string, { x: number; y: number }>,
   options: {
     onAnchorSelect?: (nodeId: string, anchorId: "top" | "right" | "bottom" | "left") => void;
@@ -75,7 +75,7 @@ function buildEditableNodes(
   });
 }
 
-function extractLayoutPositions(nodes: Node<FrameworkNodeData>[]) {
+function extractLayoutPositions(nodes: Node<DiagramNodeData>[]) {
   return Object.fromEntries(
     nodes.map((node) => [
       node.id,
@@ -87,7 +87,7 @@ function extractLayoutPositions(nodes: Node<FrameworkNodeData>[]) {
   ) as Record<string, { x: number; y: number }>;
 }
 
-function FrameworkDiagramInner({ diagram }: FrameworkDiagramProps) {
+function DiagramCanvasInner({ diagram }: DiagramCanvasProps) {
   const { lang, messages } = useI18n();
   const [stepIndex, setStepIndex] = useState(0);
   const [isLayoutEditMode, setIsLayoutEditMode] = useState(false);
@@ -132,7 +132,7 @@ function FrameworkDiagramInner({ diagram }: FrameworkDiagramProps) {
   };
 
   const [editableNodes, setEditableNodes, onEditableNodesChange] = useNodesState<
-    Node<FrameworkNodeData>
+    Node<DiagramNodeData>
   >(buildEditableNodes(diagram, buildLayoutPositions(diagram), {
     onAnchorSelect: handleAnchorSelect,
   }));
@@ -409,10 +409,10 @@ function FrameworkDiagramInner({ diagram }: FrameworkDiagramProps) {
   );
 }
 
-export function FrameworkDiagram({ diagram }: FrameworkDiagramProps) {
+export function DiagramCanvas({ diagram }: DiagramCanvasProps) {
   return (
     <ReactFlowProvider>
-      <FrameworkDiagramInner diagram={diagram} />
+      <DiagramCanvasInner diagram={diagram} />
     </ReactFlowProvider>
   );
 }

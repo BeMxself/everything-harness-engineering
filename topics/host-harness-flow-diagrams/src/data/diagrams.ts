@@ -1,6 +1,6 @@
-import type { FrameworkDiagram, LocalizedText } from "./types";
+import type { ComparisonDiagram, LocalizedText } from "./types";
 
-const rawDiagrams: FrameworkDiagram[] = [
+const rawDiagrams: ComparisonDiagram[] = [
   {
     id: "oh-my-opencode",
     title: {
@@ -1282,7 +1282,7 @@ const stepNotesByDiagram: Record<string, Record<string, LocalizedText>> = {
   },
 };
 
-function withPanoramaStep(diagram: FrameworkDiagram): FrameworkDiagram {
+function withPanoramaStep(diagram: ComparisonDiagram): ComparisonDiagram {
   const panoramaStep = {
     id: "panorama",
     label: { en: "Panorama", zh: "全景" },
@@ -1304,6 +1304,6 @@ function withPanoramaStep(diagram: FrameworkDiagram): FrameworkDiagram {
   };
 }
 
-export const diagrams: FrameworkDiagram[] = rawDiagrams.map(withPanoramaStep);
+export const diagrams: ComparisonDiagram[] = rawDiagrams.map(withPanoramaStep);
 
 export const diagramsById = new Map(diagrams.map((diagram) => [diagram.id, diagram]));

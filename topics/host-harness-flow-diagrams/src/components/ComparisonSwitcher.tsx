@@ -1,21 +1,21 @@
-import type { FrameworkDiagram } from "../data/types";
+import type { ComparisonDiagram } from "../data/types";
 import { resolveText, useI18n } from "../i18n";
 
-type FrameworkSwitcherProps = {
-  diagrams: FrameworkDiagram[];
+type ComparisonSwitcherProps = {
+  diagrams: ComparisonDiagram[];
   activeId: string;
   onSelect: (id: string) => void;
 };
 
-export function FrameworkSwitcher({
+export function ComparisonSwitcher({
   diagrams,
   activeId,
   onSelect,
-}: FrameworkSwitcherProps) {
+}: ComparisonSwitcherProps) {
   const { lang } = useI18n();
 
   return (
-    <div className="framework-switcher" aria-label="Framework switcher">
+    <div className="framework-switcher" aria-label="Comparison case switcher">
       {diagrams.map((diagram) => (
         <button
           key={diagram.id}

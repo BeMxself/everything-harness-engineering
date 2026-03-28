@@ -58,12 +58,10 @@ The app should be data-driven. Case-specific meaning belongs in diagram data, no
 
 Core model:
 
-- `FrameworkDiagram`
+- `ComparisonDiagram`
 - `DiagramNode`
 - `DiagramEdge`
 - `DiagramStep`
-
-The current implementation keeps the `FrameworkDiagram` type name, but topic scope is broader than "frameworks" alone.
 
 Each comparison case defines:
 

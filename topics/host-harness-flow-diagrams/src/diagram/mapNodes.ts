@@ -1,13 +1,13 @@
 import type { Node } from "@xyflow/react";
 import type {
+  ComparisonDiagram,
   DiagramAnchorId,
   DiagramNode,
-  FrameworkDiagram,
   VisibilityState,
 } from "../data/types";
 import { nodeKindStyles, visibilityOpacity } from "./theme";
 
-export type FrameworkNodeData = {
+export type DiagramNodeData = {
   node: DiagramNode;
   visibility: VisibilityState;
   isEditable?: boolean;
@@ -22,10 +22,10 @@ type MapNodeOptions = {
 };
 
 export function mapNodes(
-  diagram: FrameworkDiagram,
+  diagram: ComparisonDiagram,
   getVisibility: (nodeId: string) => VisibilityState,
   options: MapNodeOptions = {},
-): Node<FrameworkNodeData>[] {
+): Node<DiagramNodeData>[] {
   return diagram.nodes.map((node) => {
     const visibility = getVisibility(node.id);
     const kindStyle = nodeKindStyles[node.kind];
