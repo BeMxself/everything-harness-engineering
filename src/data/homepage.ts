@@ -334,8 +334,8 @@ export const topics = [
   {
     title: "宿主与 Harness 结构图",
     description:
-      "一个可运行的研究应用，用来比较不同 coding-agent 系统里的宿主工作面、harness 壳层、控制中心与恢复路径。",
-    href: `${BASE}/topics/framework-flow-diagrams/site/`,
+      "一个可运行的研究应用，用来比较 coding-agent systems、harness stacks 与相邻 workflow systems 里的宿主工作面、壳层位置、控制中心与恢复路径。",
+    href: `${BASE}/topics/host-harness-flow-diagrams/site/`,
   },
 ];
 
@@ -358,6 +358,6 @@ export const nextLinks = [
   {
     title: "我想直接看可运行材料",
     description: "进入可交互专题，看这些判断如何落成研究材料。",
-    href: `${BASE}/topics/framework-flow-diagrams/site/`,
+    href: `${BASE}/topics/host-harness-flow-diagrams/site/`,
   },
 ];

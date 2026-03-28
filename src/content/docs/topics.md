@@ -22,7 +22,7 @@ description: Topic entrypoints for deeper, runnable research work.
 
 ## 宿主与 Harness 结构图
 
-这是当前第一个可运行专题。它不是某个框架的宣传页，而是一份可交互的比较研究材料，用来观察不同系统如何表达：
+这是当前第一个可运行专题。它不是某个项目或某一类框架的宣传页，而是一份可交互的比较研究材料，用来观察不同系统如何表达：
 
 - automation loop 在哪里闭合
 - harness 壳层压在系统的哪一层
@@ -41,14 +41,15 @@ description: Topic entrypoints for deeper, runnable research work.
 
 ### 这个专题里有什么
 
-- [打开专题应用](../topics/framework-flow-diagrams/site/)
-- [查看源代码](https://github.com/BeMxself/everything-harness-engineering/tree/main/topics/framework-flow-diagrams)
-- [查看设计说明](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/framework-flow-diagrams/docs/specs/2026-03-25-framework-flow-diagrams-design.md)
-- [查看实现计划](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/framework-flow-diagrams/docs/plans/2026-03-25-framework-flow-diagrams.md)
+- [打开专题应用](../topics/host-harness-flow-diagrams/site/)
+- [查看源代码](https://github.com/BeMxself/everything-harness-engineering/tree/main/topics/host-harness-flow-diagrams)
+- [查看设计说明](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/specs/2026-03-25-host-harness-flow-diagrams-design.md)
+- [查看实现计划](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/plans/2026-03-25-host-harness-flow-diagrams.md)
+- [查看命名与扩展评估](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-host-harness-flow-diagrams-name-and-expansion-assessment.md)
 
 ### 当前已经能回答什么
 
-- `oh-my-opencode` 更适合被读成 runtime-centered harness，而不是线性交付链
+- `oh-my-openagent` 更适合被读成 runtime-centered harness，而不是线性交付链
 - `gstack` 的强项更容易出现在 pipeline、gates 和返工成本暴露上
 - `everything-claude-code` 更像 policy shell 包裹下的主 agent 控制系统，而不只是普通多 agent 分发
 
@@ -56,15 +57,15 @@ description: Topic entrypoints for deeper, runnable research work.
 
 ### 当前还不能回答什么
 
-- 还不能覆盖更多框架，所以现在更适合作为比较方法示例，而不是领域全景地图
-- 还没有把每个框架的更细粒度角色、命令和 hooks 全部展开
+- 还不能覆盖更多比较案例，所以现在更适合作为比较方法示例，而不是领域全景地图
+- 还没有把每个案例的更细粒度角色、命令和 hooks 全部展开
 - 还没有把时间维度、成本维度和真实任务案例叠进图里
 
 因此，读这个专题时最好把它当作 `working research artifact`，不是最终标准图谱。
 
 ### 下一轮最值得补什么
 
-- 增加更多框架，特别是边界更模糊的案例
+- 增加更多比较案例，特别是边界更模糊的案例
 - 给每张图继续补来源说明、证据边界和专题结论
 - 在图之外增加“为什么这样画”的方法注记，减少读者把它误认成官方架构图的风险
 

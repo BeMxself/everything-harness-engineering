@@ -1,10 +1,10 @@
-# Framework Flow Diagrams Implementation Plan
+# Host and Harness Flow Diagrams Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a small React Flow research app that compares `oh-my-opencode`, `gstack`, and `Everything Claude Code` using step-revealed diagrams.
+**Goal:** Build a small React Flow research app that compares `oh-my-openagent`, `gstack`, and `Everything Claude Code` using step-revealed diagrams.
 
-**Architecture:** Use a data-driven React + TypeScript app. Keep framework meaning in diagram data, use shared node and edge renderers for visual semantics, and derive visibility from the active step instead of mutating graph structure.
+**Architecture:** Use a data-driven React + TypeScript app. Keep case-specific meaning in diagram data, use shared node and edge renderers for visual semantics, and derive visibility from the active step instead of mutating graph structure.
 
 **Tech Stack:** Vite, React, TypeScript, `@xyflow/react`, Vitest, Testing Library
 
@@ -51,14 +51,14 @@ Expected: test runner starts and scaffold tests can execute.
 
 - [ ] **Step 1: Write failing tests for diagram integrity**
 
-Cover required ids, step references, and framework count.
+Cover required ids, step references, and initial case count.
 
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `npm test -- --run src/data/diagrams.test.ts`
 Expected: FAIL because the data module does not exist yet.
 
-- [ ] **Step 3: Implement the shared types and three framework diagrams**
+- [ ] **Step 3: Implement the shared types and three initial comparison diagrams**
 
 Add the data model and first-pass graph data.
 
@@ -106,7 +106,7 @@ Expected: PASS
 
 - [ ] **Step 1: Write failing interaction tests**
 
-Cover initial step rendering, next/previous/reset, and framework title presence.
+Cover initial step rendering, next/previous/reset, and diagram title presence.
 
 - [ ] **Step 2: Run test to verify it fails**
 
@@ -115,7 +115,7 @@ Expected: FAIL because components do not exist yet.
 
 - [ ] **Step 3: Implement the shared node, edge, legend, and playback components**
 
-Map one framework into React Flow and expose playback controls.
+Map one comparison case into React Flow and expose playback controls.
 
 - [ ] **Step 4: Run test to verify it passes**
 
@@ -131,7 +131,7 @@ Expected: PASS
 
 - [ ] **Step 1: Write failing app-level tests**
 
-Cover switching between framework diagrams and showing summary/emphasis text.
+Cover switching between comparison diagrams and showing summary/emphasis text.
 
 - [ ] **Step 2: Run test to verify it fails**
 
@@ -170,5 +170,5 @@ Expected: PASS
 
 ```bash
 git add .
-git commit -m "feat: add framework flow diagram topic"
+git commit -m "feat: add host and harness flow diagram topic"
 ```

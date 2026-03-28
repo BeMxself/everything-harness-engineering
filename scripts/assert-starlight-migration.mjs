@@ -28,7 +28,7 @@ assertExists("dist/topics/index.html");
 
 assertIncludes("dist/index.html", "Everything Harness Engineering");
 assertIncludes("dist/index.html", "Harness Engineering");
-assertIncludes("dist/topics/index.html", "framework-flow-diagrams");
+assertIncludes("dist/topics/index.html", "host-harness-flow-diagrams");
 assertIncludes("dist/definition/index.html", "harness engineering");
 
 console.log("Starlight migration assertions passed.");

@@ -1,25 +1,25 @@
-# Framework Flow Diagrams Design
+# Host and Harness Flow Diagrams Design
 
 **Date:** 2026-03-25
 
-**Goal:** Build a small standalone research topic that visualizes and compares how `oh-my-opencode`, `gstack`, and `Everything Claude Code` structure automation loops, engineering shells, control points, and host dependencies.
+**Goal:** Build a small standalone research topic that visualizes and compares how `oh-my-openagent`, `gstack`, and `Everything Claude Code` arrange host surfaces, automation loops, engineering shells, control points, and host dependencies.
 
 ## Problem
 
-Existing framework comparisons are usually list-based. That format is weak at showing:
+Existing system comparisons are usually list-based. That format is weak at showing:
 
 - where the main automation loop actually closes
 - where engineering shell concerns live
 - who controls the next step
-- how strongly the framework depends on a host environment
+- how strongly the system depends on a host environment
 
 The topic should turn those differences into step-revealed diagrams that are easy to inspect as research notes.
 
 ## Scope
 
-The first version covers exactly three frameworks:
+The first version covers exactly three comparison cases:
 
-- `oh-my-opencode`
+- `oh-my-openagent (formerly oh-my-opencode)`
 - `gstack`
 - `Everything Claude Code`
 
@@ -27,15 +27,15 @@ The app should provide:
 
 - one diagram at a time
 - step-by-step reveal controls similar to the Ralph demo
-- a shared visual language across frameworks
-- per-framework summary and emphasis metadata
+- a shared visual language across cases
+- per-case summary and emphasis metadata
 
 Out of scope for v1:
 
 - automatic layout
 - drag/drop editing
 - persistence
-- additional frameworks
+- additional comparison cases
 - collaborative annotations
 - data import/export UI
 
@@ -54,7 +54,7 @@ Recommended stack:
 
 ## Data Model
 
-The app should be data-driven. Framework-specific meaning belongs in diagram data, not hard-coded component branches.
+The app should be data-driven. Case-specific meaning belongs in diagram data, not hard-coded component branches.
 
 Core model:
 
@@ -63,7 +63,9 @@ Core model:
 - `DiagramEdge`
 - `DiagramStep`
 
-Each framework defines:
+The current implementation keeps the `FrameworkDiagram` type name, but topic scope is broader than "frameworks" alone.
+
+Each comparison case defines:
 
 - metadata
 - static node and edge graph
@@ -109,7 +111,7 @@ Visibility states:
 
 ## Layout Intent
 
-Each framework gets its own layout logic.
+Each comparison case gets its own layout logic.
 
 ### oh-my-opencode
 
@@ -166,7 +168,7 @@ Suggested structure:
 - `src/app/`
   - page composition
 
-The central page should only coordinate the current framework and current step. Styling decisions should live in reusable mappers.
+The central page should only coordinate the current comparison case and current step. Styling decisions should live in reusable mappers.
 
 ## Testing Strategy
 
@@ -176,7 +178,7 @@ Tests should focus on behavior and mapping:
 - step progression logic
 - visibility calculation
 - playback controls
-- framework switching
+- case switching
 
 Avoid pixel-perfect visual tests in v1.
 
@@ -184,8 +186,7 @@ Avoid pixel-perfect visual tests in v1.
 
 The topic is successful when:
 
-- all three frameworks can be viewed with their own layouts
+- all three comparison cases can be viewed with their own layouts
 - each diagram can be stepped forward and backward
-- shared visual semantics remain consistent across frameworks
+- shared visual semantics remain consistent across cases
 - the app makes the automation loop and shell placement obvious without reading source code
-

@@ -34,8 +34,8 @@ The homepage is the repository's guide and outline:
 
 ## Current Topics
 
-- `topics/framework-flow-diagrams`
-  A runnable research app for comparing framework automation loops, harness layers, control points, and host dependencies.
+- `topics/host-harness-flow-diagrams`
+  A runnable research app for comparing host surfaces, harness layers, control points, and recovery paths across coding-agent systems and adjacent workflow stacks.
 
 ## Working Model
 

@@ -52,8 +52,8 @@ export default defineConfig({
               link: "https://github.com/BeMxself/everything-harness-engineering",
             },
             {
-              label: "framework-flow-diagrams",
-              link: "/topics/framework-flow-diagrams/site/",
+              label: "host-harness-flow-diagrams",
+              link: "/topics/host-harness-flow-diagrams/site/",
             },
           ],
         },

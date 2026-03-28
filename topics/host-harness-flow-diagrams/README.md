@@ -1,15 +1,15 @@
 # Everything Harness Engineering
 
-Small research project for comparing how agent frameworks express:
+Small research project for comparing how coding-agent systems, harness stacks, and adjacent workflow systems express:
 
 - automation loops
 - harness layers
 - control points
 - host dependencies
 
-The first topic visualizes three frameworks as step-revealed diagrams:
+The current topic visualizes three initial comparison cases as step-revealed diagrams:
 
-- `oh-my-opencode`
+- `oh-my-openagent (formerly oh-my-opencode)`
 - `gstack`
 - `Everything Claude Code`
 

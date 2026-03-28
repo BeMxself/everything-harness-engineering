@@ -3,7 +3,7 @@ import { diagrams } from "./diagrams";
 import { resolveText } from "../i18n";
 
 describe("diagram data", () => {
-  it("contains the three framework topics", () => {
+  it("contains the three initial comparison topics", () => {
     expect(diagrams.map((diagram) => diagram.id)).toEqual([
       "oh-my-opencode",
       "gstack",
