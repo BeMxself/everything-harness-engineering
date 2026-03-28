@@ -6,7 +6,7 @@ const ECOSYSTEM_COMPARISON = `${BASE}/ecosystem-comparison/`;
 export const hero = {
   title: "Everything Harness Engineering",
   tagline:
-    "这不是某个产品的教程站，而是一张研究导航图。它先帮你看清 harness engineering 在讨论什么，再把你分流到定义、关键文章、生态比较和可运行专题。",
+    "这里整理的是 harness engineering 的定义、形成过程、主要路线和可运行研究材料，重点是把这个领域真正值得区分的对象和问题放到同一张图里。",
 };
 
 export const navItems = [
