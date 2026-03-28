@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import { AgentCollaborationPanel } from "./components/AgentCollaborationPanel";
 import { DiagramCanvas } from "./components/DiagramCanvas";
+import { DraftCasePreview } from "./components/DraftCasePreview";
+import { DraftDiagramSection } from "./components/DraftDiagramSection";
 import { ComparisonSwitcher } from "./components/ComparisonSwitcher";
 import { ExpansionPreview } from "./components/ExpansionPreview";
 import { InfoPanels } from "./components/InfoPanels";
@@ -67,6 +69,8 @@ function AppShell({
       </section>
 
       <ExpansionPreview />
+      <DraftCasePreview />
+      <DraftDiagramSection />
 
       <ComparisonSwitcher
         diagrams={diagrams}

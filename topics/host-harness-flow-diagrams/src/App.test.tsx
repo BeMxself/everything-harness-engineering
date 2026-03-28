@@ -91,4 +91,15 @@ describe("App", () => {
     expect(screen.getByText(/推荐代表/i)).toBeInTheDocument();
     expect(screen.getAllByText(/oh-my-claudecode/i).length).toBeGreaterThan(0);
   });
+
+  it("shows a Trellis draft case preview without adding it to the formal comparison switcher", () => {
+    render(<App />);
+
+    expect(screen.getAllByRole("heading", { name: /Trellis Draft/i }).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/workflow core/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/platform wiring/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/review \/ memory return/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Open questions/i).length).toBeGreaterThan(0);
+    expect(screen.queryByRole("button", { name: /^Trellis$/i })).not.toBeInTheDocument();
+  });
 });

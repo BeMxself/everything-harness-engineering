@@ -165,3 +165,36 @@ export type ExpansionCandidateFamily = {
   recommendedRepresentativeId: string;
   note: LocalizedText;
 };
+
+export type DraftCaseNode = {
+  id: string;
+  label: LocalizedText;
+  purpose: LocalizedText;
+  lane:
+    | "entry"
+    | "core"
+    | "memory"
+    | "wiring"
+    | "host"
+    | "execution"
+    | "return"
+    | "maintenance";
+};
+
+export type DraftCaseStep = {
+  id: string;
+  label: LocalizedText;
+  summary: LocalizedText;
+};
+
+export type DraftCase = {
+  id: string;
+  title: LocalizedText;
+  state: "draft";
+  summary: LocalizedText;
+  nodes: DraftCaseNode[];
+  steps: DraftCaseStep[];
+  openQuestions: LocalizedText[];
+  evidenceNotes: LocalizedText[];
+  sources: DiagramSource[];
+};
