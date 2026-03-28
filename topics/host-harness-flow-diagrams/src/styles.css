@@ -103,6 +103,131 @@ button {
   color: #475569;
 }
 
+.expansion-preview {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem 1.35rem;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.expansion-preview__header h2 {
+  margin: 0 0 0.45rem;
+}
+
+.expansion-preview__header p:last-child {
+  margin: 0;
+  color: #475569;
+  max-width: 70rem;
+}
+
+.expansion-preview__family-grid,
+.expansion-preview__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.expansion-family-card,
+.expansion-card {
+  padding: 1rem 1.05rem;
+  border-radius: 20px;
+  background: rgba(248, 250, 252, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.expansion-family-card__header h3,
+.expansion-card__header h4 {
+  margin: 0;
+}
+
+.expansion-family-card__note {
+  margin: 0.45rem 0 0;
+  color: #475569;
+}
+
+.expansion-family-card__members,
+.expansion-card__chips,
+.expansion-card__compare-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.expansion-family-card__members,
+.expansion-card__chips {
+  margin-top: 0.7rem;
+}
+
+.expansion-family-card__representative {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin: 0.9rem 0 0;
+  color: #334155;
+}
+
+.expansion-family-card__representative span,
+.expansion-card__compare span,
+.expansion-preview__group-header p {
+  color: #64748b;
+}
+
+.expansion-preview__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.62rem;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.expansion-preview__chip--tier {
+  background: #dbeafe;
+}
+
+.expansion-preview__group {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.expansion-preview__group-header h3 {
+  margin: 0;
+}
+
+.expansion-preview__group-header p {
+  margin: 0.25rem 0 0;
+}
+
+.expansion-card__header {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.expansion-card__compare {
+  margin-top: 0.9rem;
+}
+
+.expansion-card__compare span {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.expansion-card__compare code {
+  padding: 0.18rem 0.48rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  color: #334155;
+}
+
 .diagram-panel,
 .info-row,
 .collaboration-section {

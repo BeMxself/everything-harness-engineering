@@ -77,4 +77,18 @@ describe("App", () => {
     expect(screen.getAllByText(/frontend ui\/ux engineer/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/prometheus/i).length).toBeGreaterThan(0);
   });
+
+  it("shows a read-only preview of next-wave comparison candidates", () => {
+    render(<App />);
+
+    expect(
+      screen.getByRole("heading", { name: /下一轮候选/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /^Trellis$/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /^oh-my-codex$/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /^get-shit-done$/i })).toBeInTheDocument();
+    expect(screen.getByText(/OMX 编排家族/i)).toBeInTheDocument();
+    expect(screen.getByText(/推荐代表/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/oh-my-claudecode/i).length).toBeGreaterThan(0);
+  });
 });

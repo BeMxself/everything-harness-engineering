@@ -46,6 +46,7 @@ description: Topic entrypoints for deeper, runnable research work.
 - [查看设计说明](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/specs/2026-03-25-host-harness-flow-diagrams-design.md)
 - [查看实现计划](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/plans/2026-03-25-host-harness-flow-diagrams.md)
 - [查看命名与扩展评估](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-host-harness-flow-diagrams-name-and-expansion-assessment.md)
+- [查看扩图纳入判断表](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-expansion-scope-matrix.md)
 
 ### 当前已经能回答什么
 

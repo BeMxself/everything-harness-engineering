@@ -2,6 +2,8 @@
 
 **日期：** 2026-03-28
 
+> 注：本页主要记录改名阶段的判断。当前扩图优先级和纳入层级，请看 [2026-03-28-expansion-scope-matrix.md](./2026-03-28-expansion-scope-matrix.md)。
+
 ## 结论
 
 - `host-harness-flow-diagrams` 已作为当前专题新名采用。

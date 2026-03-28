@@ -127,3 +127,41 @@ export type DiagramSource = {
 };
 
 export type VisibilityState = "active" | "past" | "future" | "ambient";
+
+export type ExpansionCandidateTier =
+  | "core"
+  | "boundary"
+  | "family-reference"
+  | "control-group";
+
+export type ExpansionCandidateReadiness =
+  | "ready"
+  | "needs-boundary-decision"
+  | "reference-only";
+
+export type ExpansionCandidateHostPattern =
+  | "single-host-extension"
+  | "cross-host-overlay"
+  | "independent-host";
+
+export type ExpansionCandidate = {
+  id: string;
+  title: LocalizedText;
+  tier: ExpansionCandidateTier;
+  readiness: ExpansionCandidateReadiness;
+  hostPattern: ExpansionCandidateHostPattern;
+  familyId?: string;
+  officialPositioning: LocalizedText;
+  structureValue: LocalizedText;
+  diagramFocus: LocalizedText;
+  compareAgainst: string[];
+  sources: DiagramSource[];
+};
+
+export type ExpansionCandidateFamily = {
+  id: string;
+  title: LocalizedText;
+  members: string[];
+  recommendedRepresentativeId: string;
+  note: LocalizedText;
+};

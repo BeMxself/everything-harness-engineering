@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { AgentCollaborationPanel } from "./components/AgentCollaborationPanel";
 import { DiagramCanvas } from "./components/DiagramCanvas";
 import { ComparisonSwitcher } from "./components/ComparisonSwitcher";
+import { ExpansionPreview } from "./components/ExpansionPreview";
 import { InfoPanels } from "./components/InfoPanels";
 import { diagrams } from "./data/diagrams";
 import { I18nProvider, type Language, useI18n } from "./i18n";
@@ -64,6 +65,8 @@ function AppShell({
           <p>{messages.topicGuideBoundaryBody}</p>
         </article>
       </section>
+
+      <ExpansionPreview />
 
       <ComparisonSwitcher
         diagrams={diagrams}
