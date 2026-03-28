@@ -243,14 +243,6 @@ export const landscapeRows = [
     runtimeForm: "宿主内编排",
   },
   {
-    name: "gdim-workflow-skill",
-    href: "https://github.com/BeMxself/gdim-workflow-skill",
-    starsBadge: "https://img.shields.io/github/stars/BeMxself/gdim-workflow-skill?style=social",
-    intro: "基于 GDIM 的 workflow skill 包，重点在阶段化执行秩序与偏差收敛。",
-    category: "工作流 / 编排套件",
-    runtimeForm: "宿主内技能层",
-  },
-  {
     name: "Ralph",
     href: "https://github.com/snarktank/ralph",
     starsBadge: "https://img.shields.io/github/stars/snarktank/ralph?style=social",

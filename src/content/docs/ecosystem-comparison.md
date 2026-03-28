@@ -55,7 +55,6 @@ description: A research-oriented comparison page for harness and harness-adjacen
 | [get-shit-done](https://github.com/gsd-build/get-shit-done) | ![get-shit-done stars](https://img.shields.io/github/stars/gsd-build/get-shit-done?style=social) | Meta-prompting, context engineering and spec-driven development system | Skill / Methodology System | 宿主内工作流层 | spec、context engineering、meta-prompting | 更像方法系统和执行框架，而不是独立 host |
 | [gstack](https://github.com/garrytan/gstack) | ![gstack stars](https://img.shields.io/github/stars/garrytan/gstack?style=social) | 15 opinionated tools that serve as CEO, Designer, Eng Manager... | Workflow / Orchestration Suite | 角色化交付 workflow | role handoff、pipeline gates、rework loops | 它的强项更像任务组织和交付闭环 |
 | [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) | ![ccg-workflow stars](https://img.shields.io/github/stars/fengshao1227/ccg-workflow?style=social) | Claude + Codex + Gemini multi-model collaboration | Workflow / Orchestration Suite | 多模型协作 workflow | model routing + collaboration flow | 主要问题是多模型如何协同，不是单宿主如何被增强 |
-| [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill) | ![gdim-workflow-skill stars](https://img.shields.io/github/stars/BeMxself/gdim-workflow-skill?style=social) | 围绕 GDIM workflow skill 组织的仓库 | Workflow / Orchestration Suite | 宿主内 workflow skill 包 | workflow discipline + staged execution | 重点在 named workflow 的执行秩序 |
 | [Ralph](https://github.com/snarktank/ralph) | ![Ralph stars](https://img.shields.io/github/stars/snarktank/ralph?style=social) | autonomous AI agent loop that runs repeatedly until PRD items are complete | Workflow / Orchestration Suite | 独立调度外壳 | 持续 loop、PRD 驱动、完成态闭环 | 它更像围绕任务完成的自主调度器 |
 
 ## 什么时候该把它们放在一起看，什么时候不该
@@ -113,7 +112,6 @@ description: A research-oriented comparison page for harness and harness-adjacen
 
 - [gstack](https://github.com/garrytan/gstack)
 - [ccg-workflow](https://github.com/fengshao1227/ccg-workflow)
-- [gdim-workflow-skill](https://github.com/BeMxself/gdim-workflow-skill)
 - [Ralph](https://github.com/snarktank/ralph)
 
 这类系统更适合回答：如何把多个 agent、多个模型和人类审批稳定地编成一条交付链。
