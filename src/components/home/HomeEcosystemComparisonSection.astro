@@ -34,7 +34,7 @@ const { taxonomy, rows } = Astro.props;
         最大的误区不是漏看项目，而是把不在同一层的问题拿来做同一种比较。
       </p>
       <p>
-        读这张表时，先问三件事：它首先提供的是宿主、增强层、方法系统，还是任务编排层。
+        更稳的读法是先分对象层和实践层，再判断它落在宿主、agent harness，还是更大的任务编排层。
       </p>
     </div>
     <div class="ecosystem-actions not-content">
@@ -45,7 +45,7 @@ const { taxonomy, rows } = Astro.props;
   </div>
 
   <div class="ecosystem-kinds not-content">
-    <p>比较时先分四类看：</p>
+    <p>比较时先把对象归类和实践定位分开，再看下面四种常见位置：</p>
     <ul class="ecosystem-kind-list">
       {taxonomy.map((item) => (
         <li>
@@ -57,7 +57,7 @@ const { taxonomy, rows } = Astro.props;
   </div>
 
   <p class="ecosystem-preview-note">
-    下面这张表展示当前站点收录的主要项目，先看清层级，再去正文页看完整比较理由。
+    下面这张表先把主要项目放到同一张比较坐标里；其中有些格子写的是对象归类，有些写的是实践定位。
   </p>
 
   <div class="table-wrap not-content">
@@ -66,7 +66,7 @@ const { taxonomy, rows } = Astro.props;
         <tr>
           <th>套件</th>
           <th>简介</th>
-          <th>分类</th>
+          <th>定位</th>
           <th>运行形态</th>
         </tr>
       </thead>
