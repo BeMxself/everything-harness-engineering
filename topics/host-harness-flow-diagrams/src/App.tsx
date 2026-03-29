@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
 import { AgentCollaborationPanel } from "./components/AgentCollaborationPanel";
 import { DiagramCanvas } from "./components/DiagramCanvas";
-import { DraftCasePreview } from "./components/DraftCasePreview";
-import { DraftDiagramSection } from "./components/DraftDiagramSection";
 import { ComparisonSwitcher } from "./components/ComparisonSwitcher";
-import { ExpansionPreview } from "./components/ExpansionPreview";
 import { InfoPanels } from "./components/InfoPanels";
 import { diagrams } from "./data/diagrams";
+import { draftDiagrams } from "./data/draftDiagrams";
 import { I18nProvider, type Language, useI18n } from "./i18n";
+
+const comparisonDiagrams = [...diagrams, ...draftDiagrams];
 
 function AppShell({
   activeId,
@@ -23,7 +23,7 @@ function AppShell({
   const { messages } = useI18n();
 
   const activeDiagram = useMemo(
-    () => diagrams.find((diagram) => diagram.id === activeId) ?? diagrams[0],
+    () => comparisonDiagrams.find((diagram) => diagram.id === activeId) ?? comparisonDiagrams[0],
     [activeId],
   );
 
@@ -68,12 +68,8 @@ function AppShell({
         </article>
       </section>
 
-      <ExpansionPreview />
-      <DraftCasePreview />
-      <DraftDiagramSection />
-
       <ComparisonSwitcher
-        diagrams={diagrams}
+        diagrams={comparisonDiagrams}
         activeId={activeDiagram.id}
         onSelect={setActiveId}
       />
@@ -94,7 +90,7 @@ function AppShell({
 }
 
 export default function App() {
-  const [activeId, setActiveId] = useState(diagrams[0].id);
+  const [activeId, setActiveId] = useState(comparisonDiagrams[0].id);
   const [lang, setLang] = useState<Language>("zh");
 
   return (

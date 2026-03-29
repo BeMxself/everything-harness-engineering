@@ -2,10 +2,10 @@ import type { ComparisonDiagram } from "./types";
 
 export const trellisDraftDiagram: ComparisonDiagram = {
   id: "trellis-draft",
-  title: "Trellis Draft Diagram",
+  title: "Trellis",
   summary: {
-    en: "A platform-over-core draft showing how Trellis keeps one `.trellis/` workflow core while generating host-specific wiring into Claude Code, Codex, OpenCode, Cursor, and related tools.",
-    zh: "一张 platform-over-core 的 draft 草图，用来表达 Trellis 如何保留统一的 `.trellis/` workflow core，再向 Claude Code、Codex、OpenCode、Cursor 等宿主生成 wiring。",
+    en: "A platform-over-core comparison view showing how Trellis keeps one `.trellis/` workflow core while generating host-specific wiring into Claude Code, Codex, OpenCode, Cursor, and related tools.",
+    zh: "一张 platform-over-core 的比较视图，用来表达 Trellis 如何保留统一的 `.trellis/` workflow core，再向 Claude Code、Codex、OpenCode、Cursor 等宿主生成 wiring。",
   },
   emphasis: {
     automationLoop: "high",
@@ -37,8 +37,8 @@ export const trellisDraftDiagram: ComparisonDiagram = {
       zh: "`.trellis/` core 和各平台目录尽量沿用 Trellis 官方材料；这里的相对控制拓扑则是为了比较而做的仓库解释。",
     },
     currentLimit: {
-      en: "This draft compresses many platform-specific differences into one shared wiring layer, so it shows structure better than per-platform operational detail.",
-      zh: "这张 draft 把大量平台差异压缩进一个 shared wiring layer，因此更擅长表达结构，不是逐平台操作细节图。",
+      en: "This comparison view compresses many platform-specific differences into one shared wiring layer, so it shows structure better than per-platform operational detail.",
+      zh: "这张比较视图把大量平台差异压缩进一个 shared wiring layer，因此更擅长表达结构，不是逐平台操作细节图。",
     },
   },
   takeaways: [
@@ -223,10 +223,10 @@ export const trellisDraftDiagram: ComparisonDiagram = {
 
 export const omxDraftDiagram: ComparisonDiagram = {
   id: "oh-my-codex-draft",
-  title: "OMX Draft Diagram",
+  title: "oh-my-codex",
   summary: {
-    en: "A Codex-centered draft showing OMX as a workflow and runtime help layer that wraps prompts, skills, `.omx/` state, and optional team runtime around the host.",
-    zh: "一张以 Codex 为中心的 draft 草图，表达 OMX 如何把 prompts、skills、`.omx/` state 与可选 team runtime 包在宿主外层。",
+    en: "A Codex-centered comparison view showing OMX as a workflow and runtime help layer that wraps prompts, skills, `.omx/` state, and optional team runtime around the host.",
+    zh: "一张以 Codex 为中心的比较视图，表达 OMX 如何把 prompts、skills、`.omx/` state 与可选 team runtime 包在宿主外层。",
   },
   emphasis: {
     automationLoop: "high",
@@ -258,8 +258,8 @@ export const omxDraftDiagram: ComparisonDiagram = {
       zh: "Codex host、`.omx/`、prompts、skills、team runtime 这些术语都尽量沿用 OMX 公开表述；相对控制形态则是为了比较而做的仓库解释。",
     },
     currentLimit: {
-      en: "This draft compresses many workflow-specific branches into one escalation lane, so it shows host-to-workflow structure better than every operator surface in detail.",
-      zh: "这张 draft 把大量 workflow-specific branches 压进一条 escalation lane，因此更擅长表达 host-to-workflow 结构，而不是逐个 operator surface 的细节。",
+      en: "This comparison view compresses many workflow-specific branches into one escalation lane, so it shows host-to-workflow structure better than every operator surface in detail.",
+      zh: "这张比较视图把大量 workflow-specific branches 压进一条 escalation lane，因此更擅长表达 host-to-workflow 结构，而不是逐个 operator surface 的细节。",
     },
   },
   takeaways: [
@@ -426,10 +426,10 @@ export const omxDraftDiagram: ComparisonDiagram = {
 
 export const gsdDraftDiagram: ComparisonDiagram = {
   id: "get-shit-done-draft",
-  title: "GSD Workflow Protocol Draft",
+  title: "get-shit-done",
   summary: {
-    en: "A boundary-case draft showing GSD as a protocol loop that runs across host install surfaces while keeping its real control shape in discuss, plan, execute, verify, and milestone turnover.",
-    zh: "一张边界案例 draft，用来表达 GSD 如何作为一条跨宿主安装面运行的 protocol loop，而它真正的控制形态在于 discuss、plan、execute、verify 与 milestone turnover。",
+    en: "A boundary-case comparison view showing GSD as a protocol loop that runs across host install surfaces while keeping its real control shape in discuss, plan, execute, verify, and milestone turnover.",
+    zh: "一张边界案例比较视图，用来表达 GSD 如何作为一条跨宿主安装面运行的 protocol loop，而它真正的控制形态在于 discuss、plan、execute、verify 与 milestone turnover。",
   },
   emphasis: {
     automationLoop: "high",
@@ -461,8 +461,8 @@ export const gsdDraftDiagram: ComparisonDiagram = {
       zh: "命令、artifact 名称与 phase 结构尽量沿用 GSD 公开文档；这里的控制拓扑则是为了比较 protocol-heavy cases 而做的仓库解释。",
     },
     currentLimit: {
-      en: "This draft compresses many special modes and workstream tools into one boundary-case loop, so it emphasizes protocol shape over every command surface.",
-      zh: "这张 draft 把许多 special modes 和 workstream tools 压缩进一条边界案例循环，因此更强调 protocol shape，而不是逐个 command surface。",
+      en: "This comparison view compresses many special modes and workstream tools into one boundary-case loop, so it emphasizes protocol shape over every command surface.",
+      zh: "这张比较视图把许多 special modes 和 workstream tools 压缩进一条边界案例循环，因此更强调 protocol shape，而不是逐个 command surface。",
     },
   },
   takeaways: [

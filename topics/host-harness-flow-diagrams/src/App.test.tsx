@@ -78,49 +78,41 @@ describe("App", () => {
     expect(screen.getAllByText(/prometheus/i).length).toBeGreaterThan(0);
   });
 
-  it("shows a read-only preview of next-wave comparison candidates", () => {
+  it("keeps process-oriented research previews out of the reader-facing page", () => {
     render(<App />);
 
     expect(
-      screen.getByRole("heading", { name: /下一轮候选/i }),
+      screen.queryByRole("heading", { name: /下一轮候选/i }),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/OMX 编排家族/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/推荐代表/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Trellis Draft/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/OMX Draft/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/GSD Workflow Protocol Draft/i)).not.toBeInTheDocument();
+  });
+
+  it("includes Trellis, oh-my-codex, and get-shit-done in the main comparison switcher", async () => {
+    const user = userEvent.setup();
+
+    render(<App />);
+
+    expect(screen.getByRole("button", { name: /^Trellis$/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^oh-my-codex$/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^get-shit-done$/i })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: /^Trellis$/i }));
+    expect(
+      screen.getByRole("button", { name: /1 接收任务/i }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /^Trellis$/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /^oh-my-codex$/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /^get-shit-done$/i })).toBeInTheDocument();
-    expect(screen.getByText(/OMX 编排家族/i)).toBeInTheDocument();
-    expect(screen.getByText(/推荐代表/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/oh-my-claudecode/i).length).toBeGreaterThan(0);
-  });
 
-  it("shows a Trellis draft case preview without adding it to the formal comparison switcher", () => {
-    render(<App />);
+    await user.click(screen.getByRole("button", { name: /^oh-my-codex$/i }));
+    expect(
+      screen.getByRole("button", { name: /1 强化启动/i }),
+    ).toBeInTheDocument();
 
-    expect(screen.getAllByRole("heading", { name: /Trellis Draft/i }).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/workflow core/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/platform wiring/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/review \/ memory return/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Open questions/i).length).toBeGreaterThan(0);
-    expect(screen.queryByRole("button", { name: /^Trellis$/i })).not.toBeInTheDocument();
-  });
-
-  it("shows an oh-my-codex draft preview without adding it to the formal comparison switcher", () => {
-    render(<App />);
-
-    expect(screen.getAllByText(/OMX Draft/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/codex host/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/prompt \/ skill layer/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/team runtime/i).length).toBeGreaterThan(0);
-    expect(screen.queryByRole("button", { name: /^oh-my-codex$/i })).not.toBeInTheDocument();
-  });
-
-  it("shows a get-shit-done workflow-protocol draft without adding it to the formal comparison switcher", () => {
-    render(<App />);
-
-    expect(screen.getAllByText(/GSD Workflow Protocol Draft/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/discuss phase/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/plan phase/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/execute phase/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/verify work/i).length).toBeGreaterThan(0);
-    expect(screen.queryByRole("button", { name: /^get-shit-done$/i })).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /^get-shit-done$/i }));
+    expect(
+      screen.getByRole("button", { name: /1 初始化项目/i }),
+    ).toBeInTheDocument();
   });
 });
