@@ -1,139 +1,155 @@
 ---
 title: 概念入口
-description: A definition-, evolution-, and boundary-first entry for understanding harness engineering.
+description: 一篇围绕定义、演进与边界展开的概念入口文章。
 ---
 
-这页是一篇 `explanation` 型入口，不是术语表，也不是产品使用指南。它想回答的核心问题只有一个：
+围绕 `harness engineering` 的讨论里，最容易混淆的是对象、机制和工程实践三层。先分清三个问题：
 
-`harness engineering` 到底在讨论哪一层工程对象，为什么它既不等于 prompt engineering，也不等于某个 coding agent 产品本身？
+- 什么算 `agent harness`
+- 什么只是机制，还不能算 `agent harness` 本身
+- `harness engineering` 讨论的到底是对象，还是围绕这些机制展开的工程实践
 
-更具体地说，本仓库主要讨论的是 **coding-agent / software-engineering 语境里的 harness engineering**。如果离开这个语境，`harness` 可以被用得更宽；而一旦进入 coding work surface、repo、tools、verification 和 long-running tasks，这个词的工程负载才会变得足够具体，值得被单独研究。
+本文讨论的是软件工程语境中的 `harness engineering`。离开这个语境，`harness` 这个词可以被用得更宽；一旦进入代码仓库、工具调用、验证回路和长任务，它所承载的工程负载才会足够具体，值得被单独讨论。
 
 ## 先讲证据边界
 
-这页里的内容刻意分成两层：
+下文的判断主要分成两层：
 
-- `fact`
+- `事实陈述`
   来自 Anthropic、OpenAI、Martin Fowler、LangChain 等公开一手材料，尤其是 [关键文章](../key-articles/)
-- `repository interpretation`
-  是本仓库为了比较研究而给出的工程划分，用来帮助读者区分 host、harness、workflow、skills 等不同对象
+- `研究解释`
+  是为了把不同系统放进同一张比较坐标而采用的工作划分，用来帮助读者区分宿主、harness、工作流和方法系统等不同对象
 
-因此，这页不是在宣布某个官方统一定义，而是在给出一个可追溯、可比较、可继续扩展的研究性工作定义。更完整的本站写作规则见 [术语与证据边界](../terminology-and-evidence/)。
+因此，本文采用的不是某个官方统一定义，而是一套可追溯、可比较、可继续扩展的工作定义。更完整的边界规则见 [术语与证据边界](../terminology-and-evidence/)。
 
-## 先把对象和实践分开
+## 第一问：什么算 agent harness
 
-这两个说法很接近，但不是一回事：
+在软件工程语境里，这三个词经常被混用，但它们不是一回事：
 
 - `agent harness`
-  更偏系统对象，指模型外面那层让 agent 能工作、能恢复、能被约束的外壳
+  更偏系统对象，指模型外面那层让代理能进入真实工作面、被控制、被恢复、被约束的外壳
+- `harness 机制`
+  更偏构件层，指提示词、MCP、工具、钩子、技能、子代理、记忆、审批、沙箱和验证回路等机制
 - `harness engineering`
-  更偏工程实践，指人类如何设计、调试、约束、简化和演化这层外壳
+  更偏工程实践，指人类如何把这些对象和机制组合成稳定的方法，让代理能持续做项目开发
 
-OpenAI、Anthropic 和 LangChain 都在讨论这两层，只是强调点不同。OpenAI更明显地讨论 harness 作为运行时和控制系统；Anthropic更强调如何逐步设计、简化和迭代长任务 harness；LangChain则给出一个更宽的部件视角。
+OpenAI、Anthropic 和 LangChain 都在讨论这些相关层次，只是重心不同。OpenAI 更明显地讨论人如何设计环境、规则与反馈回路来治理代理；Anthropic 更强调怎样把 harness 设计成能跨上下文持续推进的系统；LangChain 则更倾向于把模型外面的部件层整体摊开来看。
 
-## 工作定义
+## 第二问：什么只是机制，不是 `agent harness` 本身
 
-**Harness engineering** 不是单指某个 agent 会不会写代码，而是指一整套工程化外壳如何把模型能力变成持续可运行、可恢复、可验证、可协作的系统能力。
+很多讨论一上来就在讲提示词设计、上下文工程、MCP、工具、钩子、技能、子代理，但这些东西通常更接近机制层，而不是 `agent harness` 本身。
 
-更准确地说，它关心的是模型外面那层让 agent 变得 `durable`、`legible`、`controllable` 的系统：
+- `提示词设计`、`上下文工程`、`MCP`、`工具`、`钩子`、`技能`、`子代理`
+  往往属于 harness 的机制层
+- 它们很重要，但不自动等于 `agent harness` 本身
+- 真正的区别不在有没有这些机制，而在这些机制是否被组织进一个可运行、可恢复、可治理的系统表面
+
+## 第三问：什么才是 harness engineering
+
+所谓 `harness engineering`，不是单指某个代理会不会写代码，而是指人如何围绕 `agent harness` 及其机制层，把模型能力变成持续可运行、可恢复、可验证、可协作的系统能力。
+
+它真正关心的是模型外面那层让代理变得可持续、可读、可控的系统：
 
 - 任务如何进入系统，如何被拆解、委派、恢复和完成
-- agent 如何被规则、工具、状态、审批、验证与记忆层约束
+- 代理如何被规则、工具、状态、审批、验证与记忆层约束
 - 如何把聪明模型变成能连续产出结果的工程系统
 - 宿主、协议、线程生命周期与客户端表面如何共同构成可复用运行时
 
-如果只想记住一句话，可以记成：
+可以先记住一句话：
 
-> `harness engineering` 研究的不是“模型会不会”，而是“系统怎样让 agent 持续、可控地工作”。
+> `agent harness` 是对象，`harness 机制` 是构件层，`harness engineering` 是围绕它们展开的工程实践。
 
-这里还需要补一句边界说明：
+它关心的不是某一项机制单独强不强，而是这些机制怎样被组合、治理、验证与演化。
 
-- `prompting`、`context engineering`、`system prompt` 往往是 harness 的组成部分
-- 但它们本身不自动构成完整 harness
-- 反过来，harness 也不只等于 prompts，它还包括运行环境、工具执行、状态恢复、验证回路与人类控制面
+## 第四问：它为什么不等于提示词工程、宿主或工作流编排
 
-## 它不等于什么
-
-- 不等于单次 `prompt engineering`
+- 不等于单次提示词工程
 - 不等于某个 IDE 插件或聊天入口本身
-- 不等于只会写 demo 的 `autonomous agent`
-- 不等于只提供 orchestration primitives、但没有明确宿主工作面和执行约束的抽象框架
+- 不等于任何一个单独机制，比如只等于 `MCP`、只等于 `技能` 或只等于 `钩子`
+- 不等于只会写演示样例的自主代理
+- 不等于只提供编排原语、但没有明确宿主工作面和执行约束的抽象框架
 
-换句话说，在本仓库研究的 coding-agent 语境里，只要一个说法还没有回答“agent 在哪里工作、谁来控制下一步、状态如何续跑、人类怎样介入”，它就还没有真正进入 harness engineering 的讨论中心。
+在编程代理语境里，只要一种说法还没有回答“代理在哪里工作、谁来控制下一步、状态如何续跑、人类怎样介入”，它就还没有真正进入 `harness engineering` 的讨论中心。
 
-## 它要求系统回答哪些关键问题
+## 第五问：一个系统至少要回答哪些问题，才算真正进入这个讨论
 
-把这个概念说清楚，最好的方法不是重复定义，而是看一个 **coding-oriented harness** 是否真的回答了下面这些问题：
+一个面向编程任务的 harness，至少要回答下面这些问题：
 
 | 问题 | 它在追问什么 | 如果答不上来会怎样 |
 | --- | --- | --- |
-| agent 在哪里工作 | 它有没有真实宿主工作面，能不能读写 repo、跑命令、接触外部系统 | 系统会退回到“会说不会做” |
-| 谁决定下一步 | 主控制中心在 runtime、pipeline、policy layer 还是人工审批 | 长任务里很快会失去节奏 |
-| 什么东西会被持续保存 | state、memory、progress artifact、handoff 文档是否能跨轮继续工作 | 会话一断就从头理解 |
-| 失败如何回流 | failure 是回到原控制器、回到 planning，还是只做局部 retry | 失败恢复成本不可见 |
-| 人类怎样 steer | 审批、边界、规则、review、merge discipline 是否是系统对象 | 系统会变成不可读黑箱 |
+| 代理在哪里工作 | 它有没有真实宿主工作面，能不能读写 repo、跑命令、接触外部系统 | 系统会退回到“会说不会做” |
+| 谁决定下一步 | 主控制中心在运行时、流水线关卡、策略层还是人工审批 | 长任务里很快会失去节奏 |
+| 什么东西会被持续保存 | 状态、记忆、进度工件、交接文档是否能跨轮继续工作 | 会话一断就从头理解 |
+| 失败如何回流 | 失败是回到原控制器、回到规划环节，还是只做局部重试 | 失败恢复成本不可见 |
+| 人类怎样掌舵 | 审批、边界、规则、评审、合并纪律是否是系统对象 | 系统会变成不可读黑箱 |
 
-这五个问题主要适用于本仓库关注的 host-first / coding-agent 系统，也是后面 [生态与比较](../ecosystem-comparison/) 和 [研究专题](../topics/) 的主比较坐标。它们不是所有 agent harness 的唯一标准，但对软件工程场景尤其关键。
+这五个问题主要适用于本文关注的、以宿主为中心的编程代理系统，也是后面 [生态与比较](../ecosystem-comparison/) 和 [研究专题](../topics/) 最常用的比较坐标。它们不是所有 `agent harness` 的唯一标准，但对软件工程场景尤其关键。
 
 ## 演进与瓶颈
 
-下面这张表不是官方统一分类，而是本仓库为了比较研究而采用的工程划分：
+若把演进过程摊开来看，大致会出现下表几类阶段：
 
 | 阶段 | 主要关注点 | 典型对象 | 主要瓶颈 |
 | --- | --- | --- | --- |
 | 代码补全 | 提高局部生成质量 | 补全模型、IDE inline completion | 这段代码能不能写对 |
-| 对话式编程 | 跨文件理解、解释、修改 | chat-based coding assistants | 上下文组织是否足够完整 |
-| Coding Agents | 直接进仓库、改文件、跑命令、做验证 | Codex、Claude Code、OpenCode 一类宿主 | 单次任务能否真正执行完 |
-| Agent Harnesses | 在宿主之上补控制、恢复、记忆、规则和评审 | 宿主增强层、hooks/teams/memory systems | 长任务能否持续、可控、可恢复地跑 |
-| Workflow / Orchestration | 多 agent、多模型、多审批节点协作 | 编排套件、交付工作流系统 | 系统级协调、分工与交付闭环是否稳定 |
+| 对话式编程 | 跨文件理解、解释、修改 | 对话式编程助手 | 上下文组织是否足够完整 |
+| 编程代理（Coding Agents） | 直接进仓库、改文件、跑命令、做验证 | Codex、Claude Code、OpenCode 一类宿主 | 单次任务能否真正执行完 |
+| Agent Harnesses | 在宿主之上补控制、恢复、记忆、规则和评审 | 宿主增强层、钩子 / 团队 / 记忆系统 | 长任务能否持续、可控、可恢复地跑 |
+| 工作流 / 编排 | 多代理、多模型、多审批节点协作 | 编排套件、交付工作流系统 | 系统级协调、分工与交付闭环是否稳定 |
 
 关键不在“后一层取代前一层”，而在瓶颈逐层外移：先是写代码，再是理解仓库，再是完成任务，然后才是长期执行、跨会话恢复、人类审批和多角色协同。
 
-## 通过比较来论证边界
+其中前几层主要描述的是系统对象与机制负载；当这些负载被进一步组织成稳定开发方法时，问题才真正进入 `harness engineering` 的实践层。
 
-要把 `harness engineering` 的边界说清楚，最好不要只下定义，而要和相邻对象并排比较：
+## 第六问：和相邻对象相比，边界到底在哪里
+
+边界要靠并排比较才更清楚：
 
 | 对象 | 它主要解决什么 | 为什么不等同于 harness engineering | 与 harness 的关系 |
 | --- | --- | --- | --- |
-| `prompt engineering` | 改写输入、提示和任务表述 | 它通常不直接提供持久状态、工具执行、验证、审批或恢复机制 | 常常是 harness 的一层，但不是整体 |
-| `coding agent` 产品 / 宿主 | 给 agent 一个能进入真实工程环境的主执行面 | 它回答的是“agent 在哪里工作”，不自动回答“长期怎么控、怎么续跑、怎么交接” | 往往是 harness 的宿主层 |
-| `agent harness` | 围绕宿主增加规则、记忆、hooks、评审、恢复与团队结构 | 它关注的是模型外部的控制面设计，而不是单个产品 UI | 是本仓库当前研究重点 |
-| `workflow / orchestration` 系统 | 把多个 agent、人类和外部系统编进更大闭环 | 它的范围通常超过单个宿主或单条 agent loop | 与 harness 相邻，部分系统会把 harness 吸纳进去 |
-| `skills` / 方法论系统 | 给 agent 注入执行纪律、spec、review 和工作方法 | 如果没有稳定宿主与执行面，它更像方法层而不是完整 harness | 可以被 harness 吸纳，也可以独立存在于 harness 之外 |
+| `提示词工程` | 改写输入、提示和任务表述 | 它通常不直接提供持久状态、工具执行、验证、审批或恢复机制 | 常常进入 harness 的机制层，但不是整体 |
+| `编程代理` 产品 / 宿主 | 给代理一个能进入真实工程环境的主执行面 | 它回答的是“代理在哪里工作”，不自动回答“长期怎么控、怎么续跑、怎么交接” | 往往是 harness 的宿主层 |
+| `agent harness` | 围绕宿主增加规则、记忆、钩子、评审、恢复与团队结构 | 它是系统对象，关注的是模型外部的控制面设计，而不是单个产品 UI | 是当前重点考察的对象 |
+| `工作流 / 编排` 系统 | 把多个代理、人类和外部系统编进更大闭环 | 它的范围通常超过单个宿主或单条代理回路 | 与 harness 相邻，部分系统会把 harness 吸纳进去 |
+| `技能 / 方法系统` | 给代理注入执行纪律、规格、评审和工作方法 | 它更接近 harness engineering 的实践层，不自动构成 `agent harness` 本身 | 可以进入 harness，也可以独立存在于 harness 之外 |
 
-通过这种比较可以更稳地看到本仓库的边界：我们关心的不是“所有 agent 系统”，而是模型外部那层把 agent 变成工程能力的工作面、控制面和恢复面。
+通过这种比较可以更稳地看到本文关心的边界：重点不是“所有代理系统”，而是模型外部那层把代理变成工程能力的工作面、控制面和恢复面。
 
-## 基本构成
+## 第七问：如果开始做 harness engineering，通常在设计什么
 
-如果把 `harness engineering` 当成一层工程系统来看，它至少稳定涉及下面这些方面：
+如果把 `harness engineering` 看成围绕 `agent harness` 及相关机制展开的工程实践，通常就要设计下面这些机制层与控制面：
 
 | 构成 | 它回答什么 | 典型来源 |
 | --- | --- | --- |
-| `提示与上下文工程` | system prompt、instructions、context injection 怎样帮助 agent 稳定行动 | Anthropic agents / tools、OpenAI harness、LangChain anatomy |
-| `状态与持久化` | agent 怎样跨会话保存和恢复工作状态 | Anthropic 长任务文章、LangChain anatomy |
-| `工具与接口表面` | agent 面对的 tool surface 是否可理解、边界清晰 | Anthropic agent / tools 两篇 |
-| `执行环境` | agent 是否有真实 repo、命令和外部系统工作面 | OpenAI harness / app server 文章 |
-| `反馈与验证回路` | 测试、浏览器、日志、review 如何反向塑造下一轮 | Anthropic 长任务、OpenAI harness、LangChain 深代理材料 |
+| `提示与上下文工程` | 系统提示词、指令文件、上下文注入怎样帮助代理稳定行动 | Anthropic agents / tools、OpenAI harness、LangChain anatomy |
+| `MCP / 协议化能力表面` | 工具、资源、提示模板这类能力怎样被稳定暴露给代理与客户端 | MCP 官方文档、Anthropic tools、OpenAI Codex MCP 文档 |
+| `状态与持久化` | 代理怎样跨会话保存和恢复工作状态 | Anthropic 长任务文章、LangChain anatomy |
+| `工具与接口表面` | 代理面对的工具表面是否可理解、边界清晰 | Anthropic agent / tools 两篇 |
+| `执行环境` | 代理是否有真实 repo、命令和外部系统工作面 | OpenAI harness / app server 文章 |
+| `反馈与验证回路` | 测试、浏览器、日志、评审如何反向塑造下一轮 | Anthropic 长任务、OpenAI harness、LangChain 深代理材料 |
 | `上下文管理与知识注入` | 每轮到底带什么知识继续运行 | Anthropic long-running apps、OpenAI harness |
-| `约束、规则与边界` | guardrails、tool boundaries、stopping conditions 怎样工作 | Anthropic tools / agents、OpenAI harness |
-| `续跑、交接与恢复` | 长任务如何 clean handoff，而不是重新猜状态 | Anthropic 长任务、社区实践材料 |
-| `宿主协议与客户端表面` | 在 host-centric harness 中，thread、turn、approval、diff、tool execution 怎样变成稳定接口 | OpenAI app server / harness |
-| `人类控制面` | humans steer, agents execute 如何真正成立 | OpenAI harness、Anthropic agent systems |
+| `约束、规则与边界` | 防护栏、工具边界、停止条件怎样工作 | Anthropic tools / agents、OpenAI harness |
+| `续跑、交接与恢复` | 长任务如何形成干净交接，而不是重新猜状态 | Anthropic 长任务、社区实践材料 |
+| `宿主协议与客户端表面` | 在以宿主为中心的 harness 中，`thread`、`turn`、`approval`、`diff`、`工具执行` 怎样变成稳定接口 | OpenAI app server / harness |
+| `人类控制面` | “人类掌舵，代理执行” 如何真正成立 | OpenAI harness、Anthropic agent systems |
 
-如果你想看这些构成在真实比较里如何展开，下一步应该进入 [研究专题](../topics/)。
+这些项更适合先被读成 `harness 机制`，而不是都被读成 `agent harness` 本身。它们之所以重要，不是因为每一项单独就等于 harness，而是因为真正的 `harness engineering` 总是在设计这些机制怎样协同工作。
+
+这些构成若放到具体系统里看，差异会更清楚，可继续读 [研究专题](../topics/)。
 
 ## 为什么现在重要
 
 从 2025-2026 的公开材料看，“模型已经够强，所以剩下只是工程包装”这个说法已经不够准确。更贴近当前状态的表述是：
 
-- 瓶颈正在从“局部代码能不能生成出来”迁移到“agent 能不能在真实环境里持续推进、验证、恢复并交接下去”
-- 执行环境本身已经成为 `load-bearing part`
-- harness 正在从“内部脚手架”走向“可复用的工程表面”
+- 瓶颈正在从“局部代码能不能生成出来”迁移到“代理能不能在真实环境里持续推进、验证、恢复并交接下去”
+- 执行环境本身已经成为承重部分
+- `agent harness` 正在从“内部脚手架”走向“可复用的工程表面”
+- `harness engineering` 也在从零散提示技巧走向更稳定的工程方法语言
 - 它的重要性不是静态上升，而是随着模型改进不断换位置，新的模型会让旧脚手架失去必要性，也会暴露新的瓶颈
 
-但这里也要避免另一个极端：不是所有 agent 系统都必须长成 Codex App Server 这种形态。对 OpenAI 来说，协议化客户端表面是核心；对 Anthropic 的长任务研究来说，initializer、progress artifact 和 clean handoff 更居中；对 LangChain 的部件式定义来说，harness 的边界甚至可以宽到“模型之外的一切”。本仓库的任务不是消灭这些差异，而是把它们保留下来。
+但也要避免另一个极端：不是所有代理系统都必须长成 Codex App Server 这种形态。对 OpenAI 来说，协议化客户端表面是核心；对 Anthropic 的长任务研究来说，初始化器、进度工件和干净交接更居中；对 LangChain 的部件式定义来说，harness 的边界甚至可以宽到“模型之外的一切”。重点不是消灭这些差异，而是把它们保留下来。
 
-这也是为什么本仓库既要保留 [关键文章](../key-articles/) 的时间线，又要单独保留 [工程观察](../engineering-observations/) 和 [生态与比较](../ecosystem-comparison/) 这两种页面。
+因此既需要保留 [关键文章](../key-articles/) 的时间线，也需要把 [工程观察](../engineering-observations/) 和 [生态与比较](../ecosystem-comparison/) 这两种页面分开写。
 
 ## 下一步怎么读
 
