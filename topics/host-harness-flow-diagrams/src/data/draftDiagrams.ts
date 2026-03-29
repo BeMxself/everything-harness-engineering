@@ -220,3 +220,208 @@ export const trellisDraftDiagram: ComparisonDiagram = {
     },
   ],
 };
+
+export const omxDraftDiagram: ComparisonDiagram = {
+  id: "oh-my-codex-draft",
+  title: "OMX Draft Diagram",
+  summary: {
+    en: "A Codex-centered draft showing OMX as a workflow and runtime help layer that wraps prompts, skills, `.omx/` state, and optional team runtime around the host.",
+    zh: "一张以 Codex 为中心的 draft 草图，表达 OMX 如何把 prompts、skills、`.omx/` state 与可选 team runtime 包在宿主外层。",
+  },
+  emphasis: {
+    automationLoop: "high",
+    harness: "high",
+    control: "high",
+    hostDependency: "high",
+  },
+  notes: {
+    whyThisLoopMatters: {
+      en: "OMX matters most when read as a workflow-help layer that keeps Codex central instead of trying to replace it with a parallel runtime.",
+      zh: "OMX 最值得观察的地方，是它作为 workflow-help layer 保持 Codex 居中，而不是试图用并行 runtime 替换它。",
+    },
+    whereTheHarnessLives: {
+      en: "The harness lives in prompts, skills, `.omx/` state, and optional runtime escalation around the Codex host.",
+      zh: "这层 harness 主要存在于 Codex host 外层的 prompts、skills、`.omx/` state 和可选 runtime escalation 中。",
+    },
+  },
+  readingGuide: {
+    keyQuestion: {
+      en: "What stays inside the Codex host, and what is lifted into OMX as reusable workflow help?",
+      zh: "什么留在 Codex host 里，什么被提到 OMX 这层 reusable workflow help 中？",
+    },
+    howToRead: {
+      en: "Read Codex host and workflow escalation together: OMX starts with lightweight prompt/skill help, then escalates only when larger workflows are warranted.",
+      zh: "把 Codex host 和 workflow escalation 放在一起读：OMX 会先提供轻量 prompt/skill help，再在任务变大时才升级到更重 workflows。",
+    },
+    evidenceBoundary: {
+      en: "The Codex host, `.omx/`, prompts, skills, and team runtime all follow public OMX terminology. Their relative control shape here is repository interpretation for comparison.",
+      zh: "Codex host、`.omx/`、prompts、skills、team runtime 这些术语都尽量沿用 OMX 公开表述；相对控制形态则是为了比较而做的仓库解释。",
+    },
+    currentLimit: {
+      en: "This draft compresses many workflow-specific branches into one escalation lane, so it shows host-to-workflow structure better than every operator surface in detail.",
+      zh: "这张 draft 把大量 workflow-specific branches 压进一条 escalation lane，因此更擅长表达 host-to-workflow 结构，而不是逐个 operator surface 的细节。",
+    },
+  },
+  takeaways: [
+    {
+      en: "Codex remains the execution engine even when OMX adds richer workflow help around it.",
+      zh: "即便 OMX 在外层加入更丰富的 workflow help，Codex 仍然是 execution engine。",
+    },
+    {
+      en: "Workflow escalation is load-bearing: OMX becomes more interesting when it decides when to stay lightweight versus when to pull in heavier workflows.",
+      zh: "workflow escalation 是 load-bearing 的：OMX 最有意思的地方在于它会决定何时保持轻量，何时拉起更重 workflows。",
+    },
+    {
+      en: "The optional team runtime should be read as a late-stage escalation path, not the default shape of the whole system.",
+      zh: "可选的 team runtime 应该被读成后段升级路径，而不是整个系统的默认形状。",
+    },
+  ],
+  sources: [
+    {
+      label: "oh-my-codex repository",
+      href: "https://github.com/Yeachan-Heo/oh-my-codex",
+      note: {
+        en: "Primary source for OMX as a Codex workflow layer with prompts, skills, `.omx/`, and optional team runtime.",
+        zh: "用于确认 OMX 作为 Codex workflow layer，以及 prompts、skills、`.omx/` 与可选 team runtime 的主来源。",
+      },
+    },
+  ],
+  nodes: [
+    {
+      id: "task",
+      label: "task",
+      kind: "entry",
+      description: "User task entering the Codex session",
+      position: { x: 24, y: 286 },
+    },
+    {
+      id: "codex-host",
+      label: "codex host",
+      kind: "control",
+      host: "codex",
+      description: "Codex remains the execution engine",
+      position: { x: 420, y: 286 },
+    },
+    {
+      id: "prompt-skill-layer",
+      label: "prompt / skill layer",
+      kind: "shell",
+      host: "codex",
+      description: "Reusable prompts and workflow surfaces",
+      position: { x: 420, y: 76 },
+    },
+    {
+      id: "omx-state",
+      label: ".omx state",
+      kind: "memory",
+      description: "Plans, logs, memory, and mode tracking",
+      position: { x: 430, y: 534 },
+    },
+    {
+      id: "workflow-escalation",
+      label: "workflow escalation",
+      kind: "decision",
+      description: "Decides when heavier workflows are warranted",
+      position: { x: 980, y: 286 },
+    },
+    {
+      id: "team-runtime",
+      label: "team runtime",
+      kind: "execution",
+      description: "Optional tmux/worktree coordination path",
+      position: { x: 1510, y: 96 },
+    },
+    {
+      id: "execution-loop",
+      label: "execution loop",
+      kind: "execution",
+      description: "Codex-side execution, planning, and persistent workflows",
+      position: { x: 1512, y: 360 },
+    },
+    {
+      id: "verification-return",
+      label: "verification / memory return",
+      kind: "verification",
+      description: "Verification plus `.omx/` memory return",
+      position: { x: 2060, y: 360 },
+    },
+  ],
+  edges: [
+    { id: "e1", source: "task", target: "codex-host", kind: "main" },
+    { id: "e2", source: "prompt-skill-layer", target: "codex-host", kind: "implicit" },
+    { id: "e3", source: "codex-host", target: "workflow-escalation", kind: "main" },
+    { id: "e4", source: "workflow-escalation", target: "execution-loop", kind: "main" },
+    { id: "e5", source: "workflow-escalation", target: "team-runtime", kind: "feedback" },
+    { id: "e6", source: "team-runtime", target: "execution-loop", kind: "feedback" },
+    { id: "e7", source: "execution-loop", target: "verification-return", kind: "main" },
+    { id: "e8", source: "verification-return", target: "omx-state", kind: "feedback" },
+    {
+      id: "e9",
+      source: "omx-state",
+      target: "codex-host",
+      kind: "feedback",
+      controlPoints: [{ x: 330, y: 430 }],
+    },
+    {
+      id: "e10",
+      source: "prompt-skill-layer",
+      target: "workflow-escalation",
+      kind: "implicit",
+      controlPoints: [{ x: 720, y: 102 }],
+    },
+  ],
+  steps: [
+    {
+      id: "s1-start-strong",
+      label: { en: "Start stronger", zh: "强化启动" },
+      activeNodeIds: ["task", "codex-host", "prompt-skill-layer"],
+      activeEdgeIds: ["e1", "e2"],
+      note: {
+        en: "OMX starts from a stronger Codex session instead of replacing the host outright.",
+        zh: "OMX 先从更强的 Codex session 开始，而不是直接替代宿主。",
+      },
+    },
+    {
+      id: "s2-load-workflow-help",
+      label: { en: "Load workflow help", zh: "加载 workflow help" },
+      activeNodeIds: ["prompt-skill-layer", "codex-host", "workflow-escalation"],
+      activeEdgeIds: ["e3", "e10"],
+      note: {
+        en: "Prompts and skills surround the host with reusable analysis and planning surfaces.",
+        zh: "prompts 与 skills 会在宿主外层提供可复用的分析与规划工作面。",
+      },
+    },
+    {
+      id: "s3-escalate",
+      label: { en: "Escalate workflows", zh: "升级 workflows" },
+      activeNodeIds: ["workflow-escalation", "execution-loop"],
+      activeEdgeIds: ["e4"],
+      note: {
+        en: "OMX decides when to stay lightweight and when to escalate into deeper workflows.",
+        zh: "OMX 会判断是继续保持轻量执行，还是升级到更深的 workflows。",
+      },
+    },
+    {
+      id: "s4-team-runtime",
+      label: { en: "Optional team runtime", zh: "可选 team runtime" },
+      activeNodeIds: ["workflow-escalation", "team-runtime", "execution-loop"],
+      activeEdgeIds: ["e5", "e6"],
+      note: {
+        en: "Team runtime appears only when durable parallel coordination becomes worth the overhead.",
+        zh: "只有当 durable parallel coordination 值得额外开销时，team runtime 才会出现。",
+      },
+    },
+    {
+      id: "s5-return-state",
+      label: { en: "Return through state", zh: "通过状态回流" },
+      activeNodeIds: ["execution-loop", "verification-return", "omx-state", "codex-host"],
+      activeEdgeIds: ["e7", "e8", "e9"],
+      note: {
+        en: "Verification results and runtime context return into `.omx/`, so future Codex sessions start with accumulated state.",
+        zh: "验证结果与运行时上下文会回流进 `.omx/`，使之后的 Codex session 从累积状态开始。",
+      },
+    },
+  ],
+};
+
+export const draftDiagrams: ComparisonDiagram[] = [trellisDraftDiagram, omxDraftDiagram];

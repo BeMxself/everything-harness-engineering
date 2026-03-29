@@ -1,8 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { resolveText } from "../i18n";
-import { trellisDraftDiagram } from "./draftDiagrams";
+import { draftDiagrams, omxDraftDiagram, trellisDraftDiagram } from "./draftDiagrams";
 
 describe("draft diagram data", () => {
+  it("keeps Trellis and oh-my-codex as the current renderable draft diagrams", () => {
+    expect(draftDiagrams.map((diagram) => diagram.id)).toEqual([
+      "trellis-draft",
+      "oh-my-codex-draft",
+    ]);
+  });
+
   it("contains a renderable Trellis formal draft diagram", () => {
     expect(trellisDraftDiagram.id).toBe("trellis-draft");
     expect(resolveText(trellisDraftDiagram.title, "en")).toMatch(/Trellis Draft/i);
@@ -24,5 +31,14 @@ describe("draft diagram data", () => {
     expect(resolveText(nodes.get("workflow-core")!.label, "en")).toMatch(/workflow core/i);
     expect(resolveText(nodes.get("platform-wiring")!.label, "en")).toMatch(/platform wiring/i);
     expect(resolveText(nodes.get("host-surface")!.label, "en")).toMatch(/host surface/i);
+  });
+
+  it("contains an oh-my-codex draft diagram centered on Codex remaining the execution engine", () => {
+    expect(omxDraftDiagram.id).toBe("oh-my-codex-draft");
+    expect(resolveText(omxDraftDiagram.title, "en")).toMatch(/OMX Draft Diagram/i);
+    expect(omxDraftDiagram.emphasis.harness).toBe("high");
+    expect(omxDraftDiagram.emphasis.hostDependency).toBe("high");
+    expect(resolveText(omxDraftDiagram.notes.whyThisLoopMatters, "en")).toMatch(/Codex/i);
+    expect(omxDraftDiagram.steps).toHaveLength(5);
   });
 });

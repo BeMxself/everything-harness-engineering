@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { resolveText } from "../i18n";
-import { trellisDraftCase } from "./draftCases";
+import { draftCases, omxDraftCase, trellisDraftCase } from "./draftCases";
 
 describe("draft case data", () => {
+  it("lists Trellis and oh-my-codex as formal draft cases", () => {
+    expect(draftCases.map((draft) => draft.id)).toEqual(["trellis", "oh-my-codex"]);
+  });
+
   it("contains a Trellis draft skeleton for the next formal expansion step", () => {
     expect(trellisDraftCase.id).toBe("trellis");
     expect(trellisDraftCase.state).toBe("draft");
@@ -39,5 +43,21 @@ describe("draft case data", () => {
     expect(trellisDraftCase.evidenceNotes).toHaveLength(3);
     expect(resolveText(trellisDraftCase.evidenceNotes[0]!, "en")).toMatch(/\.trellis/i);
     expect(trellisDraftCase.sources.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("contains an oh-my-codex draft focused on Codex host plus OMX workflow help", () => {
+    expect(omxDraftCase.id).toBe("oh-my-codex");
+    expect(resolveText(omxDraftCase.title, "en")).toMatch(/omx/i);
+    expect(omxDraftCase.nodes.map((node) => node.id)).toEqual([
+      "task",
+      "codex-host",
+      "prompt-skill-layer",
+      "omx-state",
+      "workflow-escalation",
+      "team-runtime",
+      "execution-loop",
+      "verification-return",
+    ]);
+    expect(resolveText(omxDraftCase.openQuestions[0]!, "en")).toMatch(/team runtime/i);
   });
 });

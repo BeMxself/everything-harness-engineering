@@ -102,4 +102,14 @@ describe("App", () => {
     expect(screen.getAllByText(/Open questions/i).length).toBeGreaterThan(0);
     expect(screen.queryByRole("button", { name: /^Trellis$/i })).not.toBeInTheDocument();
   });
+
+  it("shows an oh-my-codex draft preview without adding it to the formal comparison switcher", () => {
+    render(<App />);
+
+    expect(screen.getAllByText(/OMX Draft/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/codex host/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/prompt \/ skill layer/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/team runtime/i).length).toBeGreaterThan(0);
+    expect(screen.queryByRole("button", { name: /^oh-my-codex$/i })).not.toBeInTheDocument();
+  });
 });

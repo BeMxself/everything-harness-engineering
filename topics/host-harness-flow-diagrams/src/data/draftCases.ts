@@ -179,3 +179,169 @@ export const trellisDraftCase: DraftCase = {
     },
   ],
 };
+
+export const omxDraftCase: DraftCase = {
+  id: "oh-my-codex",
+  title: "OMX Draft",
+  state: "draft",
+  summary: {
+    en: "A Codex-host draft showing how OMX keeps Codex as the execution engine while layering prompts, workflows, `.omx/` state, and optional team runtime escalation around it.",
+    zh: "一张以 Codex host 为中心的 draft 草图，用来表达 OMX 如何保留 Codex 作为 execution engine，并在外层叠加 prompts、workflows、`.omx/` state 与可选的 team runtime escalation。",
+  },
+  nodes: [
+    {
+      id: "task",
+      label: "task",
+      purpose: {
+        en: "User task entering the Codex session before OMX decides whether extra workflow help is needed.",
+        zh: "进入 Codex session 的用户任务，OMX 会先判断是否需要额外 workflow help。",
+      },
+      lane: "entry",
+    },
+    {
+      id: "codex-host",
+      label: "codex host",
+      purpose: {
+        en: "The base Codex CLI session that still performs the actual agent work.",
+        zh: "底层的 Codex CLI session，实际 agent work 仍由它完成。",
+      },
+      lane: "host",
+    },
+    {
+      id: "prompt-skill-layer",
+      label: "prompt / skill layer",
+      purpose: {
+        en: "Reusable prompts and workflows such as `/prompts:*`, `$plan`, `$ralph`, `$team`, and `$deep-interview`.",
+        zh: "可复用的 prompts 与 workflows，例如 `/prompts:*`、`$plan`、`$ralph`、`$team`、`$deep-interview`。",
+      },
+      lane: "wiring",
+    },
+    {
+      id: "omx-state",
+      label: ".omx state",
+      purpose: {
+        en: "Plans, logs, memory, and mode tracking stored under `.omx/`.",
+        zh: "保存在 `.omx/` 下的 plans、logs、memory 与 mode tracking。",
+      },
+      lane: "memory",
+    },
+    {
+      id: "workflow-escalation",
+      label: "workflow escalation",
+      purpose: {
+        en: "Decision point where OMX keeps work lightweight or escalates into heavier workflows.",
+        zh: "OMX 判断继续保持轻量执行，还是升级到更重 workflow 的决策点。",
+      },
+      lane: "core",
+    },
+    {
+      id: "team-runtime",
+      label: "team runtime",
+      purpose: {
+        en: "Optional tmux/worktree coordination layer used only when the task grows large enough.",
+        zh: "只有任务足够大时才启用的 tmux/worktree coordination layer。",
+      },
+      lane: "execution",
+    },
+    {
+      id: "execution-loop",
+      label: "execution loop",
+      purpose: {
+        en: "The actual Codex-side implementation, analysis, or persistent execution flow.",
+        zh: "真正发生在 Codex 侧的 implementation、analysis 或 persistent execution flow。",
+      },
+      lane: "execution",
+    },
+    {
+      id: "verification-return",
+      label: "verification / memory return",
+      purpose: {
+        en: "Results return through verification and `.omx/` state instead of ending at one prompt run.",
+        zh: "结果会通过 verification 和 `.omx/` state 回流，而不是停在一次 prompt run。",
+      },
+      lane: "return",
+    },
+  ],
+  steps: [
+    {
+      id: "s1-start-strong",
+      label: "start stronger",
+      summary: {
+        en: "OMX starts a stronger Codex session by default instead of replacing Codex.",
+        zh: "OMX 默认会先把 Codex session 启动得更强，而不是替代 Codex 本身。",
+      },
+    },
+    {
+      id: "s2-load-workflow-help",
+      label: "load workflow help",
+      summary: {
+        en: "Reusable prompts and skills wrap the host with analysis, planning, and interview surfaces.",
+        zh: "可复用的 prompts 与 skills 会在宿主外层提供分析、规划与澄清访谈等工作面。",
+      },
+    },
+    {
+      id: "s3-escalate-workflows",
+      label: "escalate workflows",
+      summary: {
+        en: "OMX decides when to stay lightweight and when to escalate into `$ralph`, `$team`, or deeper workflows.",
+        zh: "OMX 会判断是保持轻量执行，还是升级到 `$ralph`、`$team` 或更重 workflows。",
+      },
+    },
+    {
+      id: "s4-team-runtime",
+      label: "optional team runtime",
+      summary: {
+        en: "Team runtime appears as an optional escalation path, not as the default starting point.",
+        zh: "team runtime 是可选升级路径，不是默认起点。",
+      },
+    },
+    {
+      id: "s5-return-state",
+      label: "return through state",
+      summary: {
+        en: "Plans, logs, memory, and verification results return into `.omx/` so the next run starts with accumulated context.",
+        zh: "plans、logs、memory 与 verification results 会回流进 `.omx/`，让下一次运行从累积上下文开始。",
+      },
+    },
+  ],
+  openQuestions: [
+    {
+      en: "Should the optional team runtime remain a side branch, or become a larger structural lane if `$team` is treated as the signature OMX differentiator?",
+      zh: "如果把 `$team` 当成 OMX 的 signature differentiator，optional team runtime 应继续作为侧分支，还是升级成更大的结构层？",
+    },
+    {
+      en: "How much should `/prompts:*` stay separate from skill workflows, versus being compressed into one reusable guidance layer?",
+      zh: "`/prompts:*`` 应该和 skill workflows 保持分层，还是压成一层 reusable guidance layer 更合理？",
+    },
+    {
+      en: "Should `.omx/` state be drawn as one node, or split into memory versus mode tracking once the diagram becomes formal?",
+      zh: "当图进入更正式阶段时，`.omx/` state 应该保持单节点，还是拆成 memory 与 mode tracking 两层？",
+    },
+  ],
+  evidenceNotes: [
+    {
+      en: "The README states explicitly that OMX is a workflow layer for Codex CLI and that Codex remains the execution engine.",
+      zh: "README 明确写到 OMX 是 Codex CLI 的 workflow layer，并且 Codex 仍然是 execution engine。",
+    },
+    {
+      en: "Official quick-start guidance treats `/prompts:*`, `$plan`, `$ralph`, and `$team` as reusable workflow surfaces around Codex rather than a replacement host.",
+      zh: "官方 quick-start 把 `/prompts:*`、`$plan`、`$ralph`、`$team` 都当成围绕 Codex 的可复用 workflow surfaces，而不是替代宿主。",
+    },
+    {
+      en: "The README explicitly says team runtime is for cases where durable tmux/worktree coordination is needed, not the default way to begin using OMX.",
+      zh: "README 明确说 team runtime 是在需要 durable tmux/worktree coordination 时才使用的，而不是默认起步方式。",
+    },
+  ],
+  sources: [
+    {
+      label: "oh-my-codex repository",
+      href: "https://github.com/Yeachan-Heo/oh-my-codex",
+      note: {
+        en: "Primary source for OMX positioning as a Codex workflow layer, reusable workflow surfaces, `.omx/` state, and optional team runtime.",
+        zh: "用于确认 OMX 作为 Codex workflow layer、可复用 workflow surfaces、`.omx/` state 与可选 team runtime 的主来源。",
+      },
+    },
+  ],
+};
+
+export const draftCases: DraftCase[] = [trellisDraftCase, omxDraftCase];
