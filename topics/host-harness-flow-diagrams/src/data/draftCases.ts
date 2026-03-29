@@ -344,4 +344,176 @@ export const omxDraftCase: DraftCase = {
   ],
 };
 
-export const draftCases: DraftCase[] = [trellisDraftCase, omxDraftCase];
+export const gsdDraftCase: DraftCase = {
+  id: "get-shit-done",
+  title: "GSD Workflow Protocol Draft",
+  state: "draft",
+  summary: {
+    en: "A workflow-protocol draft showing how GSD wraps multi-host installation surfaces around a discuss → plan → execute → verify loop backed by `.planning/` state.",
+    zh: "一张 workflow-protocol draft，表达 GSD 如何在多宿主安装面之上建立 `discuss → plan → execute → verify` 这条由 `.planning/` state 支撑的循环。",
+  },
+  nodes: [
+    {
+      id: "idea-request",
+      label: "idea / request",
+      purpose: {
+        en: "The feature request or project idea entering the protocol loop.",
+        zh: "进入 protocol loop 的功能请求或项目想法。",
+      },
+      lane: "entry",
+    },
+    {
+      id: "planning-state",
+      label: ".planning state",
+      purpose: {
+        en: "Project, requirements, roadmap, phase context, and verification artifacts stored under `.planning/`.",
+        zh: "保存在 `.planning/` 下的 project、requirements、roadmap、phase context 与 verification artifacts。",
+      },
+      lane: "memory",
+    },
+    {
+      id: "discuss-phase",
+      label: "discuss phase",
+      purpose: {
+        en: "Clarifies decisions and gray areas before deeper research or planning begins.",
+        zh: "在更深的 research 或 planning 开始前，先澄清决策与灰区。",
+      },
+      lane: "core",
+    },
+    {
+      id: "plan-phase",
+      label: "plan phase",
+      purpose: {
+        en: "Researches implementation approaches, creates atomic plans, and checks them against phase goals.",
+        zh: "研究实现方式、生成 atomic plans，并检查它们是否满足 phase goals。",
+      },
+      lane: "core",
+    },
+    {
+      id: "execute-phase",
+      label: "execute phase",
+      purpose: {
+        en: "Runs plans in waves, using fresh contexts and parallel execution where dependencies allow.",
+        zh: "按 waves 执行 plans，在依赖允许时使用 fresh contexts 与并行执行。",
+      },
+      lane: "execution",
+    },
+    {
+      id: "verify-phase",
+      label: "verify work",
+      purpose: {
+        en: "Walks the user through deliverables, diagnoses failures, and prepares fix plans.",
+        zh: "带用户逐项确认 deliverables、诊断失败原因，并准备 fix plans。",
+      },
+      lane: "return",
+    },
+    {
+      id: "ship-next",
+      label: "ship / next milestone",
+      purpose: {
+        en: "Ships verified work, completes milestones, and restarts the loop for the next phase or milestone.",
+        zh: "交付已验证工作、完成里程碑，并为下一 phase 或 milestone 重启这条循环。",
+      },
+      lane: "maintenance",
+    },
+    {
+      id: "host-runtime-surface",
+      label: "host runtime surface",
+      purpose: {
+        en: "Claude Code, Codex, Cursor, OpenCode, Gemini, and other host-specific install surfaces used to run the protocol.",
+        zh: "Claude Code、Codex、Cursor、OpenCode、Gemini 等宿主专属安装与运行工作面，用来承载这套 protocol。",
+      },
+      lane: "host",
+    },
+  ],
+  steps: [
+    {
+      id: "s1-initialize",
+      label: "initialize project",
+      summary: {
+        en: "The system turns an idea into project files, requirements, roadmap, and base planning state.",
+        zh: "系统会把想法转成 project files、requirements、roadmap 与基础 planning state。",
+      },
+    },
+    {
+      id: "s2-discuss",
+      label: "discuss phase",
+      summary: {
+        en: "The protocol clarifies what the user actually wants before research and planning get more specific.",
+        zh: "在 research 和 planning 更具体之前，这条 protocol 会先澄清用户真正想要的东西。",
+      },
+    },
+    {
+      id: "s3-plan",
+      label: "plan phase",
+      summary: {
+        en: "Research and plan generation create small executable units tied back to roadmap goals.",
+        zh: "research 与 plan generation 会生成可执行的小单元，并把它们重新绑定到 roadmap goals 上。",
+      },
+    },
+    {
+      id: "s4-execute-verify",
+      label: "execute + verify",
+      summary: {
+        en: "Execution runs in waves and returns through verification, fix plans, and updated planning artifacts.",
+        zh: "执行会按 waves 运行，并通过 verification、fix plans 与更新后的 planning artifacts 回流。",
+      },
+    },
+    {
+      id: "s5-ship-loop",
+      label: "ship and repeat",
+      summary: {
+        en: "Verified work ships, milestones complete, and the same protocol restarts for the next slice of work.",
+        zh: "验证完成的工作被交付，里程碑结束，然后同一套 protocol 会为下一段工作重新开始。",
+      },
+    },
+  ],
+  openQuestions: [
+    {
+      en: "How visible should the host layer be when the protocol is explicitly designed to feel host-agnostic after installation?",
+      zh: "当这套 protocol 安装完成后刻意想呈现为 host-agnostic 时，host layer 应该被画得多明显？",
+    },
+    {
+      en: "Should `map-codebase` and quick/fast modes stay outside the main loop, or appear as optional side-entry paths into the protocol?",
+      zh: "`map-codebase` 与 quick/fast modes 应该留在主循环外，还是作为可选 side-entry paths 进入这条 protocol？",
+    },
+    {
+      en: "How much of milestone / workstream management belongs in the same diagram versus a later supplemental view?",
+      zh: "milestone / workstream management 有多少应该留在同一张图里，多少应该移到后续 supplemental view？",
+    },
+  ],
+  evidenceNotes: [
+    {
+      en: "The README explicitly frames GSD as a meta-prompting, context engineering, and spec-driven development system rather than as a host replacement.",
+      zh: "README 明确把 GSD 定义成 meta-prompting、context engineering 与 spec-driven development system，而不是宿主替代品。",
+    },
+    {
+      en: "The published `How It Works` section centers the protocol loop on initialize, discuss, plan, execute, verify, and repeat/ship milestones.",
+      zh: "公开的 `How It Works` 明确把 protocol loop 放在 initialize、discuss、plan、execute、verify 与 repeat/ship milestones 上。",
+    },
+    {
+      en: "The same README also keeps installation and command surfaces distributed across multiple hosts, which is why the host layer matters but does not dominate the diagram.",
+      zh: "同一份 README 也把安装与命令工作面分散在多个宿主上，这也是为什么 host layer 重要，但不应该主导整张图。",
+    },
+  ],
+  sources: [
+    {
+      label: "get-shit-done repository",
+      href: "https://github.com/gsd-build/get-shit-done",
+      note: {
+        en: "Primary source for GSD positioning, multi-host installation surfaces, and the discuss → plan → execute → verify workflow.",
+        zh: "用于确认 GSD 定位、多宿主安装面，以及 discuss → plan → execute → verify workflow 的主来源。",
+      },
+    },
+    {
+      label: "GSD user guide",
+      href: "https://github.com/gsd-build/get-shit-done/blob/main/docs/USER-GUIDE.md",
+      note: {
+        en: "Official guide for command usage, config toggles, and detailed workflow behavior.",
+        zh: "官方用户指南，用来补充命令用法、配置开关和更细的 workflow 行为。",
+      },
+    },
+  ],
+};
+
+export const draftCases: DraftCase[] = [trellisDraftCase, omxDraftCase, gsdDraftCase];

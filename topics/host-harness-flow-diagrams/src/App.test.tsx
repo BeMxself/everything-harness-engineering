@@ -112,4 +112,15 @@ describe("App", () => {
     expect(screen.getAllByText(/team runtime/i).length).toBeGreaterThan(0);
     expect(screen.queryByRole("button", { name: /^oh-my-codex$/i })).not.toBeInTheDocument();
   });
+
+  it("shows a get-shit-done workflow-protocol draft without adding it to the formal comparison switcher", () => {
+    render(<App />);
+
+    expect(screen.getAllByText(/GSD Workflow Protocol Draft/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/discuss phase/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/plan phase/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/execute phase/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/verify work/i).length).toBeGreaterThan(0);
+    expect(screen.queryByRole("button", { name: /^get-shit-done$/i })).not.toBeInTheDocument();
+  });
 });

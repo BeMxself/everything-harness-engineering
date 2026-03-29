@@ -1,10 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { resolveText } from "../i18n";
-import { draftCases, omxDraftCase, trellisDraftCase } from "./draftCases";
+import { draftCases, gsdDraftCase, omxDraftCase, trellisDraftCase } from "./draftCases";
 
 describe("draft case data", () => {
   it("lists Trellis and oh-my-codex as formal draft cases", () => {
-    expect(draftCases.map((draft) => draft.id)).toEqual(["trellis", "oh-my-codex"]);
+    expect(draftCases.map((draft) => draft.id)).toEqual([
+      "trellis",
+      "oh-my-codex",
+      "get-shit-done",
+    ]);
   });
 
   it("contains a Trellis draft skeleton for the next formal expansion step", () => {
@@ -59,5 +63,21 @@ describe("draft case data", () => {
       "verification-return",
     ]);
     expect(resolveText(omxDraftCase.openQuestions[0]!, "en")).toMatch(/team runtime/i);
+  });
+
+  it("contains a get-shit-done draft focused on the protocol loop rather than host wiring", () => {
+    expect(gsdDraftCase.id).toBe("get-shit-done");
+    expect(resolveText(gsdDraftCase.title, "en")).toMatch(/workflow protocol/i);
+    expect(gsdDraftCase.nodes.map((node) => node.id)).toEqual([
+      "idea-request",
+      "planning-state",
+      "discuss-phase",
+      "plan-phase",
+      "execute-phase",
+      "verify-phase",
+      "ship-next",
+      "host-runtime-surface",
+    ]);
+    expect(resolveText(gsdDraftCase.openQuestions[0]!, "en")).toMatch(/host layer/i);
   });
 });

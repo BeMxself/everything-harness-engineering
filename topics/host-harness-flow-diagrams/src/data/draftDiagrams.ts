@@ -424,4 +424,214 @@ export const omxDraftDiagram: ComparisonDiagram = {
   ],
 };
 
-export const draftDiagrams: ComparisonDiagram[] = [trellisDraftDiagram, omxDraftDiagram];
+export const gsdDraftDiagram: ComparisonDiagram = {
+  id: "get-shit-done-draft",
+  title: "GSD Workflow Protocol Draft",
+  summary: {
+    en: "A boundary-case draft showing GSD as a protocol loop that runs across host install surfaces while keeping its real control shape in discuss, plan, execute, verify, and milestone turnover.",
+    zh: "一张边界案例 draft，用来表达 GSD 如何作为一条跨宿主安装面运行的 protocol loop，而它真正的控制形态在于 discuss、plan、execute、verify 与 milestone turnover。",
+  },
+  emphasis: {
+    automationLoop: "high",
+    harness: "medium",
+    control: "high",
+    hostDependency: "medium",
+  },
+  notes: {
+    whyThisLoopMatters: {
+      en: "GSD becomes interesting when read as a repeatable protocol for keeping context fresh, not as a static overlay on one host.",
+      zh: "GSD 最值得看的地方，是它作为保持 context fresh 的可重复 protocol，而不是单宿主上的静态 overlay。",
+    },
+    whereTheHarnessLives: {
+      en: "The harness lives mostly in planning artifacts, command choreography, and verification loops rather than in a dedicated runtime shell.",
+      zh: "这层 harness 更多存在于 planning artifacts、command choreography 与 verification loops 中，而不是一个专门的 runtime shell。",
+    },
+  },
+  readingGuide: {
+    keyQuestion: {
+      en: "Does the protocol itself become the main control loop, with host surfaces acting mainly as execution carriers?",
+      zh: "protocol 本身会不会成为主控制闭环，而宿主工作面更多只是执行载体？",
+    },
+    howToRead: {
+      en: "Follow the main loop from initialization into discuss, plan, execute, verify, and milestone turnover, then compare how the host layer supports the loop without dominating it.",
+      zh: "先沿着 initialization → discuss → plan → execute → verify → milestone turnover 这条主循环去看，再观察 host layer 如何支撑这条循环而不是主导它。",
+    },
+    evidenceBoundary: {
+      en: "Commands, artifact names, and phase structure follow GSD public docs. The control topology here is repository interpretation used to compare protocol-heavy cases.",
+      zh: "命令、artifact 名称与 phase 结构尽量沿用 GSD 公开文档；这里的控制拓扑则是为了比较 protocol-heavy cases 而做的仓库解释。",
+    },
+    currentLimit: {
+      en: "This draft compresses many special modes and workstream tools into one boundary-case loop, so it emphasizes protocol shape over every command surface.",
+      zh: "这张 draft 把许多 special modes 和 workstream tools 压缩进一条边界案例循环，因此更强调 protocol shape，而不是逐个 command surface。",
+    },
+  },
+  takeaways: [
+    {
+      en: "The discuss → plan → execute → verify loop is the load-bearing part of GSD.",
+      zh: "discuss → plan → execute → verify 这条循环是 GSD 的 load-bearing part。",
+    },
+    {
+      en: "`.planning/` is not just storage; it is the memory layer that keeps the protocol coherent across phases and milestones.",
+      zh: "`.planning/` 不只是存储层，它还是让这条 protocol 在 phases 与 milestones 之间保持连贯的 memory layer。",
+    },
+    {
+      en: "Host surfaces matter for installation and invocation, but the protocol loop itself carries most of the control weight.",
+      zh: "host surface 对安装与调用很重要，但真正承担大部分控制权的是 protocol loop 本身。",
+    },
+  ],
+  sources: [
+    {
+      label: "get-shit-done repository",
+      href: "https://github.com/gsd-build/get-shit-done",
+      note: {
+        en: "Primary source for the workflow protocol, multi-host install surface, and `.planning/` artifact model.",
+        zh: "用于确认 workflow protocol、多宿主安装面与 `.planning/` artifact model 的主来源。",
+      },
+    },
+    {
+      label: "GSD user guide",
+      href: "https://github.com/gsd-build/get-shit-done/blob/main/docs/USER-GUIDE.md",
+      note: {
+        en: "Official guide for detailed command and workflow behavior beyond the README summary.",
+        zh: "官方用户指南，用来补充 README 之外更细的命令和 workflow 行为。",
+      },
+    },
+  ],
+  nodes: [
+    {
+      id: "idea-request",
+      label: "idea / request",
+      kind: "entry",
+      description: "Feature request or project idea entering GSD",
+      position: { x: 24, y: 290 },
+    },
+    {
+      id: "planning-state",
+      label: ".planning state",
+      kind: "memory",
+      description: "Project, roadmap, phase files, and verification artifacts",
+      position: { x: 410, y: 74 },
+    },
+    {
+      id: "discuss-phase",
+      label: "discuss phase",
+      kind: "control",
+      description: "Clarifies gray areas before deeper planning",
+      position: { x: 410, y: 288 },
+    },
+    {
+      id: "plan-phase",
+      label: "plan phase",
+      kind: "control",
+      description: "Researches and generates executable plans",
+      position: { x: 890, y: 288 },
+    },
+    {
+      id: "execute-phase",
+      label: "execute phase",
+      kind: "execution",
+      description: "Runs plans in waves with fresh contexts",
+      position: { x: 1370, y: 288 },
+    },
+    {
+      id: "verify-phase",
+      label: "verify work",
+      kind: "verification",
+      description: "UAT, debugging, and fix-plan generation",
+      position: { x: 1850, y: 288 },
+    },
+    {
+      id: "ship-next",
+      label: "ship / next milestone",
+      kind: "decision",
+      description: "Ships verified work and restarts the cycle",
+      position: { x: 2330, y: 288 },
+    },
+    {
+      id: "host-runtime-surface",
+      label: "host runtime surface",
+      kind: "shell",
+      host: "multi-host",
+      description: "Claude Code / Codex / Cursor / OpenCode / Gemini and other installs",
+      position: { x: 1130, y: 560 },
+    },
+  ],
+  edges: [
+    { id: "e1", source: "idea-request", target: "planning-state", kind: "main" },
+    { id: "e2", source: "planning-state", target: "discuss-phase", kind: "feedback" },
+    { id: "e3", source: "discuss-phase", target: "plan-phase", kind: "main" },
+    { id: "e4", source: "plan-phase", target: "execute-phase", kind: "main" },
+    { id: "e5", source: "execute-phase", target: "verify-phase", kind: "main" },
+    { id: "e6", source: "verify-phase", target: "planning-state", kind: "feedback" },
+    { id: "e7", source: "verify-phase", target: "ship-next", kind: "main" },
+    {
+      id: "e8",
+      source: "ship-next",
+      target: "discuss-phase",
+      kind: "feedback",
+      controlPoints: [{ x: 1880, y: 640 }, { x: 620, y: 640 }],
+    },
+    { id: "e9", source: "host-runtime-surface", target: "discuss-phase", kind: "implicit" },
+    { id: "e10", source: "host-runtime-surface", target: "plan-phase", kind: "implicit" },
+    { id: "e11", source: "host-runtime-surface", target: "execute-phase", kind: "implicit" },
+    { id: "e12", source: "host-runtime-surface", target: "verify-phase", kind: "implicit" },
+  ],
+  steps: [
+    {
+      id: "s1-initialize",
+      label: { en: "Initialize project", zh: "初始化项目" },
+      activeNodeIds: ["idea-request", "planning-state"],
+      activeEdgeIds: ["e1"],
+      note: {
+        en: "GSD turns the initial request into planning artifacts before any phase execution begins.",
+        zh: "在任何 phase execution 开始前，GSD 会先把初始请求转成 planning artifacts。",
+      },
+    },
+    {
+      id: "s2-discuss",
+      label: { en: "Discuss phase", zh: "讨论 phase" },
+      activeNodeIds: ["planning-state", "discuss-phase", "host-runtime-surface"],
+      activeEdgeIds: ["e2", "e9"],
+      note: {
+        en: "Discussion captures user intent and ambiguity before deeper planning starts.",
+        zh: "讨论阶段会先捕获用户意图与灰区，再进入更深的 planning。",
+      },
+    },
+    {
+      id: "s3-plan",
+      label: { en: "Plan phase", zh: "规划 phase" },
+      activeNodeIds: ["discuss-phase", "plan-phase", "host-runtime-surface"],
+      activeEdgeIds: ["e3", "e10"],
+      note: {
+        en: "Research and planning refine the work into executable plans tied to the phase goals.",
+        zh: "research 与 planning 会把工作细化成绑定 phase goals 的可执行 plans。",
+      },
+    },
+    {
+      id: "s4-execute-verify",
+      label: { en: "Execute + verify", zh: "执行并验证" },
+      activeNodeIds: ["execute-phase", "verify-phase", "host-runtime-surface", "planning-state"],
+      activeEdgeIds: ["e4", "e5", "e6", "e11", "e12"],
+      note: {
+        en: "Execution runs in waves, then returns through verification and updated planning artifacts.",
+        zh: "执行会按 waves 运行，然后通过 verification 与更新后的 planning artifacts 回流。",
+      },
+    },
+    {
+      id: "s5-ship-loop",
+      label: { en: "Ship and loop", zh: "交付并回环" },
+      activeNodeIds: ["verify-phase", "ship-next", "discuss-phase"],
+      activeEdgeIds: ["e7", "e8"],
+      note: {
+        en: "Verified work ships, then the same protocol restarts for the next phase or milestone.",
+        zh: "完成验证的工作会被交付，然后同一套 protocol 会为下一 phase 或 milestone 重启。",
+      },
+    },
+  ],
+};
+
+export const draftDiagrams: ComparisonDiagram[] = [
+  trellisDraftDiagram,
+  omxDraftDiagram,
+  gsdDraftDiagram,
+];

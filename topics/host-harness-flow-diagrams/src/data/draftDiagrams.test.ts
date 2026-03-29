@@ -1,12 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { resolveText } from "../i18n";
-import { draftDiagrams, omxDraftDiagram, trellisDraftDiagram } from "./draftDiagrams";
+import { draftDiagrams, gsdDraftDiagram, omxDraftDiagram, trellisDraftDiagram } from "./draftDiagrams";
 
 describe("draft diagram data", () => {
   it("keeps Trellis and oh-my-codex as the current renderable draft diagrams", () => {
     expect(draftDiagrams.map((diagram) => diagram.id)).toEqual([
       "trellis-draft",
       "oh-my-codex-draft",
+      "get-shit-done-draft",
     ]);
   });
 
@@ -40,5 +41,14 @@ describe("draft diagram data", () => {
     expect(omxDraftDiagram.emphasis.hostDependency).toBe("high");
     expect(resolveText(omxDraftDiagram.notes.whyThisLoopMatters, "en")).toMatch(/Codex/i);
     expect(omxDraftDiagram.steps).toHaveLength(5);
+  });
+
+  it("contains a get-shit-done draft diagram centered on discuss-plan-execute-verify", () => {
+    expect(gsdDraftDiagram.id).toBe("get-shit-done-draft");
+    expect(resolveText(gsdDraftDiagram.title, "en")).toMatch(/GSD Workflow Protocol Draft/i);
+    expect(gsdDraftDiagram.emphasis.automationLoop).toBe("high");
+    expect(gsdDraftDiagram.emphasis.hostDependency).toBe("medium");
+    expect(resolveText(gsdDraftDiagram.readingGuide.keyQuestion, "en")).toMatch(/protocol/i);
+    expect(gsdDraftDiagram.steps).toHaveLength(5);
   });
 });
