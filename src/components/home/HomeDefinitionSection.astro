@@ -6,23 +6,25 @@ import { LinkButton } from "@astrojs/starlight/components";
   <div class="overview-grid">
     <div class="overview-prose">
       <p class="section-label">概念入口</p>
-      <h2>先把 harness engineering 这个概念说清楚。</h2>
+      <h2>先把 agent harness 和 harness engineering 说清楚。</h2>
       <p class="lead">
-        <strong>Harness engineering</strong> 讨论的不是“模型会不会”，而是“系统怎样让 agent 持续、可控地工作”。
-        关键不在模型本身，而在模型外面的工作面、控制面、恢复面和人类控制面。
+        <strong>Harness engineering</strong> 讨论的不是“模型会不会”，而是人如何站在
+        <strong>agent harness</strong> 提供的底层能力之上，把提示词、MCP、钩子、技能、子代理、记忆
+        和审批机制组织成可持续、可控、可验证的开发系统。
       </p>
       <p>
-        真正值得研究的中心对象，既不是模型本身，也不是 prompt 本身，而是模型外面的整套系统：
-        主工作面、控制中心、恢复路径、人类控制面，以及它们如何共同构成 durable engineering surface。
+        更稳的理解方式是先分三层看：<code>agent harness</code> 提供底层能力、控制面与恢复面，
+        <code>提示词 / MCP / 钩子 / 技能 / 子代理 / 记忆 / 审批</code> 是机制层，
+        <code>harness engineering</code> 则是人如何借这些机制去驾驭 AI 做项目开发的工程实践。
       </p>
     </div>
 
     <aside id="boundary" class="boundary-panel not-content">
       <p class="section-label">先抓这三个问题</p>
       <ul>
-        <li>这个词到底指的是系统对象，还是工程实践。</li>
-        <li>它为什么不等于 prompt engineering、host 或 workflow。</li>
-        <li>哪些问题才算真正进入 harness engineering 的讨论中心。</li>
+        <li><code>agent harness</code> 到底是底层能力系统，还是只是产品标签。</li>
+        <li><code>MCP / 钩子 / 技能 / 子代理</code> 这些机制到底属于哪一层。</li>
+        <li><code>harness engineering</code> 为什么不等于提示词工程、宿主或工作流。</li>
       </ul>
       <LinkButton href="/everything-harness-engineering/concept-entry/" variant="secondary" icon="right-arrow">
         进入概念入口
