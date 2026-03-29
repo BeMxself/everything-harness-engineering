@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/copy-topic-sites.mjs",
+    "build:topics": "node scripts/build-topic-sites.mjs",
+    "build": "npm run build:topics && astro build && node scripts/copy-topic-sites.mjs",
     "preview": "astro preview",
     "check": "astro check"
   },

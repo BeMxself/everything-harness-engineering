@@ -1,25 +1,20 @@
-import { cpSync, existsSync, mkdirSync, readdirSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
+import { findBuildableTopics, resolveTopicPublishSourceDir } from "./topic-sites.mjs";
 
 const rootDir = process.cwd();
-const topicsDir = path.join(rootDir, "topics");
 const distDir = path.join(rootDir, "dist");
 
-if (!existsSync(topicsDir) || !existsSync(distDir)) {
+if (!existsSync(distDir)) {
   process.exit(0);
 }
 
-for (const entry of readdirSync(topicsDir, { withFileTypes: true })) {
-  if (!entry.isDirectory()) continue;
-
-  const topicDir = path.join(topicsDir, entry.name);
-  const preferredSourceDir = path.join(topicDir, "site");
-  const fallbackSourceDir = path.join(topicDir, "dist");
-  const sourceDir = existsSync(preferredSourceDir) ? preferredSourceDir : fallbackSourceDir;
+for (const topic of findBuildableTopics(rootDir)) {
+  const sourceDir = resolveTopicPublishSourceDir(topic.dir);
 
   if (!existsSync(sourceDir)) continue;
 
-  const targetDir = path.join(distDir, "topics", entry.name, "site");
+  const targetDir = path.join(distDir, "topics", topic.name, "site");
   mkdirSync(path.dirname(targetDir), { recursive: true });
   cpSync(sourceDir, targetDir, { recursive: true });
 }
