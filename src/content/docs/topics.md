@@ -88,12 +88,12 @@ description: 更深入、可运行的研究专题入口。
 
 ### 当前已经能回答什么
 
-- `oh-my-opencode` 更适合被读成以运行时为中心的 harness，而不是线性交付链
+- `oh-my-openagent`（原 `oh-my-opencode`）更适合被读成建立在 OpenCode 宿主之上的 `workflow-bearing harness`，而不是一条线性交付链
 - `gstack` 的强项更容易出现在交付流水线、门禁点和返工成本暴露上
 - `everything-claude-code` 更像策略壳层包裹下的主代理控制系统，而不只是普通多代理分发
 - `OpenCode -> oh-my-openagent` 这条链已经可以更稳地拆成：`OpenCode` 是 `programmable host`，`oh-my-openagent` 是建立在其上的 `workflow-bearing harness`
 - 在 `oh-my-openagent` 里，`ulw` 更适合被读成 `关键词触发 + 提示词注入 + 委派策略 + 可选模型重写` 的组合链，而不是一个单独 agent
-- `/start-work` 已经可以稳定地视作“计划转执行”的显式接力点，它把 `.sisyphus/plans/` 与 `boulder.json` 状态推进到执行闭环
+- `/start-work` 已经可以稳定地视作“计划转执行”的显式接力点，它把 `.sisyphus/plans/` 与 `boulder.json` 状态推进到 `Atlas` 执行闭环
 - `Prometheus` 的 interview 与 planning 已有源码支撑，但 `@plan` 是否等价于 Prometheus 目前仍只能写成文档 framing，不能直接写成已证实源码事实
 
 这些判断不是“最终定性”，但已经足以帮助读者做第一轮结构辨认。
