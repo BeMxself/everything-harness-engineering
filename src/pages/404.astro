@@ -1,0 +1,45 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+const frontmatter = {
+  title: "404",
+  description: "Harness engineering research page not found.",
+  template: "splash" as const,
+  editUrl: false as const,
+  pagefind: false,
+  hero: {
+    title: "404",
+    tagline:
+      "你要找的研究页面不存在，或链接已经变动。可以从下方几条主路径重新进入这个 harness engineering 研究站点。",
+  },
+};
+---
+
+<StarlightPage frontmatter={frontmatter} hasSidebar={false}>
+  <p>
+    这个仓库不是单一产品站，而是一个持续更新的研究入口。最常见的下一步通常是先回到概念边界，
+    再进入关键文章和专题图谱。
+  </p>
+  <ul>
+    <li>
+      <a href="./">返回首页</a>
+      ：回到整体研究导航与站点入口。
+    </li>
+    <li>
+      <a href="./concept-entry/">概念入口</a>
+      ：先确认这里讨论的到底是什么、边界在哪里。
+    </li>
+    <li>
+      <a href="./article-evidence-method/">文章证据工作法</a>
+      ：查看我们如何精读关键文章、区分稳结论与工作假说。
+    </li>
+    <li>
+      <a href="./key-articles/">关键文章</a>
+      ：直接进入当前最重要的一组 primary sources。
+    </li>
+    <li>
+      <a href="./topics/">研究专题</a>
+      ：进入更深的图谱、实验和 topic-level 分析。
+    </li>
+  </ul>
+</StarlightPage>

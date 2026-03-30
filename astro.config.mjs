@@ -27,6 +27,7 @@ export default defineConfig({
         baseUrl:
           "https://github.com/BeMxself/everything-harness-engineering/edit/main/",
       },
+      disable404Route: true,
       sidebar: [
         {
           label: "Overview",
@@ -37,6 +38,7 @@ export default defineConfig({
           items: [
             { label: "概念入口", link: "/concept-entry/" },
             { label: "术语与证据边界", link: "/terminology-and-evidence/" },
+            { label: "文章证据工作法", link: "/article-evidence-method/" },
             { label: "关键文章", link: "/key-articles/" },
             { label: "生态与比较", link: "/ecosystem-comparison/" },
             { label: "研究专题", link: "/topics/" },
