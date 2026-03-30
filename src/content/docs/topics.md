@@ -84,20 +84,29 @@ description: 更深入、可运行的研究专题入口。
 - [查看实现计划](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/plans/2026-03-25-host-harness-flow-diagrams.md)
 - [查看命名与扩展评估](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-host-harness-flow-diagrams-name-and-expansion-assessment.md)
 - [查看扩图纳入判断表](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-expansion-scope-matrix.md)
+- [查看 OpenCode -> oh-my-openagent 能力栈拆解备忘](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-30-opencode-oh-my-openagent-capability-stack.md)
 
 ### 当前已经能回答什么
 
 - `oh-my-opencode` 更适合被读成以运行时为中心的 harness，而不是线性交付链
 - `gstack` 的强项更容易出现在交付流水线、门禁点和返工成本暴露上
 - `everything-claude-code` 更像策略壳层包裹下的主代理控制系统，而不只是普通多代理分发
+- `OpenCode -> oh-my-openagent` 这条链已经可以更稳地拆成：`OpenCode` 是 `programmable host`，`oh-my-openagent` 是建立在其上的 `workflow-bearing harness`
+- 在 `oh-my-openagent` 里，`ulw` 更适合被读成 `关键词触发 + 提示词注入 + 委派策略 + 可选模型重写` 的组合链，而不是一个单独 agent
+- `/start-work` 已经可以稳定地视作“计划转执行”的显式接力点，它把 `.sisyphus/plans/` 与 `boulder.json` 状态推进到执行闭环
+- `Prometheus` 的 interview 与 planning 已有源码支撑，但 `@plan` 是否等价于 Prometheus 目前仍只能写成文档 framing，不能直接写成已证实源码事实
 
 这些判断不是“最终定性”，但已经足以帮助读者做第一轮结构辨认。
+
+这些判断里已经有一部分从“工作假说”推进到了“源码支撑的专题结论”，但它们仍然首先服务于结构辨认，而不是替代项目官方架构图。
 
 ### 当前还不能回答什么
 
 - 还不能覆盖更多框架，所以现在更适合作为比较方法示例，而不是领域全景地图
 - 还没有把每个框架的更细粒度角色、命令和钩子全部展开
 - 还没有把时间维度、成本维度和真实任务案例叠进图里
+- 还没有把“哪些判断来自原文、哪些来自专题解释”直接显示在图面或图旁
+- 还不能最终确认 `@plan` 这条入口在宿主层是否存在插件外 alias，把 `plan` 自动导向 `Prometheus`
 
 更适合把这个专题看成仍在演进的研究材料，而不是最终标准图谱。
 
@@ -106,6 +115,8 @@ description: 更深入、可运行的研究专题入口。
 - 增加更多框架，特别是边界更模糊的案例
 - 给每张图继续补来源说明、证据边界和专题结论
 - 在图之外增加“为什么这样画”的方法注记，减少读者把它误认成官方架构图的风险
+- 让专题页本身更明确地区分“当前稳结论”和“仍需补证据的工作假说”
+- 继续补 `OpenCode` 宿主层源码证据，优先核对 `@mention`、`Question`、session / subagent 导航这些会改变用户参与契约判断的路径
 
 ## 阅读这个部分时可以期待什么
 

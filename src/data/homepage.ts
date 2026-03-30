@@ -174,7 +174,7 @@ export const landscapeRows = [
     name: "oh-my-openagent",
     href: "https://github.com/code-yeongyu/oh-my-openagent",
     starsBadge: "https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=social",
-    intro: "构建在 OpenCode 之上的 harness 增强层，补上规则、控制和长期执行能力。",
+    intro: "构建在 OpenCode 之上的 harness 增强层，重点把 ulw、规划到执行接力、后台任务和持久状态组织成宿主内工作流协议。",
     category: "对象层：Agent Harnesses",
     runtimeForm: "宿主内扩展",
   },
@@ -334,7 +334,7 @@ export const topics = [
   {
     title: "宿主与 Harness 结构图",
     description:
-      "一个可运行的研究应用，用来比较不同编程代理系统里的宿主工作面、agent harness、控制中心与恢复路径。",
+      "一个可运行的研究应用，用来比较不同编程代理系统里的宿主工作面、agent harness、控制中心与恢复路径；当前已开始把 OpenCode -> oh-my-openagent 的源码核实同步进专题结论。",
     href: `${BASE}/topics/host-harness-flow-diagrams/site/`,
   },
 ];
