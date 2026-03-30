@@ -199,8 +199,17 @@ export const omxDraftCase: DraftCase = {
       lane: "entry",
     },
     {
+      id: "codex-native-surfaces",
+      label: "codex native surfaces",
+      purpose: {
+        en: "Codex-native control surfaces such as `AGENTS.md`, skills, MCP, hooks, approvals, and subagents that shape host behavior before OMX protocols take over.",
+        zh: "Codex 原生控制面，例如 `AGENTS.md`、skills、MCP、hooks、approvals 与 subagents；在 OMX protocol 接管之前，它们先塑造宿主行为。",
+      },
+      lane: "wiring",
+    },
+    {
       id: "codex-host",
-      label: "codex host",
+      label: "codex substrate",
       purpose: {
         en: "The Codex host substrate that still owns agent execution, approvals and sandbox, AGENTS guidance, skills, MCP, hooks, and subagent thread control.",
         zh: "Codex 的宿主 substrate；它仍然掌管 agent execution、approvals 与 sandbox、AGENTS guidance、skills、MCP、hooks，以及 subagent thread control。",
@@ -209,7 +218,7 @@ export const omxDraftCase: DraftCase = {
     },
     {
       id: "prompt-skill-layer",
-      label: "prompt / skill layer",
+      label: "workflow contracts",
       purpose: {
         en: "OMX workflow contracts such as `/prompts:*`, `$plan`, `$deep-interview`, `$ralph`, and `$team` that reorganize how users trigger and steer Codex.",
         zh: "OMX 的 workflow contracts，例如 `/prompts:*`、`$plan`、`$deep-interview`、`$ralph`、`$team`；它们会重组用户触发与驾驭 Codex 的方式。",
@@ -275,8 +284,8 @@ export const omxDraftCase: DraftCase = {
       id: "s2-load-workflow-help",
       label: "load workflow help",
       summary: {
-        en: "OMX adds reusable role prompts and workflow skills on top of Codex's native substrate instead of replacing the host's control surfaces.",
-        zh: "OMX 会叠加可复用的 role prompts 与 workflow skills，但不会替代 Codex 原生 substrate 的控制面。",
+        en: "The picture now separates Codex-native surfaces from OMX workflow contracts, so the host substrate and outer protocol layer stop reading as one fused shell.",
+        zh: "现在这张图会把 Codex 原生 surfaces 和 OMX workflow contracts 拆开，因此宿主 substrate 与外层 protocol layer 不再被读成一个熔在一起的壳层。",
       },
     },
     {
@@ -299,8 +308,8 @@ export const omxDraftCase: DraftCase = {
       id: "s5-return-state",
       label: "return through state",
       summary: {
-        en: "Verification results, hook traces, and runtime state return into `.omx/`, while Codex threads remain the underlying recovery substrate.",
-        zh: "verification results、hook traces 与 runtime state 会回流进 `.omx/`，而 Codex threads 则继续充当底层 recovery substrate。",
+        en: "Verification results, hook traces, and runtime state return into `.omx/`, then feed both Codex thread recovery and the next OMX workflow choice.",
+        zh: "verification results、hook traces 与 runtime state 会回流进 `.omx/`，然后同时影响 Codex thread recovery 与下一轮 OMX workflow choice。",
       },
     },
   ],

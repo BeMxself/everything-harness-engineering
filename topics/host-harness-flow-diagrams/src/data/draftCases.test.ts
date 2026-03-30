@@ -55,6 +55,7 @@ describe("draft case data", () => {
     expect(resolveText(omxDraftCase.summary, "en")).toMatch(/Codex substrate/i);
     expect(omxDraftCase.nodes.map((node) => node.id)).toEqual([
       "task",
+      "codex-native-surfaces",
       "codex-host",
       "prompt-skill-layer",
       "omx-state",

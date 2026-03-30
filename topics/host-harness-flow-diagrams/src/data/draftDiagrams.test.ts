@@ -41,6 +41,11 @@ describe("draft diagram data", () => {
     expect(omxDraftDiagram.emphasis.hostDependency).toBe("high");
     expect(resolveText(omxDraftDiagram.notes.whyThisLoopMatters, "en")).toMatch(/Codex/i);
     expect(resolveText(omxDraftDiagram.notes.whereTheHarnessLives, "en")).toMatch(/AGENTS/i);
+    expect(
+      omxDraftDiagram.nodes.some(
+        (node) => node.id === "codex-native-surfaces" && resolveText(node.label, "en").match(/native surfaces/i),
+      ),
+    ).toBe(true);
     expect(omxDraftDiagram.steps).toHaveLength(5);
   });
 
