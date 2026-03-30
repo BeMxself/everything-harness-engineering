@@ -80,11 +80,28 @@ export function InfoPanels({ diagram }: InfoPanelsProps) {
             <h3>{messages.takeawaysTitle}</h3>
             <p>{messages.takeawaysHint}</p>
           </div>
-          <ul className="takeaway-list">
-            {diagram.takeaways.map((takeaway, index) => (
-              <li key={`${diagram.id}-takeaway-${index}`}>{resolveText(takeaway, lang)}</li>
-            ))}
-          </ul>
+          <div className="note-block">
+            <h4>{messages.stableFindingsTitle}</h4>
+            <p>{messages.stableFindingsHint}</p>
+            <ul className="takeaway-list">
+              {diagram.takeaways.map((takeaway, index) => (
+                <li key={`${diagram.id}-takeaway-${index}`}>{resolveText(takeaway, lang)}</li>
+              ))}
+            </ul>
+          </div>
+          {diagram.workingHypotheses?.length ? (
+            <div className="note-block">
+              <h4>{messages.workingHypothesesTitle}</h4>
+              <p>{messages.workingHypothesesHint}</p>
+              <ul className="takeaway-list">
+                {diagram.workingHypotheses.map((hypothesis, index) => (
+                  <li key={`${diagram.id}-hypothesis-${index}`}>
+                    {resolveText(hypothesis, lang)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </article>
 
         <article className="info-column">

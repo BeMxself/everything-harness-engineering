@@ -50,6 +50,17 @@ describe("DiagramCanvas", () => {
     expect(screen.queryByText(/primary agent/i)).not.toBeInTheDocument();
   });
 
+  it("shows evidence status markers inside annotated steps", async () => {
+    const user = userEvent.setup();
+
+    render(<DiagramCanvas diagram={diagrams[0]} />);
+
+    await user.click(screen.getByRole("button", { name: /2 dispatch execution/i }));
+
+    expect(screen.getByText(/stable conclusion/i)).toBeInTheDocument();
+    expect(screen.getByText(/working hypothesis/i)).toBeInTheDocument();
+  });
+
   it("hides layout edit controls by default", () => {
     render(<DiagramCanvas diagram={diagrams[0]} />);
 

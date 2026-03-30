@@ -11,7 +11,7 @@ export function StepAnnotations({
   annotations,
   positionsByNode,
 }: StepAnnotationsProps) {
-  const { lang } = useI18n();
+  const { lang, messages } = useI18n();
   const viewport = useViewport();
 
   if (!annotations.length) {
@@ -36,6 +36,17 @@ export function StepAnnotations({
               transformOrigin: "top left",
             }}
           >
+            {annotation.evidenceStatus ? (
+              <div className="step-annotation__eyebrow">
+                <span
+                  className={`step-annotation__status step-annotation__status--${annotation.evidenceStatus}`}
+                >
+                  {annotation.evidenceStatus === "stable"
+                    ? messages.annotationStableBadge
+                    : messages.annotationHypothesisBadge}
+                </span>
+              </div>
+            ) : null}
             <div className="step-annotation__title">{resolveText(annotation.title, lang)}</div>
             <div className="step-annotation__chips">
               {annotation.participants.map((participant) => (

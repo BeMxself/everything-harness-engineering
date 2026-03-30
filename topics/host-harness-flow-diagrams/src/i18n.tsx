@@ -40,6 +40,12 @@ type Messages = {
   currentLimit: string;
   takeawaysTitle: string;
   takeawaysHint: string;
+  stableFindingsTitle: string;
+  stableFindingsHint: string;
+  workingHypothesesTitle: string;
+  workingHypothesesHint: string;
+  annotationStableBadge: string;
+  annotationHypothesisBadge: string;
   sourcesTitle: string;
   sourcesHint: string;
   researchNotesTitle: string;
@@ -100,6 +106,12 @@ const messagesByLanguage: Record<Language, Messages> = {
     currentLimit: "Current limit",
     takeawaysTitle: "Working Findings",
     takeawaysHint: "current comparison claims",
+    stableFindingsTitle: "Stable conclusions",
+    stableFindingsHint: "claims that already hold up well in the current evidence set",
+    workingHypothesesTitle: "Working hypotheses",
+    workingHypothesesHint: "useful next-step questions that still need more evidence",
+    annotationStableBadge: "Stable conclusion",
+    annotationHypothesisBadge: "Working hypothesis",
     sourcesTitle: "Sources",
     sourcesHint: "public materials",
     researchNotesTitle: "Interpretation Notes",
@@ -159,6 +171,12 @@ const messagesByLanguage: Record<Language, Messages> = {
     currentLimit: "当前局限",
     takeawaysTitle: "当前判断",
     takeawaysHint: "当前阶段最稳的比较结论",
+    stableFindingsTitle: "稳结论",
+    stableFindingsHint: "当前证据下已经相对站稳的比较判断",
+    workingHypothesesTitle: "工作假说",
+    workingHypothesesHint: "下一轮仍需继续补证据的方向",
+    annotationStableBadge: "稳结论",
+    annotationHypothesisBadge: "工作假说",
     sourcesTitle: "来源",
     sourcesHint: "公开材料",
     researchNotesTitle: "解读说明",

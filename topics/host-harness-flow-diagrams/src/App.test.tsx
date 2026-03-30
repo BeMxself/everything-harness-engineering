@@ -50,7 +50,9 @@ describe("App", () => {
     expect(screen.queryByText(/^比较画像$/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/^核心比较问题$/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/高宿主依赖和高 harness 密度/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/^解读说明$/i)).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /^稳结论$/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /^工作假说$/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /^解读说明$/i })).not.toBeInTheDocument();
     expect(screen.queryByText(/oh-my-openagent 仓库/i)).not.toBeInTheDocument();
 
     await user.click(framingToggle);
@@ -62,8 +64,13 @@ describe("App", () => {
     expect(screen.getByText(/^主路径$/i)).toBeInTheDocument();
     expect(screen.getByText(/^比较画像$/i)).toBeInTheDocument();
     expect(screen.getByText(/^核心比较问题$/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /^稳结论$/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /^工作假说$/i })).toBeInTheDocument();
     expect(screen.getByText(/高宿主依赖和高 harness 密度/i)).toBeInTheDocument();
-    expect(screen.getByText(/^解读说明$/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/runtime 仍然是主控制中心，而不是被独立交付阶段替代/i),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /^解读说明$/i })).toBeInTheDocument();
     expect(screen.getByText(/oh-my-openagent 仓库/i)).toBeInTheDocument();
   });
 

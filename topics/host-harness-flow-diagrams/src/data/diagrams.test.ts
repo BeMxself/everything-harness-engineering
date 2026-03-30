@@ -11,6 +11,12 @@ describe("diagram data", () => {
     ]);
   });
 
+  it("records at least one working hypothesis for each main comparison case", () => {
+    for (const diagram of diagrams) {
+      expect(diagram.workingHypotheses?.length ?? 0).toBeGreaterThan(0);
+    }
+  });
+
   it("keeps every referenced node and edge resolvable from steps", () => {
     for (const diagram of diagrams) {
       const nodeIds = new Set(diagram.nodes.map((node) => node.id));

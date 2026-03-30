@@ -59,6 +59,12 @@ const rawDiagrams: ComparisonDiagram[] = [
         zh: "这张图最适合帮助读者看清，为什么这种设计同时具有高宿主依赖和高 harness 密度。",
       },
     ],
+    workingHypotheses: [
+      {
+        en: "The most likely next refinement is that runtime still acts as the primary controller even when more specialist behavior is surfaced, rather than handing control to a separate delivery stage.",
+        zh: "下一轮最值得继续核对的假说是：即使更多 specialist 行为被展开，runtime 仍然是主控制中心，而不是被独立交付阶段替代。",
+      },
+    ],
     sources: [
       {
         label: {
@@ -381,6 +387,7 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s1-runtime",
             nodeId: "runtime",
+            evidenceStatus: "stable",
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus"],
             note: { en: "Main orchestration begins here.", zh: "主控编排从这里开始。" },
@@ -398,6 +405,7 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s2-agent",
             nodeId: "runtime",
+            evidenceStatus: "stable",
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus"],
             note: {
@@ -410,6 +418,7 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s2-tools",
             nodeId: "tools",
+            evidenceStatus: "hypothesis",
             title: { en: "Specialists", zh: "Specialist Agents" },
             participants: [
               "Oracle",
@@ -419,8 +428,8 @@ const rawDiagrams: ComparisonDiagram[] = [
               "Multimodal Looker",
             ],
             note: {
-              en: "Official specialist agents engage through the shared execution surface.",
-              zh: "官方 specialist agents 通过这块共享执行面参与这一轮工作。",
+              en: "Specialist behavior is visibly surfaced here, but whether it ever displaces runtime control remains an active comparison question.",
+              zh: "specialist 行为在这里已经明显展开，但它是否会真正取代 runtime control，仍是一个需要继续核对的比较问题。",
             },
             dx: 36,
             dy: 84,
@@ -436,6 +445,7 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s3-verify",
             nodeId: "verify",
+            evidenceStatus: "stable",
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus", "Oracle"],
             note: {
@@ -456,6 +466,7 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s4-memory",
             nodeId: "memory",
+            evidenceStatus: "stable",
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus"],
             note: {
@@ -476,6 +487,7 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s5-decision",
             nodeId: "decision",
+            evidenceStatus: "stable",
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus"],
             note: {
@@ -497,6 +509,7 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s6-recovery",
             nodeId: "failVerify",
+            evidenceStatus: "stable",
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus", "Oracle"],
             note: {
@@ -563,6 +576,12 @@ const rawDiagrams: ComparisonDiagram[] = [
       {
         en: "Harness behavior appears here more as orchestration plus validation infrastructure than as a distinct shell runtime.",
         zh: "在这里，harness 更像编排加验证基础设施，而不是一个独立的壳层 runtime。",
+      },
+    ],
+    workingHypotheses: [
+      {
+        en: "The next evidence question is whether deeper role-level materials would reinforce this pipeline reading, or reveal more controller behavior inside the role system itself.",
+        zh: "下一轮证据问题是：如果把更细的角色级材料加进来，这种 pipeline 读法会被继续强化，还是会暴露出更多藏在 role system 内部的 controller 行为。",
       },
     ],
     sources: [
@@ -899,6 +918,12 @@ const rawDiagrams: ComparisonDiagram[] = [
       {
         en: "Compared with gstack, this design behaves less like a pipeline and more like a governed agent system.",
         zh: "和 gstack 相比，这个设计更不像 pipeline，而更像一个带治理层的 agent system。",
+      },
+    ],
+    workingHypotheses: [
+      {
+        en: "The next thing to verify is how much of this governance actually depends on Claude Code host affordances versus living in repository policy, commands, and memory alone.",
+        zh: "下一轮最值得验证的是：这套治理到底有多少依赖 Claude Code 宿主 affordances，又有多少其实主要存在于仓库 policy、commands 和 memory 本身。",
       },
     ],
     sources: [

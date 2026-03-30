@@ -15,6 +15,8 @@ export type HostKind = "opencode" | "claude-code" | "codex" | "multi-host";
 
 export type EmphasisLevel = "low" | "medium" | "high";
 
+export type DiagramEvidenceStatus = "stable" | "hypothesis";
+
 export type DiagramPoint = {
   x: number;
   y: number;
@@ -55,6 +57,7 @@ export type ComparisonDiagram = {
     currentLimit: LocalizedText;
   };
   takeaways: LocalizedText[];
+  workingHypotheses?: LocalizedText[];
   sources: DiagramSource[];
   nodes: DiagramNode[];
   edges: DiagramEdge[];
@@ -97,6 +100,7 @@ export type DiagramStep = {
 export type DiagramStepAnnotation = {
   id: string;
   nodeId: string;
+  evidenceStatus?: DiagramEvidenceStatus;
   title: LocalizedText;
   participants: string[];
   note?: LocalizedText;
