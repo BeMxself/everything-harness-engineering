@@ -40,6 +40,7 @@ describe("draft diagram data", () => {
     expect(omxDraftDiagram.emphasis.harness).toBe("high");
     expect(omxDraftDiagram.emphasis.hostDependency).toBe("high");
     expect(resolveText(omxDraftDiagram.notes.whyThisLoopMatters, "en")).toMatch(/Codex/i);
+    expect(resolveText(omxDraftDiagram.notes.whereTheHarnessLives, "en")).toMatch(/AGENTS/i);
     expect(omxDraftDiagram.steps).toHaveLength(5);
   });
 

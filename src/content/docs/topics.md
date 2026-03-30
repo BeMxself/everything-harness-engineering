@@ -85,6 +85,7 @@ description: 更深入、可运行的研究专题入口。
 - [查看命名与扩展评估](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-host-harness-flow-diagrams-name-and-expansion-assessment.md)
 - [查看扩图纳入判断表](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-expansion-scope-matrix.md)
 - [查看 OpenCode -> oh-my-openagent 能力栈拆解备忘](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-30-opencode-oh-my-openagent-capability-stack.md)
+- [查看 Codex -> oh-my-codex 能力栈拆解备忘](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-30-codex-oh-my-codex-capability-stack.md)
 
 ### 当前已经能回答什么
 
@@ -92,9 +93,11 @@ description: 更深入、可运行的研究专题入口。
 - `gstack` 的强项更容易出现在交付流水线、门禁点和返工成本暴露上
 - `everything-claude-code` 更像策略壳层包裹下的主代理控制系统，而不只是普通多代理分发
 - `OpenCode -> oh-my-openagent` 这条链已经可以更稳地拆成：`OpenCode` 是 `programmable host`，`oh-my-openagent` 是建立在其上的 `workflow-bearing harness`
+- `Codex -> oh-my-codex` 这条链已经可以更稳地拆成：`Codex` 是带有 `AGENTS.md`、skills、MCP、hooks、subagents、approvals / sandbox 与 thread persistence 的 `host substrate`，`oh-my-codex` 则是在其外层重组 workflow contract、`.omx/` state 与 optional team runtime
 - 在 `oh-my-openagent` 里，`ulw` 更适合被读成 `关键词触发 + 提示词注入 + 委派策略 + 可选模型重写` 的组合链，而不是一个单独 agent
 - `/start-work` 已经可以稳定地视作“计划转执行”的显式接力点，它把 `.sisyphus/plans/` 与 `boulder.json` 状态推进到 `Atlas` 执行闭环
 - `Prometheus` 的 interview 与 planning 已有源码支撑，但 `@plan` 是否等价于 Prometheus 目前仍只能写成文档 framing，不能直接写成已证实源码事实
+- 在 `oh-my-codex` 里，最值得关注的已经不只是 prompts 或 team mode 本身，而是“哪些控制面仍留在宿主里，哪些被 OMX 提升成 workflow contract 与 project-visible state”
 
 这些判断不是“最终定性”，但已经足以帮助读者做第一轮结构辨认。
 
@@ -117,6 +120,7 @@ description: 更深入、可运行的研究专题入口。
 - 在图之外增加“为什么这样画”的方法注记，减少读者把它误认成官方架构图的风险
 - 让专题页本身更明确地区分“当前稳结论”和“仍需补证据的工作假说”
 - 继续补 `OpenCode` 宿主层源码证据，优先核对 `@mention`、`Question`、session / subagent 导航这些会改变用户参与契约判断的路径
+- 继续补 `Codex / oh-my-codex` 在 `$team`、hooks derived signals、approval pause 与 thread/runtime 协作上的更细路径，尤其是 worker coordination 的公开语义
 
 ## 阅读这个部分时可以期待什么
 

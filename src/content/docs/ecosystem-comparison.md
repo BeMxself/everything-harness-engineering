@@ -60,7 +60,7 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
 | [OpenCode](https://opencode.ai/) | ![OpenCode stars](https://img.shields.io/github/stars/anomalyco/opencode?style=social) | The open source AI coding agent | 对象层：编程代理 | 开放宿主，可运行于终端、IDE 与桌面 | 开放宿主与编程代理表面 | 重点仍然是宿主和代理执行面本身 |
 | [Goose](https://github.com/block/goose) | ![Goose stars](https://img.shields.io/github/stars/block/goose?style=social) | Open source, extensible AI agent | 对象层：编程代理 | 更广义的本地工程代理宿主 | 可扩展宿主与本地执行 | 虽不只做编程，但它和这一层共享主工作面问题 |
 | [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | ![oh-my-openagent stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=social) | the best agent harness; previously oh-my-opencode | 对象层：Agent Harnesses | OpenCode 之上的宿主内扩展 | 宿主内 workflow protocol、状态、命令、后台任务与执行接力 | 当前更稳的读法是：它不是单纯多放几个 agent preset，而是把 `ulw`、Prometheus 规划、`/start-work -> Atlas`、后台任务和持久状态重组成宿主内工作流协议 |
-| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | ![oh-my-codex stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=social) | Your codex is not alone. Add hooks, agent teams, HUDs... | 对象层：Agent Harnesses | Codex 之上的宿主内扩展 | 钩子、团队、HUD、控制层 | 重点不是取代 Codex，而是给 Codex 加可控、可协作的外层机制 |
+| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | ![oh-my-codex stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=social) | workflow layer for OpenAI Codex CLI；Codex remains the execution engine | 对象层：Agent Harnesses | Codex 之上的宿主内扩展 | Codex substrate + workflow contract + `.omx/` state + optional team runtime | 更稳的读法是：Codex 保留 approvals、sandbox、hooks、subagents、thread persistence 等宿主底盘，OMX 再在外层加入 prompts、workflow skills、state shell 与 team/runtime escalation |
 | [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | ![oh-my-claudecode stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-claudecode?style=social) | Teams-first multi-agent orchestration for Claude Code | 对象层：Agent Harnesses | Claude Code 之上的宿主内扩展 | 以团队为先的编排与宿主扩展 | 它明显跨到了编排层，但主要仍以内嵌在 Claude Code 宿主上的增强层出现 |
 | [Trellis](https://github.com/mindfold-ai/Trellis) | ![Trellis stars](https://img.shields.io/github/stars/mindfold-ai/Trellis?style=social) | multi-platform AI coding framework / agent harness framing | 对象层：Agent Harnesses | 跨宿主 harness 层 | 跨宿主控制面与统一工作流 | 重点是把不同宿主收束进同一套增强层 |
 | [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | ![everything-claude-code stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=social) | agent harness performance optimization system | 对象层：Agent Harnesses | Claude Code 及相关宿主表面之上的增强层 | 策略、命令、记忆和专门代理 | 更像受治理的代理操作系统，而不是单次工作流模板 |
@@ -120,6 +120,15 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
   更适合作为 `workflow-bearing harness` 来理解，它把这些 substrate 重新组织成 `ulw`、Prometheus 规划、`/start-work`、task/background state 这些更明确的参与协议
 
 更细的源码结论，尤其是 `@plan` 与 Prometheus 之间目前仍存在的文档 / 源码张力，已经转到 [研究专题](../topics/) 继续展开。
+
+如果你想对照另一条同样典型、但宿主更不一样的链路，也很适合接着读 `Codex -> oh-my-codex`：
+
+- `Codex`
+  更适合作为 `host substrate` 来理解，它公开暴露了 `AGENTS.md`、skills、MCP、hooks、subagents、approvals / sandbox 与 thread persistence 这组原生参与接口
+- `oh-my-codex`
+  更适合作为 `workflow layer` 来理解，它保留 Codex 作为 execution engine，再把 `/prompts:*`、`$plan`、`$deep-interview`、`$ralph`、`$team`、`.omx/` 与 optional team runtime 组织成更明确的参与协议
+
+这条链更适合回答：当宿主自己已经是厚 substrate 时，外层 harness 到底是在替代宿主，还是在重组用户参与契约。
 
 ### 如果你更关心执行纪律和开发方法
 

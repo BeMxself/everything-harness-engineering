@@ -49,9 +49,10 @@ describe("draft case data", () => {
     expect(trellisDraftCase.sources.length).toBeGreaterThanOrEqual(2);
   });
 
-  it("contains an oh-my-codex draft focused on Codex host plus OMX workflow help", () => {
+  it("contains an oh-my-codex draft focused on Codex substrate plus OMX workflow contracts", () => {
     expect(omxDraftCase.id).toBe("oh-my-codex");
     expect(resolveText(omxDraftCase.title, "en")).toMatch(/omx/i);
+    expect(resolveText(omxDraftCase.summary, "en")).toMatch(/Codex substrate/i);
     expect(omxDraftCase.nodes.map((node) => node.id)).toEqual([
       "task",
       "codex-host",
@@ -62,7 +63,7 @@ describe("draft case data", () => {
       "execution-loop",
       "verification-return",
     ]);
-    expect(resolveText(omxDraftCase.openQuestions[0]!, "en")).toMatch(/team runtime/i);
+    expect(resolveText(omxDraftCase.openQuestions[0]!, "en")).toMatch(/\$team/i);
   });
 
   it("contains a get-shit-done draft focused on the protocol loop rather than host wiring", () => {

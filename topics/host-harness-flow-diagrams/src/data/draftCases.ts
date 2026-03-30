@@ -185,16 +185,16 @@ export const omxDraftCase: DraftCase = {
   title: "OMX Draft",
   state: "draft",
   summary: {
-    en: "A Codex-host draft showing how OMX keeps Codex as the execution engine while layering prompts, workflows, `.omx/` state, and optional team runtime escalation around it.",
-    zh: "一张以 Codex host 为中心的 draft 草图，用来表达 OMX 如何保留 Codex 作为 execution engine，并在外层叠加 prompts、workflows、`.omx/` state 与可选的 team runtime escalation。",
+    en: "A Codex-host draft showing how native Codex substrate and OMX workflow contracts combine: Codex keeps execution, policy, and delegation surfaces, while OMX layers prompts, reusable workflows, `.omx/` state, and optional team runtime around it.",
+    zh: "一张以 Codex host 为中心的 draft 草图，用来表达 Codex 原生 substrate 与 OMX workflow contract 如何叠合：Codex 保留 execution、policy 与 delegation surface，OMX 则在外层叠加 prompts、可复用 workflows、`.omx/` state 与可选的 team runtime。",
   },
   nodes: [
     {
       id: "task",
       label: "task",
       purpose: {
-        en: "User task entering the Codex session before OMX decides whether extra workflow help is needed.",
-        zh: "进入 Codex session 的用户任务，OMX 会先判断是否需要额外 workflow help。",
+        en: "User task entering a Codex thread, where the first trigger, input, and approval surfaces still start at the host layer before OMX selects a workflow path.",
+        zh: "进入 Codex thread 的用户任务；最初的触发、输入与批准面仍先落在宿主层，然后 OMX 才决定走哪条 workflow 路径。",
       },
       lane: "entry",
     },
@@ -202,8 +202,8 @@ export const omxDraftCase: DraftCase = {
       id: "codex-host",
       label: "codex host",
       purpose: {
-        en: "The base Codex CLI session that still performs the actual agent work.",
-        zh: "底层的 Codex CLI session，实际 agent work 仍由它完成。",
+        en: "The Codex host substrate that still owns agent execution, approvals and sandbox, AGENTS guidance, skills, MCP, hooks, and subagent thread control.",
+        zh: "Codex 的宿主 substrate；它仍然掌管 agent execution、approvals 与 sandbox、AGENTS guidance、skills、MCP、hooks，以及 subagent thread control。",
       },
       lane: "host",
     },
@@ -211,8 +211,8 @@ export const omxDraftCase: DraftCase = {
       id: "prompt-skill-layer",
       label: "prompt / skill layer",
       purpose: {
-        en: "Reusable prompts and workflows such as `/prompts:*`, `$plan`, `$ralph`, `$team`, and `$deep-interview`.",
-        zh: "可复用的 prompts 与 workflows，例如 `/prompts:*`、`$plan`、`$ralph`、`$team`、`$deep-interview`。",
+        en: "OMX workflow contracts such as `/prompts:*`, `$plan`, `$deep-interview`, `$ralph`, and `$team` that reorganize how users trigger and steer Codex.",
+        zh: "OMX 的 workflow contracts，例如 `/prompts:*`、`$plan`、`$deep-interview`、`$ralph`、`$team`；它们会重组用户触发与驾驭 Codex 的方式。",
       },
       lane: "wiring",
     },
@@ -220,8 +220,8 @@ export const omxDraftCase: DraftCase = {
       id: "omx-state",
       label: ".omx state",
       purpose: {
-        en: "Plans, logs, memory, and mode tracking stored under `.omx/`.",
-        zh: "保存在 `.omx/` 下的 plans、logs、memory 与 mode tracking。",
+        en: "Plans, logs, memory, runtime state, and hook logs stored under `.omx/`.",
+        zh: "保存在 `.omx/` 下的 plans、logs、memory、runtime state 与 hook logs。",
       },
       lane: "memory",
     },
@@ -229,8 +229,8 @@ export const omxDraftCase: DraftCase = {
       id: "workflow-escalation",
       label: "workflow escalation",
       purpose: {
-        en: "Decision point where OMX keeps work lightweight or escalates into heavier workflows.",
-        zh: "OMX 判断继续保持轻量执行，还是升级到更重 workflow 的决策点。",
+        en: "Decision point where OMX keeps work in a lightweight host-centric flow or escalates into heavier workflows and optional team runtime.",
+        zh: "OMX 判断继续保持以宿主为中心的轻量执行，还是升级到更重 workflow 与可选 team runtime 的决策点。",
       },
       lane: "core",
     },
@@ -247,8 +247,8 @@ export const omxDraftCase: DraftCase = {
       id: "execution-loop",
       label: "execution loop",
       purpose: {
-        en: "The actual Codex-side implementation, analysis, or persistent execution flow.",
-        zh: "真正发生在 Codex 侧的 implementation、analysis 或 persistent execution flow。",
+        en: "The Codex-side implementation, analysis, or persistent execution flow where host substrate and OMX workflow contracts actually converge.",
+        zh: "真正发生在 Codex 侧的 implementation、analysis 或 persistent execution flow；宿主 substrate 与 OMX workflow contract 会在这里汇合。",
       },
       lane: "execution",
     },
@@ -256,8 +256,8 @@ export const omxDraftCase: DraftCase = {
       id: "verification-return",
       label: "verification / memory return",
       purpose: {
-        en: "Results return through verification and `.omx/` state instead of ending at one prompt run.",
-        zh: "结果会通过 verification 和 `.omx/` state 回流，而不是停在一次 prompt run。",
+        en: "Results return through verification, hook signals, and `.omx/` state instead of ending at one prompt run.",
+        zh: "结果会通过 verification、hook signals 与 `.omx/` state 回流，而不是停在一次 prompt run。",
       },
       lane: "return",
     },
@@ -267,24 +267,24 @@ export const omxDraftCase: DraftCase = {
       id: "s1-start-strong",
       label: "start stronger",
       summary: {
-        en: "OMX starts a stronger Codex session by default instead of replacing Codex.",
-        zh: "OMX 默认会先把 Codex session 启动得更强，而不是替代 Codex 本身。",
+        en: "OMX starts a stronger Codex session by default, but Codex still owns approvals, sandbox, hooks, and thread control.",
+        zh: "OMX 默认会先把 Codex session 启动得更强，但 approvals、sandbox、hooks 与 thread control 仍由 Codex 掌管。",
       },
     },
     {
       id: "s2-load-workflow-help",
       label: "load workflow help",
       summary: {
-        en: "Reusable prompts and skills wrap the host with analysis, planning, and interview surfaces.",
-        zh: "可复用的 prompts 与 skills 会在宿主外层提供分析、规划与澄清访谈等工作面。",
+        en: "OMX adds reusable role prompts and workflow skills on top of Codex's native substrate instead of replacing the host's control surfaces.",
+        zh: "OMX 会叠加可复用的 role prompts 与 workflow skills，但不会替代 Codex 原生 substrate 的控制面。",
       },
     },
     {
       id: "s3-escalate-workflows",
       label: "escalate workflows",
       summary: {
-        en: "OMX decides when to stay lightweight and when to escalate into `$ralph`, `$team`, or deeper workflows.",
-        zh: "OMX 会判断是保持轻量执行，还是升级到 `$ralph`、`$team` 或更重 workflows。",
+        en: "Users choose an initial protocol, then OMX decides when to stay lightweight versus escalating into `$ralph`, `$team`, or deeper runtime help.",
+        zh: "用户先选择初始协议，然后 OMX 再决定是保持轻量执行，还是升级到 `$ralph`、`$team` 或更深的 runtime help。",
       },
     },
     {
@@ -299,46 +299,62 @@ export const omxDraftCase: DraftCase = {
       id: "s5-return-state",
       label: "return through state",
       summary: {
-        en: "Plans, logs, memory, and verification results return into `.omx/` so the next run starts with accumulated context.",
-        zh: "plans、logs、memory 与 verification results 会回流进 `.omx/`，让下一次运行从累积上下文开始。",
+        en: "Verification results, hook traces, and runtime state return into `.omx/`, while Codex threads remain the underlying recovery substrate.",
+        zh: "verification results、hook traces 与 runtime state 会回流进 `.omx/`，而 Codex threads 则继续充当底层 recovery substrate。",
       },
     },
   ],
   openQuestions: [
     {
-      en: "Should the optional team runtime remain a side branch, or become a larger structural lane if `$team` is treated as the signature OMX differentiator?",
-      zh: "如果把 `$team` 当成 OMX 的 signature differentiator，optional team runtime 应继续作为侧分支，还是升级成更大的结构层？",
+      en: "How much of `$team` should be read as Codex-native thread or subagent coordination versus tmux/worktree runtime layered outside the host?",
+      zh: "`$team` 到底有多少应该读成 Codex 原生 thread / subagent coordination，又有多少是叠在宿主外侧的 tmux/worktree runtime？",
     },
     {
-      en: "How much should `/prompts:*` stay separate from skill workflows, versus being compressed into one reusable guidance layer?",
-      zh: "`/prompts:*`` 应该和 skill workflows 保持分层，还是压成一层 reusable guidance layer 更合理？",
+      en: "Should the formal diagram split Codex-native substrate (`AGENTS.md`, skills, MCP, approvals, hooks, subagents) from OMX workflow contracts instead of compressing them into one host-plus-shell story?",
+      zh: "正式图里是否应该把 Codex 原生 substrate（`AGENTS.md`、skills、MCP、approvals、hooks、subagents）从 OMX workflow contracts 里单独拆出来，而不是继续压成一条 host-plus-shell 叙事？",
     },
     {
-      en: "Should `.omx/` state be drawn as one node, or split into memory versus mode tracking once the diagram becomes formal?",
-      zh: "当图进入更正式阶段时，`.omx/` state 应该保持单节点，还是拆成 memory 与 mode tracking 两层？",
+      en: "Should `.omx/` state stay one node, or split into plans/logs/memory/runtime and hook traces once the diagram becomes formal?",
+      zh: "当图进入更正式阶段时，`.omx/` state 应该保持单节点，还是拆成 plans/logs/memory/runtime 与 hook traces 多层？",
     },
   ],
   evidenceNotes: [
     {
-      en: "The README states explicitly that OMX is a workflow layer for Codex CLI and that Codex remains the execution engine.",
-      zh: "README 明确写到 OMX 是 Codex CLI 的 workflow layer，并且 Codex 仍然是 execution engine。",
+      en: "OpenAI's Codex docs and official blog are already enough to read Codex as host substrate, with AGENTS guidance, skills, MCP, hooks, subagents, approvals, sandboxing, and thread persistence.",
+      zh: "OpenAI 官方 Codex 文档与博客已经足够支持把 Codex 读成 host substrate，它原生暴露了 AGENTS guidance、skills、MCP、hooks、subagents、approvals、sandboxing 与 thread persistence。",
     },
     {
-      en: "Official quick-start guidance treats `/prompts:*`, `$plan`, `$ralph`, and `$team` as reusable workflow surfaces around Codex rather than a replacement host.",
-      zh: "官方 quick-start 把 `/prompts:*`、`$plan`、`$ralph`、`$team` 都当成围绕 Codex 的可复用 workflow surfaces，而不是替代宿主。",
+      en: "The README and getting-started docs state explicitly that OMX is a workflow layer for Codex CLI, Codex remains the execution engine, and `/prompts:*`, `$plan`, `$deep-interview`, `$ralph`, and `$team` are the main reusable workflow surfaces.",
+      zh: "README 与 getting-started 文档明确写到 OMX 是 Codex CLI 的 workflow layer、Codex 仍然是 execution engine，而 `/prompts:*`、`$plan`、`$deep-interview`、`$ralph`、`$team` 构成了主要的可复用 workflow surfaces。",
     },
     {
-      en: "The README explicitly says team runtime is for cases where durable tmux/worktree coordination is needed, not the default way to begin using OMX.",
-      zh: "README 明确说 team runtime 是在需要 durable tmux/worktree coordination 时才使用的，而不是默认起步方式。",
+      en: "The official hooks extension docs and README both support reading `.omx/` plus optional team runtime as the long-task governance layer, not as the default shape of every session.",
+      zh: "官方 hooks extension 文档与 README 都支持把 `.omx/` 加上可选 team runtime 读成长任务治理层，而不是每个 session 的默认形状。",
     },
   ],
   sources: [
     {
+      label: "Codex customization docs",
+      href: "https://developers.openai.com/codex/concepts/customization/",
+      note: {
+        en: "Primary source for reading Codex as a host substrate with AGENTS guidance, skills, MCP, and subagents.",
+        zh: "用于确认 Codex 作为 host substrate、并公开暴露 AGENTS guidance、skills、MCP 与 subagents 的主来源。",
+      },
+    },
+    {
+      label: "Codex App Server blog",
+      href: "https://openai.com/index/unlocking-the-codex-harness/",
+      note: {
+        en: "Primary source for Codex harness, thread persistence, and the shared policy model around tools, skills, and MCP.",
+        zh: "用于确认 Codex harness、thread persistence 以及 tools、skills、MCP 共享 policy model 的主来源。",
+      },
+    },
+    {
       label: "oh-my-codex repository",
       href: "https://github.com/Yeachan-Heo/oh-my-codex",
       note: {
-        en: "Primary source for OMX positioning as a Codex workflow layer, reusable workflow surfaces, `.omx/` state, and optional team runtime.",
-        zh: "用于确认 OMX 作为 Codex workflow layer、可复用 workflow surfaces、`.omx/` state 与可选 team runtime 的主来源。",
+        en: "Primary source for OMX positioning as a Codex workflow layer, reusable workflow contracts, `.omx/` state, and optional team runtime.",
+        zh: "用于确认 OMX 作为 Codex workflow layer、可复用 workflow contracts、`.omx/` state 与可选 team runtime 的主来源。",
       },
     },
   ],

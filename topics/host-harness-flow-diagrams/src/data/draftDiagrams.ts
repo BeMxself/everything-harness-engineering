@@ -225,8 +225,8 @@ export const omxDraftDiagram: ComparisonDiagram = {
   id: "oh-my-codex-draft",
   title: "oh-my-codex",
   summary: {
-    en: "A Codex-centered comparison view showing OMX as a workflow and runtime help layer that wraps prompts, skills, `.omx/` state, and optional team runtime around the host.",
-    zh: "一张以 Codex 为中心的比较视图，表达 OMX 如何把 prompts、skills、`.omx/` state 与可选 team runtime 包在宿主外层。",
+    en: "A Codex-centered comparison view showing native host substrate plus OMX workflow contract: Codex keeps execution and policy surfaces, while OMX layers prompts, reusable workflows, `.omx/` state, and optional team runtime around it.",
+    zh: "一张以 Codex 为中心的比较视图，表达原生宿主 substrate 与 OMX workflow contract 如何叠合：Codex 保留 execution 与 policy surface，OMX 则在外层叠加 prompts、可复用 workflows、`.omx/` state 与可选 team runtime。",
   },
   emphasis: {
     automationLoop: "high",
@@ -236,40 +236,40 @@ export const omxDraftDiagram: ComparisonDiagram = {
   },
   notes: {
     whyThisLoopMatters: {
-      en: "OMX matters most when read as a workflow-help layer that keeps Codex central instead of trying to replace it with a parallel runtime.",
-      zh: "OMX 最值得观察的地方，是它作为 workflow-help layer 保持 Codex 居中，而不是试图用并行 runtime 替换它。",
+      en: "OMX matters most when read as a workflow contract layered over Codex native substrate, not as a parallel runtime trying to replace the host.",
+      zh: "OMX 最值得观察的地方，是它作为叠加在 Codex 原生 substrate 之上的 workflow contract，而不是试图用并行 runtime 替换宿主。",
     },
     whereTheHarnessLives: {
-      en: "The harness lives in prompts, skills, `.omx/` state, and optional runtime escalation around the Codex host.",
-      zh: "这层 harness 主要存在于 Codex host 外层的 prompts、skills、`.omx/` state 和可选 runtime escalation 中。",
+      en: "The harness is split: Codex contributes AGENTS, skills, MCP, hooks, subagents, approvals, and thread control, while OMX adds prompts, workflow skills, `.omx/` state, and optional runtime escalation.",
+      zh: "这层 harness 是分裂承载的：Codex 提供 AGENTS、skills、MCP、hooks、subagents、approvals 与 thread control，OMX 再叠加 prompts、workflow skills、`.omx/` state 与可选 runtime escalation。",
     },
   },
   readingGuide: {
     keyQuestion: {
-      en: "What stays inside the Codex host, and what is lifted into OMX as reusable workflow help?",
-      zh: "什么留在 Codex host 里，什么被提到 OMX 这层 reusable workflow help 中？",
+      en: "Which control surfaces remain native to Codex, and which are lifted into OMX as workflow contract and durable state?",
+      zh: "哪些控制面仍然留在 Codex 原生宿主里，哪些又被提升到 OMX 这层 workflow contract 与 durable state？",
     },
     howToRead: {
-      en: "Read Codex host and workflow escalation together: OMX starts with lightweight prompt/skill help, then escalates only when larger workflows are warranted.",
-      zh: "把 Codex host 和 workflow escalation 放在一起读：OMX 会先提供轻量 prompt/skill help，再在任务变大时才升级到更重 workflows。",
+      en: "Read the Codex host as substrate, the prompt/skill layer as protocol, and `.omx/` as externalized state: OMX starts lightweight, then escalates only when heavier workflows are justified.",
+      zh: "把 Codex host 读成 substrate，把 prompt/skill layer 读成 protocol，再把 `.omx/` 读成外部化状态层：OMX 会先轻量启动，只在更重 workflow 真的有意义时才升级。",
     },
     evidenceBoundary: {
-      en: "The Codex host, `.omx/`, prompts, skills, and team runtime all follow public OMX terminology. Their relative control shape here is repository interpretation for comparison.",
-      zh: "Codex host、`.omx/`、prompts、skills、team runtime 这些术语都尽量沿用 OMX 公开表述；相对控制形态则是为了比较而做的仓库解释。",
+      en: "Codex substrate, `.omx/`, prompts, workflow skills, and team runtime all follow public OpenAI or OMX terminology. Their relative partition here is repository interpretation for comparison.",
+      zh: "Codex substrate、`.omx/`、prompts、workflow skills 与 team runtime 这些术语都尽量沿用 OpenAI 或 OMX 的公开表述；它们在这里的相对分层方式则属于仓库为了比较而做的解释。",
     },
     currentLimit: {
-      en: "This comparison view compresses many workflow-specific branches into one escalation lane, so it shows host-to-workflow structure better than every operator surface in detail.",
-      zh: "这张比较视图把大量 workflow-specific branches 压进一条 escalation lane，因此更擅长表达 host-to-workflow 结构，而不是逐个 operator surface 的细节。",
+      en: "This comparison view still compresses AGENTS, MCP, approvals, hooks, subagents, and many workflow-specific branches into a few nodes, so it shows host-to-workflow structure better than every operator surface in detail.",
+      zh: "这张比较视图仍把 AGENTS、MCP、approvals、hooks、subagents 以及大量 workflow-specific branches 压进少数节点里，因此更擅长表达 host-to-workflow 结构，而不是逐个 operator surface 的细节。",
     },
   },
   takeaways: [
     {
-      en: "Codex remains the execution engine even when OMX adds richer workflow help around it.",
-      zh: "即便 OMX 在外层加入更丰富的 workflow help，Codex 仍然是 execution engine。",
+      en: "Codex remains both the execution engine and the native policy boundary even when OMX adds richer workflow contracts around it.",
+      zh: "即便 OMX 在外层加入更丰富的 workflow contracts，Codex 仍然同时扮演 execution engine 与原生 policy boundary。",
     },
     {
-      en: "Workflow escalation is load-bearing: OMX becomes more interesting when it decides when to stay lightweight versus when to pull in heavier workflows.",
-      zh: "workflow escalation 是 load-bearing 的：OMX 最有意思的地方在于它会决定何时保持轻量，何时拉起更重 workflows。",
+      en: "OMX matters less as a bundle of prompts than as a workflow contract that decides when to stay lightweight versus when to pull in deeper workflows.",
+      zh: "OMX 重要的地方不只是多了一组 prompts，而是它作为 workflow contract 决定何时保持轻量，何时拉起更深的 workflows。",
     },
     {
       en: "The optional team runtime should be read as a late-stage escalation path, not the default shape of the whole system.",
@@ -278,11 +278,27 @@ export const omxDraftDiagram: ComparisonDiagram = {
   ],
   sources: [
     {
+      label: "Codex customization docs",
+      href: "https://developers.openai.com/codex/concepts/customization/",
+      note: {
+        en: "Primary source for Codex native customization and capability surfaces such as AGENTS guidance, skills, MCP, and subagents.",
+        zh: "用于确认 Codex 原生 customization 与 AGENTS guidance、skills、MCP、subagents 等能力面的主来源。",
+      },
+    },
+    {
+      label: "Codex App Server blog",
+      href: "https://openai.com/index/unlocking-the-codex-harness/",
+      note: {
+        en: "Primary source for Codex harness, thread persistence, and its shared policy model across tools, skills, and MCP.",
+        zh: "用于确认 Codex harness、thread persistence 以及 tools、skills、MCP 共享 policy model 的主来源。",
+      },
+    },
+    {
       label: "oh-my-codex repository",
       href: "https://github.com/Yeachan-Heo/oh-my-codex",
       note: {
-        en: "Primary source for OMX as a Codex workflow layer with prompts, skills, `.omx/`, and optional team runtime.",
-        zh: "用于确认 OMX 作为 Codex workflow layer，以及 prompts、skills、`.omx/` 与可选 team runtime 的主来源。",
+        en: "Primary source for OMX as a Codex workflow layer with prompts, workflow skills, `.omx/`, and optional team runtime.",
+        zh: "用于确认 OMX 作为 Codex workflow layer，以及 prompts、workflow skills、`.omx/` 与可选 team runtime 的主来源。",
       },
     },
   ],
@@ -291,7 +307,7 @@ export const omxDraftDiagram: ComparisonDiagram = {
       id: "task",
       label: "task",
       kind: "entry",
-      description: "User task entering the Codex session",
+      description: "User task entering the Codex thread and initial host control surface",
       position: { x: 24, y: 286 },
     },
     {
@@ -299,7 +315,7 @@ export const omxDraftDiagram: ComparisonDiagram = {
       label: "codex host",
       kind: "control",
       host: "codex",
-      description: "Codex remains the execution engine",
+      description: "Codex substrate: execution, policy, hooks, agents, and thread control",
       position: { x: 420, y: 286 },
     },
     {
@@ -307,21 +323,21 @@ export const omxDraftDiagram: ComparisonDiagram = {
       label: "prompt / skill layer",
       kind: "shell",
       host: "codex",
-      description: "Reusable prompts and workflow surfaces",
+      description: "OMX workflow contracts: role prompts and workflow skills",
       position: { x: 420, y: 76 },
     },
     {
       id: "omx-state",
       label: ".omx state",
       kind: "memory",
-      description: "Plans, logs, memory, and mode tracking",
+      description: "Plans, logs, memory, runtime state, and hook logs",
       position: { x: 430, y: 534 },
     },
     {
       id: "workflow-escalation",
       label: "workflow escalation",
       kind: "decision",
-      description: "Decides when heavier workflows are warranted",
+      description: "Chooses between lightweight host flow and heavier workflows",
       position: { x: 980, y: 286 },
     },
     {
@@ -335,14 +351,14 @@ export const omxDraftDiagram: ComparisonDiagram = {
       id: "execution-loop",
       label: "execution loop",
       kind: "execution",
-      description: "Codex-side execution, planning, and persistent workflows",
+      description: "Codex-side execution where host substrate and OMX contracts converge",
       position: { x: 1512, y: 360 },
     },
     {
       id: "verification-return",
       label: "verification / memory return",
       kind: "verification",
-      description: "Verification plus `.omx/` memory return",
+      description: "Verification, hook signals, and `.omx/` state return",
       position: { x: 2060, y: 360 },
     },
   ],
@@ -377,8 +393,8 @@ export const omxDraftDiagram: ComparisonDiagram = {
       activeNodeIds: ["task", "codex-host", "prompt-skill-layer"],
       activeEdgeIds: ["e1", "e2"],
       note: {
-        en: "OMX starts from a stronger Codex session instead of replacing the host outright.",
-        zh: "OMX 先从更强的 Codex session 开始，而不是直接替代宿主。",
+        en: "OMX starts from a stronger Codex session, but Codex still owns approvals, sandbox, hooks, and thread control.",
+        zh: "OMX 会先把 Codex session 启动得更强，但 approvals、sandbox、hooks 与 thread control 仍由 Codex 掌管。",
       },
     },
     {
@@ -387,8 +403,8 @@ export const omxDraftDiagram: ComparisonDiagram = {
       activeNodeIds: ["prompt-skill-layer", "codex-host", "workflow-escalation"],
       activeEdgeIds: ["e3", "e10"],
       note: {
-        en: "Prompts and skills surround the host with reusable analysis and planning surfaces.",
-        zh: "prompts 与 skills 会在宿主外层提供可复用的分析与规划工作面。",
+        en: "OMX adds reusable role prompts and workflow skills on top of Codex's native substrate instead of replacing the host's control surfaces.",
+        zh: "OMX 会叠加可复用的 role prompts 与 workflow skills，但不会替代宿主原生的 control surfaces。",
       },
     },
     {
@@ -397,8 +413,8 @@ export const omxDraftDiagram: ComparisonDiagram = {
       activeNodeIds: ["workflow-escalation", "execution-loop"],
       activeEdgeIds: ["e4"],
       note: {
-        en: "OMX decides when to stay lightweight and when to escalate into deeper workflows.",
-        zh: "OMX 会判断是继续保持轻量执行，还是升级到更深的 workflows。",
+        en: "Users choose an initial protocol, then OMX decides when to stay lightweight versus escalating into deeper workflows.",
+        zh: "用户先选择初始协议，然后 OMX 再决定是继续保持轻量执行，还是升级到更深的 workflows。",
       },
     },
     {
@@ -417,8 +433,8 @@ export const omxDraftDiagram: ComparisonDiagram = {
       activeNodeIds: ["execution-loop", "verification-return", "omx-state", "codex-host"],
       activeEdgeIds: ["e7", "e8", "e9"],
       note: {
-        en: "Verification results and runtime context return into `.omx/`, so future Codex sessions start with accumulated state.",
-        zh: "验证结果与运行时上下文会回流进 `.omx/`，使之后的 Codex session 从累积状态开始。",
+        en: "Verification results, hook traces, and runtime context return into `.omx/`, while Codex threads remain the underlying recovery substrate.",
+        zh: "验证结果、hook traces 与运行时上下文会回流进 `.omx/`，而 Codex threads 则继续充当底层 recovery substrate。",
       },
     },
   ],

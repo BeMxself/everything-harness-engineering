@@ -182,7 +182,7 @@ export const landscapeRows = [
     name: "oh-my-codex",
     href: "https://github.com/Yeachan-Heo/oh-my-codex",
     starsBadge: "https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=social",
-    intro: "构建在 Codex 之上的控制层，加入钩子、代理团队、HUD 面板等外层机制。",
+    intro: "构建在 Codex 之上的 workflow layer：Codex 保留原生 substrate，OMX 再叠加 prompts、workflow skills、`.omx/` state 与可选 team runtime。",
     category: "对象层：Agent Harnesses",
     runtimeForm: "宿主内扩展",
   },
@@ -334,7 +334,7 @@ export const topics = [
   {
     title: "宿主与 Harness 结构图",
     description:
-      "一个可运行的研究应用，用来比较不同编程代理系统里的宿主工作面、agent harness、控制中心与恢复路径；当前已开始把 OpenCode -> oh-my-openagent 的源码核实同步进专题结论。",
+      "一个可运行的研究应用，用来比较不同编程代理系统里的宿主工作面、agent harness、控制中心与恢复路径；当前已开始把 OpenCode -> oh-my-openagent 与 Codex -> oh-my-codex 的能力栈研究同步进专题结论。",
     href: `${BASE}/topics/host-harness-flow-diagrams/site/`,
   },
 ];
