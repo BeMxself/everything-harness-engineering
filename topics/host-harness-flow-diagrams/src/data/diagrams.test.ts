@@ -87,6 +87,33 @@ describe("diagram data", () => {
     expect(failVerify?.y ?? 0).toBeLessThan((verify?.y ?? 0) - 150);
   });
 
+  it("captures the new OpenCode to oh-my-openagent host-to-harness reading", () => {
+    const opencode = diagrams.find((diagram) => diagram.id === "oh-my-opencode");
+
+    expect(opencode).toBeDefined();
+    expect(resolveText(opencode?.summary ?? "", "en")).toMatch(
+      /workflow-bearing harness layered over the OpenCode host/i,
+    );
+    expect(
+      opencode?.agentCollaboration?.nodes.some((node) => node.label === "Atlas"),
+    ).toBe(true);
+    expect(
+      opencode?.takeaways.some((takeaway) =>
+        /keyword-triggered control chain/i.test(resolveText(takeaway, "en")),
+      ),
+    ).toBe(true);
+    expect(
+      opencode?.takeaways.some((takeaway) =>
+        /Atlas-backed execution/i.test(resolveText(takeaway, "en")),
+      ),
+    ).toBe(true);
+    expect(
+      opencode?.workingHypotheses?.some((hypothesis) =>
+        /aliased to Prometheus/i.test(resolveText(hypothesis, "en")),
+      ),
+    ).toBe(true);
+  });
+
   it("uses edge control points for the most crowded oh-my-opencode feedback loops", () => {
     const opencode = diagrams.find((diagram) => diagram.id === "oh-my-opencode");
 

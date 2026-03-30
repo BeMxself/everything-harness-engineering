@@ -28,7 +28,7 @@ describe("App", () => {
     expect(screen.getByText(/Research Topic/i)).toBeInTheDocument();
     expect(screen.getByRole("region", { name: /how to use this topic/i })).toBeInTheDocument();
     expect(
-      screen.getByText(/A runtime-centered loop built on top of the OpenCode host/i),
+      screen.getByText(/A workflow-bearing harness layered over the OpenCode host/i),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: /Agent Collaboration/i }),
@@ -66,9 +66,14 @@ describe("App", () => {
     expect(screen.getByText(/^核心比较问题$/i)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /^稳结论$/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /^工作假说$/i })).toBeInTheDocument();
-    expect(screen.getByText(/高宿主依赖和高 harness 密度/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/runtime 仍然是主控制中心，而不是被独立交付阶段替代/i),
+      screen.getByText(/OpenCode 更像一个 programmable host substrate/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/`ulw` 更适合被理解为关键词触发的控制链，而不是独立 worker/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/`@plan` 是否会在宿主层自动映射到 Prometheus，单靠插件源码仍未证实/i),
     ).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /^解读说明$/i })).toBeInTheDocument();
     expect(screen.getByText(/oh-my-openagent 仓库/i)).toBeInTheDocument();
@@ -81,6 +86,7 @@ describe("App", () => {
       screen.getByRole("heading", { name: /Agent 协作关系/i }),
     ).toBeInTheDocument();
     expect(screen.getAllByText(/sisyphus/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/atlas/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/frontend ui\/ux engineer/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/prometheus/i).length).toBeGreaterThan(0);
   });

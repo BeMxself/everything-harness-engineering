@@ -8,8 +8,8 @@ const rawDiagrams: ComparisonDiagram[] = [
       zh: "oh-my-openagent（原 oh-my-opencode）",
     },
     summary: {
-      en: "A runtime-centered loop built on top of the OpenCode host, where plugins, commands, and state stay tightly coupled to execution control.",
-      zh: "一个构建在 OpenCode 宿主之上的 runtime-centered 闭环，插件、命令与状态都紧密耦合在执行控制周围。",
+      en: "A workflow-bearing harness layered over the OpenCode host, where programmable substrate and harness protocols stay tightly coupled around planning, execution, and continuation.",
+      zh: "一个叠加在 OpenCode 宿主之上的 workflow-bearing harness，可编程 substrate 与 harness 协议共同围绕 planning、execution 和 continuation 闭环。",
     },
     emphasis: {
       automationLoop: "high",
@@ -19,50 +19,54 @@ const rawDiagrams: ComparisonDiagram[] = [
     },
     notes: {
       whyThisLoopMatters: {
-        en: "The same runtime owns dispatch, retry, and continuation, so the system reads more like a control loop than a staged delivery chain.",
-        zh: "同一个 runtime 同时负责分派、重试与续跑，因此这套系统更像控制闭环，而不是分阶段交付链。",
+        en: "The loop still reads controller-centered, but the clearer story is that OpenCode acts as the programmable host while oh-my-openagent reorganizes it into workflow protocols.",
+        zh: "这个闭环仍然以 controller 为中心，但更准确的读法是：OpenCode 提供 programmable host，oh-my-openagent 再把它重组为更明确的 workflow protocols。",
       },
       whereTheHarnessLives: {
-        en: "The harness sits around execution: host integration, plugins, MCP, commands, and persisted state all feed runtime decisions.",
-        zh: "Harness 包裹在执行过程周围：host 集成、插件、MCP、命令和持久状态都会共同影响 runtime 决策。",
+        en: "The harness no longer reads as just runtime control: ulw, planning, /start-work, hooks, MCP, and persisted state wrap the host into a workflow-bearing shell.",
+        zh: "Harness 不只是包在 runtime 周围；`ulw`、planning、`/start-work`、hooks、MCP 与持久状态共同把宿主收束成 workflow-bearing shell。",
       },
     },
     readingGuide: {
       keyQuestion: {
-        en: "If runtime remains the main controller, how much of the harness lives inside the host and how much wraps around it?",
-        zh: "当 runtime 仍是主控制中心时，harness 究竟有多少是在宿主内部，多少是在它周围包裹出来的？",
+        en: "How much of this loop belongs to the programmable OpenCode host, and how much comes from oh-my-openagent's workflow protocol layer?",
+        zh: "这条闭环里，有多少控制力来自 OpenCode 这个 programmable host，又有多少来自 oh-my-openagent 叠加出的 workflow protocol layer？",
       },
       howToRead: {
-        en: "Read left-to-right for the request path, then watch the lower shell layer and right-side failure returns to see why this behaves more like a control loop than a delivery pipeline.",
-        zh: "先按从左到右看请求进入路径，再盯住下方 shell 层和右侧失败回流，就能看出它为什么更像控制闭环，而不是交付流水线。",
+        en: "Read left-to-right for the host-to-controller path, then use the collaboration map and evidence notes to separate planning interview, execution relay, and continuation control.",
+        zh: "先看从 host 到 controller 的主路径，再对照协作图和证据面板，把 planning interview、execution relay 与 continuation control 分开来读。",
       },
       evidenceBoundary: {
-        en: "The main loop and role names follow current public project terminology. Relative placement and collaboration topology are repository interpretation used to make control shape comparable.",
-        zh: "主闭环和角色名称尽量沿用当前公开项目术语；相对位置与协作拓扑则是为了比较控制形态而做的仓库解释。",
+        en: "Role names and commands follow current public project terminology. The split between host substrate, workflow protocol, and collaboration topology is repository interpretation for comparison.",
+        zh: "角色名、命令名尽量沿用当前公开项目术语；host substrate、workflow protocol 与协作拓扑的拆分则是为了比较而做的仓库解释。",
       },
       currentLimit: {
-        en: "This view compresses plugin lifecycle, command details, and MCP specifics into one shell layer, so it emphasizes control shape over implementation detail.",
-        zh: "这张图把 plugin 生命周期、命令细节和 MCP 具体机制压缩进同一层 shell，因此强调的是控制形状，而不是实现细部。",
+        en: "This view still compresses keyword hooks, planner aliasing, and state storage into a few nodes, so some protocol detail is narrated in notes rather than fully redrawn structurally.",
+        zh: "这张图仍把 keyword hooks、planner aliasing 与状态存储压进少数节点里，因此部分 protocol 细节主要通过旁注表达，而不是完全靠结构重画。",
       },
     },
     takeaways: [
       {
-        en: "Runtime control, shell influence, verification, and state updates all remain inside one continuous loop.",
-        zh: "Runtime control、shell influence、verification 与状态更新都留在同一个连续闭环里。",
+        en: "OpenCode acts as a programmable host substrate, while oh-my-openagent reorganizes it into clearer workflow protocols.",
+        zh: "OpenCode 更像一个 programmable host substrate，oh-my-openagent 则把它重组为更清晰的 workflow protocols。",
       },
       {
-        en: "Failure recovery returns to the same controller instead of splitting into a separate delivery stage.",
-        zh: "失败恢复会回到同一个主控制器，而不是分叉进独立的交付阶段。",
+        en: "ulw is best read as a keyword-triggered control chain rather than a standalone worker agent.",
+        zh: "`ulw` 更适合被理解为关键词触发的控制链，而不是独立 worker。",
       },
       {
-        en: "This comparison is most useful for seeing why both host dependency and harness density are high in this design.",
-        zh: "这张图最适合帮助读者看清，为什么这种设计同时具有高宿主依赖和高 harness 密度。",
+        en: "/start-work is the explicit relay from plan state into Atlas-backed execution.",
+        zh: "`/start-work` 是把 plan state 接力到 Atlas-backed execution 的显式入口。",
       },
     ],
     workingHypotheses: [
       {
-        en: "The most likely next refinement is that runtime still acts as the primary controller even when more specialist behavior is surfaced, rather than handing control to a separate delivery stage.",
-        zh: "下一轮最值得继续核对的假说是：即使更多 specialist 行为被展开，runtime 仍然是主控制中心，而不是被独立交付阶段替代。",
+        en: "Whether @plan is aliased to Prometheus in the host layer remains unverified from plugin source alone.",
+        zh: "`@plan` 是否会在宿主层自动映射到 Prometheus，单靠插件源码仍未证实。",
+      },
+      {
+        en: "This view likely still underdraws the Atlas execution boundary; stronger host-side evidence may justify splitting the controller path more explicitly.",
+        zh: "当前视图可能仍然把 Atlas 的执行边界画得过于压缩；如果后续拿到更多 host-side 证据，可能需要把控制路径再拆细。",
       },
     ],
     sources: [
@@ -73,8 +77,8 @@ const rawDiagrams: ComparisonDiagram[] = [
         },
         href: "https://github.com/code-yeongyu/oh-my-openagent",
         note: {
-          en: "Primary source for current project positioning, terminology, and documented specialist roles.",
-          zh: "用于确认项目当前定位、术语和公开描述的 specialist roles。",
+          en: "Primary source for workflow protocols, hooks, commands, and specialist framing layered on top of OpenCode.",
+          zh: "用于确认 workflow protocols、hooks、commands 与 specialist framing 如何叠加在 OpenCode 之上。",
         },
       },
       {
@@ -84,37 +88,37 @@ const rawDiagrams: ComparisonDiagram[] = [
         },
         href: "https://github.com/anomalyco/opencode",
         note: {
-          en: "Host environment reference for the coding-agent surface that this harness extends.",
-          zh: "用来标定这层 harness 所依附的 coding-agent 宿主工作面。",
+          en: "Host reference for the programmable surface and native participation interfaces that this harness extends.",
+          zh: "用于确认 programmable host surface 与原生参与接口如何为上层 harness 提供 substrate。",
         },
       },
     ],
     agentCollaboration: {
       summary: {
-        en: "Role names follow the current public repository; the dispatch topology shown here is repository interpretation for comparison.",
-        zh: "角色命名尽量沿用当前公开仓库；这里的协作拓扑是为了比较而做的仓库解释。",
+        en: "Public role names follow the repository, while this map reads coordination as controller-mediated rather than as a peer-to-peer agent bus.",
+        zh: "角色名称尽量沿用公开仓库；这里把协作关系解释为 controller-mediated coordination，而不是 peer-to-peer 总线。",
       },
       nodes: [
         {
           id: "sisyphus",
           label: "Sisyphus",
-          role: { en: "Main orchestrator", zh: "主编排者" },
+          role: { en: "Workflow controller", zh: "工作流控制者" },
           x: 50,
           y: 34,
         },
         {
           id: "prometheus",
           label: "Prometheus",
-          role: { en: "Strategic planner", zh: "战略规划者" },
+          role: { en: "Planning interview", zh: "规划访谈" },
           x: 18,
           y: 20,
         },
         {
           id: "metis",
           label: "Metis",
-          role: { en: "Plan consultant", zh: "规划顾问" },
+          role: { en: "Plan refinement", zh: "计划细化" },
           x: 18,
-          y: 54,
+          y: 56,
         },
         {
           id: "oracle",
@@ -124,25 +128,32 @@ const rawDiagrams: ComparisonDiagram[] = [
           y: 8,
         },
         {
+          id: "atlas",
+          label: "Atlas",
+          role: { en: "Execution relay", zh: "执行接力" },
+          x: 50,
+          y: 58,
+        },
+        {
           id: "frontend",
           label: "Frontend UI/UX Engineer",
           role: { en: "Dedicated UI specialist", zh: "专职 UI specialist" },
           x: 82,
-          y: 22,
+          y: 18,
         },
         {
           id: "explore",
           label: "Explore",
           role: { en: "Fast codebase grep", zh: "快速代码库检索" },
           x: 82,
-          y: 48,
+          y: 38,
         },
         {
           id: "librarian",
           label: "Librarian",
           role: { en: "Docs / code search", zh: "文档 / 代码搜索" },
-          x: 50,
-          y: 66,
+          x: 82,
+          y: 58,
         },
         {
           id: "looker",
@@ -156,12 +167,12 @@ const rawDiagrams: ComparisonDiagram[] = [
         {
           source: "prometheus",
           target: "sisyphus",
-          label: { en: "plans", zh: "提供规划" },
+          label: { en: "interview shapes", zh: "访谈收束规划" },
         },
         {
           source: "metis",
-          target: "sisyphus",
-          label: { en: "consults", zh: "提供咨询" },
+          target: "prometheus",
+          label: { en: "refines plan", zh: "细化计划" },
         },
         {
           source: "oracle",
@@ -170,21 +181,26 @@ const rawDiagrams: ComparisonDiagram[] = [
         },
         {
           source: "sisyphus",
+          target: "atlas",
+          label: { en: "relays /start-work", zh: "通过 /start-work 接力" },
+        },
+        {
+          source: "atlas",
           target: "frontend",
-          label: { en: "delegates UI work", zh: "分派 UI 工作" },
+          label: { en: "dispatches UI work", zh: "分派 UI 工作" },
         },
         {
-          source: "sisyphus",
+          source: "atlas",
           target: "explore",
-          label: { en: "queries codebase", zh: "检索代码库" },
+          label: { en: "dispatches investigation", zh: "分派调研" },
         },
         {
-          source: "sisyphus",
+          source: "atlas",
           target: "librarian",
           label: { en: "pulls docs", zh: "拉取文档" },
         },
         {
-          source: "sisyphus",
+          source: "atlas",
           target: "looker",
           label: { en: "requests visual checks", zh: "发起视觉检查" },
         },
@@ -194,32 +210,32 @@ const rawDiagrams: ComparisonDiagram[] = [
       { id: "intent", label: "User Intent / Task", kind: "entry", position: { x: -27, y: 297 } },
       {
         id: "host",
-        label: "OpenCode Host",
+        label: "OpenCode Host Substrate",
         kind: "shell",
         host: "opencode",
-        description: "Host runtime and plugin entrypoint",
+        description: "Programmable host runtime and plugin entrypoint",
         position: { x: 337, y: 290 },
       },
       {
         id: "runtime",
-        label: "Sisyphus (Main Orchestrator)",
+        label: "Sisyphus (Workflow Controller)",
         kind: "control",
-        description: "Main orchestration, planning, and continuation control",
+        description: "Host-facing orchestration, delegation, and continuation control",
         position: { x: 986, y: 300 },
       },
       {
         id: "shell",
-        label: "Plugins / MCP / Commands / State",
+        label: "Hooks / MCP / Commands / State",
         kind: "shell",
         host: "opencode",
-        description: "Engineering shell around execution",
+        description: "Workflow protocol shell layered over the host",
         position: { x: 553, y: 461 },
       },
       {
         id: "tools",
-        label: "Specialist Agents / Tools",
+        label: "Prometheus / Atlas / Specialists",
         kind: "execution",
-        description: "Official specialist agents and tool-facing execution surface",
+        description: "Planning interview, execution relay, and specialist/tool-facing surface",
         position: { x: 1632, y: 303 },
       },
       {
@@ -274,7 +290,7 @@ const rawDiagrams: ComparisonDiagram[] = [
         source: "shell",
         target: "runtime",
         kind: "implicit",
-        label: "shell influence",
+        label: "workflow protocol",
         controlPoints: [
           { x: 864, y: 492 },
           { x: 929, y: 398 },
@@ -287,7 +303,7 @@ const rawDiagrams: ComparisonDiagram[] = [
         source: "shell",
         target: "tools",
         kind: "implicit",
-        label: "shared shell",
+        label: "shared protocol surface",
         controlPoints: [
           { x: 1238, y: 493 },
           { x: 1469, y: 388 },
@@ -390,7 +406,10 @@ const rawDiagrams: ComparisonDiagram[] = [
             evidenceStatus: "stable",
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus"],
-            note: { en: "Main orchestration begins here.", zh: "主控编排从这里开始。" },
+            note: {
+              en: "Main orchestration begins here, on the controller side of the OpenCode host.",
+              zh: "主控编排从这里开始，位置落在 OpenCode 宿主之上的 controller 一侧。",
+            },
             dx: 10,
             dy: -120,
           },
@@ -409,8 +428,8 @@ const rawDiagrams: ComparisonDiagram[] = [
             title: { en: "Participants", zh: "参与者" },
             participants: ["Sisyphus"],
             note: {
-              en: "Sisyphus remains the main orchestrator for this pass.",
-              zh: "这一轮里，Sisyphus 仍然是唯一主控编排者。",
+              en: "Sisyphus stays on the controller side while host primitives and workflow rules shape dispatch from here.",
+              zh: "Sisyphus 仍站在 controller 一侧，而 host primitives 与 workflow rules 会从这里共同塑造分派方式。",
             },
             dx: 20,
             dy: -132,
@@ -418,21 +437,28 @@ const rawDiagrams: ComparisonDiagram[] = [
           {
             id: "s2-tools",
             nodeId: "tools",
-            evidenceStatus: "hypothesis",
-            title: { en: "Specialists", zh: "Specialist Agents" },
-            participants: [
-              "Oracle",
-              "Librarian",
-              "Explore",
-              "Frontend UI/UX Engineer",
-              "Multimodal Looker",
-            ],
+            evidenceStatus: "stable",
+            title: { en: "Workflow relay", zh: "工作流接力" },
+            participants: ["Prometheus", "Atlas"],
             note: {
-              en: "Specialist behavior is visibly surfaced here, but whether it ever displaces runtime control remains an active comparison question.",
-              zh: "specialist 行为在这里已经明显展开，但它是否会真正取代 runtime control，仍是一个需要继续核对的比较问题。",
+              en: "`ulw` behaves like a keyword-triggered control chain, and `/start-work` relays plan state into Atlas-backed execution.",
+              zh: "`ulw` 表现得更像关键词触发的控制链，而 `/start-work` 会把 plan state 接力到 Atlas-backed execution。",
             },
             dx: 36,
-            dy: 84,
+            dy: -126,
+          },
+          {
+            id: "s2-plan-boundary",
+            nodeId: "shell",
+            evidenceStatus: "hypothesis",
+            title: { en: "Planner boundary", zh: "规划边界" },
+            participants: ["Prometheus", "plan"],
+            note: {
+              en: "Prometheus is source-backed as the interview planner, but whether `@plan` aliases to Prometheus remains unverified from plugin source alone.",
+              zh: "Prometheus 作为 interview planner 已有源码依据，但 `@plan` 是否等价映射到 Prometheus，单靠插件源码仍未证实。",
+            },
+            dx: 16,
+            dy: 82,
           },
         ],
       },
@@ -1217,12 +1243,12 @@ const rawDiagrams: ComparisonDiagram[] = [
 const stepNotesByDiagram: Record<string, Record<string, LocalizedText>> = {
   "oh-my-opencode": {
     s1: {
-      en: "The request enters the host and is normalized into runtime control.",
-      zh: "请求先进入宿主层，再被整理进主控闭环。",
+      en: "The request enters the programmable host and is normalized into controller-side workflow control.",
+      zh: "请求先进入 programmable host，再被整理进 controller 一侧的 workflow control。",
     },
     s2: {
-      en: "Runtime dispatches work through its execution shell and outward tool surface.",
-      zh: "主控通过执行壳层与外部 specialist/tool surface 分派工作。",
+      en: "The controller dispatches across workflow protocols, from ulw entry logic to planning and execution relay.",
+      zh: "主控会沿着 workflow protocols 分派工作，从 ulw 入口逻辑一路接到 planning 与 execution relay。",
     },
     s3: {
       en: "Verification completes the visible execution pass.",
@@ -1233,16 +1259,16 @@ const stepNotesByDiagram: Record<string, Record<string, LocalizedText>> = {
       zh: "状态与记忆更新把一次执行回合转成可持续控制的闭环。",
     },
     s5: {
-      en: "The controller either continues the run or exits to completion.",
-      zh: "主控决定继续下一轮，还是退出到完成态。",
+      en: "The controller either continues the run or exits after execution and state are folded back in.",
+      zh: "当 execution 与 state 被重新折回主控后，controller 再决定继续下一轮还是退出完成。",
     },
     s6: {
-      en: "Failures route back into runtime control for replan or reroute.",
-      zh: "失败会重新回流到主控闭环，用于重排或改道。",
+      en: "Failures route back into controller-side recovery rather than across a peer-to-peer bus.",
+      zh: "失败会重新回流进 controller 一侧的恢复路径，而不是横向穿过 peer-to-peer 总线。",
     },
     panorama: {
-      en: "Show the full system shape and all recovery paths at once.",
-      zh: "一次性展示完整系统形态与所有恢复路径。",
+      en: "Show the full host substrate, workflow-bearing harness, and all recovery paths at once.",
+      zh: "一次性展示完整 host substrate、workflow-bearing harness 与所有恢复路径。",
     },
   },
   gstack: {

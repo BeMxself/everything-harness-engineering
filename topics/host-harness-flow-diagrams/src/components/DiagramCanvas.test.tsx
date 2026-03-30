@@ -17,12 +17,12 @@ describe("DiagramCanvas", () => {
     expect(screen.getByText(/step 1 of/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /1 enter runtime/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /7 panorama/i })).toBeInTheDocument();
-    expect(screen.queryByText(/show the full system shape/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/show the full host substrate/i)).not.toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /7 panorama/i }));
 
     expect(screen.getByText(/step 7 of/i)).toBeInTheDocument();
-    expect(screen.getByText(/show the full system shape/i)).toBeInTheDocument();
+    expect(screen.getByText(/show the full host substrate/i)).toBeInTheDocument();
     expect(screen.getByTestId("rf__node-failVerify")).toHaveStyle({ opacity: "1" });
   });
 
@@ -46,7 +46,13 @@ describe("DiagramCanvas", () => {
 
     expect(screen.getByText(/participants/i)).toBeInTheDocument();
     expect(screen.getAllByText(/sisyphus/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/oracle/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/atlas/i).length).toBeGreaterThan(0);
+    expect(
+      screen.getByText(/keyword-triggered control chain/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Atlas-backed execution/i),
+    ).toBeInTheDocument();
     expect(screen.queryByText(/primary agent/i)).not.toBeInTheDocument();
   });
 
@@ -57,7 +63,7 @@ describe("DiagramCanvas", () => {
 
     await user.click(screen.getByRole("button", { name: /2 dispatch execution/i }));
 
-    expect(screen.getByText(/stable conclusion/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/stable conclusion/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/working hypothesis/i)).toBeInTheDocument();
   });
 
