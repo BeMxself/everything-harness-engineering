@@ -541,4 +541,223 @@ export const gsdDraftCase: DraftCase = {
   ],
 };
 
-export const draftCases: DraftCase[] = [trellisDraftCase, omxDraftCase, gsdDraftCase];
+export const bmadDraftCase: DraftCase = {
+  id: "bmad-method",
+  title: "BMAD-METHOD Draft",
+  state: "draft",
+  summary: {
+    en: "A method-system draft showing how BMAD installs host-facing skills and commands, routes work through specialized agents and structured workflows, and keeps progress in `_bmad/` plus `_bmad-output/` artifacts.",
+    zh: "一张 method-system draft，表达 BMAD 如何安装面向宿主的 skills 与 commands，经由 specialized agents 和 structured workflows 推进工作，并把进度沉淀在 `_bmad/` 与 `_bmad-output/` artifacts 中。",
+  },
+  nodes: [
+    {
+      id: "project-request",
+      label: "project / request",
+      purpose: {
+        en: "The feature request, product idea, or existing codebase change entering the BMad method.",
+        zh: "进入 BMad method 的功能请求、产品想法或既有代码库改动。",
+      },
+      lane: "entry",
+    },
+    {
+      id: "host-ide-surface",
+      label: "host IDE surface",
+      purpose: {
+        en: "Claude Code, Cursor, and related AI IDE surfaces where BMAD skills and workflows actually run.",
+        zh: "Claude Code、Cursor 等 AI IDE 工作面；BMAD 的 skills 与 workflows 最终都在这里运行。",
+      },
+      lane: "host",
+    },
+    {
+      id: "skill-command-surface",
+      label: "skills / commands",
+      purpose: {
+        en: "Generated `bmad-*` skills, workflow skills, and command-style entry points that let the user start work directly from the host.",
+        zh: "生成出来的 `bmad-*` skills、workflow skills 与命令式入口；用户可以直接从宿主里触发它们。",
+      },
+      lane: "wiring",
+    },
+    {
+      id: "workflow-guide",
+      label: "help / status guide",
+      purpose: {
+        en: "`bmad-help` and workflow-status logic that inspect project state and point the user to the next required or optional step.",
+        zh: "`bmad-help` 与 workflow-status 这一层会读取项目状态，并把用户导向下一步必须做或可选做的事情。",
+      },
+      lane: "core",
+    },
+    {
+      id: "specialized-agents",
+      label: "specialized agents",
+      purpose: {
+        en: "Installed BMad personas such as PM, Architect, Developer, Scrum Master, UX, and QA, each with a bounded role and trigger set.",
+        zh: "安装进来的 BMad 专门 agent，例如 PM、Architect、Developer、Scrum Master、UX、QA；每个 agent 都带着明确角色和触发集。",
+      },
+      lane: "core",
+    },
+    {
+      id: "bmad-config",
+      label: "_bmad config",
+      purpose: {
+        en: "Installed module manifests, agents, workflows, prompts, and configuration generated into the `_bmad/` folder.",
+        zh: "安装后写入 `_bmad/` 的 module manifests、agents、workflows、prompts 与配置。",
+      },
+      lane: "memory",
+    },
+    {
+      id: "phase-workflows",
+      label: "phase workflows",
+      purpose: {
+        en: "Structured workflows for brainstorming, PRD, architecture, epics, stories, quick flow, and other phase-specific work.",
+        zh: "用于 brainstorming、PRD、architecture、epics、stories、quick flow 等阶段任务的结构化 workflows。",
+      },
+      lane: "core",
+    },
+    {
+      id: "implementation-loop",
+      label: "implementation / review loop",
+      purpose: {
+        en: "The actual execution, implementation, and review work that happens after a workflow hands off concrete tasks.",
+        zh: "workflow 交出具体任务以后发生的真实执行、实现与评审工作。",
+      },
+      lane: "execution",
+    },
+    {
+      id: "bmad-output-state",
+      label: "_bmad-output artifacts",
+      purpose: {
+        en: "Planning artifacts, project context, sprint tracking, and other durable output files that preserve phase progress across sessions.",
+        zh: "planning artifacts、project context、sprint tracking 等可持续输出文件；它们会把 phase progress 跨 session 保存下来。",
+      },
+      lane: "memory",
+    },
+    {
+      id: "party-builder",
+      label: "party mode / builder",
+      purpose: {
+        en: "Multi-agent discussion plus module and workflow extension surfaces that expand BMad beyond the default core path.",
+        zh: "多 agent 讨论能力，以及 module / workflow 扩展面；它们把 BMad 从默认核心路径继续向外扩展。",
+      },
+      lane: "maintenance",
+    },
+  ],
+  steps: [
+    {
+      id: "s1-install-init",
+      label: "install and initialize",
+      summary: {
+        en: "The installer selects modules, generates host-facing skills, and creates `_bmad/` plus `_bmad-output/` in the project.",
+        zh: "安装器会选择 modules、生成宿主可调用的 skills，并在项目里创建 `_bmad/` 与 `_bmad-output/`。",
+      },
+    },
+    {
+      id: "s2-choose-entry",
+      label: "choose entry skill",
+      summary: {
+        en: "The user starts with `bmad-help`, a workflow skill, or an agent skill depending on whether they need routing or already know the next task.",
+        zh: "用户会从 `bmad-help`、workflow skill 或 agent skill 里选择入口；取决于他是需要先找路，还是已经知道下一步要做什么。",
+      },
+    },
+    {
+      id: "s3-load-agent-workflow",
+      label: "load agent + workflow",
+      summary: {
+        en: "BMAD loads the selected agent persona or workflow, then uses installed definitions in `_bmad/` to run the next structured phase.",
+        zh: "BMAD 会装载选中的 agent persona 或 workflow，再利用 `_bmad/` 里的安装定义推进下一段结构化 phase。",
+      },
+    },
+    {
+      id: "s4-write-and-execute",
+      label: "write artifacts + execute",
+      summary: {
+        en: "PRDs, architecture, stories, project context, sprint tracking, and implementation results are written out while execution and review continue in the host.",
+        zh: "PRD、architecture、stories、project context、sprint tracking 与实现结果会持续写出，同时执行与评审在宿主里继续推进。",
+      },
+    },
+    {
+      id: "s5-collaborate-extend",
+      label: "collaborate and extend",
+      summary: {
+        en: "Party Mode, Builder, and installed modules expand the system, while help and status surfaces use saved artifacts to route the next step.",
+        zh: "Party Mode、Builder 与已安装 modules 会继续扩展系统，而 help / status 会利用已保存的 artifacts 把用户导向下一步。",
+      },
+    },
+  ],
+  openQuestions: [
+    {
+      en: "Should agent menu triggers be shown as a separate control surface from generated skills, or is one `skills / commands` node enough for the comparison view?",
+      zh: "agent menu triggers 应该和生成出来的 skills 拆成两个控制面，还是在比较图里压缩成一个 `skills / commands` 节点就够了？",
+    },
+    {
+      en: "How much of `_bmad/` and `_bmad-output/` should stay as separate nodes, given one stores installed method definitions while the other stores project progress?",
+      zh: "在一个保存安装后的方法定义、另一个保存项目进度的前提下，`_bmad/` 与 `_bmad-output/` 应该分成两个节点到什么程度？",
+    },
+    {
+      en: "Does Party Mode belong in the main closed loop, or should it move into a supplemental collaboration view if the diagram gets too crowded?",
+      zh: "如果主图过于拥挤，Party Mode 应该留在主闭环里，还是移到补充协作视图里？",
+    },
+  ],
+  evidenceNotes: [
+    {
+      en: "The official getting-started flow says installation creates `_bmad/` and `_bmad-output/`, then directs the user to begin from `bmad-help` inside an AI IDE.",
+      zh: "官方 getting-started 流程明确写到，安装后会生成 `_bmad/` 与 `_bmad-output/`，然后把用户引导到 AI IDE 里的 `bmad-help` 开始。",
+    },
+    {
+      en: "The skills reference states that the installer generates one skill per agent, workflow, task, and tool, making generated skills the main runtime entry surface.",
+      zh: "skills reference 明确说，安装器会按 agent、workflow、task 与 tool 生成 skill，因此生成出来的 skills 才是主要运行入口。",
+    },
+    {
+      en: "The README and reference docs describe 12+ specialized agents, 34+ workflows, Party Mode, Builder, and workflow-status guidance as the distinctive load-bearing parts of the system.",
+      zh: "README 与 reference docs 把 12+ specialized agents、34+ workflows、Party Mode、Builder 与 workflow-status guidance 一起描述成这套系统最承重的部分。",
+    },
+  ],
+  sources: [
+    {
+      label: "BMAD-METHOD repository",
+      href: "https://github.com/bmad-code-org/BMAD-METHOD",
+      note: {
+        en: "Primary source for BMAD positioning, module ecosystem, 34+ workflows, specialized agents, Party Mode, and installation entry points.",
+        zh: "用于确认 BMAD 定位、module ecosystem、34+ workflows、specialized agents、Party Mode 与安装入口的主来源。",
+      },
+    },
+    {
+      label: "BMAD getting started",
+      href: "https://docs.bmad-method.org/tutorials/getting-started/",
+      note: {
+        en: "Used to ground `_bmad/`, `_bmad-output/`, workflow initialization, and the host-side starting path via `bmad-help`.",
+        zh: "用于确认 `_bmad/`、`_bmad-output/`、workflow initialization，以及从 `bmad-help` 开始的宿主侧入口。",
+      },
+    },
+    {
+      label: "BMAD skills reference",
+      href: "https://docs.bmad-method.org/reference/commands/",
+      note: {
+        en: "Used to ground generated skills as the main entry mechanism for agents, workflows, tasks, and tools.",
+        zh: "用于确认生成出来的 skills 是 agents、workflows、tasks 与 tools 的主要进入机制。",
+      },
+    },
+    {
+      label: "BMAD agents reference",
+      href: "https://docs.bmad-method.org/reference/agents/",
+      note: {
+        en: "Used to ground specialized agents, skill IDs, and agent menu triggers.",
+        zh: "用于确认 specialized agents、skill IDs 与 agent menu triggers。",
+      },
+    },
+    {
+      label: "BMAD core tools",
+      href: "https://docs.bmad-method.org/reference/core-tools/",
+      note: {
+        en: "Used to ground `bmad-party-mode` and help/status-style routing tools.",
+        zh: "用于确认 `bmad-party-mode` 与 help / status 这类路由工具。",
+      },
+    },
+  ],
+};
+
+export const draftCases: DraftCase[] = [
+  trellisDraftCase,
+  omxDraftCase,
+  gsdDraftCase,
+  bmadDraftCase,
+];

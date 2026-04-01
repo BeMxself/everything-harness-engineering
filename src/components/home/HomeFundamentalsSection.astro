@@ -17,11 +17,11 @@ const { items } = Astro.props;
   <div class="overview-section-head">
     <div class="overview-prose">
       <p class="section-label">基本构成</p>
-      <h2>要理解 harness engineering，先要看清 agent harness 提供哪些底层能力。</h2>
+      <h2>要理解 Harness Engineering，先要看清宿主和 Agent Harnesses 暴露了哪些底层能力。</h2>
       <p>
-        它不是一个单独功能点，也不是另一个产品类，而是建立在一组外层系统能力之上的工程实践。下面这些项更适合先看成
-        <strong>harness 机制</strong>：它们不都等于 agent harness 本身，而是 agent harness 暴露出来、也被
-        harness engineering 用来驾驭 AI 做开发的关键控制面。
+        这些能力不都来自同一层。<strong>AI Agents</strong> 先提供主执行面，
+        <strong>Agent Harnesses</strong> 再把状态、控制、恢复和流程编成外层系统。下面这些项更适合先看成
+        <strong>harness 机制</strong>：它们是被系统调用和组合的能力，不等于对象层分类本身。
       </p>
     </div>
     <div class="section-actions not-content">

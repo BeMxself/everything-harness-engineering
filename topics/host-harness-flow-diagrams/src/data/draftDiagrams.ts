@@ -656,8 +656,258 @@ export const gsdDraftDiagram: ComparisonDiagram = {
   ],
 };
 
+export const bmadDraftDiagram: ComparisonDiagram = {
+  id: "bmad-method-draft",
+  title: "BMAD-METHOD",
+  summary: {
+    en: "A comparison view showing BMAD as an installable method system: it generates host-facing skills and commands, routes work through specialized agents and phase workflows, and keeps recovery in `_bmad/` plus `_bmad-output/` artifacts.",
+    zh: "一张比较视图，表达 BMAD 作为可安装的方法系统：它会生成宿主可调用的 skills 与 commands，经由 specialized agents 和 phase workflows 推进工作，并把恢复与续跑能力放进 `_bmad/` 与 `_bmad-output/` artifacts。",
+  },
+  emphasis: {
+    automationLoop: "high",
+    harness: "medium",
+    control: "high",
+    hostDependency: "medium",
+  },
+  notes: {
+    whyThisLoopMatters: {
+      en: "BMAD is most useful when read as a method system that carries control through generated skills, guided workflows, and durable artifacts rather than through a replacement runtime.",
+      zh: "BMAD 最值得看的地方，是它把控制权放在生成出来的 skills、引导式 workflows 与可持续 artifacts 上，而不是去替换宿主 runtime。",
+    },
+    whereTheHarnessLives: {
+      en: "The harness lives mostly in generated skills, specialized agent personas, workflow files, and `_bmad-output/` artifacts, with the host acting as the execution carrier.",
+      zh: "这层 harness 主要存在于生成出来的 skills、specialized agent personas、workflow files 与 `_bmad-output/` artifacts 中，宿主更多只是执行载体。",
+    },
+  },
+  readingGuide: {
+    keyQuestion: {
+      en: "Does BMAD keep most control in its method artifacts and workflow routing, while the host mostly provides execution and conversation space?",
+      zh: "BMAD 是不是把大部分控制权留在方法工件和 workflow 路由里，而把宿主更多当作执行与对话空间？",
+    },
+    howToRead: {
+      en: "Start from host installation and generated skills, then trace how help/status, agent personas, phase workflows, and output artifacts keep the next step legible across long work.",
+      zh: "先从宿主安装面和生成出来的 skills 开始，再沿着 help / status、agent personas、phase workflows 与输出 artifacts 去看它如何在长任务里持续把下一步说清楚。",
+    },
+    evidenceBoundary: {
+      en: "Module names, folders, skills, agents, and Party Mode follow BMAD public docs. The control topology here is repository interpretation used for cross-system comparison.",
+      zh: "module 名称、目录、skills、agents 与 Party Mode 都尽量沿用 BMAD 公开文档；这里的控制拓扑则是为了跨系统比较而做的仓库解释。",
+    },
+    currentLimit: {
+      en: "This comparison view compresses many module-specific workflows and triggers into one method loop, so it emphasizes control shape over every individual command.",
+      zh: "这张比较视图把很多 module-specific workflows 与 triggers 压缩进一条方法闭环里，因此更强调控制形态，而不是逐个命令说明。",
+    },
+  },
+  takeaways: [
+    {
+      en: "Generated `bmad-*` skills and commands are the main entry surface after installation.",
+      zh: "安装完成以后，生成出来的 `bmad-*` skills 与 commands 才是主要入口面。",
+    },
+    {
+      en: "`_bmad-output/` is the recovery layer that keeps planning artifacts, project context, and sprint status available across sessions.",
+      zh: "`_bmad-output/` 是 BMAD 的恢复层；planning artifacts、project context 与 sprint status 都靠它跨 session 保留下来。",
+    },
+    {
+      en: "Party Mode and Builder expand collaboration and extension, but they still attach to the same method system instead of replacing it.",
+      zh: "Party Mode 与 Builder 会扩展协作和扩展能力，但它们仍然挂在同一套方法系统上，而不是替换它。",
+    },
+  ],
+  sources: [
+    {
+      label: "BMAD-METHOD repository",
+      href: "https://github.com/bmad-code-org/BMAD-METHOD",
+      note: {
+        en: "Primary source for BMAD positioning, module ecosystem, 34+ workflows, specialized agents, Party Mode, and installation entry points.",
+        zh: "用于确认 BMAD 定位、module ecosystem、34+ workflows、specialized agents、Party Mode 与安装入口的主来源。",
+      },
+    },
+    {
+      label: "BMAD getting started",
+      href: "https://docs.bmad-method.org/tutorials/getting-started/",
+      note: {
+        en: "Used to ground `_bmad/`, `_bmad-output/`, workflow initialization, and the host-side starting path via `bmad-help`.",
+        zh: "用于确认 `_bmad/`、`_bmad-output/`、workflow initialization，以及从 `bmad-help` 开始的宿主侧入口。",
+      },
+    },
+    {
+      label: "BMAD skills reference",
+      href: "https://docs.bmad-method.org/reference/commands/",
+      note: {
+        en: "Used to ground generated skills as the main entry mechanism for agents, workflows, tasks, and tools.",
+        zh: "用于确认生成出来的 skills 是 agents、workflows、tasks 与 tools 的主要进入机制。",
+      },
+    },
+    {
+      label: "BMAD agents reference",
+      href: "https://docs.bmad-method.org/reference/agents/",
+      note: {
+        en: "Used to ground specialized agents, skill IDs, and agent menu triggers.",
+        zh: "用于确认 specialized agents、skill IDs 与 agent menu triggers。",
+      },
+    },
+    {
+      label: "BMAD core tools",
+      href: "https://docs.bmad-method.org/reference/core-tools/",
+      note: {
+        en: "Used to ground `bmad-party-mode` and help/status-style routing tools.",
+        zh: "用于确认 `bmad-party-mode` 与 help / status 这类路由工具。",
+      },
+    },
+  ],
+  nodes: [
+    {
+      id: "project-request",
+      label: "project / request",
+      kind: "entry",
+      description: "Product idea, feature request, or brownfield change entering BMAD",
+      position: { x: 24, y: 286 },
+    },
+    {
+      id: "host-ide-surface",
+      label: "host IDE surface",
+      kind: "shell",
+      host: "multi-host",
+      description: "Claude Code / Cursor and related AI IDE hosts",
+      position: { x: 430, y: 560 },
+    },
+    {
+      id: "skill-command-surface",
+      label: "skills / commands",
+      kind: "shell",
+      host: "multi-host",
+      description: "Generated `bmad-*` skills and command-style entry points",
+      position: { x: 430, y: 286 },
+    },
+    {
+      id: "workflow-guide",
+      label: "help / status guide",
+      kind: "control",
+      description: "`bmad-help` and workflow-status routing logic",
+      position: { x: 430, y: 74 },
+    },
+    {
+      id: "bmad-config",
+      label: "_bmad config",
+      kind: "memory",
+      description: "Installed modules, agents, workflows, prompts, and config",
+      position: { x: 930, y: 74 },
+    },
+    {
+      id: "specialized-agents",
+      label: "specialized agents",
+      kind: "control",
+      description: "PM / Architect / Dev / Scrum Master / UX / QA and related personas",
+      position: { x: 930, y: 286 },
+    },
+    {
+      id: "phase-workflows",
+      label: "phase workflows",
+      kind: "control",
+      description: "PRD, architecture, epics, stories, quick flow, and related workflows",
+      position: { x: 1430, y: 286 },
+    },
+    {
+      id: "implementation-loop",
+      label: "implementation / review loop",
+      kind: "execution",
+      description: "Execution, implementation, and review inside the host",
+      position: { x: 1930, y: 286 },
+    },
+    {
+      id: "bmad-output-state",
+      label: "_bmad-output artifacts",
+      kind: "memory",
+      description: "Planning artifacts, sprint status, and project context",
+      position: { x: 1930, y: 74 },
+    },
+    {
+      id: "party-builder",
+      label: "party mode / builder",
+      kind: "decision",
+      description: "Multi-agent collaboration and method extension surface",
+      position: { x: 2430, y: 286 },
+    },
+  ],
+  edges: [
+    { id: "e1", source: "project-request", target: "skill-command-surface", kind: "main" },
+    { id: "e2", source: "host-ide-surface", target: "skill-command-surface", kind: "implicit" },
+    { id: "e3", source: "host-ide-surface", target: "bmad-config", kind: "implicit" },
+    { id: "e4", source: "host-ide-surface", target: "bmad-output-state", kind: "implicit" },
+    { id: "e5", source: "skill-command-surface", target: "workflow-guide", kind: "main" },
+    { id: "e6", source: "skill-command-surface", target: "specialized-agents", kind: "main" },
+    { id: "e7", source: "bmad-config", target: "workflow-guide", kind: "feedback" },
+    { id: "e8", source: "bmad-config", target: "specialized-agents", kind: "feedback" },
+    { id: "e9", source: "workflow-guide", target: "phase-workflows", kind: "implicit" },
+    { id: "e10", source: "specialized-agents", target: "phase-workflows", kind: "main" },
+    { id: "e11", source: "phase-workflows", target: "implementation-loop", kind: "main" },
+    { id: "e12", source: "phase-workflows", target: "bmad-output-state", kind: "feedback" },
+    { id: "e13", source: "implementation-loop", target: "bmad-output-state", kind: "feedback" },
+    {
+      id: "e14",
+      source: "bmad-output-state",
+      target: "workflow-guide",
+      kind: "feedback",
+      controlPoints: [{ x: 1460, y: 10 }, { x: 760, y: 10 }],
+    },
+    { id: "e15", source: "party-builder", target: "specialized-agents", kind: "implicit" },
+    { id: "e16", source: "party-builder", target: "phase-workflows", kind: "implicit" },
+  ],
+  steps: [
+    {
+      id: "s1-install-init",
+      label: { en: "Install and initialize", zh: "安装并初始化" },
+      activeNodeIds: ["project-request", "host-ide-surface", "skill-command-surface", "bmad-config", "bmad-output-state"],
+      activeEdgeIds: ["e1", "e2", "e3", "e4"],
+      note: {
+        en: "BMAD installs into the host, generates skills and command entry points, and creates `_bmad/` plus `_bmad-output/` for the project.",
+        zh: "BMAD 会安装到宿主里，生成 skills 与命令入口，并为项目创建 `_bmad/` 与 `_bmad-output/`。",
+      },
+    },
+    {
+      id: "s2-choose-entry",
+      label: { en: "Choose entry skill", zh: "选择入口 skill" },
+      activeNodeIds: ["skill-command-surface", "workflow-guide", "specialized-agents", "bmad-output-state"],
+      activeEdgeIds: ["e5", "e6", "e14"],
+      note: {
+        en: "The user starts with `bmad-help`, a workflow skill, or an agent skill depending on whether they need routing or already know the next task.",
+        zh: "用户会从 `bmad-help`、workflow skill 或 agent skill 进入；取决于他是需要先找路，还是已经知道下一步任务。",
+      },
+    },
+    {
+      id: "s3-load-agent-workflow",
+      label: { en: "Load agent and workflow", zh: "装载 agent 与 workflow" },
+      activeNodeIds: ["workflow-guide", "bmad-config", "specialized-agents", "phase-workflows"],
+      activeEdgeIds: ["e7", "e8", "e9", "e10"],
+      note: {
+        en: "Installed agent personas and workflow definitions in `_bmad/` determine how the next phase runs.",
+        zh: "写在 `_bmad/` 里的 agent personas 与 workflow definitions 会决定下一段 phase 怎么运行。",
+      },
+    },
+    {
+      id: "s4-write-and-execute",
+      label: { en: "Write artifacts and execute", zh: "写出工件并执行" },
+      activeNodeIds: ["phase-workflows", "implementation-loop", "bmad-output-state"],
+      activeEdgeIds: ["e11", "e12", "e13"],
+      note: {
+        en: "Workflows produce durable artifacts such as PRDs, architecture, project context, and sprint status while implementation and review continue in the host.",
+        zh: "workflows 会持续写出 PRD、architecture、project context、sprint status 等可持续工件，同时实现与评审在宿主里继续推进。",
+      },
+    },
+    {
+      id: "s5-collaborate-extend",
+      label: { en: "Collaborate and extend", zh: "协作并扩展" },
+      activeNodeIds: ["bmad-output-state", "workflow-guide", "party-builder", "specialized-agents", "phase-workflows"],
+      activeEdgeIds: ["e14", "e15", "e16"],
+      note: {
+        en: "Saved artifacts route the next step, while Party Mode and Builder extend the same method system with multi-agent discussion and custom module growth.",
+        zh: "保存下来的 artifacts 会继续把用户导向下一步，而 Party Mode 与 Builder 会用多 agent 讨论和自定义模块扩展这同一套方法系统。",
+      },
+    },
+  ],
+};
+
 export const draftDiagrams: ComparisonDiagram[] = [
   trellisDraftDiagram,
   omxDraftDiagram,
   gsdDraftDiagram,
+  bmadDraftDiagram,
 ];

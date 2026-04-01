@@ -6,7 +6,7 @@ const ECOSYSTEM_COMPARISON = `${BASE}/ecosystem-comparison/`;
 export const hero = {
   title: "Everything Harness Engineering",
   tagline:
-    "所谓 harness engineering，至少包含两层相关但不同的问题：agent harness 如何提供可控、可恢复的底层能力，以及 harness engineering 如何把提示词、MCP、工具、钩子、技能、子代理等机制组织成可运行的开发方法。",
+    "仓库当前聚焦三件事：`AI Agents` 如何提供真实执行宿主，`Agent Harnesses` 如何补控制与恢复，以及 `Harness Engineering` 如何把命令、MCP、工具、钩子、技能、子代理等机制组织成可运行的开发方法。",
 };
 
 export const navItems = [
@@ -66,32 +66,25 @@ export const fundamentals = [
 
 export const taxonomy = [
   {
-    title: "1. 编程代理（对象层）",
+    title: "1. AI Agents",
     description:
-      "这类系统首先提供代理直接进入真实工程环境的宿主工作面，回答的问题是代理到底在哪里工作。",
+      "这类系统首先提供代理直接进入真实工程环境的宿主工作面，回答的问题是代理到底在哪里运行、如何执行。",
     note: "典型问题：如何让代理真正进入仓库、执行命令、修改文件并完成单次工程任务？",
     href: ECOSYSTEM_COMPARISON,
   },
   {
-    title: "2. Agent Harnesses（对象层）",
+    title: "2. Agent Harnesses",
     description:
-      "这类系统是围绕宿主工作面的第二层对象：补上控制、恢复、记忆、规则、委派与验证能力，让代理能更长时、更可控地工作。",
+      "这类系统叠加在宿主之上，补上控制、恢复、状态、角色、流程和用户参与契约，让代理能更长时、更可控地工作。",
     note: "典型问题：如何把编程代理提升成更可恢复、更可协作、更可治理的工程环境？",
     href: ECOSYSTEM_COMPARISON,
   },
   {
-    title: "3. Harness Engineering（实践层）",
+    title: "3. Harness Engineering",
     description:
-      "这不是另一类系统，而是围绕 harness 展开的工程实践：如何组合提示词、MCP、工具、钩子、技能、子代理、记忆、审批与验证回路来驾驭代理做项目开发。",
-    note: "典型问题：如何把这些机制组合成稳定的方法，而不是只堆功能？",
+      "这不是另一类产品，而是一条实践线：讨论人如何把提示、MCP、工具、规则、记忆、审批和验证回路编成长期可持续的开发方法。",
+    note: "典型问题：如何把这些机制组织成稳定、长期、可治理的开发方法？",
     href: CONCEPT_ENTRY,
-  },
-  {
-    title: "4. 工作流 / 编排（协调层）",
-    description:
-      "这类系统更强调多代理、多模型、人类审批和交付节点的组织方式，处理的是更大的协调闭环。",
-    note: "典型问题：如何把多个代理、人类和外部系统编成一条稳定交付链？",
-    href: ECOSYSTEM_COMPARISON,
   },
 ];
 
@@ -143,7 +136,7 @@ export const landscapeRows = [
     name: "Claude Code",
     href: "https://docs.anthropic.com/en/docs/claude-code/common-workflows",
     intro: "Anthropic 官方把它描述成面向编程的代理工具；更适合把它看成编程代理的宿主。",
-    category: "对象层：编程代理",
+    category: "AI Agents",
     runtimeForm: "独立代理宿主",
   },
   {
@@ -151,7 +144,7 @@ export const landscapeRows = [
     href: "https://github.com/openai/codex",
     starsBadge: "https://img.shields.io/github/stars/openai/codex?style=social",
     intro: "OpenAI 官方将 Codex CLI 描述为运行在本地机器上的编程代理；它的 CLI 形态是这一层的典型代表。",
-    category: "对象层：编程代理",
+    category: "AI Agents",
     runtimeForm: "独立代理宿主",
   },
   {
@@ -159,7 +152,7 @@ export const landscapeRows = [
     href: "https://github.com/anomalyco/opencode",
     starsBadge: "https://img.shields.io/github/stars/anomalyco/opencode?style=social",
     intro: "官方自称开源 AI 编程代理，可作为终端、IDE 和桌面中的开放宿主。",
-    category: "对象层：编程代理",
+    category: "AI Agents",
     runtimeForm: "独立代理宿主",
   },
   {
@@ -167,7 +160,7 @@ export const landscapeRows = [
     href: "https://github.com/block/goose",
     starsBadge: "https://img.shields.io/github/stars/block/goose?style=social",
     intro: "更广义的本地 AI 代理，重点在工程自动化；虽然不只做编程，但和这一层共享相同宿主工作面。",
-    category: "对象层：编程代理",
+    category: "AI Agents",
     runtimeForm: "独立代理宿主",
   },
   {
@@ -175,7 +168,7 @@ export const landscapeRows = [
     href: "https://github.com/code-yeongyu/oh-my-openagent",
     starsBadge: "https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=social",
     intro: "构建在 OpenCode 之上的 harness 增强层，重点把 ulw、规划到执行接力、后台任务和持久状态组织成宿主内工作流协议。",
-    category: "对象层：Agent Harnesses",
+    category: "Agent Harnesses",
     runtimeForm: "宿主内扩展",
   },
   {
@@ -183,7 +176,7 @@ export const landscapeRows = [
     href: "https://github.com/Yeachan-Heo/oh-my-codex",
     starsBadge: "https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=social",
     intro: "构建在 Codex 之上的 workflow layer：Codex 保留原生 substrate，OMX 再叠加 prompts、workflow skills、`.omx/` state 与可选 team runtime。",
-    category: "对象层：Agent Harnesses",
+    category: "Agent Harnesses",
     runtimeForm: "宿主内扩展",
   },
   {
@@ -191,7 +184,7 @@ export const landscapeRows = [
     href: "https://github.com/Yeachan-Heo/oh-my-claudecode",
     starsBadge: "https://img.shields.io/github/stars/Yeachan-Heo/oh-my-claudecode?style=social",
     intro: "构建在 Claude Code 之上的以团队为先的编排层，强调多代理协作与调度。",
-    category: "对象层：Agent Harnesses",
+    category: "Agent Harnesses",
     runtimeForm: "宿主内扩展，可拉起外部工作进程",
   },
   {
@@ -199,7 +192,7 @@ export const landscapeRows = [
     href: "https://github.com/mindfold-ai/Trellis",
     starsBadge: "https://img.shields.io/github/stars/mindfold-ai/Trellis?style=social",
     intro: "跨宿主的 harness 框架，试图把多平台编程环境统一到同一层控制面。",
-    category: "对象层：Agent Harnesses",
+    category: "Agent Harnesses",
     runtimeForm: "宿主内扩展（跨宿主）",
   },
   {
@@ -207,39 +200,55 @@ export const landscapeRows = [
     href: "https://github.com/affaan-m/everything-claude-code",
     starsBadge: "https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=social",
     intro: "面向 agent harness 的增强系统，重点在性能优化与工作流加强。",
-    category: "对象层：Agent Harnesses",
+    category: "Agent Harnesses",
     runtimeForm: "宿主内扩展（跨宿主）",
   },
   {
     name: "superpowers",
     href: "https://github.com/obra/superpowers",
     starsBadge: "https://img.shields.io/github/stars/obra/superpowers?style=social",
-    intro: "以技能、检查清单和执行纪律定义工作方法，更接近 harness engineering 的实践层，而不是 agent harness 这一层。",
-    category: "实践层：Harness Engineering",
-    runtimeForm: "宿主内实践层",
+    intro: "以技能、检查清单和执行纪律定义工作方法，属于方法系统型 harness，而不是新的代理宿主。",
+    category: "Agent Harnesses",
+    runtimeForm: "宿主内方法系统",
   },
   {
     name: "get-shit-done",
     href: "https://github.com/gsd-build/get-shit-done",
     starsBadge: "https://img.shields.io/github/stars/gsd-build/get-shit-done?style=social",
-    intro: "用元提示、上下文工程与规格驱动开发组织工作方法，属于 harness engineering 的方法层。",
-    category: "实践层：Harness Engineering",
-    runtimeForm: "宿主内实践层",
+    intro: "用元提示、上下文工程与规格驱动开发组织工作方法，属于方法系统型 harness。",
+    category: "Agent Harnesses",
+    runtimeForm: "宿主内方法系统",
+  },
+  {
+    name: "BMAD-METHOD",
+    href: "https://github.com/bmad-code-org/BMAD-METHOD",
+    starsBadge: "https://img.shields.io/github/stars/bmad-code-org/BMAD-METHOD?style=social",
+    intro: "把 agile 开发过程、专门代理、workflow、技能和模块生态打包成可安装的方法系统，运行在 Claude Code、Cursor 等宿主里。",
+    category: "Agent Harnesses",
+    runtimeForm: "宿主内方法系统（模块化）",
+  },
+  {
+    name: "Routa",
+    href: "https://github.com/phodal/routa",
+    starsBadge: "https://img.shields.io/github/stars/phodal/routa?style=social",
+    intro: "workspace-first 多代理协调平台，用看板、Specs、Review Guard、ACP agent lifecycle 和 traces 把 Codex、OpenCode、Claude Code 等外部 agents 组织进跨宿主交付闭环。",
+    category: "Agent Harnesses",
+    runtimeForm: "独立协调平台（跨宿主）",
   },
   {
     name: "gstack",
     href: "https://github.com/garrytan/gstack",
     starsBadge: "https://img.shields.io/github/stars/garrytan/gstack?style=social",
     intro: "面向交付的角色化工作流，用多角色分工来组织产品与工程推进。",
-    category: "协调层：工作流 / 编排",
-    runtimeForm: "宿主内技能层",
+    category: "Agent Harnesses",
+    runtimeForm: "宿主内交付套件",
   },
   {
     name: "ccg-workflow",
     href: "https://github.com/fengshao1227/ccg-workflow",
     starsBadge: "https://img.shields.io/github/stars/fengshao1227/ccg-workflow?style=social",
     intro: "以 Claude、Codex、Gemini 为核心的多模型协作工作流。",
-    category: "协调层：工作流 / 编排",
+    category: "Agent Harnesses",
     runtimeForm: "宿主内编排",
   },
   {
@@ -247,13 +256,13 @@ export const landscapeRows = [
     href: "https://github.com/snarktank/ralph",
     starsBadge: "https://img.shields.io/github/stars/snarktank/ralph?style=social",
     intro: "一个会反复运行直到 PRD 条目完成的自主代理回路，强调持续推进与任务闭环。",
-    category: "协调层：工作流 / 编排",
+    category: "Agent Harnesses",
     runtimeForm: "独立调度外壳",
   },
 ];
 
 export const communityIntro =
-  "围绕 agent harness 和 harness engineering 的社区讨论不是官方定义，却最能补足真实实践里的成本、失败模式、工具取舍与使用路径。";
+  "围绕 Agent Harnesses 与 Harness Engineering 的社区讨论不是官方定义，却最能补足真实实践里的成本、失败模式、工具取舍与使用路径。";
 
 export const communityThreads = [
   {
@@ -261,7 +270,7 @@ export const communityThreads = [
     href: "https://linux.do/t/topic/1791588",
     date: "2026-03-21",
     summary:
-      "这是一条持续更新的实践帖，适合先看一遍社区怎样理解 harness engineering，再顺着里面提到的工具和经验继续深入。",
+      "这是一条持续更新的实践帖，适合先看一遍社区怎样理解 Harness Engineering，再顺着里面提到的工具和经验继续深入。",
   },
   {
     title: "最近 harness，自主进化很火，大家有什么经验和用法吗？",
@@ -279,7 +288,7 @@ export const communityThreads = [
     title: "Vibecoding 进阶教程总集篇——从能用到可控",
     href: "https://linux.do/t/topic/1776917",
     date: "2026-03-18",
-    summary: "即使不直接使用 harness 这个词，这帖讨论的“从能用到可控”也和 harness engineering 关心的问题高度重合。",
+    summary: "即使不直接使用 harness 这个词，这帖讨论的“从能用到可控”也和 Harness Engineering 关心的问题高度重合。",
   },
   {
     title: "OpenAI 提出 “Harness Engineering”：完全使用 Agent 进行编程的实践",
@@ -324,9 +333,14 @@ export const communityInsights = [
       "讨论中反复出现一个共识：决策层不应淹没在代码细节里，更有效的做法是用文档、摘要、报告和图表压缩信息后再交给高阶决策模型。",
   },
   {
-    title: "模型供应现实会同时塑造 agent harness 与 harness engineering",
+    title: "用户参与契约本身就是承重层",
     summary:
-      "很多 agent harness 设计和 harness engineering 做法都不是静态教条，而是在供应稳定性、可用性和成本约束下不断漂移。",
+      "最近两条宿主链路研究都在提醒同一件事：差异不只在工具多少，更在用户通过什么接口触发流程、何时批准、何时续跑，以及恢复时要回到哪一层状态面。",
+  },
+  {
+    title: "模型供应现实会同时塑造 Agent Harnesses 与 Harness Engineering",
+    summary:
+      "很多 Agent Harnesses 设计和 Harness Engineering 做法都不是静态教条，而是在供应稳定性、可用性和成本约束下不断漂移。",
   },
 ];
 
@@ -334,30 +348,36 @@ export const topics = [
   {
     title: "宿主与 Harness 结构图",
     description:
-      "一个可运行的研究应用，用来比较不同编程代理系统里的宿主工作面、agent harness、控制中心与恢复路径；当前已开始把 OpenCode -> oh-my-openagent 与 Codex -> oh-my-codex 的能力栈研究同步进专题结论。",
+      "一个可运行的研究应用，重点比较 `AI Agents` 与 `Agent Harnesses` 之间的宿主工作面、控制中心、用户参与契约与恢复路径。",
     href: `${BASE}/topics/host-harness-flow-diagrams/site/`,
+  },
+  {
+    title: "深入剖析 OMO 与 OMX",
+    description:
+      "拆开 OpenCode 与 Codex 各自提供了哪些 harness 机制层能力，OMO（oh-my-openagent）与 OMX（oh-my-codex）如何利用并扩展这些能力，以及它们最终分别给用户定义了什么交互面。",
+    href: `${BASE}/topics/omo-and-omx/`,
   },
 ];
 
 export const nextLinks = [
   {
     title: "我想先看精确定义",
-    description: "先分清 agent harness、机制层与 harness engineering 的边界。",
+    description: "先分清 `AI Agents`、`Agent Harnesses` 与 `Harness Engineering` 的边界。",
     href: CONCEPT_ENTRY,
   },
   {
     title: "我想先理解怎么选路线",
-    description: "如果你在比较宿主、agent harness、方法系统和工作流，先看生态与比较。",
+    description: "如果你在比较宿主、Agent Harnesses 与方法系统，先看生态与比较。",
     href: ECOSYSTEM_COMPARISON,
   },
   {
     title: "我想看这个领域是怎么形成的",
-    description: "看 agent harness 的对象层问题和 harness engineering 的实践层问题是怎样逐步分化、又彼此牵连的。",
+    description: "看对象层和实践线是怎样逐步分化、又彼此牵连的。",
     href: KEY_ARTICLES,
   },
   {
     title: "我想直接看可运行材料",
-    description: "如果你想拆开一个 agent harness 到底由哪些层组成，先看专题。",
+    description: "如果你想拆开宿主和 `Agent Harnesses` 之间到底怎样分工，先看专题。",
     href: `${BASE}/topics/host-harness-flow-diagrams/site/`,
   },
 ];

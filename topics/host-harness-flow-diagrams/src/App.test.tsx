@@ -104,7 +104,7 @@ describe("App", () => {
     expect(screen.queryByText(/GSD Workflow Protocol Draft/i)).not.toBeInTheDocument();
   });
 
-  it("includes Trellis, oh-my-codex, and get-shit-done in the main comparison switcher", async () => {
+  it("includes Trellis, oh-my-codex, get-shit-done, and BMAD-METHOD in the main comparison switcher", async () => {
     const user = userEvent.setup();
 
     render(<App />);
@@ -112,6 +112,7 @@ describe("App", () => {
     expect(screen.getByRole("button", { name: /^Trellis$/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /^oh-my-codex$/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /^get-shit-done$/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^BMAD-METHOD$/i })).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /^Trellis$/i }));
     expect(
@@ -126,6 +127,11 @@ describe("App", () => {
     await user.click(screen.getByRole("button", { name: /^get-shit-done$/i }));
     expect(
       screen.getByRole("button", { name: /1 初始化项目/i }),
+    ).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: /^BMAD-METHOD$/i }));
+    expect(
+      screen.getByRole("button", { name: /1 安装并初始化/i }),
     ).toBeInTheDocument();
   });
 });

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { resolveText } from "../i18n";
-import { draftCases, gsdDraftCase, omxDraftCase, trellisDraftCase } from "./draftCases";
+import { bmadDraftCase, draftCases, gsdDraftCase, omxDraftCase, trellisDraftCase } from "./draftCases";
 
 describe("draft case data", () => {
   it("lists Trellis and oh-my-codex as formal draft cases", () => {
@@ -8,6 +8,7 @@ describe("draft case data", () => {
       "trellis",
       "oh-my-codex",
       "get-shit-done",
+      "bmad-method",
     ]);
   });
 
@@ -81,5 +82,24 @@ describe("draft case data", () => {
       "host-runtime-surface",
     ]);
     expect(resolveText(gsdDraftCase.openQuestions[0]!, "en")).toMatch(/host layer/i);
+  });
+
+  it("contains a BMAD draft focused on method artifacts, generated skills, and phase workflows", () => {
+    expect(bmadDraftCase.id).toBe("bmad-method");
+    expect(resolveText(bmadDraftCase.title, "en")).toMatch(/BMAD-METHOD/i);
+    expect(resolveText(bmadDraftCase.summary, "en")).toMatch(/skills and commands/i);
+    expect(bmadDraftCase.nodes.map((node) => node.id)).toEqual([
+      "project-request",
+      "host-ide-surface",
+      "skill-command-surface",
+      "workflow-guide",
+      "specialized-agents",
+      "bmad-config",
+      "phase-workflows",
+      "implementation-loop",
+      "bmad-output-state",
+      "party-builder",
+    ]);
+    expect(resolveText(bmadDraftCase.openQuestions[0]!, "en")).toMatch(/generated skills/i);
   });
 });

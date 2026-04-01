@@ -1,0 +1,17 @@
+@media (min-width: 72rem) {
+  html[data-has-sidebar] {
+    --sl-content-width: min(78rem, calc(100vw - var(--sl-sidebar-width) - 4rem));
+  }
+
+  html[data-has-sidebar][data-has-toc] .right-sidebar-container {
+    display: none;
+  }
+
+  html[data-has-sidebar][data-has-toc] .main-pane {
+    width: 100%;
+  }
+
+  html[data-has-sidebar][data-has-toc] .sl-container {
+    max-width: min(78rem, calc(100vw - var(--sl-sidebar-width) - 4rem));
+  }
+}

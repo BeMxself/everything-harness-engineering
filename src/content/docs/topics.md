@@ -3,7 +3,7 @@ title: 研究专题
 description: 更深入、可运行的研究专题入口。
 ---
 
-研究专题不再停留在定义和比较框架，而是把判断压到可运行、可检查、可继续扩展的研究材料里。当前专题主要聚焦对象层，尤其是宿主与 `agent harness` 的结构差异。
+研究专题不再停留在定义和比较框架，而是把判断压到可运行、可检查、可继续扩展的研究材料里。当前专题主要聚焦 `AI Agents` 与 `Agent Harnesses` 之间的结构差异，以及 `Harness Engineering` 怎样把这些能力组织成长期开发方法。
 
 这里默认继承 [文章证据工作法](../article-evidence-method/) 的基本读法：专题不是凭印象画图，而是先回到关键文章与项目公开材料，判断哪些要素最承重，再把那组判断压成可运行、可检查的研究材料。
 
@@ -31,13 +31,20 @@ description: 更深入、可运行的研究专题入口。
 - 从 [术语与证据边界](../terminology-and-evidence/) 继承 `句子分层`
   尽量区分哪些是公开材料可直接确认的内容，哪些是项目官方 framing，哪些是仓库为了比较而做的研究解释
 - 从 [生态与比较](../ecosystem-comparison/) 继承 `比较问题`
-  重点比较控制中心、持久化 / 恢复表面、人类控制面和宿主依赖，而不是把所有项目都摊平成同一类产品
+  重点比较 `AI Agents` 与 `Agent Harnesses` 之间的控制中心、持久化 / 恢复表面、人类控制面和宿主依赖，而不是把所有项目都摊平成同一类产品
 
 换句话说，专题不是把文章再说一遍，而是把已经形成的判断转成更可检查的研究形式。
 
+## 当前专题目录
+
+- [宿主与 Harness 结构图](../topics/host-harness-flow-diagrams/site/)
+  一个可运行的比较研究应用，用来观察宿主工作面、harness 壳层、控制中心、用户参与契约与恢复路径如何被不同系统表达。
+- [深入剖析 OMO 与 OMX](./omo-and-omx/)
+  一篇配套分析文章，专门拆 `OpenCode`、`Codex` 各自提供了哪些 harness 机制层能力，`OMO` 与 `OMX` 如何利用并扩展这些机制，以及它们最终分别给用户定义了什么交互面。
+
 ## 宿主与 Harness 结构图
 
-这是当前第一个可运行专题。它不是某个框架的宣传页，而是一份可交互的比较研究材料，用来观察不同系统如何表达对象层结构：
+这是当前第一个可运行专题。它不是某个框架的宣传页，而是一份可交互的比较研究材料，主要用来观察 `AI Agents` 与 `Agent Harnesses` 这一层如何表达对象结构：
 
 - 自动化回路在哪里闭合
 - harness 壳层压在系统的哪一层
@@ -86,6 +93,7 @@ description: 更深入、可运行的研究专题入口。
 - [查看扩图纳入判断表](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-28-expansion-scope-matrix.md)
 - [查看 OpenCode -> oh-my-openagent 能力栈拆解备忘](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-30-opencode-oh-my-openagent-capability-stack.md)
 - [查看 Codex -> oh-my-codex 能力栈拆解备忘](https://github.com/BeMxself/everything-harness-engineering/blob/main/topics/host-harness-flow-diagrams/docs/research/2026-03-30-codex-oh-my-codex-capability-stack.md)
+- [查看配套专题文章：深入剖析 OMO 与 OMX](./omo-and-omx/)
 
 ### 当前已经能回答什么
 
@@ -105,7 +113,7 @@ description: 更深入、可运行的研究专题入口。
 
 ### 当前还不能回答什么
 
-- 还不能覆盖更多框架，所以现在更适合作为比较方法示例，而不是领域全景地图
+- 还不能覆盖更多宿主链路与 harness 家族，所以现在更适合作为比较方法示例，而不是领域全景地图
 - 还没有把每个框架的更细粒度角色、命令和钩子全部展开
 - 还没有把时间维度、成本维度和真实任务案例叠进图里
 - 还没有把“哪些判断来自原文、哪些来自专题解释”直接显示在图面或图旁

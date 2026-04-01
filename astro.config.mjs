@@ -15,6 +15,7 @@ export default defineConfig({
       components: {
         Head: "./src/components/StarlightHead.astro",
       },
+      customCss: ["./src/styles/starlight-overrides.css"],
       titleDelimiter: "·",
       social: [
         {
@@ -41,7 +42,16 @@ export default defineConfig({
             { label: "文章证据工作法", link: "/article-evidence-method/" },
             { label: "关键文章", link: "/key-articles/" },
             { label: "生态与比较", link: "/ecosystem-comparison/" },
-            { label: "研究专题", link: "/topics/" },
+            {
+              label: "研究专题",
+              items: [
+                { label: "专题总览", link: "/topics/" },
+                {
+                  label: "深入剖析 OMO 与 OMX",
+                  link: "/topics/omo-and-omx/",
+                },
+              ],
+            },
             { label: "社区讨论", link: "/community-discussions/" },
             { label: "工程观察", link: "/engineering-observations/" },
           ],

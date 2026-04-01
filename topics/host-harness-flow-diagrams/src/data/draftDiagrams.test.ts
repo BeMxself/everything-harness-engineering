@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { resolveText } from "../i18n";
-import { draftDiagrams, gsdDraftDiagram, omxDraftDiagram, trellisDraftDiagram } from "./draftDiagrams";
+import { bmadDraftDiagram, draftDiagrams, gsdDraftDiagram, omxDraftDiagram, trellisDraftDiagram } from "./draftDiagrams";
 
 describe("draft diagram data", () => {
   it("keeps Trellis and oh-my-codex as the current renderable draft diagrams", () => {
@@ -8,6 +8,7 @@ describe("draft diagram data", () => {
       "trellis-draft",
       "oh-my-codex-draft",
       "get-shit-done-draft",
+      "bmad-method-draft",
     ]);
   });
 
@@ -56,5 +57,19 @@ describe("draft diagram data", () => {
     expect(gsdDraftDiagram.emphasis.hostDependency).toBe("medium");
     expect(resolveText(gsdDraftDiagram.readingGuide.keyQuestion, "en")).toMatch(/protocol/i);
     expect(gsdDraftDiagram.steps).toHaveLength(5);
+  });
+
+  it("contains a BMAD draft diagram centered on generated skills, guided workflows, and durable artifacts", () => {
+    expect(bmadDraftDiagram.id).toBe("bmad-method-draft");
+    expect(resolveText(bmadDraftDiagram.title, "en")).toMatch(/BMAD-METHOD/i);
+    expect(bmadDraftDiagram.emphasis.automationLoop).toBe("high");
+    expect(bmadDraftDiagram.emphasis.harness).toBe("medium");
+    expect(resolveText(bmadDraftDiagram.notes.whereTheHarnessLives, "en")).toMatch(/generated skills/i);
+    expect(
+      bmadDraftDiagram.nodes.some(
+        (node) => node.id === "skill-command-surface" && resolveText(node.label, "en").match(/skills \/ commands/i),
+      ),
+    ).toBe(true);
+    expect(bmadDraftDiagram.steps).toHaveLength(5);
   });
 });

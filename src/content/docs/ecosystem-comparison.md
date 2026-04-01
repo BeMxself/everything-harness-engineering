@@ -5,14 +5,14 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
 
 带有“代理”“工作流”“技能”“harness”等字样的项目常常被放在一起讨论，但它们并不总在同一层上。
 
-把 `agent harness` 和 `harness engineering` 拆开以后，更稳的读法是先分两条比较轴：
+这一页现在先把公开主叙事收成两层对象：
 
-- `对象层`
-  编程代理、agent harness，以及更大的工作流 / 编排系统
-- `实践层`
-  harness engineering，以及常见的技能 / 方法系统
+- `AI Agents`
+  直接作为工作宿主或代理产品出现，首先回答“代理在哪里运行、如何执行”
+- `Agent Harnesses`
+  叠加在宿主之上的外层系统，首先回答“怎样补控制、恢复、状态、角色与用户参与契约”
 
-并排比较它们，不是为了排座次，而是为了先判断自己到底在看“系统对象”，还是在看“人如何组织这些对象做开发”。
+`Harness Engineering` 仍然保留为分析视角，用来讨论人如何围绕这些对象组织长期开发方法。更底层的 framework / runtime / automation substrate 这轮不展开，因为它们太底层，也不是本站当前公开重点。
 
 为了让这些比较不漂移，这一页默认沿用 [文章证据工作法](../article-evidence-method/)：先参考关键文章里哪些要素最承重，再明确表格中哪些内容在保留 `官方表述`，哪些内容属于本文的 `研究解释`。
 
@@ -21,10 +21,10 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
 - 如果你还没建立整体概念边界，先读 [概念入口](../concept-entry/)
 - 如果你想知道这些比较维度是怎样从关键文章里提炼出来的，先读 [文章证据工作法](../article-evidence-method/)
 - 如果你已经知道想比较什么，下表提供的是一组更稳的比较维度
-- 表格里的 `官方自述 / 定位信号` 尽量保留项目当前公开 README / 文档 的表达；后面的归类和工作面判断属于文中的比较解释
-- 其中有些格子写的是 `对象归类`，有些格子写的是 `实践定位`，它们不是同一条轴
+- 表格里的 `官方自述 / 定位信号` 尽量保留项目当前公开 README / 文档 的表达；后面的分层归类和工作面判断属于文中的比较解释
+- 这页先按 `AI Agents / Agent Harnesses` 这条对象层来对齐；方法论差异与实践差异放进归类理由里展开
 
-官方定位信号按 **2026-03-27** 可见的公开项目页面整理。
+官方定位信号按 **2026-04-01** 可见的公开项目页面整理。
 
 ## 比较之前，先看哪几个维度
 
@@ -36,41 +36,37 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
 | `人类控制面` | 审批、评审、规则、规格和合并纪律是不是系统对象 | 决定它是否真正支持“人类掌舵，代理执行” |
 | `宿主依赖` | 它是独立宿主、宿主内扩展，还是跨宿主协调层 | 决定它是基础工作面，还是覆盖其上的第二层系统 |
 
-## 两条比较轴下常见的五种位置
+## 先把焦点收成两层对象
 
-- `编程代理（Coding Agents）`
-  更偏宿主对象，首先回答“代理在哪里工作”
+- `AI Agents`
+  这一层是宿主或代理产品本身，例如 `Claude Code`、`Codex`、`OpenCode`、`Goose`、`Aider`
 - `Agent Harnesses`
-  更偏 agent harness 这一层，回答“如何在宿主之上补控制、恢复、记忆、规则与委派”
-- `Harness Engineering`
-  更偏工程实践层，回答“人如何围绕这些对象和机制组织长期开发方法”
-- `技能 / 方法系统`
-  更像实践层里的常见承载形态，回答“这种方法通过什么规范、技能、规格和检查清单落地”
-- `工作流 / 编排`
-  更偏更大范围的协调层，回答“如何把多个代理、人类审批和交付节点组织进闭环”
+  这一层是宿主之上的外层系统，既包括 `oh-my-openagent`、`oh-my-codex`、`Trellis` 这类宿主增强型 harness，也包括 `BMAD`、`superpowers`、`get-shit-done`、`Routa`、`gstack`、`ccg-workflow`、`Ralph` 这类方法系统或交付套件
 
-这些层次会互相吸收，但如果一开始不区分，后面的比较很容易失真。尤其是在编程代理语境里，宿主、`agent harness`、`harness engineering` 的实践层，以及工作流叠加层，本来就是几类不同的问题。
+这样对齐以后，`BMAD` 和 `gstack` 可以横向比较用户参与契约与交付流，`OMO` 和 `OMX` 可以横向比较宿主之上的控制面重组，而不用再把过于底层的 framework / runtime 也拉进同一张表。
 
 ## 代表性项目比较
 
-| 系统 | Stars | 官方自述 / 定位信号 | 对象归类 / 实践定位 | 主工作面 | 控制 / 持久化重心 | 归类理由 |
+| 系统 | Stars | 官方自述 / 定位信号 | 分层归类 | 主工作面 | 控制 / 持久化重心 | 归类理由 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Codex](https://github.com/openai/codex) | ![Codex stars](https://img.shields.io/github/stars/openai/codex?style=social) | Lightweight coding agent that runs in your terminal | 对象层：编程代理 | 终端中的编程代理宿主 | 主执行回路与仓库工作面 | 它首先回答的是代理如何直接进入真实工程环境 |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows) | — | Anthropic 官方将其描述为 agentic coding tool | 对象层：编程代理 | Claude Code 宿主工作面 | 宿主内任务执行与常用工作流 | 更适合把它看作后续 harness 增强层的宿主 |
-| [OpenCode](https://opencode.ai/) | ![OpenCode stars](https://img.shields.io/github/stars/anomalyco/opencode?style=social) | The open source AI coding agent | 对象层：编程代理 | 开放宿主，可运行于终端、IDE 与桌面 | 开放宿主与编程代理表面 | 重点仍然是宿主和代理执行面本身 |
-| [Goose](https://github.com/block/goose) | ![Goose stars](https://img.shields.io/github/stars/block/goose?style=social) | Open source, extensible AI agent | 对象层：编程代理 | 更广义的本地工程代理宿主 | 可扩展宿主与本地执行 | 虽不只做编程，但它和这一层共享主工作面问题 |
-| [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | ![oh-my-openagent stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=social) | the best agent harness; previously oh-my-opencode | 对象层：Agent Harnesses | OpenCode 之上的宿主内扩展 | 宿主内 workflow protocol、状态、命令、后台任务与执行接力 | 当前更稳的读法是：它不是单纯多放几个 agent preset，而是把 `ulw`、Prometheus 规划、`/start-work -> Atlas`、后台任务和持久状态重组成宿主内工作流协议 |
-| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | ![oh-my-codex stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=social) | workflow layer for OpenAI Codex CLI；Codex remains the execution engine | 对象层：Agent Harnesses | Codex 之上的宿主内扩展 | Codex substrate + workflow contract + `.omx/` state + optional team runtime | 更稳的读法是：Codex 保留 approvals、sandbox、hooks、subagents、thread persistence 等宿主底盘，OMX 再在外层加入 prompts、workflow skills、state shell 与 team/runtime escalation |
-| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | ![oh-my-claudecode stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-claudecode?style=social) | Teams-first multi-agent orchestration for Claude Code | 对象层：Agent Harnesses | Claude Code 之上的宿主内扩展 | 以团队为先的编排与宿主扩展 | 它明显跨到了编排层，但主要仍以内嵌在 Claude Code 宿主上的增强层出现 |
-| [Trellis](https://github.com/mindfold-ai/Trellis) | ![Trellis stars](https://img.shields.io/github/stars/mindfold-ai/Trellis?style=social) | multi-platform AI coding framework / agent harness framing | 对象层：Agent Harnesses | 跨宿主 harness 层 | 跨宿主控制面与统一工作流 | 重点是把不同宿主收束进同一套增强层 |
-| [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | ![everything-claude-code stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=social) | agent harness performance optimization system | 对象层：Agent Harnesses | Claude Code 及相关宿主表面之上的增强层 | 策略、命令、记忆和专门代理 | 更像受治理的代理操作系统，而不是单次工作流模板 |
-| [superpowers](https://github.com/obra/superpowers) | ![superpowers stars](https://img.shields.io/github/stars/obra/superpowers?style=social) | An agentic skills framework & software development methodology | 实践层：技能 / 方法系统 | 宿主内技能与工作流纪律 | 技能、清单与流程纪律 | 它最强的不是宿主，而是它如何承载 harness engineering 的执行纪律 |
-| [get-shit-done](https://github.com/gsd-build/get-shit-done) | ![get-shit-done stars](https://img.shields.io/github/stars/gsd-build/get-shit-done?style=social) | Meta-prompting, context engineering and spec-driven development system | 实践层：技能 / 方法系统 | 宿主内工作流层 | 规格、上下文工程与元提示 | 更像方法系统和执行框架，而不是独立宿主 |
-| [gstack](https://github.com/garrytan/gstack) | ![gstack stars](https://img.shields.io/github/stars/garrytan/gstack?style=social) | 15 opinionated tools that serve as CEO, Designer, Eng Manager... | 协调层：工作流 / 编排 | 角色化交付工作流 | 角色交接、流水线关卡与返工回路 | 它的强项更像任务组织和交付闭环 |
-| [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) | ![ccg-workflow stars](https://img.shields.io/github/stars/fengshao1227/ccg-workflow?style=social) | Claude + Codex + Gemini multi-model collaboration | 协调层：工作流 / 编排 | 多模型协作工作流 | 模型路由与协作流程 | 主要问题是多模型如何协同，不是单宿主如何被增强 |
-| [Ralph](https://github.com/snarktank/ralph) | ![Ralph stars](https://img.shields.io/github/stars/snarktank/ralph?style=social) | autonomous AI agent loop that runs repeatedly until PRD items are complete | 协调层：工作流 / 编排 | 独立调度外壳 | 持续循环、PRD 驱动与完成态闭环 | 它更像围绕任务完成的自主调度器 |
+| [Codex](https://github.com/openai/codex) | ![Codex stars](https://img.shields.io/github/stars/openai/codex?style=social) | Lightweight coding agent that runs in your terminal | `AI Agents` | 终端中的编程代理宿主 | 主执行回路与仓库工作面 | 它首先回答的是代理如何直接进入真实工程环境 |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows) | — | Anthropic 官方将其描述为 agentic coding tool | `AI Agents` | Claude Code 宿主工作面 | 宿主内任务执行与常用工作流 | 更适合把它看作后续 harness 增强层的宿主 |
+| [OpenCode](https://opencode.ai/) | ![OpenCode stars](https://img.shields.io/github/stars/anomalyco/opencode?style=social) | The open source AI coding agent | `AI Agents` | 开放宿主，可运行于终端、IDE 与桌面 | 开放宿主与编程代理表面 | 重点仍然是宿主和代理执行面本身 |
+| [Goose](https://github.com/block/goose) | ![Goose stars](https://img.shields.io/github/stars/block/goose?style=social) | Open source, extensible AI agent | `AI Agents` | 更广义的本地工程代理宿主 | 可扩展宿主与本地执行 | 虽不只做编程，但它和这一层共享主工作面问题 |
+| [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | ![oh-my-openagent stars](https://img.shields.io/github/stars/code-yeongyu/oh-my-openagent?style=social) | the best agent harness; previously oh-my-opencode | `Agent Harnesses` | OpenCode 之上的宿主内扩展 | 宿主内 workflow protocol、状态、命令、后台任务与执行接力 | 它属于宿主增强型 harness：把 `ulw`、Prometheus 规划、`/start-work -> Atlas`、后台任务和持久状态重组成宿主内工作流协议 |
+| [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex) | ![oh-my-codex stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-codex?style=social) | workflow layer for OpenAI Codex CLI；Codex remains the execution engine | `Agent Harnesses` | Codex 之上的宿主内扩展 | Codex substrate + workflow contract + `.omx/` state + optional team runtime | 它属于宿主增强型 harness：Codex 保留 approvals、sandbox、hooks、subagents、thread persistence 等底盘，OMX 再在外层加入 prompts、workflow skills、state shell 与 team/runtime escalation |
+| [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | ![oh-my-claudecode stars](https://img.shields.io/github/stars/Yeachan-Heo/oh-my-claudecode?style=social) | Teams-first multi-agent orchestration for Claude Code | `Agent Harnesses` | Claude Code 之上的宿主内扩展 | 以团队为先的编排与宿主扩展 | 它仍然属于宿主之上的 harness，只是更明显地向团队协作和编排方向扩张 |
+| [Trellis](https://github.com/mindfold-ai/Trellis) | ![Trellis stars](https://img.shields.io/github/stars/mindfold-ai/Trellis?style=social) | multi-platform AI coding framework / agent harness framing | `Agent Harnesses` | 跨宿主 harness 层 | 跨宿主控制面与统一工作流 | 它属于跨宿主 harness：重点是把不同宿主收束进同一套增强层 |
+| [everything-claude-code](https://github.com/affaan-m/everything-claude-code) | ![everything-claude-code stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=social) | agent harness performance optimization system | `Agent Harnesses` | Claude Code 及相关宿主表面之上的增强层 | 策略、命令、记忆和专门代理 | 它更像受治理的代理操作系统，仍然属于宿主之上的 harness |
+| [superpowers](https://github.com/obra/superpowers) | ![superpowers stars](https://img.shields.io/github/stars/obra/superpowers?style=social) | An agentic skills framework & software development methodology | `Agent Harnesses` | 宿主内技能与工作流纪律 | 技能、清单与流程纪律 | 它属于方法系统型 harness：重点不是新宿主，而是怎样把执行纪律装进现有宿主 |
+| [get-shit-done](https://github.com/gsd-build/get-shit-done) | ![get-shit-done stars](https://img.shields.io/github/stars/gsd-build/get-shit-done?style=social) | Meta-prompting, context engineering and spec-driven development system | `Agent Harnesses` | 宿主内工作流层 | 规格、上下文工程与元提示 | 它属于方法系统型 harness：更像方法系统和执行框架，而不是独立宿主 |
+| [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD) | ![BMAD-METHOD stars](https://img.shields.io/github/stars/bmad-code-org/BMAD-METHOD?style=social) | Breakthrough Method for Agile AI Driven Development；AI-driven agile development module ecosystem | `Agent Harnesses` | 安装到 Claude Code、Cursor 等宿主里的模块化方法系统 | 专门代理、34+ workflows、技能、builder 与模块生态 | 它属于方法系统型 harness：把分析、规划、架构、实现这些阶段编成可安装的方法模块，并通过专门 agent 与 workflow 在现有宿主里运行 |
+| [Routa](https://github.com/phodal/routa) | ![Routa stars](https://img.shields.io/github/stars/phodal/routa?style=social) | Build Your Agent Team for Real-World AI Development；workspace-first multi-agent coordination platform | `Agent Harnesses` | 独立协调平台，覆盖 Web 与桌面 | Kanban orchestration、Specs、Review Guard、ACP agent lifecycle、workspace memory / traces | 它属于交付套件型 harness：重点不是增强某一个宿主，而是把外部 agents 和阶段化 specialist 流程组织成可见、可回流的交付闭环 |
+| [gstack](https://github.com/garrytan/gstack) | ![gstack stars](https://img.shields.io/github/stars/garrytan/gstack?style=social) | 15 opinionated tools that serve as CEO, Designer, Eng Manager... | `Agent Harnesses` | 角色化交付工作流 | 角色交接、流水线关卡与返工回路 | 它属于交付套件型 harness：强项是任务组织和交付闭环，而不是底层 agent runtime |
+| [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) | ![ccg-workflow stars](https://img.shields.io/github/stars/fengshao1227/ccg-workflow?style=social) | Claude + Codex + Gemini multi-model collaboration | `Agent Harnesses` | 多模型协作工作流 | 模型路由与协作流程 | 它属于交付套件型 harness：主要问题是多模型如何协同交付，而不是单宿主如何被增强 |
+| [Ralph](https://github.com/snarktank/ralph) | ![Ralph stars](https://img.shields.io/github/stars/snarktank/ralph?style=social) | autonomous AI agent loop that runs repeatedly until PRD items are complete | `Agent Harnesses` | 独立调度外壳 | 持续循环、PRD 驱动与完成态闭环 | 它属于交付套件型 harness：更像围绕任务完成的自主调度与闭环系统 |
 
-对 `superpowers`、`get-shit-done` 这类项目，这张表主要是在写它们对 `harness engineering` 的实践定位，而不是把它们误当成另一类宿主产品。
+对 `BMAD`、`superpowers`、`get-shit-done`、`Routa`、`gstack`、`Ralph` 这类项目，这张表现在统一把它们放在 `Agent Harnesses` 这一层，但会在 `归类理由` 里继续区分它们究竟更像宿主增强型 harness、方法系统型 harness，还是交付套件型 harness。
 
 ## 什么时候该把它们放在一起看，什么时候不该
 
@@ -84,13 +80,13 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
 
 - 你只是想做“哪个最好用”的产品榜单
 - 你把独立宿主和宿主内增强层当成同一层产品来比较
-- 你把方法论系统和运行时系统混成一种“代理框架”
+- 你把方法系统、宿主增强层和太底层的 framework / runtime 混成同一层
 
 ## 按问题进入，而不是按热点进入
 
-### 如果你想先找一个主工作面
+### 如果你想先找一个主工作面，先看 `AI Agents`
 
-先看 `编程代理（Coding Agents）`：
+先看：
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-workflows)
 - [Codex](https://github.com/openai/codex)
@@ -100,17 +96,27 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
 
 这类系统最先回答的是：代理能不能进入真实工程环境。
 
-### 如果你已经有宿主，想增强长期执行与控制层
+### 如果你已经有宿主，想增强长期执行与控制层，先看 `Agent Harnesses`
 
-先看 `Agent Harnesses`：
+先看：
 
 - [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)
 - [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)
 - [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)
 - [Trellis](https://github.com/mindfold-ai/Trellis)
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
+- [Routa](https://github.com/phodal/routa)
 
 这类系统更适合回答：如何把一个会执行的代理变成更可控、更可恢复、更可协作的工程环境。
+
+在这一层里，还可以继续区分三种常见形态：
+
+- `宿主增强型 harness`
+  `oh-my-openagent`、`oh-my-codex`、`oh-my-claudecode`、`Trellis`、`everything-claude-code`
+- `方法系统型 harness`
+  `BMAD-METHOD`、`superpowers`、`get-shit-done`
+- `交付套件型 harness`
+  `Routa`、`gstack`、`ccg-workflow`、`Ralph`
 
 如果只先抓一条最有代表性的链路，当前很适合从 `OpenCode -> oh-my-openagent` 开始读：
 
@@ -130,41 +136,28 @@ description: 一页围绕 harness 及其相邻系统展开的比较文章。
 
 这条链更适合回答：当宿主自己已经是厚 substrate 时，外层 harness 到底是在替代宿主，还是在重组用户参与契约。
 
-### 如果你更关心执行纪律和开发方法
+把这两条已经跑通的链路并排以后，还有一个更稳定的比较轴会浮出来：
 
-先看 `技能 / 方法系统`：
+| 比较轴 | `OpenCode -> oh-my-openagent` | `Codex -> oh-my-codex` |
+| --- | --- | --- |
+| `宿主厚度` | `OpenCode` 已经是厚宿主，但更像一组可编程原语 | `Codex` 更像带 policy boundary 与 thread persistence 的完整 substrate |
+| `外层增量` | 更像把原语重组成更强的 `workflow-bearing harness` | 更像把厚宿主再组织成更清晰的 `workflow contracts + state shell` |
+| `触发接口` | `@agent`、mode、`ulw`、`@plan`、`/start-work` 一类协议入口更居中 | `turn`、`AGENTS.md`、skills、approvals 先居中，再由 `/prompts:*`、`$plan`、`$team` 收敛工作协议 |
+| `用户最关键的输入` | 目标、范围、约束、是否接受 interview / 计划转执行 | 目标、规则、是否采用 OMX 启动路径、选择哪条 workflow contract |
+| `恢复 / 续跑重心` | session tree、background task、`.sisyphus` 状态与执行接力 | thread persistence、`.omx/` state、hooks extension 与 optional team runtime |
 
-- [superpowers](https://github.com/obra/superpowers)
-- [get-shit-done](https://github.com/gsd-build/get-shit-done)
+也就是说，现在更稳的比较方式已经不是“哪个生态更强”，而是：
 
-这类系统最重要的价值，通常不在“它是不是一个 agent harness”，而在“它怎样承载 harness engineering”。它们经常进入 harness engineering 的核心实践层，也可能被某个 harness 吸纳，但不应自动等同于 `agent harness` 本身。
-
-### 如果你更关心任务流转和交付闭环
-
-先看 `工作流 / 编排套件`：
-
-- [gstack](https://github.com/garrytan/gstack)
-- [ccg-workflow](https://github.com/fengshao1227/ccg-workflow)
-- [Ralph](https://github.com/snarktank/ralph)
-
-这类系统更适合回答：如何把多个代理、多个模型和人类审批稳定地编成一条交付链。
-
-## 相关框架与基础设施
-
-- [OpenHands](https://openhands.dev/)
-- [LangGraph](https://github.com/langchain-ai/langgraph)
-- [Microsoft Agent Framework](https://github.com/microsoft/agent-framework)
-- [CrewAI](https://www.crewai.com/)
-- [GitHub Agentic Workflows](https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/)
-
-这些项目仍然值得跟踪，但它们更偏代理平台、图编排、框架或基础设施层，不应和可直接实践的工作流套件混为一谈。是否把它们纳入更广义的 harness 讨论，要看研究问题是在问“系统如何被工程化”，还是在问“代理在哪个软件层里被组织”。
+- 外层到底接手了多少控制权
+- 用户在什么时候还要自己做决定
+- 长任务恢复到底是回到宿主 thread，还是回到外层状态壳
 
 ## 阅读提醒
 
 - 这张表不是胜负榜，也不是稳定不变的最终定性
 - 很多项目正在快速演化，名字、宿主支持和自我定位都可能继续漂移
 - 它提供的是一个可追溯、可比较的观察切面
-- 表中既有 `对象归类`，也有 `实践定位`；这两者都影响路线选择，但不是同一条分类轴
+- 这页先按 `AI Agents / Agent Harnesses` 对齐对象层；方法论差异与实践差异会继续写进归类理由里
 - 表中的归类只是为了把项目放进同一张比较坐标里，不等于它们的自我定义
 
 如果想把这个比较进一步落实成可视结构，可以继续读 [研究专题](../topics/) 里的“宿主与 Harness 结构图”。

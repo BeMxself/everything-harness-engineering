@@ -34,7 +34,8 @@ const { taxonomy, rows } = Astro.props;
         最大的误区不是漏看项目，而是把不在同一层的问题拿来做同一种比较。
       </p>
       <p>
-        更稳的读法是先分对象层和实践层，再判断它落在宿主、agent harness，还是更大的任务编排层。
+        更稳的读法是先把 `AI Agents` 和 `Agent Harnesses` 这两层对象对齐，再把 `Harness Engineering`
+        当作横切实践线，比较它们各自的控制面、状态面和用户参与契约。
       </p>
     </div>
     <div class="ecosystem-actions not-content">
@@ -45,7 +46,7 @@ const { taxonomy, rows } = Astro.props;
   </div>
 
   <div class="ecosystem-kinds not-content">
-    <p>比较时先把对象归类和实践定位分开，再看下面四种常见位置：</p>
+    <p>比较时先把两层对象和一条实践线分开，再看项目到底落在哪一层：</p>
     <ul class="ecosystem-kind-list">
       {taxonomy.map((item) => (
         <li>
@@ -57,7 +58,7 @@ const { taxonomy, rows } = Astro.props;
   </div>
 
   <p class="ecosystem-preview-note">
-    下面这张表先把主要项目放到同一张比较坐标里；其中有些格子写的是对象归类，有些写的是实践定位。
+    下面这张表先把主要项目放到同一张比较坐标里；首页只给一张总览表，具体子形态和证据边界在生态页继续展开。
   </p>
 
   <div class="table-wrap not-content">
